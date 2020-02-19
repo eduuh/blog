@@ -11,7 +11,10 @@ themeOptions = ["dark", "light", "hacker", "solarized", "kimbie"]
 notAllowedTypesInHome = [
   "contact",
   "talks",
-  "about",
+  "about/",
+  "gallery",
+  "gallery/random",
+  "gallery/hackassembly",
   "showcase",
   "publication",
   "presentation",
@@ -66,7 +69,7 @@ pubPaginate = 20
 myname = "Eduuh Muraya"
 email = "edwinkamaumuraya0@outlook.com"
 whoami = "Selftaught FullStack Developer"
-bioImageUrl = ""
+bioImageUrl = "images/whoami/avator.png"
 useGravatar = false
 location = "Nyeri , Kenya"
 organization = "Dedan Kimathi University"
