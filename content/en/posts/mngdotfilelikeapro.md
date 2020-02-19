@@ -1,5 +1,6 @@
 ---
 title: "Mngdotfilelikeapro"
+description: Efficient way to manage configuration files in a linux system.
 date: 2020-02-12T11:37:37+03:00
 draft: true
 linktitle: ""
@@ -7,6 +8,8 @@ title: "Managing Dotfiles Like a Pro"
 categories: ["comandline","linux"]
 tags: ["productivity",""]
 weight: 30
+
+image : images/configurations.png
 ---
 ### A simpler way to manage your dotfiles
 
