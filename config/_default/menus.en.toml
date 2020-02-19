@@ -13,7 +13,7 @@ weight = 2
 [[main]]
 identifier = "workshop"
 name = "workshops"
-url = "talks"
+url = "workshops"
 weight = 3
 
 [[main]]

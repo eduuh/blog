@@ -1,4 +1,4 @@
-logoText = "Zzo"
+logoText = "edd's Journal"
 logoType = "short" # long, short
 logo = false
 description = "Edds Journal where i write all my notes in one place!"
@@ -90,7 +90,7 @@ sidebarPosition = "right"
 tocLevels = ["h2", "h3", "h4"]
 enableSidebarPostsByOrder = false
 # footer
-showPoweredBy = true
+showPoweredBy = false
 showFeedLinks = true
 showSocialLinks = true
 enableLangChange = true

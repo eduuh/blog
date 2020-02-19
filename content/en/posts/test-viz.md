@@ -2,7 +2,7 @@
 title: "Viz support"
 date: 2019-11-18T21:00:06+09:00
 description: "A hack to put Graphviz on the web."
-draft: false
+draft: true
 enableToc: false
 enableTocContent: false
 tags:

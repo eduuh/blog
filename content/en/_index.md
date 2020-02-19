@@ -6,9 +6,9 @@ header:
     paddingY: 0
     align: center
     title:
-      - HUGO
+      - Edd's Journal
     subtitle:
-      - The world’s fastest framework for building websites
+      - A Journal Where I keep all My Tech notes in One Place.
     titleColor: 
     titleShadow: true
     titleFontSize: 44
