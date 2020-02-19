@@ -1,23 +1,52 @@
 logoText = "Zzo"
 logoType = "short" # long, short
-description = "The Zzo theme for Hugo example site."
+logo = false
+description = "Edds Journal where i write all my notes in one place!"
 custom_css = []
 custom_js = []
 useFaviconGenerator = true # https://www.favicon-generator.org/
 meta_image = ""
 themecolor = ""
-
 themeOptions = ["dark", "light", "hacker", "solarized", "kimbie"]
-notAllowedTypesInHome = ["contact", "talks", "about", "showcase", "publication", "presentation", "resume"]
-notAllowedTypesInHomeSidebar = ["about", "archive", "showcase", "publication", "presentation", "resume"]
-notAllowedTypesInArchive = ["about", "talks", "showcase", "publication", "presentation", "resume"]
-notAllowedTypesInHomeFeed = ["about", "archive", "contact", "talks", "showcase", "publication", "presentation", "resume", "gallery"]
-
+notAllowedTypesInHome = [
+  "contact",
+  "talks",
+  "about",
+  "showcase",
+  "publication",
+  "presentation",
+  "resume"
+]
+notAllowedTypesInHomeSidebar = [
+  "about",
+  "archive",
+  "showcase",
+  "publication",
+  "presentation",
+  "resume"
+]
+notAllowedTypesInArchive = [
+  "about",
+  "talks",
+  "showcase",
+  "publication",
+  "presentation",
+  "resume"
+]
+notAllowedTypesInHomeFeed = [
+  "about",
+  "archive",
+  "contact",
+  "talks",
+  "showcase",
+  "publication",
+  "presentation",
+  "resume",
+  "gallery"
+]
 enableUiAnimation = true
-
 # header
 homeHeaderType = "text" # text, img, slide
-
 # body
 enableBreadcrumb = true
 enablePhotoSwipe = true
@@ -33,17 +62,15 @@ paginateWindow = 1
 talksPaginate = 5
 talksGroupByDate = "2006"
 pubPaginate = 20
-
 # whoami
-myname = "zzossig"
-email = "zzossig@gmail.com"
-whoami = "Web Developer"
+myname = "Eduuh Muraya"
+email = "edwinkamaumuraya0@outlook.com"
+whoami = "Selftaught FullStack Developer"
 bioImageUrl = ""
 useGravatar = false
-location = "Seoul, Korea"
-organization = "Hugo"
-link = "https://zzossig.io/ko"
-
+location = "Nyeri , Kenya"
+organization = "Dedan Kimathi University"
+link = "https://eduuh.github.io"
 # sidebar
 enableBio = true
 enableBioImage = true
@@ -62,14 +89,12 @@ itemsPerCategory = 5
 sidebarPosition = "right"
 tocLevels = ["h2", "h3", "h4"]
 enableSidebarPostsByOrder = false
-
 # footer
 showPoweredBy = true
 showFeedLinks = true
 showSocialLinks = true
 enableLangChange = true
 enableThemeChange = true
-
 # service
 googleTagManager = "" # GTM-XXXXXX
 baiduAnalytics = ""
@@ -77,107 +102,108 @@ enableBusuanzi = false
 busuanziSiteUV = true
 busuanziSitePV = true
 busuanziPagePV = true
-
 # rss
 updatePeriod = "" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""
 fullContents = false
-
 # comment
 enableComment = true
 disqus_shortname = ""
 commento = false
 
-[gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
-  owner = ""              # Your GitHub ID
-  repo = ""               # The repo to store comments
-  clientId = ""           # Your client ID
-  clientSecret = ""       # Your client secret
+[gitment] # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
+owner = "" # Your GitHub ID
+repo = "" # The repo to store comments
+clientId = "" # Your client ID
+clientSecret = "" # Your client secret
 
-[utterances]       # https://utteranc.es/
-  owner = ""              # Your GitHub ID
-  repo = ""               # The repo to store comments
+[utterances] # https://utteranc.es/
+owner = "" # Your GitHub ID
+repo = "" # The repo to store comments
 
-[gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-  owner = ""              # Your GitHub ID
-  repo = ""               # The repo to store comments
-  clientId = ""           # Your client ID
-  clientSecret = ""       # Your client secret
+[gitalk] # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
+owner = "" # Your GitHub ID
+repo = "" # The repo to store comments
+clientId = "" # Your client ID
+clientSecret = "" # Your client secret
 
 # Valine.
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 [valine]
-  enable = false
-  appId = '你的appId'
-  appKey = '你的appKey'
-  notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
-  verify = false # Verification code
-  avatar = 'mm' 
-  placeholder = '说点什么吧...'
-  visitor = false
+enable = false
+appId = '你的appId'
+appKey = '你的appKey'
+notify = false # mail notifier , https://github.com/xCss/Valine/wiki
+verify = false # Verification code
+avatar = 'mm'
+placeholder = ''
+visitor = false
 
 [changyan]
-  changyanAppid = ""        # Changyan app id             # 畅言
-  changyanAppkey = ""       # Changyan app key
+changyanAppid = "" # Changyan app id             # 畅言
+changyanAppkey = "" # Changyan app key
 
 [livere]
-  livereUID = ""            # LiveRe UID                  # 来必力
+livereUID = "" # LiveRe UID                  # 来必力
 
 # Isso: https://posativ.org/isso/
 [isso]
-  enable = false
-  scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
-  dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
+enable = false
+scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
+dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
 
 [socialOptions]
-  email = "mailto:your@email.com"
-  phone = ""
-  facebook = "http://example.org/"
-  twitter = "http://example.org/"
-  github = "https://github.com/zzossig/hugo-theme-zzo"
-  stack-overflow = ""
-  instagram = ""
-  google-plus = ""
-  youtube = ""
-  medium = ""
-  tumblr = ""
-  linkedin = ""
-  pinterest = ""
-  stack-exchange = ""
-  telegram = ""
-  steam = ""
-  weibo = ""
-  douban = ""
-  csdn = ""
-  gitlab = ""
-  mastodon = ""
-  jianshu = ""
-  zhihu = ""
-  signal = ""
-  whatsapp = ""
-  matrix = ""
-  xmpp = ""
-  dev-to = ""
-  gitea = ""
+email = "mailto:edwinkamaumuraya0@gmail.com"
+phone = "+254758874026"
+facebook = ""
+instagram = ""
+twitter = "https://twitter.com/eduuhmuraya"
+github = "https://github.com/eduuh"
+stack-overflow = "https://stackoverflow.com/users/7425067/ed%c3%bbuh-m%c3%bbraya"
+linkedin = "https://www.linkedin.com/in/eduuh/"
+wack-overflow = ""
+google-plus = ""
+youtube = ""
+medium = ""
+tumblr = ""
+pinterest = ""
+stack-exchange = ""
+telegram = ""
+steam = ""
+weibo = ""
+douban = ""
+csdn = ""
+gitlab = ""
+mastodon = ""
+jianshu = ""
+zhihu = ""
+signal = ""
+whatsapp = ""
+matrix = ""
+xmpp = ""
+dev-to = ""
+gitea = ""
 
 [donationOptions]
-  enable = false
-  alipay = "" 
-  wechat = ""
-  paypal = ""
-  patreon = ""
+enable = false
+alipay = ""
+wechat = ""
+paypal = ""
+patreon = ""
 
 # possible share name: ["facebook","twitter", "reddit", "linkedin", "tumblr", "weibo", "douban", "line"]
 [[share]]
-  name = "facebook"
-  username = ""
+name = "facebook"
+username = ""
+
 [[share]]
-  name = "twitter"
+name = "twitter"
 
 [[footerLinks]]
-  name = ""
-  link = ""
+name = ""
+link = ""
+
 [[footerLinks]]
-  name = ""
-  link = ""
+name = ""
+link = ""
