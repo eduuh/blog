@@ -1,0 +1,45 @@
+[[main]]
+identifier = "posts"
+name = "Posts"
+url = "posts"
+weight = 1
+
+[[main]]
+identifier = "about"
+name = "About"
+url = "about"
+weight = 2
+
+[[main]]
+identifier = "workshop"
+name = "workshops"
+url = "talks"
+weight = 3
+
+[[main]]
+identifier = "archive"
+name = "Archive"
+url = "archive"
+weight = 2
+
+[[main]]
+identifier = "gallery"
+name = "Gallery"
+url = "gallery"
+weight = 4
+
+[[main]]
+parent = "gallery"
+name = "Hackassembly"
+url = "gallery/hackassembly"
+
+[[main]]
+parent = "gallery"
+name = "Random"
+url = "gallery/random"
+
+[[main]]
+identifier = "showcase"
+name = "Showcase"
+url = "showcase"
+weight = 6
