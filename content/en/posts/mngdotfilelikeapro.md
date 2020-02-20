@@ -26,17 +26,18 @@ mainly used to store configuration files for the User instance for various
 applications. For me the dotfiles that i would love to manage are as 
 follow.
 
-	1. .bashrc or .zshrc (dependent on the shell your using.)
-	2. .vimrc
-	3. .setup.sh
+1. .bashrc or .zshrc (dependent on the shell your using.)
+2. .vimrc
+3. .setup.sh
+
 Yes `setup.sh` this is a custom setup script that i maintain to initially setup a new installation with all the setting and softwares i need in my
 system.Could be used to 
 
- 1. setup the configuration files managed by the git repository.
- 2. Setup my keyboard mapping to the way a need them to be .
+1. setup the configuration files managed by the git repository.
+2. Setup my keyboard mapping to the way a need them to be .
 
-  The keyboard mapping i love most, and spend alot of time setting it up
-  is `Remapping caps lock to act as a control key when pressed together wi  with other character, and behave as Escape when pressed alone.
+The keyboard mapping i love most, and spend alot of time setting it up
+is `Remapping caps lock to act as a control key when pressed together wi  with other character, and behave as Escape when pressed alone.
 
 I would love to automate the process , so that i dont even think about it.
 Like most folks, I use git to manage my dotfiles. This lets me have a 
@@ -98,16 +99,18 @@ However, some programs create default config files, so this might fail if git fi
 
 So this might fail if git finds an existing config file in your $HOME. In that case, a simple solution is to clone to a temporary directory , and then delete it once you are done: 
 
-	git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/  
+```bash
+	$ git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/  
 	
-	rm -r tmpdotfiles
+	$ rm -r tmpdotfiles
+
+```
 
 The last step is to add the `dotfile` alias in your `bashrc` or `zshrc` according to the shell you are
 using.
 
 ```bash
-
-
+  $ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'c 
 ```
 #### Using the `dotfiles alias`
 
@@ -125,6 +128,7 @@ $ dotfiles commit -m "zshrc => zsh oh my god configuration files "
 
 ```
 A `push` action.
+
 ```bash
 $ dotfiles push
 Enumerating objects: 4, done.
@@ -136,7 +140,6 @@ Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/eduuh/dotfiles.git
    7d507e7..64a553b  master -> master
 ```
-
 
 There you go. No symlink mess.
 

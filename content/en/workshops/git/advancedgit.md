@@ -18,60 +18,71 @@ tags:
 image: images/git/giticon.png
 ---
 
-### Advanced Git WorkShop   
+#### Advanced Git WorkShop   
 
-This is my first time am running this workshop.I will start will a short demo on the command line.This will introduce the new material to you, and I will explain what I am doing as I go along . After a bit we will have some exercise for you to practise what we were going through.
+Hello am Edd and I will be taking you through this workshop.By the end of this workshop, if you follow along you have a completely different understanding of `Git` and how you work with it. 
+
+##### How we will go along
+I will start will a `short demo` on the `command line` to introduce the new material. 
+After a bit we will have some exercise for you to practise what we were going through. After you  finish the exercises we are 
+then going to it together, to make sure you understand.
+
 
 ### Requirements
 
-* command Line that support unix style commands
-* git version > 2.0 (check with git --version)
-* github.com account
-* clone
+1. **Command Line** that support unix style commands
+2. **git version > 2.0** (check with git --version)
+3. **[github.com](github.com)** account
+4. **[This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇  
 
-Are we all good at these requirements.
+```bash
+         git clone git@github.com:eduuh/Advanced-GitWorkshop.git 
+```
+  
+Are we all good at these requirements. Okay Let get into it.
 
-I know when we learn git we memorize 6 command  the rest of git is usually a `black box` that we don't explore. 
+I know when we learn git we memorize 6 command  the rest of git is usually a `black box` that we don't explore. We reach at a point where we really on the GUI tool available for working with git. I.e `visual studio code`.Today we are going to go a `lot deeper to git` away from this basic commands and explore `git` further.
 
-
-Today we are going to go a `lot deeper to git` away from this 
-basic commands:
- 
-     // my assumption is you are familiar with this commands   
-    1. git clone
-    2. git push
-    3. git fetch
-    4. git push -f (when thing get tough)
-    5. git init
-    6. git commit
+My "~~assumption~~" is you are familiar with this commands. ***Don't worry if you are a beginner you will get into pace soon.***
 
 
-But if you are not famialiar with the above commands. Please bare with me, this are usually common conceps we can bare go anyware without them. When we came across them i will explain to you what they do.
+ Command                | Action                         
+------------------------|--------------------------------
+        **git clone**   | clone a remote repository : **github**, **gitlab** , **azure repos**        
+        **git push**    | Push local repository to remote service                    
+        **git fetch**   | Pull changes to a local repository
+        **git pull** -f | **git fetch** + **git merge** (used flags right)
+        **git init**    | Initialize a repository locally
+     **git add & git commit**  | Add changes to a local repository.
 
-I felt this way untill i decided its time to level up a little bit.
 
-Most of the time we as git use feel git this way.!!
-![gitfeeling](./../../static/gitfeeling.png)
+*If you are not famialiar with the above commands. Please bare with me, this are usually common concept that we can't do without them. When we come across them i will explain to you what they do.*
 
-Its a sad place to be. Are you exited to not do this anymore!?
+I felt this way untill i decided its time to **level up a little bit** and come out of my confort zone. Using `GUI` tools. In my case **visual studio code**.
 
-I will try to get you out of this by using git the right way.
+Do you feel this way?
+![gitfeeling](/images/gitfeeling.png)
+
+Its a sad place to be. ***Are you exited to not do this anymore!?***
+
+I will try to get you out of this showing you how to **use git the right way.**
 
 Before you delete you could decide to look up some manual page for git online and this is what you might get.
 
 WAT?
 
-![git manual](./../../static/gitmanual.png)
+![git manual](/images/gitmanual.png)
 
-The **SYNOPSIS**  WTH does it mean??
+The **SYNOPSIS**  ~~WTH~~ does it mean??
+
 > git refers to its self as **A stupid content tracker** funny
-  But this depents on how your use case.
+  But this depends on how your use case and mood.
 
-#### Take home.
-By understanding what is going on in git. People use git for 
-different use cases. You should try to use the idea from 
-this workshop and incoporate them to your workflows.
+> #### Notes
 
+People use git for different use cases. You should try to use the idea from this workshop and incoporate them to your workflows.
+
+> ####
 I have divided this workshop into sections , and after each sections. Am going to give an exercise which you will attempt. And then we are going to them together.
 
 Lets focus more on doing and understanding the theory. This is what i mean. Instead of writing down the notes focus on trying out the **commands**. You have all these notes with you.
@@ -83,54 +94,47 @@ Git is a tool to helps you,but not  work against you.
  
 #### Section 1: Part 1
 
-1. What is Git?
-2. Working with Area, staging area ,Repository
-3. Staging Area Deep Dive
-4. References, commits ,Branches
-5. Stashing
+    1. What is Git?
+    2. Working with Area, staging area ,Repository
+    3. Staging Area Deep Dive
+    4. References, commits ,Branches
+    5. Stashing
 
 #### Section 2: Part 2
 
-1. Merging + Rebasing
-2. History + Diffs
-3. Fixing Mistakes
-4. Rebase
-5. Forks, Remote Repositories
+    1. Merging + Rebasing
+    2. History + Diffs
+    3. Fixing Mistakes
+    4. Rebase
+    5. Forks, Remote Repositories
 
 #### Section 3: Part 3
 
-1. The Danger zone (how you could mess things up)
-2. Advanced tools
-3. Customizations: - configs, Ignore, Hooks, Templates
-4. Social git : intergrating Github with CI tools.
-5. Advanced Github: working with github api.
+    1. The Danger zone (how you could mess things up)
+    2. Advanced tools
+    3. Customizations: - configs, Ignore, Hooks, Templates
+    4. Social git : intergrating Github with CI tools.
+    5. Advanced Github: working with github api.
 
 
-## WHY USE THE COMMAND LINE?
+##### WHY USE THE COMMAND LINE?
 
->  Dont get me wrong here. here are some of my thoughts.
+>  **Don't get me wrong here. here are some of my thoughts.**
 
-#### Too much Automation as a hinderance to learning !!
+##### Too much Automation as a hinderance to learning !
 
-This is the best time to be a software developer. Tools are
-now geered to automation which make our lifes as `dev` easy.
-but i think to much automation bring us to stead state. Where
-we can`t progress the learning proceess. Our human nature loves
-the easier way out and we get to a state we are more relient on
-the tools and not mastering the fundamentals.
-
+This is the best time to be a software developer. Tools are now geered to automation which make our lifes as `dev` easy. But i think to much automation bring us to stead state. Where we can't progress the learning proceess. Our human nature loves the easier way out and we get to a state we are more relient on the tools and not mastering the fundamentals.
 `This is one of the reason i stoped using visual studio`.
 
-They are many tools out there that help it automation of git 
-to the most advanced stuff for you under the hood. Going down 
-to this road means you are never going to understand `git internal` and you will be sort of relient to the gui tools for 
-their automation. `Trust me when mistakes rise` you will be left into the dust by your automation tools.
+They are **many tools** out there that help to **automation of git to the most advanced stuff for you under the hood.** Going down to this road means you are never going to understand `git internal` and you will be sort of relient to the gui tools for their automation. **Trust me when mistakes rise you will be left into the dust by your automation tools.**
 
-#### We are not going to use any graphical tools here.
+### Section 1
+--------------
+> ###### Using Command Line :   (Am using zsh in ubuntu)
 
-I want you to learn the `fundamentals` and we are going to use git how it was designed to be used. 
+I want you to learn the `fundamentals` and we are going to **use git how it was designed to be used.** 
 
-`lets get started.`
+> #### lets get started
 
 ### How does git store information
 > At its core, git is like a key value store.
