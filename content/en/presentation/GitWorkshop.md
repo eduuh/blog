@@ -1,14 +1,17 @@
 ---
 title: "First"
-date: 2019-10-30T19:45:20+09:00
-description: "My first presentation"
+draft: false
+date: 2020-03-30T19:45:20+09:00
+description: "Github Workshop Presentation"
 tags:
--
+- source
+- git
+- github
 series:
 -
 categories:
 -
-image: images/feature1/number-one.png
+image: images/git/giticon.png
 revealBackgroundColor: "" # #fff or rgba() or hsl()
 revealBackgroundImage: "" # /images/myImage.png   <= static folder path
 revealBackgroundPosition: "" # left top, left center, left bottom, right top, right center ...
@@ -23,8 +26,13 @@ reveal:
     - sub: 
       - |
         test 1
+        Thes first page comes here
   - main:
     - sub: 
       - |
-        test 2
+        the second page here
+  - main:
+    - sub: 
+      - |
+        The third page here
 ---

@@ -17,6 +17,11 @@ url = "workshops"
 weight = 3
 
 [[main]]
+parent = "workshop"
+name = "Presentation"
+url = "presentation"
+
+[[main]]
 identifier = "archive"
 name = "Archive"
 url = "archive"

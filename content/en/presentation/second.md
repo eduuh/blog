@@ -1,5 +1,6 @@
 ---
 title: "Second"
+draft: true
 date: 2019-10-30T20:45:24+09:00
 description: "My second presentation"
 tags:

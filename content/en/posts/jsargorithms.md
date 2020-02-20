@@ -74,6 +74,7 @@ As the input grows.
 |Notation|O(1)    | O(logn)     | O(n)  | O(n^2)    | O(e^n)     |
 
 check out the big o [chart](https://www.bigocheatsheet.com/)
+
 ## Native Methods & JS Expressions
 ### Time complexities
 1. Arrays : linear
