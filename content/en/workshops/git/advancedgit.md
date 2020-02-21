@@ -95,322 +95,254 @@ Lets focus more on doing and understanding the theory. This is what i mean. Inst
 
 Git is a tool to helps you,but not  work against you.
 
+#### Git concepts
+> #### Untracked Files
+New files that git have not requested to track previously.
 
-### Overview
- 
-#### Section 1: Part 1
+> #### Working Area
+Worked that is tracked by git that has been modified but have not yet been commited.
 
-    1. What is Git?
-    2. Working with Area, staging area ,Repository
-    3. Staging Area Deep Dive
-    4. References, commits ,Branches
-    5. Stashing
+> #### Staging Area
+Modified files that have been marked to go the next commit.
 
-#### Section 2: Part 2
+This are terms that will appear mostly in this workshop.
 
-    1. Merging + Rebasing
-    2. History + Diffs
-    3. Fixing Mistakes
-    4. Rebase
-    5. Forks, Remote Repositories
+## How is information stored.
 
-#### Section 3: Part 3
+At its core, git is like a key value store.
 
-    1. The Danger zone (how you could mess things up)
-    2. Advanced tools
-    3. Customizations: - configs, Ignore, Hooks, Templates
-    4. Social git : intergrating Github with CI tools.
-    5. Advanced Github: working with github api.
+1. **Value** = Data (our files)
+2. **Key** => Sha1 Key
 
+> #### Key
 
-##### WHY USE THE COMMAND LINE?
+Its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit. 
 
->  **Don't get me wrong here. here are some of my thoughts.**
+This **value should always be the same if the given Input it the same**.
 
-##### Too much Automation as a hinderance to learning !
+> #### Value
+Git store  the **compressed** data in a blob , along with the metadata in a header. Holds the **identifier of the**, **size of the content** and the **content** itself.
 
-This is the best time to be a software developer. Tools are now geered to automation which make our lifes as `dev` easy. But i think to much automation bring us to stead state. Where we can't progress the learning proceess. Our human nature loves the easier way out and we get to a state we are more relient on the tools and not mastering the fundamentals.
-`This is one of the reason i stoped using visual studio`.
+**Note:** The content is compressed and when you cat into it you will get a whole lot of nothings.
 
-They are **many tools** out there that help to **automation of git to the most advanced stuff for you under the hood.** Going down to this road means you are never going to understand `git internal` and you will be sort of relient to the gui tools for their automation. **Trust me when mistakes rise you will be left into the dust by your automation tools.**
+#### Under the Hood - Lets create a git hash object.
 
-### Section 1
---------------
-> ###### Using Command Line :   (Am using zsh in ubuntu)
+Git will take **our content** and use it to generate the `hash` key. For now we could supply some content to git using **echo command**.
 
-I want you to learn the `fundamentals` and we are going to **use git how it was designed to be used.** 
+If you  run the command. Here we are **piping** the output of the echo command to the git hash function requesting to use the **stdin**
 
-> #### lets get started
+The hash function returns the a **hash** which should be the same for all of us.**your can try this**
 
-### How does git store information
-> At its core, git is like a key value store.
+```bash 
+echo hello | git hash-object --stdin
+# ce013625030ba8dba906f756967f9e9ca394464a
+```
+We already know some tools that are used to generate **sha1** keys. For my system I believe its **openssl**
 
+lets generate **Sha1** using **openssl**
+```bash
+ echo hello | openssl sha1
+# (stdin)= f572d396fae9206628714fb2ce00f72e94f2258f
+```
+Thes hash are different. This is because git hash function **prepends thes string "blob" followed by the file size and a null to the file's content before hashing.
 
-* The **Value** = **DATA**
-*  The **Key** = **Hash of the Data**
+This is how git calculates the **sha1** for the file (in git term a blob) 
 
-You can then use the key to retrieve the content.
-
-### The Key - (SHA1)
-
-> Its a crytographic hash function
-
-> Given a piece of data , it produces a 40- digit hexadecimal number.
-
-> This value should always be the same if the given input it the same
-
-### The Value - Git blobs  
-
-* git stores the **compressed** data in a blob, along with the
-metadata in a header.
-
-* the identifer **blob**
-
-* the size of the content
-
-* \0 delimeters
- 
-* content
-
-### Under the hood - Git hash object (blob)
-
-Asking git for the SHA1 of content.
-
-    $ echo 'hello' | git hash-object --stdin
-
-    $ ce013625030ba8dba906f756967f9e9ca394464a
-
-**Try this and you will get the above same output.**
-
-There are many tools to generate generate `sha1` keys. For my system
-i believe its `openssl`.
-
-Generating the `SHA1` of the content with `metadata`:
-
-    $ echo 'blob 14\0'hello' | openssl sha1
-    (stdin)= c6df3e4881a3d16c8bf544ff119151a5dbb8bb26
+Git calculate the files metadata + content , not just the content.
+```bash
+# sha1("blob" + filesize + "\0" + data)  # not \0 is a null byte
+```
 
 When you run the hash function on the same content you will always get the same result.
 
-When we do a :
-
-    $ git init 
-    Initialized empty Git repository in /home/edd/test/.git/
-
-The git repository is initialized in the `.git` folder.
-when you delete this folder you actually `blow up` the repository, but you **code files are retains**.
-
-#### Where are the `blob` stored ?
-
-lets run the above command for asking git to generate a 
-sha1 key for our content but this time we want to write the
-object to the git repo. we pass `-w` which means its write.
-
-    $ # This generate a blob 
-    $  echo 'hello' | git hash-object -w --stdin
-    ce013625030ba8dba906f756967f9e9ca394464a
-    
-    $ # let remove hooks folder. we dont get confused
-    $ rm -rf .git/hooks/
-    $ tree .git
-    .git
-        ├── branches
-        ├── config
-        ├── description
-        ├── HEAD
-        ├── info
-        │   └── exclude
-        ├── objects
-        │   ├── ce
-        │   │   └── 013625030ba8dba906f756967f9e9ca394464a
-        │   ├── info
-        │   └── pack
-        └── refs
-        ├── heads
-        └── tags
-
-What go you notice ? (**ce013625030ba8dba906f756967f9e9ca394464a**)
-
-1. Our blob is stored in the object folder.
-2. Inside a subfolder which picks the first two char of the blob `(ce)`
-3. The blob object os the rest of the chars (013625030ba8dba906f756967f9e9ca394464a)
-
-Because of this behaviour our blob will always be same. I don't know a case of two different content that generate the same blob.
-
-#### Lets do this step by step
-
-1. Lets start by creating an empty directory.
-
+### Lets initialize a repository
+```bash
+git init
+# Initialized empty Git repository in $HOME/username/dir/.git/
 ```
-    $ mkdir gitobject
-    $ cd gitobject
+The initialized repository is store at `.git` directory.
+
+Whey you **delete** this folder in a repository you actually blow up the repository, but you retains the files that were availble in the working area.
+
+> #### question: where are blob stored?
+
+We are going to rerun the command that ask git to generate a `sha1` key for the content but this time we pass a option , **-w** that indicates we want to **write the object to the git repo.**
+
+```bash
+echo hello | git hash-object -w --stdin
+ce013625030ba8dba906f756967f9e9ca394464a
 ```
-2. We create a new git repository using `git init ` command
+Take a note at the `hash` generated at this point. and lets access how it is saved in the git folder.
 
+> lets do some clean up first
+
+Remove the `hooks` directory in the repository, so that it does not get into our way.
+
+```bash
+rm -rf .git/hooks  # r => recusive f => folders
 ```
-    $ git init
-    Initialized empty Git repository in /home/edd/gitobject/.git/
+
+Now you can **tree** into the **.git** folder to pic at all the content. 
+
+Note if you have alot of files in your working directory u are going to have a longer structure. ***The output look something like.
+```bash
+tree .git/ 
 ```
-This command creates a `.git` directory, which is where git stores all informations. if you delete everything in the git repository you can build back your repository.
-
-The command here creates a few other empty directory for us. If you have never used the `.git` directory before lets start now.
-
+```bash
+.git/
+├── branches
+├── config
+├── description
+├── HEAD
+├── index
+├── info
+│   └── exclude
+├── logs
+│   ├── HEAD
+│   └── refs
+│       ├── heads
+│       │   └── master
+│       └── remotes
+│           └── origin
+│               └── HEAD
+├── objects
+│   ├── 07
+│   │   └── 9830d5ae8de34a3faf6bd8ff8b680684948bec
+│   ├── ce
+│   │   └── 013625030ba8dba906f756967f9e9ca394464a
 ```
-    $ ls .git   # ll .git to get more info
+Our initial `sha1` file was **ce013625030ba8dba906f756967f9e9ca394464a**.
 
-    $ # ll .git  #same as  (ls -la)
-    drwxr-xr-x 7 edd eduuh 4096 Feb 15 19:45 ./
-    drwxr-xr-x 3 edd eduuh 4096 Feb 15 19:45 ../
-    drwxr-xr-x 2 edd eduuh 4096 Feb 15 19:45 branches/
-    -rw-r--r-- 1 edd eduuh   92 Feb 15 19:45 config
-    -rw-r--r-- 1 edd eduuh   73 Feb 15 19:45 description
-    -rw-r--r-- 1 edd eduuh   23 Feb 15 19:45 HEAD
-    drwxr-xr-x 2 edd eduuh 4096 Feb 15 19:45 hooks/
-    drwxr-xr-x 2 edd eduuh 4096 Feb 15 19:45 info/
-    drwxr-xr-x 4 edd eduuh 4096 Feb 15 19:45 objects/
-    drwxr-xr-x 4 edd eduuh 4096 Feb 15 19:45 refs/
-   
-   $ rm -rf .git/hooks   # remove the hook folder
-   $ tree .git/
-    .git/
-    ├── branches
-    ├── config
-    ├── description
-    ├── HEAD
-    ├── info
-    │   └── exclude
-    ├── objects
-    │   ├── info
-    │   └── pack
-    └── refs
-        ├── heads
-        └── tags
+##### what do you notice?
+1. Our blob is stored in the object folder. You can't see that yet but you will.
 
-    8 directories, 4 files
+2 Inside a subfolder which picks the **first two char of the blob** (ce)
+
+3.The blob object as the rest of the char **(013625030ba8dba906f756967f9e9ca394464a)**
+
+### Do this Step by step
+1. Create an empty directory and initialize a new repository
+
+Copy the command as it will work.
+
+* `mkdir` makes a directory. 
+*  `cd` move into the directory
+* `git init` initiaze the repository
+
+```bash
+  mkdir test ; cd test ; git init
 ```
-3. What we have are the above directories and files. Lets create
-some files in our repository.
+One you initialize a repository **a .git** folder is created where all git information is stored.
 
+The **.git** folder have a few empty directories. If you have never checked the **.git** directory **lets start now**.
+
+
+2. Check the folder structure of the `.git` directory.
+```bash
+ls -la .git
 ```
-> Storing individual files with the hash object.
-    $ echo 'an awesome deep dive to git' > learn.txt
-    $ git hash-object -w learn.txt
-    b8956fb060e39ac48d4ad69cc6402c13ed38f7aa
 ```
-4. The `hash-object` command takes a path to a file, reads its content and saves the content of the file into a `Git object store`. It return a hex string `**(the ID of the object it just
-created.) If we look in `.git/object` we can see something with
-the same name.
-
+drwxr-xr-x 7 edd eduuh 4096 Feb 15 19:45 ./
+drwxr-xr-x 3 edd eduuh 4096 Feb 15 19:45 ../
+drwxr-xr-x 2 edd eduuh 4096 Feb 15 19:45 branches/
+-rw-r--r-- 1 edd eduuh   92 Feb 15 19:45 config
+-rw-r--r-- 1 edd eduuh   73 Feb 15 19:45 description
+-rw-r--r-- 1 edd eduuh   23 Feb 15 19:45 HEAD
+drwxr-xr-x 2 edd eduuh 4096 Feb 15 19:45 hooks/
+drwxr-xr-x 2 edd eduuh 4096 Feb 15 19:45 info/
+drwxr-xr-x 4 edd eduuh 4096 Feb 15 19:45 objects/
+drwxr-xr-x 4 edd eduuh 4096 Feb 15 19:45 refs/
 ```
-    $ find .git/object/ -type f   # f -> file
-    .git/objects/b8/956fb060e39ac48d4ad69cc6402c13ed38f7aa
-  
+3. Remove the `.git/hooks` folder. you dont need for now
+```bash
+rm -rf `.git/hooks`
 ```
-We've created our first object! This object is a binary file that holds what we just saved.
+4. Look at the folder structure in a graphical way using the tree command. 
 
-You’ll see the first two characters are a directory name. A typical repo has thousands of objects, so Git breaks up objects into subdirectories to avoid any one directory becoming too large.
-
-The `object ID` is choosen based on the `content` of the object.This is how git stores our object - the content of the 
-object determines its ID. The techincal name for this is `content-addressable filesystem`.
-
-5. This means that if we try to save the file a second time, because content are the same nothing changes.
-
+```bash
+tree .git/
 ```
-    $ git hash-object -w learn.txt
+3. Lets add a file in our repository. Using the echo command you can **redirect** the output to a file.
 
+```bash
+# will write the line ot gitstuff.txt file
+echo 'an awesome guide to git' > gitstuff.txt
+
+# you can check the content of the file using cat command
+cat gitstuff.txt
+
+git hash-object -w gitstuff.txt
+# 24997081c3c51eeac9df4309dbcc9452112a8f1f
 ```
-6. Retrieve objects with the `cat-file`.
+You should the same `hash` code as i get here as long us you use the same content as i did.
 
+This time the **git hash function** command takes a path to a file unlike intially where **echo** was used to input to the **stdin** of the **function**
+
+4. Something i realize with the **ls -la** command that actually the blob is a file. We can just read from it since it compressed into a **c binary** file. Lets try fo fun
+
+lets us the find command to look for all files. Since we now know the blob are store in the **object** we could narrow our search in **directory**.
+
+```bash
+find .git/object/ --type f
+# .git/objects/24/997081c3c51eeac9df4309dbcc9452112a8f1f
 ```
-    $ git cat-file -p b8956fb060e39ac48d4ad69cc6402c13ed38f7aa
+We've created our first object! this is a binary file that holds what we just saved.
 
+##### Note 
+The **object id** is choosen based on the **content** of the object. This is how git stores our object. Let me use the right word here **content-addressable filesystem**.
+
+5. Lets try to save the same file again.
+
+```bash
+git hash-object -w gitstuff.txt
 ```
-The  `cat-file` is used to inspect objects stored in git. The `p` flag stands for `pretty text`. It pretty print the content of the object.
+Because it the same content, nothing changes we will receive the same **sha1 hash key**
 
-## Exercises
-These are some exercise to get used to the idea of storing to and
-retrieving files from git objects store.
+6. #### Question: How can we see the content of the blob??
 
-1. > create a new directory, and initialize it.
-2. > look inside the .git folder. make sure you indetify folders and files
-3. > use a text editor or the command line to create multiple files and write some text to it.
-4. > use git hash function to generate the `sha1` hash and save the object to the git object store.
-5. > Use git command to inspect the object in the database.
+When you cat `pathtofile` you will get a whole lot of **nothing**.To be more accurate **a binary output**
 
-Repeat exercise 3 & 5 a couple of times.
+Lets try
 
-6. > make an edit to your file, then save the new version  to 
-git object store. what go you see in `.git/object`.
+```bash
+# use the find command to get the path
+ find .git/objects -type f
+# .git/objects/24/997081c3c51eeac9df4309dbcc9452112a8f1f
 
-7. > Delete a file then recreate it with the object store.
-8. > what if you save two files with the same content , but different file names. What do you see in the `.git/objects` ?
-what do you expect to see.?
+cat .git/objects/24/997081c3c51eeac9df4309dbcc9452112a8f1f
+# xK��OR02aH�SH,O-��MUH/�LIU(�WH�,���
+```
 
-### Useful commands
+Git provides a functions to view the content of blobs.**cat-file**
 
-`mkdir <path>`
+* -p => print out **pretty print**
+* -t => print out the type
 
-    create a directory
+For this command you use the **sha1 hash** as the arguement.
 
-`git init`
+```bash
+git cat-file -p 24997081
+# an awesome guide to git
 
-    initialize Git in the current directory
+git cat-file -t 24997081
+# blob
+```
 
-`ls .git`
+#### Useful commands
 
-    list the content of the .git directory
+ command           | detail
+-------------------| ----------------------
+**kkdir** <path> | creates a directory 
+**git init**  | initialize git in the directory
+**ls -la .git** | lists the content of the **.git** directory
+**find .git/object/ -type -f** | list all files available in a directory
+**git hash-object -w <path>** | Saves the files to a git object store.
+**git cat-file -p <objectid> | pretty print the content of the object in the git object store.
 
-`find .git/objects/ -type -f`
-    
-    list the files present in `.git/objects
-`git hash-object -w <path>`
-
-    save the files to a git object store.
-
-`git cat-file -p <object id>`
-
-    pretty print the content of the object in the git object store
+This takes you to [exercise one](exercises/1exerciseone.md)
 
 
-### Notes 
-A brief recap of the exercises: steps 1-5 are repeating what we just did earlier.
 
-In exercise 6, you see that git creates an entirely new object
-
-    $ echo 'am enjoying this git session' >> learn.txt
-    $cat learn.txt
-    an awesome deep dive to git
-    Git store is amazing
-
-    $ # you could then use find of tree
-    $ tree .git/objects
-    .git/objects/
-    ├── 99
-    │   └── 7c8fb31f2f2d46c4c46931697ea291a87c43ee
-    ├── b8
-    │   └── 956fb060e39ac48d4ad69cc6402c13ed38f7aa
-    ├── info
-    └── pack
-
-    4 directories, 2 files
-
-For exercise 7. If you delete the file you can restore if using shell redirection.
-
-    $ rm learn.txt
-    $ git cat-file -p 997c > learn.txt
-    $ cat learn.txt
-    an awesome deep dive to git
-    Git store is amazing
-
-You could redirect the content of the blob to create a new file with the same content
-
-    $ git cat-file -p 997c > learn-copy.txt
-
-You can then add it to the `git object store` . Hopefully you can see that git store the content of the files - it is not saving 
-anything about our the `file names`. Each object ID is a pointer to some text, but that text isn't associated with the filename.
-If you need to save more that one files, we need to know how the files are called .
-
-This takes us to the next section: how we use tree to save the `filename and directory structures.` in our repository.
 
 #### We need other stuff, right?
 Our blob is missing information.
