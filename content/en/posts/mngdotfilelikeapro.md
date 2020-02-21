@@ -65,8 +65,8 @@ Setting this method up the first time is really easy. First, let's create
 our bare repository. I chose to name my placeholder `.dotfiles` 
 
 ```bash
-	mkdir $HOME/.dotfiles
-	git init --bare $HOME/.dotfiles
+mkdir $HOME/.dotfiles
+git init --bare $HOME/.dotfiles
 ```
 
 Now for fun part. We will make an alias for running git commands in our
@@ -80,13 +80,11 @@ folder in you home folder.
 Add this alias to your `.bashrc`. From now any git operation you would like to do in the .dotfiles repository can be done by the dotfiles alias. The
 cool thing is that you can run dotfiles from anywhere.
 
-Lets add a remot and also set status now to show untracked files.
+Lets add a remote and also set status now to show untracked files.
 
 ```bash
-
-	dotfiles config --local status.showUntrackedFiles no
-	dotfiles remote add origin https://github.com/eduuh/dotfiles.git
-
+dotfiles config --local status.showUntrackedFiles no
+dotfiles remote add origin https://github.com/eduuh/dotfiles.git
 ```
 
 ### Setting Up a New Machine
@@ -94,22 +92,20 @@ To set up a new machine to use your version controlled config files, all
 you need to do is to clone the repository on your new machine telling git that it is a bare repository:
 
 ```bash
-
-	git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git
-
+git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git
 ```
 However, some programs create default config files, so this might fail if git finds an existing config file in your $HOME. In that case a simple sol is to clone to a temporayry directory and then delete it once you are done:
 
 ```bash
- 	git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git
+git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git
 ```
 
 So this might fail if git finds an existing config file in your $HOME. In that case, a simple solution is to clone to a temporary directory , and then delete it once you are done: 
 
 ```bash
-	$ git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/  
-	
-	$ rm -r tmpdotfiles
+$ git clone --separate-git-dir=$HOME/.dotfiles https://github.com/eduuh/dotfiles.git --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/  
+
+$ rm -r tmpdotfiles
 
 ```
 
@@ -147,6 +143,22 @@ Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/eduuh/dotfiles.git
    7d507e7..64a553b  master -> master
 ```
+The repository will be downloaded but there might exist some configuration files in your home 
+directory to make sure you are using the right configuration file use git checkout to actually copy
+the copy in your repository to the working directory.
+
+```bash
+dotfiles checkout $HOME/.bashrc
+```
+Or easy is to checkout to the latest commit. Remember Head points to the latest commit use that.
+
+```bash
+dotfiles reset --hard HEAD
+HEAD is now at 64a553b zshrc => zsh oh my god configuration files
+```
+`64a553b` at this time this is my latest commit.
+Do not worry `git reset --hard` copied files available in your `repository` to both the **staging area** and the **working area** . It should not mess with your untracted files which i believe they are
+many, since this is a repository monitoring the $HOME directory.
 
 There you go. No symlink mess.
 

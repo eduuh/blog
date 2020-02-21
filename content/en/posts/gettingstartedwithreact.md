@@ -1,3 +1,4 @@
+
 ---
 title: "Getting Started With React"
 description: "React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications"
@@ -8,13 +9,11 @@ title: "Quickstart to Installing React and React ES6 Review"
 categories: ["Javascript","Frontend"]
 tags: ["React"]
 weight: 30
-
 author: eduuh # author name
 authorEmoji: 🤖 # emoji for subtitle, summary meta data
 authorImage: "/images/edd.jpg" # image path in the static folder
 authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: Selftaught Web and Mobile Developer # author description
-
 
 image: images/react.png
 ---

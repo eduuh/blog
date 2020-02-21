@@ -41,7 +41,6 @@ then going to it together, to make sure you understand.
 2. **git version > 2.0** (check with git --version)
 3. **[github.com](github.com)** account
 4. **[This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇  
-
 ```bash
          git clone git@github.com:eduuh/Advanced-GitWorkshop.git 
 ```
