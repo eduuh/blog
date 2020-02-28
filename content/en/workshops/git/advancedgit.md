@@ -342,7 +342,7 @@ git cat-file -t 24997081
 **git hash-object -w <path>** | Saves the files to a git object store.
 **git cat-file -p <objectid>** | pretty print the content of the object in the git object store.
 
-## Exercise 1
+##  [ Exercise 1](#)
 These are some exercise to get used to the idea of storing to and
 retrieving files from git objects store.
 
@@ -632,7 +632,7 @@ You're replacing them with a copy that's currently in the repository.
 
 ![gitstaging](./../../static/gitstagingarea.png)
 
-## Git STASH
+#### Git STASH
 
 This is usually a way to save uncommited work. The stash is **safe** from destructive operations.
 
@@ -677,7 +677,15 @@ git stash pop | applies the last stash. Does not apply if there is a conflict
 git stash drop stash@{0} | Remove the specified stash
 git stash clear | Removes all the stash
 
-## Exercise 2
+## Follow along Exercise : Git Concepts
+
+### Prerequisite
+You should have the [`advanced-git-exercises`](https://github.com/eduuh/Advanced-GitWorkshop) repository cloned locally. Checkout the `git2` branch to begin:
+
+```
+$> git checkout git3
+Switched to branch 'git2'
+```
 
 1. Create a new folder and initialize it as a git repo
 2. Create a file, stage it, and commit it to your new repo
@@ -698,8 +706,8 @@ $> cd ~/projects/sample
 $> git status
 fatal: Not a git repository (or any of the parent directories): .git
 
-$> git init
-Initialized empty Git repository in /Users/nnja/projects/sample/.git/
+$> git init  # if not using my repo
+Initialized empty Git repository in /eduuh/projects/sample/.git/
 ```
 
 #### Step 2 - First Commit
@@ -755,12 +763,48 @@ Note: The SHA1 hash for your commit will be different than the one displayed her
 
 One of the objects should be a tree object. The tree contains the filename `hello.txt` and a pointer to the blob.
 
+If you are working on a big repository it might be obvious what your object is but you could use the **commit** to get to the tree.
+Using the **git cat-file**
+
+use git log to get the latest commit **sha1** key hash.
+
+
+The commit object contains a pointer to the tree, along with metadata for the commit, such as the author and commit message.
+
+```bash
+git log | head -n 1
+
+# git --no-pager log --oneline 
+#d49019
+
+git cat-file -t d49019
+# commit
+
+
+git cat-file -p d49019
+
+tree f21db101b5860d09c98d808ae21aaa96fa512414
+parent dd160f7cbcaef119f7fb3063df6e9d0607b5e89c
+author eduuh <edwinkamaumuraya0@outlook.com> 1582476695 +0300
+committer eduuh <edwinkamaumuraya0@outlook.com> 1582476695 +0300
 ```
-$> git cat-file -t 581caa
+
+```
+# inspect the tree
+$> git cat-file -t f21db101b5860
 tree
 
-$> git cat-file -p 581caa
-100644 blob 980a0d5f19a64b4b30a87d4206aade58726b60e3	hello.txt
+$> git cat-file -p f21db101b5860
+100644 blob 88a21c6d5ef21e36b68142ccee7aaa6e8344acc2    LICENSE
+100644 blob 672c2366c2e9e734bb808b1acccc3722c3265800    README.md
+040000 tree 04b14ff559132da3a2223e7ff70fee0ad330b43e    exercises
+040000 tree 3dbfb8a9affa3a8eef5aee2b516a15716b940fda    gitimages
+100644 blob 18c5b29d788326339b39df657ad2c9134de2ac45    gitlogo.png
+100644 blob 24997081c3c51eeac9df4309dbcc9452112a8f1f    gitstuff.txt
+100644 blob 9f704ffe0495c8f1416cc004f5638e06e78bf14e    greeting.txt
+100644 blob 980a0d5f19a64b4b30a87d4206aade58726b60e3    hello.txt
+040000 tree d77e62d1e686822d0c406d06b559c0694d24d8d9    notes
+040000 tree cb9d9e857b50525267342b20a040c4911bc61416    scripts
 ```
 
 The blob object, pointed to by the tree, contains the contents of the file `hello.txt`
@@ -773,21 +817,7 @@ $> git cat-file -p 980a0d5
 Hello World!
 ```
 
-The commit object contains a pointer to the tree, along with metadata for the commit, such as the author and commit message.
-
-```
-$> git cat-file -t 43388f
-commit
-
-$> git cat-file -p 43388f
-tree 581caa0fe56cf01dc028cc0b089d364993e046b6
-author Nina Zakharenko <nina@nnja.io> 1507168309 -0700
-committer Nina Zakharenko <nina@nnja.io> 1507168309 -0700
-
-Initial commit
-```
-
-Because this is our very first commit, it doesn't have a parent. The next commit we make will point to our initial commit as the parent. 
+###### Note: our very first commit, it doesn't have a parent. The next commit we make will point to our initial commit as the parent. 
 
 #### Step 5 - Look at refs
 
@@ -797,15 +827,15 @@ Now, if we look at our `master` reference, we can see that it points to the late
 
 ```
 $> cat .git/HEAD
-ref: refs/heads/master
+ref: refs/heads/git2
 
 $> cat .git/refs/heads/master
-43388fee19744e8893467331d7853a6475a227b8
+d49019211c6a7a4afddd64b1bc5192a042b80ede
 ```
-`43388f...` is the hash of the commit we saw in the last step. You can confirm this by running `git log`
+`d490192...` is the hash of the commit we saw in the last step. You can confirm this by running `git log`
 
 ```
-$> git log --oneline
+$> git log --oneline | head -n 1
 43388f Initial commit
 ```
 
@@ -831,4 +861,630 @@ $> tree .git/refs
 
 ```
 
+##### Note : To create a branch and switch to it you could use the checkout command
 
+```bash
+git checkout -b <new_branch_name>
+```
+
+## Merge Conflict
+
+A **Merge conflict*** usually happens when you attempt to merge two branches, but the files have diverged in different ways. When this happens git stops until the conflict are resolved.
+
+#### Lets create a conflict 
+Initially am in master.
+
+Lets check all the files that are available in the current branch.
+
+```bash
+git ls-files  # does this list untracked files ?
+```
+
+* Create a file **hello.txt**
+```bash
+touch hello.txt
+echo "Hello Edwin" > hello.txt
+
+# cat to see the content
+cat hello.txt
+
+git ls-files # this t
+```
+* Create a new branch form the master and switch to it. The simplest way to achieve this is 
+
+```bash 
+git checkout -b git2
+
+# Future me decides. the greeting should be in swahili and overwrites
+
+echo "Habari Yako Bwana Edwin" > hello.txt
+
+# cat to see the content now
+# Habari Yako Bwana Edwin 
+```
+* Add the new change to the staging area and commit the change.
+
+```bash
+git add hello.txt
+git commit -m "Changed the greating to Swahili"
+
+```
+* Let checkout to **master** and try to merged the **git2** to master.
+
+```bash
+git merge git2
+```
+## Follow along Exercise- References
+
+### Overview
+In this exercise, we'll take a look at our references (`refs`) and create some lightweight and annotated tags. Then we'll make a dangling commit from a "detached HEAD" state and learn why this isn't a great idea.
+
+
+### Prerequisite
+You should have the [`advanced-git-exercises`](https://github.com/eduuh/Advanced-GitWorkshop) repository cloned locally. Checkout the `git3` branch to begin:
+
+```
+$> git checkout git3
+Switched to branch 'exercise3'
+```
+
+
+### Exercise
+1. Check the value of your `HEAD` variable (hint: look in `.git`) and confirm you're pointed at the `git3` branch.
+2. Use `show-ref` to look at your other heads.
+3. Create a lightweight tag and confirm that it's pointing at the right commit.
+4. Create an annotated tag, and use `git show` to see more information about it.
+5. Get into a **"detached HEAD"** state by checking out a specific commit, then confirm that your HEAD is pointing at this commit rather than at a branch.
+6. Make a new commit, then switch branches to confirm that you're leaving a commit behind.
+
+#### Solutions
+##### Step 1 - Where's your HEAD?
+Assuming you checked out the `git3` branch in Step 0, your `HEAD` should be pointing to `git3`. You can corroborate this with `git branch`:
+
+```
+$> cat .git/HEAD
+ref: refs/heads/exercise3
+
+$> git branch
+  git1
+  git2
+* git3
+  master
+```
+
+##### Step 2 - Where are your refs?
+Use `git show-ref` to see which commits your HEADs are pointing at. You should see one for every branch you have, as well as every remote branch we've interacted with. Yours may look slightly different.
+
+```
+$> git show-ref --heads
+3811dbf83556ffc5d50f9ac3a387b8f29c3d06c1 refs/heads/git1
+56b0fe1d853f9e09a131a851c93e2c92ba8a6bf2 refs/heads/git2
+d49019211c6a7a4afddd64b1bc5192a042b80ede refs/heads/git3
+d9a034a13998d11ed74e678bbe37e29259242beb refs/heads/master
+3811dbf83556ffc5d50f9ac3a387b8f29c3d06c1 refs/remotes/origin/HEAD
+dd160f7cbcaef119f7fb3063df6e9d0607b5e89c refs/remotes/origin/git2
+3811dbf83556ffc5d50f9ac3a387b8f29c3d06c1 refs/remotes/origin/master
+f94045e34e98329df15b098615268f91c2107eea refs/stash
+
+You can see for yourself that our `master` branch is pointing to our "Initial commit"
+
+
+$> git cat-file -p d49019211c6a7a4afddd64b1bc5192a042b80ede
+tree f21db101b5860d09c98d808ae21aaa96fa512414
+parent dd160f7cbcaef119f7fb3063df6e9d0607b5e89c
+author eduuh <edwinkamaumuraya0@outlook.com> 1582476695 +0300
+committer eduuh <edwinkamaumuraya0@outlook.com> 1582476695 +0300
+
+Initial commit
+```
+
+Whereas our `git3` branch is pointing to our newer commit from git2:
+
+```
+$> git cat-file -p d49019211c6a7a4afddd64b1bc5192a042b80ede
+tree f21db101b5860d09c98d808ae21aaa96fa512414
+parent dd160f7cbcaef119f7fb3063df6e9d0607b5e89c
+author eduuh <edwinkamaumuraya0@outlook.com> 1582476695 +0300
+committer eduuh <edwinkamaumuraya0@outlook.com> 1582476695 +0300
+
+Initial commit
+```
+
+
+##### Step 3 - Lightweight Tags:
+Lightweight tags are simply named pointers to a commit. Make a new tag, then confirm that it points to the correct commit using `show-ref`:
+
+```bash
+$> git tag git2tag
+
+$> git show-ref 
+3811dbf83556ffc5d50f9ac3a387b8f29c3d06c1 refs/heads/git1
+56b0fe1d853f9e09a131a851c93e2c92ba8a6bf2 refs/heads/git2
+d49019211c6a7a4afddd64b1bc5192a042b80ede refs/heads/git3
+d9a034a13998d11ed74e678bbe37e29259242beb refs/heads/master
+3811dbf83556ffc5d50f9ac3a387b8f29c3d06c1 refs/remotes/origin/HEAD
+dd160f7cbcaef119f7fb3063df6e9d0607b5e89c refs/remotes/origin/git2
+3811dbf83556ffc5d50f9ac3a387b8f29c3d06c1 refs/remotes/origin/master
+f94045e34e98329df15b098615268f91c2107eea refs/stash
+d49019211c6a7a4afddd64b1bc5192a042b80ede refs/tags/git2tag
+
+$> git show-ref --tags # to filter only tages
+d49019211c6a7a4afddd64b1bc5192a042b80ede refs/tags/git2tag
+```
+Our current HEAD, `.d490192..` has now been tagged as `git2tag`. 
+
+You can also do a reverse lookup using `git tag --points-at`:
+
+```bash
+$> git tag --points-at d490192
+my-exercise3-tag
+```
+
+##### Step 4 - Annotated Tags:
+Annotated tags serve the same function as regular tags, but they also store additional metadata:
+
+```bash
+$> git tag -a "git2tagannotatedtag" -m "this is my annotated tag for exercise3"
+
+$> git show exercise3-annotated-tag
+tag git2tagannotatedtag
+Tagger: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Fri Feb 28 11:27:03 2020 +0300
+
+this is my annotated tag for exercise3
+
+commit d49019211c6a7a4afddd64b1bc5192a042b80ede (HEAD -> git3, tag: git2tagannotatedtag, tag: git2tag)
+Author: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Sun Feb 23 19:51:35 2020 +0300
+
+    Initial commit
+
+diff --git a/hello.txt b/hello.txt
+new file mode 100644
+```
+
+Using `git show`, we can see all of the pertinent information about our `git2tagannotatedtag`We see the tag metadata at the top - who made the tag and when, as well as the tag message. Below that, we see the commit that was tagged, and then the diff between the tagged commit and its parent.
+
+##### Step 5 - Detached HEAD
+Now we're going to venture into a "detached HEAD" state. Use `git checkout` to checkout the latest commit directly. You'll get a scary-looking warning about your HEAD being detached. You can confirm this by looking at `.git/HEAD` and seeing that it's now pointing to a commit hash, instead of `refs/heads/exercise3`
+
+```bash
+$> git log --oneline
+d490192 (HEAD -> git3, tag: git2tagannotatedtag, tag: git2tag) Initial commit
+dd160f7 (origin/git2) continue reading the shell scripting book . finished today one hour
+96aa314  finished working on Section one part two
+3811dbf (origin/master, origin/HEAD, git1) Section one: part one covered
+9be8c2f Initial commite348ebc Testing the emergency git-casting system
+43388fe Initial commit
+
+$> git checkout d49019 
+Note: checking out 'd49019'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at e348ebc... Testing the emergency git-casting system
+
+$> cat .git/HEAD
+e348ebc1187cb3b4066b1e9432a614b464bf9d07
+```
+
+##### Step 6 - Create a Dangling Commit
+Even though our `HEAD` is now pointing at a specific commit - instead of a branch or tag - we can still make commits. Go ahead and make a new commit, then confirm that our `HEAD` is now pointing at this new commit:
+
+```bash
+$> echo "This is a test file" > dangle.txt
+
+$> git add dangle.txt
+
+$> git commit -m "This is a dangling commit"
+[detached HEAD 510b8d7] this is a dangling commit
+ Date: Fri Feb 28 11:39:28 2020 +0300
+ 1 files changed, 1 insertion(+)
+ create mode 100644 dangle.txt
+ 
+$> git log --oneline
+510b8d7 (HEAD) this is a dangling commit
+d490192 (tag: git2tagannotatedtag, tag: git2tag, git3) Initial commit
+dd160f7 (origin/git2) continue reading the shell scripting book . finished today one hour
+96aa314  finished working on Section one part two
+3811dbf (origin/master, origin/HEAD, git1) Section one: part one covered
+9be8c2f Initial commit
+
+$> cat .git/HEAD
+510b8d7e663539778d20a93a262e337b8115b080
+```
+
+But wait. Because our new commit - `510b8d7` in this case - was made in a detached `HEAD` state, it doesn't have any references pointing to it. It's not part of a branch, and has no tags. This is called a Dangling Commit. You'll see this warning if you try to switch branches:
+
+```bash
+$> git checkout exercise3
+D       exercises/2.exercisetwo.md
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  510b8d7 this is a dangling commit
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 510b8d7
+
+Switched to branch 'git2'
+Your branch is ahead of 'origin/git2' by 3 commits.
+  (use "git push" to publish your local commits)
+```
+
+Here, git is warning you that you're leaving this commit dangling. If you wish, you may create a new branch that points to this commit. Git does a periodic garbage collection and will eventually delete any commits that don't have a reference pointing to them.
+
+#### Git Rerere 
+
+Stands for **(Reuse and Recorded Resolution)**
+Git save how you resolve a conflict and when this conflict arise in the future git will use the same
+resolution to solve the conflict.
+
+Useful for:
+1. Long lived feature branch and when you are perfoming a refactor.
+2. When rebasing a repository.
+
+Turn it on. It usually disabled by default.
+
+```bash
+# use --global flag to enable for all projects.
+git config rerere.enabled true
+```
+Note: it would be nice you you activate this `feature per project basis.`
+### Some Common Commands
+
+> 1. checkout a branch and create some changes.  Use `git checkout  <brachname>
+> 2. `git --no-pager log --online`
+> 3. perform a git merge using the command `git merge <branchname>` Performs a merge using a `fast forward` 
+> 4. Use a `git reset --hard HEAD^`
+> 5. Perfom a git merge without fastforward. `git merge --no-ff <branchname>`
+> 6. Git log with a graph. `git log --no-pager --graph`
+> 7. Switch to the previous branch. `git checkout -`
+> 8. use git rerere diff to resolve your conflict. `git rerere diff`
+> 9. lets reset to go back to where we were intially. `git reset --hard HEAD^`
+
+## Commits
+### Useful commits.
+Good commits are important since they help preserve the history of a `codebase`. the help with
+> debugging and troubleshooting
+> creating release notes
+> code reviews
+> rolling back
+> assosiate the code with an issue to a ticket
+
+* Commit message should be in future tense.
+* Short Subject followed by a black line.
+* A description of the current behaviour , a short summary of why the fix is needed and also mentions 
+side effects.
+
+#### Anatomy of a Good Commit
+1. Good commits messages
+2. Encapulates one logic idea.
+3. Does't have introduce breaking changes i.e test passes.
+
+### Git log -> Used to examine History
+The vanilla `git log` is not very helpful but there are alot of flags that helps navigate our repo much easier.
+
+#### Case scenario
+You could notice that a bug was introduced  `20 minutes ago` and flags such as `since` could help your alot.
+
+```bash
+   git log --since = "yestaday"
+   git log --since ="2 weeks ago"
+```
+
+#### git log follow: 
+
+Used to track the changes of the files logs files that have been moved or renamed. 
+```bash
+ git log --name-status --follow --<file>
+```
+
+#### git log --grep
+search for commits messages that match a reqular expressions. 
+
+```bash
+git log --grep <regexp>
+```
+This command can be mixed $ matched with other git flags.
+
+```bash
+git log --grep=migrations --author=edwin --since="2 week ago"
+```
+
+#### git log diff-filter
+selectively incleds or exclude files that have been.
+1. (A)dded    
+2. (D)eleted
+3. (M)odified
+
+```bash
+ git log --diff-filter=R --stat
+```
+### Referencing commits
+This Stuff confused me and might confuse you as well. Take your time here.
+
+1. ^ or ^n
+   * <no args> == ^1 : The parent commits
+   * n : the nth parent commit.
+
+2. ~ or ~n
+  * <no args> : === ~1 the first commit back following the 1st parent.
+  * n(th) : nth number of commits back, following only the 1st parent.
+
+Note ^ and ~ can be combined.
+
+### Referencing commits : Diagram
+- Both commits nodes b and c are parent of commit node A. Parent commits are orderde left-right.
+
+
+
+
+- How could we reference?
+
+A  =  A^0
+B  = A^  = A^1 = A~1
+C  = A^2
+D = A^^ = A^1^1 = A~2
+
+This refereces are usually usefull incase you want to *reset/revert* 
+You could decide to revert to 3 commits back without loging to find the sha1 code and usind that.
+
+```bash
+git reset --hard HEAD^   / resets to the parent commit.
+git reset --hard HEAD^2  / resets to the second parent.
+```
+
+## More commands
+### Git show
+```bash
+git show <commit-id>  #Show commits and content
+git show <commit-id> --stat  #show files changed in commit. 
+git show <commit> Look at a file from another commits.
+```
+### Diff
+Diff show you changes 
+1. Between commits
+2. between the staging area and repository
+3. What's in the working area.
+
+```bash
+git diff   # Unstaged changes
+git diff --staged
+```
+### Diagram diff with ven diagram
+
+![logdiffvendiagram](/images/logdiffven.png)
+
+This will show all changes in Branche B that are not availabe in Branch A. 
+```bash
+# Examples
+git diff scripting..master
+git diff scripting...master
+git diff scripting master
+```
+### Checking merged or not branches
+Checking which branched are merge with master and could be cleaned up.
+```bash
+git branch --merged master
+
+git branch --no-merged master
+```
+
+## Exercise Five - History and Diffs
+
+### Overview
+In this exercise, we'll practice making a good commit, take a look at some of the interesting command line arguments for `git log`, use `git show` to get more information about a commit, then take a quick look at `git branch`.
+
+### Prerequisite
+You should have the [`advanced-git-exercises`](https://github.com/eduuh/Advanced-GitWorkshop)  repository cloned locally. Checkout the `git4` branch:
+
+```
+$> git checkout git4
+Switched to a new branch 'git4'
+```
+
+### Exercise
+1. Practice creating a well-crafted commit - look at the format given on the slides for help.
+2. Use `git log` to find commits created since yesterday. Rename a file and use the `--name-status` and `--follow` options to `git log` to track down when the file was renamed, and what it used to be called. Use `--grep` to search within commit messages, and `--diff-filter` to find renamed and modified files from `git log`.
+3. Use `git show` to get more information about a specific git hash.
+4. Try the `--merged` and `--no-merged` options to `git branch` to see which branches have been merged into `master` (or not).
+
+### Solutions
+
+#### Step 1 - Make a Good Commit
+We've all made commits with short, "silly", or otherwise unhelpful messages. Let's practice making a solid commit message for use in this example.
+
+```
+# Change your `hello.txt` to say [greeting] [noun]! however you want to change it.
+
+$> cat hello.txt
+[greeting] [noun]!
+
+# Rename hello.txt to hello.template
+
+$> git mv hello.txt hello.template
+$> # if you do a git status you will realize that hello.template is renamed.
+
+$> git add hello.template
+
+$> git commit
+
+# This will open your text editor
+# Type the following...
+Replacing greeting with tokens for i18n
+
+Currently, hello.txt contains both Spanish and English.
+Let's replace Hola with a [greeting] token, and Mundo
+with a [noun] token. That way, we can localize hello.txt for
+any language!
+
+# Save and exit your editor
+
+[exercise5 4b2b90e] Replacing greeting with tokens for i18n
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+#### Step 2 - Git Log
+Let's take a look at our new commit using `git log`. First we'll see how to see all commits in the log since yesterday:
+
+```
+$> git log --since="yesterday"
+commit 886265f1cd786eec7bf48548f290d162d5307051 (HEAD -> git4)
+Author: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Fri Feb 28 12:32:28 2020 +0300
+
+    Replaced greeting with varibles for i18n
+    
+    Currently, hello.txt contains both spanish and English.
+    Let's replace with a [greeting] token and Mundo with a [noun] token.
+    that way, we can localize hello.txt for any language!
+
+commit e7410d10d86edd1bca30f4fa4dbd2e80385518fd (master)
+Merge: d9a034a cb0ba30
+Author: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Fri Feb 28 12:00:46 2020 +0300
+
+    Merge branch 'git3'
+```
+
+Things can get tricky when trying to track down changes to files when they've been renamed. Here we see how to use `git log` to find the commit where `hello.txt` was renamed to `hello.template`. The `--follow` command will continue following the file backward in history, showing its filename for every commit:
+
+```
+$> git log --name-status --follow --oneline hello.template
+886265f (HEAD -> git4) Replaced greeting with varibles for i18n
+A       hello.template
+```
+
+Ever spent too much time trying to track down a commit in Github? Use `git log --grep` to quickly find a commit. We can chain this with other flags. Let's find all the internationalization commits that the author `eduuh` has added in the last two weeks:
+
+```
+$> git log --grep=i18n --author=eduuh --since=2.weeks
+commit 886265f1cd786eec7bf48548f290d162d5307051 (HEAD -> git4)
+Author: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Fri Feb 28 12:32:28 2020 +0300
+
+    Replaced greeting with varibles for i18n
+    
+    Currently, hello.txt contains both spanish and English.
+    Let's replace with a [greeting] token and Mundo with a [noun] token.
+    that way, we can localize hello.txt for any language!
+
+```
+
+We can use `--diff-filter` to find commits where files have been renamed:
+
+```
+$> git log --diff-filter=R --find-renames
+4b2b90e Replacing greeting with tokens for i18n
+```
+
+Or to find commits where files have been modified:
+
+```
+$> git log --diff-filter=M --oneline
+fec9e7b Changing Hello to Hola
+afa34a6 Changing World to Mundo
+e348ebc Testing the emergency git-casting system
+```
+
+#### Step 3 - Git Show
+Now that we've mastered `git log`, how do we actually see what happened in a commit? Let's use `git show` to find out.
+
+```
+$> git log --grep=i18n --oneline
+ 886265f1cd7 Replacing greeting with tokens for i18n
+
+# Let's see the full commit and diff for 4b2b90e
+
+$> git show  886265f1cd7
+commit 886265f1cd786eec7bf48548f290d162d5307051 (HEAD -> git4)
+Author: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Fri Feb 28 12:32:28 2020 +0300
+
+    Replaced greeting with varibles for i18n
+    
+    Currently, hello.txt contains both spanish and English.
+    Let's replace with a [greeting] token and Mundo with a [noun] token.
+    that way, we can localize hello.txt for any language!
+
+diff --git a/hello.template b/hello.template
+new file mode 100644
+index 0000000..7447c60
+--- /dev/null
++++ b/hello.template
+@@ -0,0 +1 @@
++[greeting] [noun]!
+:...skipping...
+commit 886265f1cd786eec7bf48548f290d162d5307051 (HEAD -> git4)
+Author: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Fri Feb 28 12:32:28 2020 +0300
+
+    Replaced greeting with varibles for i18n
+    
+    Currently, hello.txt contains both spanish and English.
+    Let's replace with a [greeting] token and Mundo with a [noun] token.
+    that way, we can localize hello.txt for any language!
+
+diff --git a/hello.template b/hello.template
+new file mode 100644
+index 0000000..7447c60
+--- /dev/null
++++ b/hello.template
+@@ -0,0 +1 @@
++[greeting] [noun]!
+diff --git a/hello.txt b/hello.txt
+deleted file mode 100644
+index 349ec18..0000000
+--- a/hello.txt
++++ /dev/null
+@@ -1 +0,0 @@
+:...skipping...
+commit 886265f1cd786eec7bf48548f290d162d5307051 (HEAD -> git4)
+Author: eduuh <edwinkamaumuraya0@outlook.com>
+Date:   Fri Feb 28 12:32:28 2020 +0300
+
+    Replaced greeting with varibles for i18n
+    
+    Currently, hello.txt contains both spanish and English.
+    Let's replace with a [greeting] token and Mundo with a [noun] token.
+    that way, we can localize hello.txt for any language!
+
+diff --git a/hello.template b/hello.template
+new file mode 100644
+index 0000000..7447c60
+--- /dev/null
++++ b/hello.template
+@@ -0,0 +1 @@
++[greeting] [noun]!
+diff --git a/hello.txt b/hello.txt
+deleted file mode 100644
+index 349ec18..0000000
+--- a/hello.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Hola! Edwin
+```
+
+#### Step 4 - Git Branch
+Let's say you're working on a complicated codebase with a `master` branch and lots of feature branches. Some of your coworkers forget to clean up their branches when they're done (we're all guilty). Which branches have been merged into `master` and can be cleaned up? Which branches haven't been merged yet? If you've been following along, yours may look different.
+
+```
+$> git branch --merged master
+  git1
+  git2
+  git3
+  master
+
+$> git branch --no-merged master
+ * git4
+```
