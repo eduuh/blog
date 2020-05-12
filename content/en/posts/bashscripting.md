@@ -2,78 +2,85 @@
 title: "Bashscripting"
 date: 2020-04-11T16:02:40+03:00
 draft: true
-linktitle: ""
-title: "Bashscripting Workshopt"
+linktitle: "The Linux Workshop"
+title: "Learn CLI and Bash Scripting"
 categories: ["comandline","linux"]
-tags: ["productivity",""]
-weight: 30
+tags: ["productivity","bash"]
 
 image : images/configurations.png
-
 author: eduuh # author name
-authorEmoji: 🤖 # emoji for subtitle, summary meta data
+authorEmoji:  🤖# emoji for subtitle, summary meta data
 authorImage: "/images/edd.jpg" # image path in the static folder
 authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: Selftaught Web and Mobile Developer # author description
+
 ---
-## The Linux Workshop
 
-### The Linux Command Line
 
-Before you can dive into working with the linux command line and shells, you should first understand what linux is, where it came form and how it works.
+## The Linux Command Line
 
-> ### What is Linux
+Before you can dive into working with the linux command line and shells, you should first understand  `what linux is`, `where it came from` and `how it works`.
+
+> #### What is Linux
 
 If  you've never worked with Linux before, you may be confused about so many different versions are available.
 
-First, four main part makes up a linux system:
+First, Four main part makes up a linux system:
 
-    1. The Linux kernel
-    2. The Gnu Utilities
-    3. A graphical desktop enviroment
-    4. Application software.
+1. **The Linux kernel**
+2. **The Gnu Utilities**
+3. **A graphical desktop enviroment**
+4. **Application software.**
+
 
 Each of these parts has a specific job in the linux system. No part is very useful by itself.
 
 ### Looking into the Linux Kernel.
 
-The core of the Linux system is the **kernel**. The kernel controls all the hardware and sofware on the computer system, allocating hardware when necessary and executing software when required.
+The core of the Linux system is the **kernel**. The kernel:
 
-If you've been following the Linux world at all, no doubt you've heard the name **Linus Torvalds**. Linus is the person responsible for creating the first linux kernel softwae whe he was a student at university of Helsinki. He intended it to be a copy of the Unix system, at the time a popular operating system used at many universities.
+ * controls all the hardware and sofware on the computer system
+ (allocating hardware when necessary and executing software when required.)
 
-After developing the linux kernel, linux released it to the internet community and solicited suggestions for improving it. This simple pross started a revolution in the world of computer operating sytems.Soon Linux was reciving suggestions from students as well as professional programmers from around the world. Allowing anyone to change programming code in the kernel wold result in complet chaos. To simplify things, linux acted as a central poing for all improvement suggestions. It was ultimately Linux's decision whether or not to incorporate suggested code in the kernel.
+If you've been following the Linux world at all, no doubt you've heard the name **Linus Torvalds**. `Linus is the person responsible for creating the first linux kernel softwae whe he was a student at university of Helsinki`. He intended it to be a copy of the **Unix system,** at the time a popular operating system used at many universities.
+
+After developing the linux kernel, **linus released it to the internet community and solicited suggestions for improving it.** This simple pros started a revolution in the world of computer operating sytems.Soon Linux was receiving suggestions from students as well as professional programmers from around the world. Allowing anyone to change programming code in the kernel would result in complete chaos.
+
+To simplify things, linus acted as a central point for all improvement suggestions. It was ultimately Linux's decision whether or not to incorporate suggested code in the kernel.
 
 This same concept is still in place with the linux kernel code, except that instead of just linux controlling the kernel code, a team of developers has taken on the task.
 
 
 The kernel is primarily responsible for four main functions:
-      System memory management
-      Softwae Program management
-      Hardwae management
-      Filesystem management
 
-## System Memory Management
+1. [System memory management]()
+2. [Software Program management]()
+3. [Hardware management]()
+4. [Filesystem management]()
 
-One of the primary functions of the operating system kernel is **memory management**. Not only does the kernel manages the physical memory available on the server, but it can also create and manage virtual memory, or memory that does not actually exist.
 
-It does this by using space on the hard disk, called the **swap space**. The kernel swaps the contents of virtual memory location back and forth from the swap space to the actual **physical memory**. This allows the system to think there is more memory available than what physically exists.
+### System Memory Management
+
+Not only does the kernel manages the **physical memory** available on the server, but it can also **create and manage virtual memory** (memory that does not actually exist).
+
+It does this by using space on the hard disk, called the **swap space**. `The kernel swaps the contents of virtual memory location back and forth from the swap space` to the actual **physical memory**. This allows the system to think there is more memory available than what physically exists.
 
 
 The **memory locations are grouped into blocks called pages**. The kernel locates each page of memory either in the physical memory or the swap space. The kernel then maintains memory page that indicates which pages are in physical memory and which pages are swapped out of disk.
 
 
-## Softwae Program Management
+### Software Program Management
 
 The linux operating system calls a running program a *process*. A process can run in the foreground, displaying output on a display, or it can run in the background.
 
-The kernel creates the first process, called the **init process**, to start all other processes on the system. When the kernel starts, it loads the init process into virtual memory. As the kernel starts each additional process, it gies it a unique area in virtual memory to store the data and code that the process uses.
+The kernel creates the first process, called the **init process**, to start all other processes on the system. When the kernel starts, it loads the init process into virtual memory. As the kernel starts each additional process, it gives it a unique area in virtual memory to store the data and code that the process uses.
 
 Some linux implementations contain a table of processes to start automatically on bootup. On linux systems, this table is usually located in the special file **/etc/inittabs**.
 
 Other systems (such as the popular Ubuntu linux distribution) Utilze the */etc/init.d** folder, which contains scripts for starting and stopping individual application at boot time. The Scrips are started via entries under the **/etc/rx.d** folders where X is a run level.
 
 
-## Hardware Management
+### Hardware Management
 
 Any device that the Linux system must communicate with needs driver code inserted inside the kernel code. The drive code allows the kernel to pass data back and forth to the device, acting as a midlle man between application and the hardware. Two methods are used for inserting device driver code in the Linux kernel.
 
@@ -86,76 +93,80 @@ Programmers developed the concept of kernel modules to allow you to insert drive
 
 The linux system identifies hardware devices as special files, called **device files**. There are three classification of device files:
 
-      1. Character
-      2. Block
-      3. Network.
+1. Character
+2. Block
+3. Network.
 
-## Filesystem management
+### Filesystem management
 
-The linux kernel can support different types of filesystems to read and write data to and from hard drives. Besides having over a dozen filesystems to read and write data to and from hard drive. Besides having over a dozen filesystems on its own.
+The linux kernel can `support different types of filesystems to read and write data to` and from `hard drives`. Besides having over a dozen filesystems to read and write data to and from hard drive. Besides having over a dozen filesystems on its own.
 
 
-## The GNU utilities
+### The GNU utilities
 
 The **Gnu Organization (GNU stands for GNU's not Unix) developed a complete set of unix utilities but had no kernel system to run them on. These utilities were developed under a software pilosophy called **open source software (OSS).**
 
 ## The core Gnu Utilities
 The **Gnu** coreutils package consists of three parts:
 
-  1. Utilities for handling files
-  2. Utilities for manipulating text
-  3. Uitlities for managing process.
+  1. Utilities for ~~handling files~~
+  2. Utilities for ~~manipulating text~~
+  3. Uitlities for ~~managing process.~~
 
 
 ## Basic bash shell commands.
 
-* The default shell used in many Linux distribution is the GNU bash shell.
+ The default shell used in many Linux distribution is the *GNU bash shell.*
 
-# Starting the Shell
+### Starting the Shell
 
-The GNU bash shell is a program that provides interactive access to the linux system. It runs as a regular program and is normally started whenever a user logs in to a terminal.
+The  **GNU bash shell** is a program that provides interactive access to the linux system. It runs as a regular program and is normally started whenever a user logs in to a terminal.
 
-The **etc/passwd** file contains a list of all the system user accounts, along with some basic configuration information about each user. Here is an entry
-
+The **etc/passwd** file contains a *list of all the system user accounts,* along with some basic configuration information about each user. Here is an entry
 
   edd:x:1000:1001:edd:/home/edd:/usr/bin/bash
 
 Each entry has seven data fields, with fields separated by colons. The system uses the data in these fields to assign specific features for the user.
 
-  The above line means.
+The above line means.
 
-     **edd** logs into linux system and **bash** program is automatically started.
+**edd** log in into linux system and **bash** program is automatically started.
+
 There are two methods of login into a linux box.
 
-a. Virtual console terminal. requires a **cli prompt**
-b. Graphical login. requires a graphical emulator.
+1. Virtual console terminal. requires a **cli prompt**
+2. Graphical login. requires a **graphical emulator.**
 
-## Using the Shell Prompt.
+### Using the Shell Prompt.
 
 When you log in to a linux virtula console. you get access to the shell **cli prompt** . The prompt is your gateway to the shell. The place you input commands.
 
-    The default prompt symbol is a **dollar sign ($)
+The default prompt symbol is a **dollar sign ($)**
 
 Different distribution uses different format of prompt. Examples
 
-    * Ubuntu looks like
-            - edwin@server:~$
-    * CentOs Linux or Manjano
-            - [edwin@server:~$]
+* Ubuntu looks like
+	- edwin@server:~$
+* CentOs Linux or Manjano
+	- [edwin@server:~$]
+
 The prompt is meant to provide useful information.
 
-    edwin -> Current user Id
-    server -> name of the system
+1. edwin -> Current user Id
+2. server -> name of the system
+
 
 `Note` that the promp is not static. It could be changed to suit your need.
 
-## Interacting with the bash Manual
+### Interacting with the bash Manual
 
 The **man** command provides access to the manual pages stored on the linux system. Entering the command **man** followed by another command provids that utility's manual entry. Try
 
-    man xterm
+```bash
+$ man xterm
+```
 
-When you use the **man** command to view a command's manual pages, they ared displayed with somethong called a **pager**.
+When you use the **man** command to view a command's manual pages, they ared displayed with something called a **pager**.
 
 A `pager` is a utility that allows you to page through displayed text. Thus, you can page through the man pages by pressing the **spacebar**, or can go line by line using the **enter key**. you could olso use **arrow keys**
 
@@ -163,21 +174,23 @@ When you finish with the man pages, press the **q** key to quit. when you quit y
 
 There are also the information pages called **info** pages.
 
-## Navigating the Filesystem
+### Navigating the Filesystem
 
 When you log into the system and reach the command line prompt, you are in your home directory.
 
-### looking at hte Linux Filesytem.
+### looking at the Linux Filesytem.
 
 If you're new to the linux sytem,you may be confused by how it refences files and directories, especially if you're used to the way microsoft windows system does.
 
 Linux stores files within a single directory structure calle a **virtual directory**. The virtual directory contains files paths from all the storage devices installed on the computer, merged into a single directory structure.
 
-The linux virtual directory structure contains a single base directory, called the **root**. Directories and files beneath the root directory are listed based on the directory path used to get to them.
+The linux virtual directory structure contains a single base directory, called the **root**.Directories and files beneath the root directory are listed based on the directory path used to get to them.
 
 In linux you will see files paths similar to the following
 
-      /home/edd/Documents/test.md
+
+ /home/edd/Documents/test.md
+
 
 Notice the path does not provide the **drive** the file is stored on.
 
@@ -209,26 +222,29 @@ On the **root drive**, Linux can use a special directory as **mount points**. Mo
 | /var        | Variable directory, for files that change frequently, i.x log |
 
 
-Common linux directory are based on **Filesystem Hierarchy Standard**(FHS).
-You can move around the **virtual directory** using a graphical interface. To move around the virtual directory from a cli prompt.
+Common linux directory are based on **Filesystem Hierarchy Standard(FHS).** You can move around the **virtual directory** using a graphical interface. To move around the virtual directory from a cli prompt.
 
-## Traversing directory
+### Traversing directory
 
 Use the **directory command (cd)** to move your shell session to another directory in the linux filesystem.
 
 The **cd** command may take a single parameter, **destination**. The destination parameter can be expressed using twi different methods.
 
-## Using absolute directory references
+### Using absolute directory references
 
 You can reference a directory name within the virtual directory system using an **absolute directory reference.** .
 
 An absolute path reference always begins with a forwa slash (/) indicating the virtual directory system's root.
 
-    /usr/bin
+```bash
+/usr/bin
+```
 
-With the absolute directory reference there's no doubt as to exactly where you want to go. To move to a specific location in the Filesystem usind the absolute directory reference, you just specify the full pathname in the **cd** command.
+With the **absolute directory** reference there's no doubt as to exactly where you want to go. To move to a specific location in the Filesystem usind the absolute directory reference, you just specify the full pathname in the **cd** command.
 
-    cd  /use/bin # move to the directory
+```bash
+cd  /use/bin # move to the directory
+```
 
 Prompt originalyy had a tilde (~) in it. After the change to a new directory occurred, the tilde was replaced by **/usr/bin.**.
 
@@ -243,35 +259,33 @@ You can move to any leve within the entire **Linux virtual directory** structure
 
 note: think of absolute as a full path.
 
-## using Relative directory references
+### using Relative directory references
 
-**Relative directory referece** allow you to specify a destination directory reference relative to your current location. A Relative directory reference doest start with a folowrd slash.
+**Relative directory reference** allow you to specify a destination directory reference relative to your current location. A Relative directory reference doest start with a folowrd slash.
 
 
-Relative directory reference starts with eithe a directory name (if you're traversing to a directory under your current directory) or a special character.
+**Relative directory reference** starts with either a directory name (if you're traversing to a directory under your current directory) or a special character.
 
-  edd@edd:~/Documents$ ls
-  edd@edd:~/Documents$ cd ~/Desktop
+    edd@edd:~/Documents$ ls
+    edd@edd:~/Documents$ cd ~/Desktop
 
 You can use a relative directory reference with the *cd* command is any directory containg subdirectoroies. You can also use a special character to indcate a relative directory location.
 
-The two special character used for *relative directory reference** are :
+The two special character used for *relative directory reference**.
 
-    * The single dot (.) to represent the current directory
-    * The double dot (..) to represent the parent directory
+* The single dot (.) to represent the current directory
+* The double dot (..) to represent the parent directory
+
 You can use the single dot but it doesn't make sense to use it with the cd command.  The double dot character is extremely handy when trying to traverse a directory and need to go to your **Downloads** directory.
 
-   edwin@server: ~/Documents$ pwd
-   /home/edd/Documents
-   edwin@server: ~/Documents$ cd ../Downloads
-   edwin@server: ~/Downloads cd ../Downloads
+     edwin@server: ~/Documents$ pwd
+     /home/edd/Documents
+     edwin@server: ~/Documents$ cd ../Downloads
+     edwin@server: ~/Downloads cd ../Downloads
 
-  .. takes you back up one level to your home directory.
+> ###### Use absolute path if it makes sense to use.
 
-
-> ## Use absolute path if it makes sense to use.
-
-## Listing Files and Diretory.
+### Listing Files and Diretory.
 
 To list the content of a directory we use the **ls** command.
 
@@ -279,20 +293,20 @@ To list the content of a directory we use the **ls** command.
 The ls command at its most basic form displays the files and directory located in your current directory.
 
     $ ls
-  aur                       Downloads     package-lock.json  README.md  Videos
-  bunnyflydotfiles_colemak  input         Pictures           snap       yay
-  Desktop                   Music         Public             Templates
-  Documents                 node_modules  readme.md          text.txt
+    aur                       Downloads     package-lock.json  README.md  Videos
+    bunnyflydotfiles_colemak  input         Pictures           snap       yay
+    Desktop                   Music         Public             Templates
+    Documents                 node_modules  readme.md          text.txt
 
 If you don't have a color terminal emulator, you can use the -F parameter with the **ls** command to the easily distinguish files from directory. Using the -F parameter produces the following ouput.
 
-  $ ls -F
-  aur/                       Downloads/     package-lock.json  README.md   Videos/
-  bunnyflydotfiles_colemak/  input/         Pictures/          snap/       yay/
-  Desktop/                   Music/         Public/            Templates/
-  Documents/                 node_modules/  readme.md          text.txt
+    $ ls -F
+    aur/                       Downloads/     package-lock.json  README.md   Videos/
+    bunnyflydotfiles_colemak/  input/         Pictures/          snap/       yay/
+    Desktop/                   Music/         Public/            Templates/
+    Documents/                 node_modules/  readme.md          text.txt
 
-The -F parameter flags the directoies with a forward slash (/) to help identipy them in the listing.
+The -F parameter flags the directoies with a forward slash (/) to help identify them in the listing.
 
 The basic **ls** command can be somewhat misleading. It shows the files and directory contained in the current directory. Linux often uses hidden files to store configuration information.
 
@@ -304,8 +318,7 @@ To display hidden files along with normal files and directories, use the -a para
     aur                       Downloads      .pki               .Xauthority
     .bash_history             .gitconfig     .profile           .Xclients
 
-All the files beginning with a period, hidden files.
-Notice that three files begin with **.bash**
+All the files beginning with a period, hidden files.Notice that three files begin with **.bash**
 
 The -R parameter is another options the **ls** command can use. Called the recursive option, it shows files are contained within subdirectories.
 
@@ -324,7 +337,7 @@ The -R parameter is another options the **ls** command can use. Called the recur
     dotfiles/
 
     ./bunnyflydotfiles_colemak/dotfiles
-## Displaying a Long Listing
+### Displaying a Long Listing
 **ls** command doesn't produce much information about each files. For listing additional information, another parameter is *-l*.
 
     $ ls -l
@@ -332,29 +345,31 @@ The -R parameter is another options the **ls** command can use. Called the recur
     drwxr-xr-x 3 edd edd  4096 Apr 13 01:43 bunnyflydotfiles_colemak
     drwxr-xr-x 3 edd edd  4096 Apr 12 13:15 Desktop
     drwxr-xr-x 2 edd edd  4096 Apr 11 23:24 Documents
+
 The long listing format lists each file and subdirectory on a single line.
 The listing shows additional useful information.
 
-    1. The file type - Such as
-          - directory (d),
-          - file (-),
-          - linked files (1),
-          - Charater device (c)
-          - Block device (b)
-    2. The file permissions.
-    3. The number of file hard links.
-    4. The file owner username.
-    5. the file primary group name.
-    6. The file byte size.
-    7. The last time the file was modified.
-    8. The filename or directory name.
+1. The file type - Such as
+      - directory (d),
+      - file (-),
+      - linked files (1),
+      - Charater device (c)
+      - Block device (b)
+2. The file permissions.
+3. The number of file hard links.
+4. The file owner username.
+5. The file primary group name.
+6. The file byte size.
+7. The last time the file was modified.
+8. The filename or directory name.
 
-## Filtering listing output
+### Filtering listing output
 
 To look for information about a file is also possible by using the **ls** command.
 
     $ ls -l text.txt
     -rw-r--r-- 1 edd edd 1 Apr 13 09:45 text.txt
+
 Here we used bracket with two choices of character **[tx]** t and x . brackets could be used to liss ranges of characters.
 
      $ ls -l tex[a-z].txt
@@ -379,11 +394,13 @@ The **touch** command is used to create empty files in the system.
     edd@edd:~$ touch test_one
     edd@edd:~$ ls -l test_one
     -rw-r--r-- 1 edd edd 0 Apr 14 18:51 test_one
+
 The touch command creates the new file you specify and assign your username as the owner.
 
 The **touch** command can also be used to change the modification time. This is done without changing the content of the file.
 
-## Copying files
+### Copying files
+
 Copying files and directories from one location in the filesystem to another is a common practise for system administrators. The **cp** command provides this feature.
 
 In its most basic form, the cp command uses two parametes. 1. The source object and the destination object.
@@ -399,6 +416,7 @@ If you don't answer y, the file copy does not proceed. You can also copy a file 
     drwxr-xr-x  2 edd edd 4096 Apr 14 20:18 .
     drwx------ 27 edd edd 4096 Apr 14 20:15 ..
     -rw-r--r--  1 edd edd    0 Apr 14 20:18 test_one
+
 The new file is now under the Documents subdirectory, using the same filename as the original.
 
 You could easily use relative path directory reference.
@@ -424,7 +442,7 @@ You can also used wildcard metacharacters in your cp commands.
     $ ls -l mod_scripts
 This command copied any files that ended with script to *mod_scripts*.
 
-## Using tab auto-complete
+### Using tab auto-complete
 
 When working at the command line, you can easily mistype a command, directory name, or filename. The longer a directory or filename, the greater the chance that you will mistype it.
 
@@ -432,14 +450,14 @@ This is where **tab auto-complete** can be a lifesaver. Tab auto-complete allows
 
     $ ls really*
 
-## Linking files
+### Linking files
 
-Linking files is a great option available in the linux filesystem. If you need to maintain two (or more) copies of the same file on the system. Instead of having separate physical placeholder in a directory that points to the real location.
+Linking files is a great option available in the linux filesystem. `If you need to maintain two (or more) copies of the same file on the system.` Instead of having separate physical placeholder in a directory that points to the real location.
 
-    1. A symbolic link
-    2. A hard Link.
+1. A symbolic link
+2. A hard Link.
 
-**A symbolic link** is simply a physical file that points to another file somewhere in the virtual directory structure. The two symbolically linked together files do no share the same contents.
+**A symbolic link** is simply a physical file that points to another file somewhere in the virtual directory structure. The two symbolically linked together files do  share the same contents.
 
 To create a symbolic link to a file, the original file must pre-exist. We can the use the **ln** command with the -s option to create the symbolic link.
 
@@ -447,19 +465,22 @@ To create a symbolic link to a file, the original file must pre-exist. We can th
     edd@edd:~$ ls -la tex*
     lrwxrwxrwx 1 edd edd 8 Apr 14 20:49 text_link -> text.txt
     -rw-r--r-- 1 edd edd 0 Apr 14 18:30 texz.txt
+
 The -> symbol displayed after the symbolic link file's long listing shows that it is symbolically linked to the file data-files.
 
-Also note the size of the symbolic link and the actual file.The symbolic link size is 8 bytes while the actual file is 18 bytes.
+Also note the size of the symbolic link and the actual file.The symbolic link size is 8 bytes while the actual file is 18 bytes. The symbolic link file acts like a pointer to the other file on the `virtual directory`.
 
     edd@edd:~$ nvim text.txt
     edd@edd:~$ ls -la tex*
     lrwxrwxrwx 1 edd edd  8 Apr 14 20:49 text_link -> text.txt
     -rw-r--r-- 1 edd edd 18 Apr 14 20:53 text.txt
     -rw-r--r-- 1 edd edd  0 Apr 14 18:30 texz.txt
+
 Another way to tell these linked files are separate physically files is by viewing their inod numbers. The inode numbers of a file directory is a unique identification number that the kernel assigns to each object in the filesystem.
 
     edd@edd:~$ ls -i *tex*
     3685885 text_link  3686544 text.txt  3686536 texz.txt
+
 The example above have 3685885 and 3686544. They are different files.
 
 A **hard link** create a separate virtual file that contains information about the original file and where to locate it. They are physically the same file. When you reference the hard link file.
@@ -470,14 +491,14 @@ A **hard link** create a separate virtual file that contains information about t
       [edd@edd ~]$ls -li hard*
       3685885 -rw-r--r-- 2 edd edd 0 Apr 14 21:06 hard_link
       3685885 -rw-r--r-- 2 edd edd 0 Apr 14 21:06 hard_one
+
 We used **-li** command to show both the inode number and long listing for the inode number. This is because they aer physically the same file. The files are exactly the same size.
 
-> ### Note: you can only create a hard link between files on the same physical medium. To create a link between files under separate physical mediums, you must use a symbolic link.
+> ###### Note: you can only create a hard link between files on the same physical medium. To create a link between files under separate physical mediums, you must use a symbolic link.
 
 If you use the cp command to copy a file that's linked to another source file, all you're doind is making another copy of the source file. You can just create a new symbolic link to the original file (no problem).
 
-## Renaming files
-
+### Renaming files
 Renaming files is called **moving files**. The *mv* command is available to move both files and directories to another location or a new name:
 
     [edd@edd ~]$touch fall
@@ -486,10 +507,12 @@ Renaming files is called **moving files**. The *mv* command is available to move
     [edd@edd ~]$mv fall fzll
     [edd@edd ~]$ls -la f?ll
     -rw-r--r-- 1 edd edd 0 Apr 14 21:17 fzll
+
 Notice that moving the file changed the name from **fall** to **fzll**.The inode number is retained and timestamp value. **mv** commad affect only a files name.
 You can also **mv** to change location.
 
     $ mv <file> <destination>
+
 you can also used the mv command to move entire directories and their contents:
 
     [edd@edd ~]$ls -li bunnyfylcolemak
@@ -510,7 +533,7 @@ Deleting is called **removiing**. the command to remove files in the bash shell 
 
 Notice that the *i* command parameter prompts you to make sure that you're serious about removing the file. Thes shell has no recycle bin or trashcan. After you remove a file , it's gone forever.
 
-## Managing Directory
+### Managing Directory
 
 Linux hass a few commands that works for both files and directory (such as the cp command) and some that work only for directories. To create a new directory, you need to use a specific command.
 
@@ -524,7 +547,7 @@ Creating a new directory in Linux is easy -Just use the mkdir command:
 The system create a new directory named new_dir.
 
     [edd@edd ~]$mkdir new_dir
-    [edd@edd ~]$ls -ld new_dir
+    [edd@edd ~]$ls -la new_dir
     drwxr-xr-x 2 edd edd 4096 Apr 14 23:16 new_dir
 
 You can create directory and subdirectories in "bulk" if needed.
@@ -540,7 +563,7 @@ To create several directory and subdirectories at the same time, you need to add
 
 The -p option on the mkdir command makes any missing parent directories as needed. A parent directories is a directory that contains other directories at the next level down the directory tree.
 
-## Deleting directories
+### Deleting directories
 
 There are lots of opportunities for bad things to happens when you start deleting directories . The shell tries to protect us from accidental catastrophes as much as possible.
 
@@ -548,8 +571,7 @@ There are lots of opportunities for bad things to happens when you start deletin
     $ ls -la new_dir
     $ rmdir new_dir
 
-**rmdir** command works only for removing empty directories.
-Ti fix this, we must remove the file first. Then we can use the rmdir command on the now empty directory:
+**rmdir** command works only for removing empty directories. To fix this, we must remove the file first. Then we can use the rmdir command on the now empty directory:
 
     $ rm -i new_dir/my_file
     $ rmdir new_dir
@@ -589,22 +611,20 @@ Binary executable programs. The file command determines the platform that the pr
 
 Now that you know a quick method for viewing a file's type.
 
-## Viewing the whole file.
 
 ### Using the cat command
-
-The cat command is a handy tool for displaying all the data inside a text file.
+Used to view the whole files . The cat command is a handy tool for displaying all the data inside a text file.
 
       [edwin@edwin ~]$cat edd.txt
       This is test
 
-## Monitoring Disk Space
+### Monitoring Disk Space
 Some command line commands can help you manage the media environment on your linux system.
 To be able to monitor your disk space you need to understand how to mounting media works.
 
 Most of the linux distribution out there have the ability to automatically mount specific types of `removable media`. A removable media device is a media that can be easily removed from the pc, such as `CD-ROMs` and `USB memory sticks`.
 
-## The mount command.
+### The mount command.
 The command used to mount media is called mount. The `mount` command displays a list of media devices currently mounted on the system.
 
 	$ mount
@@ -615,10 +635,10 @@ The command used to mount media is called mount. The `mount` command displays a 
 	/dev/sdb6 on / type ext4 (rw,noatime,discard)
 The mount command provides four pieces of information.
 
-   1. The device filename of the media.
-   2. The mount point in the virtual directory where the media is mounted.
-   3. The filesystem type.
-   4. The access status of the mount media.
+ 1. The device filename of the media.
+ 2. The mount point in the virtual directory where the media is mounted.
+ 3. The filesystem type.
+ 4. The access status of the mount media.
 
 The last entry in the preceding example is a `USB memory stick`. To manually mount a media device in the virtual directory, you must be logged in as the root user or use the `sudo` command to run the command as the root user. The following is the basic command for manually mounting a media device.
 
@@ -626,9 +646,10 @@ The last entry in the preceding example is a `USB memory stick`. To manually mou
 
 The type parameter defines the filesystem type under which the disk was formatted. Linux recognizes lots of different filesystems types. If you share removable media withe your winows PCs, you are most likely to run into thes types:
 
-	* vfat : Windows long filesystem
-	* ntfs : Windows advanced filesystem used in Windows NT, XP, and Vista.
-	* iso9660 : The standard CD-ROM filesystem.
+* vfat : Windows long filesystem
+* ntfs : Windows advanced filesystem used in Windows NT, XP, and Vista.
+* iso9660 : The standard CD-ROM filesystem.
+
 Mount USB memory stick at device `/dev/sdb1` at location `/media/disk` you could use such a command.
 
           mount -t vfat /dev/sdb1  /media/disk
@@ -637,11 +658,11 @@ After a media device is mounted in the virtual directory, the rood user has full
 
 The `-o` options allows you to mount the filesystem with a comma-separated list of additional options. These are popular option to use:
 
-  1. ro: Mount as read-only
-  2. rw: mounts as read-write
-  3. User: Allow an ordinary user to mount the filesystem
-  4. Check=none: Mount the filesystem without performing an integrity check.
-  5. loop: Mounts a file.
+1. ro: Mount as read-only
+2. rw: mounts as read-write
+3. User: Allow an ordinary user to mount the filesystem
+4. Check=none: Mount the filesystem without performing an integrity check.
+5. loop: Mounts a file.
 
 ### The Unmount command.
 
@@ -656,7 +677,7 @@ The unmount command gives you the choice of defining the media device by either 
 	umount: /home/dwm/test: target is busy.
 	[dwm@edwin ~]$
 
-## Using the df command.
+### Using the df command.
 
 Sometimes, you need to see how much disk space is available on an individual device. The df command allows you to easily see what's happening on all the mounted disks.
 
@@ -688,7 +709,7 @@ A few different command line parameter are available with the df command, most i
 	tmpfs           7.7G  4.0K  7.7G   1% /tmp
 	tmpfs           1.6G   12K  1.6G   1% /rp
 
-## Using the du command
+### Using the du command
 
 With the `df command you can easily see when a disk is running out of space`. The next problem for the system administrators is to know what to do when that happens.
 
@@ -796,7 +817,7 @@ Now the data is perfectly sorted on the third field which is the numerical useri
 ```
 Notice that the `-r` option also sorts the value in desceding order, so you can easily see what files are taking up the most space in your directory.
 
-### Searching for data.
+### Searching for data. Grep
 
 Often in a large file, you must look for a specific line of data buried somewhere in the middle of the file. Instead of manually scrolling throught the entire file, you can let the grep command search for you. The command line Format for the grep command is:
 
@@ -854,7 +875,8 @@ Example of using a regular expression in a grep search.
 
 The `egrep` command is an offshoot of `grep`, which allows you to specify `POSIX` extended reqular expression, which contains more characters for specifying the matching pattern.
 
-## Compressing Data.
+### Compressing Data.
+
 No doubt you've used zip files. Linux contains several files compression utilities. Although this may sount great, it often lead to confusion and chaos when trying to download files.
 
 Linux file compression utilities
@@ -865,3 +887,67 @@ bzip2|.bz2| Uses the Burrow-Wheeler block sorting text compression algorithm and
 compress|.z|Original Unix file compression Utility:starting to fade away into obscurity
 gzip|.gz|The Gnu Project's compression utility; uses Lemperl-ziv coding
 zip|.zip|The unix Version of the PKZIP program for windows
+
+The **gzip** package is the most popular compression tool in Linux. The gzip package is a creating of the **Gnu** project in their attempt to create a free version of the original unix compress utility. This package includes these files:
+
+1. **gzip** for compressing files.
+2. **gzcat** for displaying the contend of compressed text files.
+3. **gunzip** for uncompressing files.
+
+These utilities work the same way as the **bzip2 utilities**.
+
+```gzip
+[dwm@edwin ~]$ gzip file1
+[dwm@edwin ~]$ ls -l fi*
+-rw-r--r-- 1 dwm wheel 45 May 11 23:41 file1.gz
+-rw-r--r-- 1 dwm wheel 26 May 11 23:47 file2
+
+```
+The **gzip** command compresses the file you specify on the command line. You can also specify more than one filename or even use wilcard character to compress multiple files at once.
+
+```gzip
+[dwm@edwin ~]$ gzip fi*
+[dwm@edwin ~]$ ls -la fi*
+-rw-r--r-- 1 dwm wheel 26 May 12 00:48 file1.gz
+-rw-r--r-- 1 dwm wheel 26 May 12 00:48 file2.gz
+-rw-r--r-- 1 dwm wheel 26 May 12 00:48 file3.gz
+
+```
+The **gzip** command compresses every file in the directory that matches the wildcard pattern.
+
+### Archiving data
+
+Although the zip command works great for compressing and archiving data into a single file, it's not the standard utility used in the unix and linux worlds. By far the most popular archiving tool used in unix and Linux is the `tar command`.
+The tar command war originally used to write files to a tape device for archiving. It can also write the outputs to a file, which has become a popular way to archive data in linux.
+
+The following is the format of the tar command:
+
+        tar function [option] object1 object2..
+
+Some options for the command includes:
+
+Options|Description
+-------|-----------
+-C dir | Changes to the specified directory
+-f file| Outputs results to file (or device) file
+-j     | Redirects outputs to the bzip2 command for compression
+-p     | Preserves all file permission
+-v     | List files as they are processed
+-z     | Redirects the outputs to the gzip command for compression
+
+The options are usually combined to creade the following scenarios. First, you want to create an archive file using this command:
+
+```tar
+tar -cvf test.tar test/ test3/
+```
+The above command creates **an archive file called test.tar** containing the contents or both the test directory and the test2 directory.
+
+```tar
+tar -tf test.tar
+```
+list (but doesn't extract) the content of the tar file test.tar. Finaly, this command:
+
+```tar
+tar -xvf test.tar
+```
+extract the content of the tar file test.tar.If the tar was created from a directory, the entire directory structure is re-created starting at the current directory. This is a common method for distributing source code files for open source application in the linux world.
