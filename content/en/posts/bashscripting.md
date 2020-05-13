@@ -1,13 +1,13 @@
 ---
 title: "Bashscripting"
 date: 2020-04-11T16:02:40+03:00
-draft: true
+draft: false
 linktitle: "The Linux Workshop"
 title: "Learn CLI and Bash Scripting"
 categories: ["comandline","linux"]
 tags: ["productivity","bash"]
 
-image : images/configurations.png
+image : images/bash.png
 author: eduuh # author name
 authorEmoji:  🤖# emoji for subtitle, summary meta data
 authorImage: "/images/edd.jpg" # image path in the static folder
@@ -951,3 +951,193 @@ list (but doesn't extract) the content of the tar file test.tar. Finaly, this co
 tar -xvf test.tar
 ```
 extract the content of the tar file test.tar.If the tar was created from a directory, the entire directory structure is re-created starting at the current directory. This is a common method for distributing source code files for open source application in the linux world.
+
+## Understanding the shell
+
+Now that you know a few shell basics its time to explore the actual shell process. To understand the shell, you need to understand a few cli basics.
+
+A `shell` is not just a cli. It a complicated interactive running program. Entering commands and using the shell to run scripts can raise some interesting and confusing issues. Understanging the shell process and its relationships help you resolve these issues or avoid them altogether.
+
+## Exploring the Shell Types
+
+The bash shell program resides in the /bin directory. A long listing reveals **/bin/bash** is an executable program.
+
+    [dwm@edwin ~]$ ls -lF /bin/bash
+    -rwxr-xr-x 1 root root 903504 Feb 17 14:31 /bin/bash*
+Also, the zsh installed used for this distribution.
+
+    [dwm@edwin ~]$ ls -lF /bin/zsh
+    -rwxr-xr-x 2 root root 869608 Feb 16 20:55 /bin/zsh*
+
+The **default interactive** shell starts whenever a user logs into a virtual console terminal or start a terminal emulator in the GNU. The default system shell is used for system shell script such as those needed at startup.
+
+On some distribution, the default system shell is different that the default interactive shell, such as the `ubuntu distribution`.
+
+    [dwm@edwin ~]$ cat /etc/passwd
+    root:x:0:0::/root:/bin/bash
+    eduuh:x:1003:998::/home/eduuh:/bin/zsh
+
+Note that the user, **eduuh** has his default interactive shell set to **/bin/zsh**, the zsh shell. But the default system shell is set to **bash**.
+
+You are not forced to stick with your default interactive shell. You can start any shell available on your distribution, simply by typing its filename. For example, to start the **bash** shell.
+
+      [dwm@edwin ~]$ bash
+It doest seem like much happened. However the bash shell program started. To exit the bash shell use the **exit command**
+
+### Exploring Parent and child shell Relationships.
+
+The default interactive shell started when a usert logs into a virtual console terminal or starts the terminal emulator in the GUI is a parent shell. A parent shell process provides a cli prompt and waits for commands to be entered.
+
+When the `/bin/bash` command or the equivalent bash command is entered at the cli prompt, a new shell program is created. This is `a child shell`. A child shell also has a cli prompt and waits for command to be entered.
+
+A command to bring all this to clarity.
+
+      [dwm@edwin ~]$ ps -f
+      UID          PID    PPID  C STIME TTY          TIME CMD
+      dwm        14077    4942  0 11:37 pts/6    00:00:00 -zsh
+      dwm        20887   14077  0 12:05 pts/6    00:00:00 ps -f
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ ps -f
+      UID          PID    PPID  C STIME TTY          TIME CMD
+      dwm        14077    4942  0 11:37 pts/6    00:00:00 -zsh
+      dwm        20933   14077  1 12:06 pts/6    00:00:00 bash
+      dwm        20950   20933  0 12:06 pts/6    00:00:00 ps -f
+
+The first use of ps -f shows two processes. One process has a process ID of 14077. After running the bash shell .
+
+The second use of `ps -f` shows the bash shell is running with a child process ID of 20933 with the PPID of 14077.
+
+    PPID stands for Parend Process ID
+
+When a child shell process is spawned, only some of the parent's environment is copied to the child shell envirionment.
+
+A child shell is also called a `subshell`. A subshell can be created from a parent shell and a subshell can be created from another subshell.
+
+      [dwm@edwin ~]$ ps -f
+      UID          PID    PPID  C STIME TTY          TIME CMD
+      dwm        14077    4942  0 11:37 pts/6    00:00:00 -zsh
+      dwm        23230   14077  0 12:16 pts/6    00:00:00 ps -f
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ ps --forest
+	  PID TTY          TIME CMD
+	14077 pts/6    00:00:00 zsh
+	23242 pts/6    00:00:00  \_ bash
+	23250 pts/6    00:00:00      \_ bash
+	23262 pts/6    00:00:00          \_ bash
+	23275 pts/6    00:00:00              \_ bash
+	23307 pts/6    00:00:00                  \_ ps
+
+Not only does this **exit** command allow you to leave child subshell, but you can also log out of your current virtual console terminal or terminal emulator software as well. Just type exit in the parent shell and you gracefully exit the cli.
+
+### Looking at process lists
+
+You can designate a list of commands to be run one after another. This is done by entering a command list using a semicolon (;) between commands.
+
+    [dwm@edwin ~]$ pwd ; ls ; cd /etc ; pwd ; cd ; pwd ; ls
+The commands all executed one after another with no problems. However, this is not a process list. For a command list to be considered a process list, the command must be encased.
+
+    [dwm@edwin ~]$ (pwd; ls;cd /etc ; pwd ; cd ; pwd ; ls)
+
+The parenthesis does not appear to be a big different, they do cause a very different effect. The very different effect. Adding parentheses and turning the command list into a process list created a subshell to execute the commands.
+
+      [dwm@edwin ~]$ pwd ; ls ; cd /etc ; pwd ; cd ; pwd ; ls ; echo $BASH_SUBSHELL
+      /home/dwm
+       d           hd         node_modules                  README.md                  visual-studio-code-bin
+       Documents   larb       package.json                  Templates                  visual-studio-code-bin.tar.gz
+       [...]
+       0
+At the very end of the command's outputs, you can see the number zero (0) is displayed. The results are different using a process list.
+
+>##### Note the environment variable (BASH_SUBSHELL) is updated when a child subshell is created in the system.
+
+To indicate if a subshell was spawned, a command using an environment variable is needed here.
+
+      [dwm@edwin ~]$ (pwd ; ls; cd /etc ; pwd; cd ; ls ; echo $BASH_SUBSHELL)
+      /home/dwm
+       d           hd         node_modules                  README.md                  visual-studio-code-bin
+       Documents   larb       package.json                  Templates                  visual-studio-code-bin.tar.gz
+       Downloads   LICENSE    package-lock.json             test                       w`
+       [..]
+       1
+In this case, the number one(1) displayed at the output's end.This indicates a subsheell was indeed created and used for executing these commands. You can even create a grandchild subshell by embedding parentheses within a process list:
+
+      [dwm@edwin ~]$ (pwd; echo $BASH_SUBSHELL)
+      /home/dwm
+      1
+      [dwm@edwin ~]$ (pwd; (echo $BASH_SUBSHELL))
+      /home/dwm
+      2
+
+#### Creatively using subshells
+
+One productive subshell method in the interactive sell uses background mode.
+
+#### Investigating background mode
+Running a command in backgrount mode allows the command to be processed and frees up your cli for other uses. A classic command to demostrate background mode is the sleep command.
+
+The sleep command acceptsas a parameter the number of seconds you want the process to wait(sleep). This command is often used to introduce pauses in shell scripts. The command `sleep 10`.
+
+To put a command into background mode, the & character is tacked onto its end. Putting the sleep command into background mode allows a little investigation with the ps command.
+
+      [dwm@edwin ~]$ sleep 10&
+      [1] 39047
+
+when a program is put into background , two information were displayed before the shell CLI prompt was returned. The first information item is the background job's number (1) displayeg in brackedt. The second item is the background job's process ID 39047.
+
+The ps command was used to display the various processes. Notice that the sleep command is listed.
+
+In addition to the ps command, you can use the `jobs` command to display background job information. The jobs command displays any use'r process (jobs)a currently running in background mode.
+
+The jobs command shows the job number (1) in brackets. It also displys the job's current status(running) as well.
+
+      [dwm@edwin ~]$ sleep 3000&
+      [1] 40318
+      [dwm@edwin ~]$ jobs
+      [1]+  Running                 sleep 3000 &
+      [dwm@edwin ~]$ jobs -l
+      [1]+ 40318 Running                 sleep 3000 &
+
+when the backgrund job is finished, its completion status is displayed.
+Background mode is very handy. And it Provides a method for creating useful subshells at the CLI.
+
+#### Putting process lists in the background
+
+      [dwm@edwin ~]$ (sleep 2 ; echo $BASH_SUBSHELL ; sleep 2)
+      1
+
+A two second pause occurs, the number one (1) is displayed indicating a single subshell level (child subshell level), and then another two-second pause occurs before the prompt returns.Putting the same process list in background mode can caouse a slightly different effect with the commang output.
+
+Putting the process list into the background mode causes a job number and process ID to appear.
+
+      [dwm@edwin ~]$ (sleep 2 ; echo $BASH_SUBSHELL ; sleep 2)&
+      [2] 42121
+      [dwm@edwin ~]$ 1
+
+      [2]+  Done                    ( sleep 2; echo $BASH_SUBSHELL; sleep 2 )
+
+Using a process list in background mode in one creative method for using subshells at the cli. You can do large amount of processing withing a subshell and not have your termnal tied up withe the subshell's I/O.
+
+Putting a process list in background mode in not the only wat to used subshells creatively at the CLI. CO-processing in another method.
+
+### Looking at co-processing
+
+Co-Processing does things at thes same time. It spawns a subshell in background mode and executes a command witing the subshell:
+
+You can be really clever and combine co-processing withe process lists creating nested subshells. Just type your process list and put the command coproc in front of it.
+
+    [dwm@edwin ~]$ coproc (sleep 10; sleep 2)
+    [1] 45198
+    [dwm@edwin ~]$ jobs
+    [1]  + running    ( sleep 10; sleep 2; )
+    [dwm@edwin ~]$ ps --for
+    [1]  + done       ( sleep 10; sleep 2; )
+    [dwm@edwin ~]$ ps --forest
+	PID TTY          TIME CMD
+      14077 pts/6    00:00:02 zsh
+      45244 pts/6    00:00:00  \_ ps
+      40318 pts/6    00:00:00 sleep
+
+> #### Note spawning a subshell can be expensive and slow. Creating nested subshells is even more so!
