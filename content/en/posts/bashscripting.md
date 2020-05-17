@@ -1,13 +1,13 @@
 ---
 title: "Bashscripting"
 date: 2020-04-11T16:02:40+03:00
-draft: false
+draft: true
 linktitle: "The Linux Workshop"
 title: "Learn CLI and Bash Scripting"
 categories: ["comandline","linux"]
 tags: ["productivity","bash"]
 
-image : images/bash.png
+image : images/configurations.png
 author: eduuh # author name
 authorEmoji:  🤖# emoji for subtitle, summary meta data
 authorImage: "/images/edd.jpg" # image path in the static folder
@@ -1141,3 +1141,444 @@ You can be really clever and combine co-processing withe process lists creating 
       40318 pts/6    00:00:00 sleep
 
 > #### Note spawning a subshell can be expensive and slow. Creating nested subshells is even more so!
+
+### Understangding shell Built-in commands.
+#### Looking at external commands.
+
+An `external command` sometimes called a filesystem command, is a program that exists outside of the bash shell.They are not built into the shell program. An external command program is typically located in `/bin/ /usr/bin, /sbin or /usr/sbin`.
+
+The ps command is an external command. You can find its filename by using both the `which and the type commands`.
+
+    [dwm@edwin ~]$ which ps
+    /usr/bin/ps
+    [dwm@edwin ~]$ type -a ps
+    ps is /usr/bin/ps
+    ps is /bin/ps
+    [dwm@edwin ~]$ ls -l /bin/ps
+    -rwxr-xr-x 1 root root 133384 Feb  5 12:36 /bin/ps
+    [dwm@edwin ~]$ ls -la /usr/bin/ps
+    -rwxr-xr-x 1 root root 133384 Feb  5 12:36 /usr/bin/ps
+
+Whenevre an external command is executed, a child process is created. This action is termed as `forking`.
+
+Conveniently,the external command ps display its current parent as well as its own forked child processes.
+
+    [dwm@edwin ~]$ ps -f
+    UID          PID    PPID  C STIME TTY          TIME CMD
+    dwm        14077    4942  0 11:37 pts/6    00:00:03 -zsh
+    dwm        40318       1  0 13:37 pts/6    00:00:00 sleep 3000
+    dwm        47491   14077  0 14:12 pts/6    00:00:00 ps -f
+
+When the ps command is executed , a child process is created. In this case the Ps command's Ps command is 47491 the parent id of 14077.Whenever a process must fork it takes time and effort to set up the new child process's environment.
+
+#### Looking at built-in commands
+Built-in commands are different in that they do not need a child process to execute. They were compiled into the shell into the shell and thus are part of the shell's toolkit.No external program.
+
+Both the `cd` command and `exit` command are built into bash shell. You can tell a command is built-in by uisng the type command.
+
+      [dwm@edwin ~]$ type cd
+      cd is a shell builtin
+      [dwm@edwin ~]$ type exit
+      exit is a shell builtin
+      [dwm@edwin ~]$ type type
+      type is a shell builtin
+Because they do not need to fork a child process to execute or open a program file, built-in commands are faster and more efficient. A list of GNU bash shell built-in command is provided.
+
+Be aware that some commands have multiple flavors. Both echo and pwd have a build-in command flavor as well asn an external command flavor. These flavors are slightly different.
+
+To see multiple flavors you can pass a flag a to the type command.
+
+    [dwm@edwin ~]$ type -a echo
+    echo is a shell builtin
+    echo is /usr/bin/echo
+    echo is /bin/echo
+    [dwm@edwin ~]$ which echo
+    echo: shell built-in command
+    [dwm@edwin ~]$ type -a pwd
+    pwd is a shell builtin
+    pwd is /usr/bin/pwd
+    pwd is /bin/pwd
+
+#### Using the history command
+
+A useful built-in command is the `history` command. The bash shell keeps track of the commands you have used. You can recall these command and even reuse them.
+
+To see a recently used commands list just type the history command with no options:
+
+      [dwm@edwin ~]$ history
+	 38  type -a ps
+	 39  ls -l /bin/ps
+	 40  ls -la /usr/bin/ps
+	 41  clear
+	 42  ps -f
+	 43  clear
+To recall and reuse the last command in your history list. This can save time and typing. To recall and reuse your last command type !! and press the Enter key.
+
+      [dwm@edwin ~]$ ps --forest
+	  PID TTY          TIME CMD
+	14077 pts/6    00:00:03 zsh
+	51497 pts/6    00:00:00  \_ ps
+      [dwm@edwin ~]$ !!
+      ps --forest
+	  PID TTY          TIME CMD
+	14077 pts/6    00:00:03 zsh
+	51511 pts/6    00:00:00  \_ ps
+
+Command history is kept in the hidden .bash_history file, which is located in the user's home directory. Be careful here. The bash command history is stored in memory and then written out into the history file when the shell is exited:
+
+    [dwm@edwin ~]$ history
+       51  clear
+       [...]
+To reuse the `clear` command you use an ! followed by the command number.
+
+    [dwm@edwin ~]$ !51
+
+#### Using Command aliases
+
+The `alias` command is another shell built-in command. A commannd alias allows you to create an alias name for common commands (along with their parameters) to help keep your typing to a minimum.
+
+Most likely, your linux distribution has already set some common command aliases for you. To see a list of the active alaises, Use the alias command with -p parameter.
+
+      [dwm@edwin ~]$ alias
+      D='cd ~/Downloads && ls -a'
+      YT=youtube-viewer
+      bd='nvim /home/dwm/.config/directories'
+      bf='nvim /home/dwm/.config/files'
+      bw='nvim /home/dwm/.config/bookmarks'
+      alias ls='ls --color=auto'
+Most of the aliases above are my own..You can create your own aliases using the alias command:
+
+    [dwm@edwin ~]$ alias li='ls -li'
+    [dwm@edwin ~]$ li
+    total 12436
+    7213906 -rw-r--r-- 1 dwm  wheel       1 May  1 23:21  d
+    7209752 drwxr-xr-x 3 dwm  wheel    4096 May 10 06:29  Documents
+    7209748 drwxr-xr-x 2 dwm  wheel    4096 May  8 21:12  Downloads
+    7227410 -rw-r--r-- 1 dwm  wheel      26 May 12 00:48  file1.gz
+    7211488 -rw-r--r-- 1 dwm  wheel      26 May 12 00:48  file2.gz
+Fortunately, you can make value permanent across subsells. The next section covers how to do that, along withe envirronment variables.
+
+
+### Using Linux Environment Variables
+
+Linux environment variables help define your linux shell experience. Many programs and scripts use environment variables to obtain system information and store temporarary data and configuration information. Envrionment variables are set in lots of places on the linux system, and you should know where these places are.
+
+#### Looking at environment variables
+The bash shell uses a feature called `environment` variables to store information about thes shell session and the working environment (thus the name environment variables). This features also allows you to store data in memory that can be easily accessed by any program or script running from the shell. It is handy way to store needed persistent data.
+
+There are two environment variables types in the bash shell:
+
+* Global variables
+* Local variables
+
+### Looking at global enviroment variables
+Global environment variables are visible from the shell sessions and from any spawned child subshells. Local
+variables are available only in the shell that creaates them. This makes global environment variables useful in applications that create child subshells, which require parent shell information.
+
+The linux system set several global environment variables when you start your bash sessions.The system environment variables almost use all capital letters to differentiate them form normal user environment variables.
+
+To view global environment variables, use the `env` or the `printenv` command.
+
+      [dwm@edwin ~]$ printenv
+      ALSA_CONFIG_PATH=/home/dwm/.config/alsa/asoundrc
+      ANDROID_HOME=/opt/android-sdk
+      ANDROID_SDK_HOME=/home/dwm/.config/android
+      ANSIBLE_CONFIG=/home/dwm/.config/ansible/ansible.cfg
+      [..]
+So many global environment variables get set for the bash shell that the display had to be snipped.Not only are many set duiring the login process,but how you log in can affect which ones are set as well.
+
+To display an individual environment variable's value, you can use the `printenv` command, but not the env command.
+
+      [dwm@edwin ~]$ printenv HOME
+      /home/dwm
+      [dwm@edwin ~]$ env HOME
+      env: ‘HOME’: No such file or directory
+You can also use the `echo` command to display a variable's value. When referencing an environment variable in this case, you must place a dollar sign ($) before the environment variable name:
+
+      [dwm@edwin ~]$ echo $HOME
+      /home/dwm
+
+Using `dollar sign` along with the variable name does more than just display its current definition when used with the echo command. The dollar sign before sign before a variable name allows the variable to be passed as a command parameter.
+
+      [dwm@edwin ~]$ ls $HOME
+       d           hd         node_modules                  README.md
+       [..]
+
+Global variables are also availabe to any process's subshells.
+
+#### Looking at local environment variables.
+
+Local environment variable , as their name implies can be seen only in the local process in which they are defined. Even though they are local, they are just as important as global enviroment variables. In fact, the Linux system also defines standard local environment variables for you by default.
+
+You can create you own local variables called `user-defined local variables`.
+Trying to see the local variable list is a little tricky at the cli. There isn't a command that displays only these variables. The set command displays all variables defined for a specific process, including both local and global envirionment variable and user-defined variable.
+
+      [dwm@edwin ~]$ set
+      '!'=0
+      '#'=0
+      '$'=81710
+      '*'=(  )
+      -=569JXZilms
+      0=-zsh
+      '?'=0
+      @=(  )
+      ALSA_CONFIG_PATH=/home/dwm/.config/alsa/asoundrc
+All global environment variable displayed using the `env` and `printenv` command appear in the set command's output. The additional environment variable are the `local environment and user-define variables`.
+
+
+### Settign User-Defined Variables
+
+You can set your own variable directly from the bash shell. After you start a bash shell , you're allowed to create local user-defined variables that are visible withing your shell process. You can assign either a numeric or a string value to an environment variable by assigning the variable to a value using the equal sign:
+
+    [dwm@edwin ~]$ echo $variable
+
+    [dwm@edwin ~]$ variable=Muraya
+    [dwm@edwin ~]$ echo $variable
+    Muraya
+That was simple! Now any time you need to reference the my_variable user-defined variable value, just reference it by the name `$variable`.
+
+If you need to assign a string value that contains spaces, you need to use a single or double quotation mark to delineate the beginning and the end of the string:
+
+Without the quatation marks, the bash shell assumes that the next word is anothe command to process. Notice that for the local variable you defined,you used lowerscase letters, while the system environment variable you've seen so far have all used uppercase letters.
+
+>##### The standard bash shell convention is for all environment variables to use uppercase letters. If you are creating a local variable for yourself and your own shell scripts, use lowercase letters. Variables are case sensitive. By keeping your user-defined local variable lowercase, you avoid the potential disaster of redefining a system environment variable.
+
+It's extremely important that you not use spaces between the variable name , the equal sign and the value. If you put any spaces in the assignment, the bash shell interprets the value as a separate command.
+
+if you set a local varialbe in a child process, after you leave the child process, the local variable is no longer available.
+
+      [dwm@edwin ~]$ echo $my_child_variable
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ my_child_variable="Hello Little world"
+      [dwm@edwin ~]$ echo $my_child_variable
+      Hello Little world
+      [dwm@edwin ~]$ exit
+      exit
+      [dwm@edwin ~]$ echo $my_child_variable
+The local variable set within the child shell doesn't exist after a return to the parent shell.
+
+### Setting global environment variables
+Global environment variable are visible form any child process created by the parent process that sets the varaible.
+
+The method used to create a global environment variable is to first create a local variable and then export it to the global environment.
+
+This is done by using the export command and the variable name minus the dollar sign:
+
+      [dwm@edwin ~]$ my_variable="I am Global now"
+      [dwm@edwin ~]$ export my_variable
+      [dwm@edwin ~]$ echo $my_variable
+      I am Global now
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ echo $my_variable
+      I am Global now
+
+The variable `my_variable` is available on all shell and subshells. A child shell cannot even use the export command to change the parent shell's global environment variable value.
+
+      [dwm@edwin ~]$ echo $my_variable
+      I am Global now
+      [dwm@edwin ~]$ clear
+      [dwm@edwin ~]$ name="Edwin Muraya"
+      [dwm@edwin ~]$ export name
+      [dwm@edwin ~]$ echo $name
+      Edwin Muraya
+      [dwm@edwin ~]$ bash
+      [dwm@edwin ~]$ name="Mr muraya"
+      [dwm@edwin ~]$ export name
+      [dwm@edwin ~]$ echo $name
+      Mr muraya
+      [dwm@edwin ~]$ exit
+      exit
+      [dwm@edwin ~]$ echo $name
+      Edwin Muraya
+
+#### Removing Environment variables
+
+If you can create a new environment variable, it make sense that you can also remove an existing environment variable. You can do this withe the  `unset` command. When referencing the environment variable in the `unset`
+
+      [dwm@edwin ~]$ my_variable="Muraya Kamau"
+      [dwm@edwin ~]$ export my_variable
+      [dwm@edwin ~]$ echo $my_variable
+      Muraya Kamau
+      [dwm@edwin ~]$ unset my_variable
+      [dwm@edwin ~]$ echo $my_variable
+>##### It can be confusing to remember when to use and when not to use the dollar sign with environment variables. If you are doind anything with the variable, use the dollar sign. If you are doing anything to the variable , don't use the dollar sig. The excepiton to this rule is using `printenv` do display a variable's value.
+
+When dealing with global environmen variable, things get a little tricky. If you're in a child process and unset a global environment variable, it applies only to the child process. The global environment is still available in the parent process.
+
+    [dwm@edwin ~]$ my_variable="I am Global now"
+    [dwm@edwin ~]$ export my_variable
+    [dwm@edwin ~]$ echo $my_variable
+    I am Global now
+    [dwm@edwin ~]$ bash
+    [dwm@edwin ~]$ unset my_variable
+    [dwm@edwin ~]$ echo $my_variable
+
+    [dwm@edwin ~]$ exit
+    exit
+    [dwm@edwin ~]$ echo $my_variable
+    I am Global now
+### Uncovering Defaut Shell Environment Variables
+
+The bash shell uses specifi environment variables by defaunt to define the system environment. You can always count on thes variables being set or available to be set on your linux system.
+
+Becaues the bash sell is a derivative of th original Unix Bourne shell, it also include environment variables originally defined in that shell.
+
+Variables| Description
+---------|------------
+CDPATH   | A colon-separated list of directoriec used as a search path for the cd command
+HOME     | The current user's home directory
+IFS      | A list of characters that separate fields used by the shel to spit text strings
+MAIL     | The filenames of the current user's mailbox (the bash shell check this file fo mails)
+MAILPATH | A colone-separate list of multiple filenames for the current user's mailbox
+OPTARG   | The value of the last option argument processed by the getopt command.
+PATH     | A colon-separated list of directory where the shell looks for command
+PS1      | The primary shell command line interface prompt string
+PS2      | The secondary shel command line interface prompt string
+
+####### The bash Shell Envrionment varaible
+Variable | Decription
+---------|------------
+BASH | The full pathname to execute the current instance of the bash shell.
+BASH_ALIASES | An associative array of currently set aliases
+BASH_ARGC | A variable array that contains the parameter being passed to a subroutine or shell
+BASH_CMDS | An associative array of location of commands the shell has executed.
+BASH_COMMAND | The shell command currently being or about to be executed.
+BASH_ENV | When set, each bash script attempt to execuet a startup file defined by this variable.
+
+There are so many presest environmet variables which i will not include here.
+
+### Setting the PATH Environment Variable
+
+When you enter an enternal command in the shell command line interface (cli), the shell must search the system to find the program. The PATH envrionment variable define the directoriest it searches looking for a commands and programs.
+
+      [dwm@edwin ~]$ echo $PATH
+      /home/dwm/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/opt/android-sdk/platform-      tools:/opt/android-sdk/tools:/opt/android-sdk/tools/bin:/usr/lib/jvm/default/bin:/usr/bin/si      te_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/dwm/.local/bin/cron:/home/
+
+If a command's or program location is not included in the `PATH` variable, The shell cannot find it without an absolute directory reference. If the shell cannot find the command or program, it produces an error message.
+
+      [dwm@edwin ~]$ myprog
+      zsh: command not found: myprog
+The proble is that often application place their executable program in directories that aren't in the PATH environment variable. The trick is ensuring that your PATH enviroment variable includes all the directories where your application reside.
+
+You can add new search directories to the existing  `PATH` envrionment variable without having to rebuild it from scratch. The individual directories listed in the PATH are separate by `colons`
+
+
+       echo $PATH
+      /home/dwm/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/opt/android-sdk/platform:
+      /home/dwm/script
+      [dwm@edwin ~]$ PATH=$PATH:/home/dwm/script
+      [dwm@edwin ~]$ echo $PATH
+      /home/dwm/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/opt/android-sdk/platform:
+      /home/dwm/script
+
+By adding the directory to the $PATH environment varaile, you can now execute you proram form anywere in the virtual directory structure.
+
+### Locating System Enviroonment Variables
+
+The linux system uses envrionment variale for many purposes. You know now how to modify system environment variable and create your own variables.The trick is how to make these environment varialbe persistent.
+
+    * As a defaut login shell at login time
+    * As an interactive shell that is started by spawning a subshell.
+    * As a non-interactive shell to run a script
+
+##### Understanding the login shell process
+
+When you log in to the Linux system, the bash shell start a login shell. The login shell typically looks for five different files to process commands from:
+
+    * /etc/profile
+    * $HOME/.bash_profile
+    * $HOME/.bashrc
+    * $HOME/.bash_login
+    * $HOME/.profile
+The `/etc/profile` file is the main default startup file for the bash shell on the system. All Users on the system execute this startup file when they log in.
+
+The other four startup file are specifi for each user and can be customized for an individual users requirements. Lets look closer at thes files.
+
+### Viewing the /etc/profile file
+
+The /etc/profile file is the main default startup file the bash shell. Whenever you log in to the linux system, bash execute the commands in the /etc/profile startup file first. Different linux distribution place different command in thi file.
+
+
+    # /etc/profile
+
+    # Set our umask
+    umask 022
+
+    # Append our default paths
+    appendpath () {
+	case ":$PATH:" in
+	    *:"$1":*)
+		;;
+	    *)
+		PATH="${PATH:+$PATH:}$1"
+	esac
+    }
+
+    appendpath '/usr/local/sbin'
+    appendpath '/usr/local/bin'
+    appendpath '/usr/bin'
+    unset appendpath
+
+    export PATH
+
+    # Load profiles from /etc/profile.d
+    if test -d /etc/profile.d/; then
+	    for profile in /etc/profile.d/*.sh; do
+		    test -r "$profile" && . "$profile"
+	    done
+	    unset profile
+    fi
+
+    # Source global bash config
+    if test "$PS1" && test "$BASH" && test -z ${POSIXLY_CORRECT+x} && test -r /etc/bash.bashrc; then
+	    . /etc/bash.bashrc
+    fi
+
+    # Termcap is outdated, old, and crusty, kill it.
+    unset TERMCAP
+
+    # Man is much better than us at figuring this out
+    unset MANPATH
+
+Each distribution /etc/profile file has different setting and commands. Not that it sets some system environment variable within itself. This provides a place for the linux system to place application-specific startup file that is executed by the shell when you log in.
+
+      [dwm@edwin ~]$ ls /etc/profile.d
+      android-sdk.csh                 android-sdk.sh  gawk.sh            jre.csh    perlbin.csh
+      vte.sh
+      android-sdk-platform-tools.csh  freetype2.sh    gpm.sh             jre.sh     perlbin.sh
+      android-sdk-platform-tools.sh   gawk.csh        home-local-bin.sh  locale.sh  vte.csh
+
+Notice that most application create two startup files -one for the bash (using the .sh extension) and one for the c shell (using the .csh extension).
+
+The `lang.csh` and `lang.sh` files attempt to determinte the defaut language character set used on the system and set the `LANG` environment variable appropriately.
+
+### Viewing the $HOME startup files
+
+The remaining startup file are all used for the same function --to provide a user-specific startup file for defining user-specific environment varaible. Most linux distribution use only one or two of these four startup files.
+
+        * $HOME/.bash_profile
+	* $HOME/.bashrc
+	* $HOME/.bash_login
+	* SHOME/.profile
+Notice that all four files start with a dot, making them hidden files (they don't appear in a normal ls command listing).The first file found in the following ordered list is run, and the rest are ingnored.
+
+        * $HOME/.bash_profile
+	* $HOME/.bash_login
+	* SHOME/.profile
+Notice that $HOME/.bashrc in not in this list. This is because it is typically run from of the other files.
+Remember that `$HOME` represent a user's home directory. Also the tilde (~) is used to represent a users home directory.
+
+
+      # ~/.bash_profile
+      #
+
+      [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+The .bash_profile startup file first checks to see if the startup file , `.bashrc` if present in the HOME directory. If it's there, the startup file executes the commands in it.
+
+### Understandin the interactive shell process
+
+If you start a bash shell withou logging into a system (if you just type bash at the CLI) prompt you started whats is challed an  `interactive shell`
+
+
+The interactive shell does not act like a login shell, but it still provide a cli prompt for you to enter commands.
