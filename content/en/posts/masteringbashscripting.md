@@ -37,7 +37,7 @@ $ echo $BASH_VERSION
 #### The command hierachy
 
 Linux type of cammands are as follows
-    
+
     Aliases
     Functions
     shell built in
@@ -52,7 +52,7 @@ $ type ls
 ls is aliased to `ls --color=auto'
 ```
 ```bash
-$ # using the -a option 
+$ # using the -a option
 $ type -a ls
 ls is aliased to `ls --color=auto'
 ls is /usr/bin/ls
@@ -79,7 +79,7 @@ to know the type of command in our system.
 ```
 #### Command PATH
 Linux shell will check for executable in the loctions in the `enviroment variable` when the full of the
-relative path of the command is supplied.It is possible to include our current directory to the path varible using the export command. 
+relative path of the command is supplied.It is possible to include our current directory to the path varible using the export command.
 
 ```bash
 export PATH=$PATH:.
@@ -92,5 +92,5 @@ You could create a folder in your home directory and add it to your path. using 
  $ export $PATH=$PATH:$HOME/bin
 ```
 #### Preparing the Text Editor for Scripting
-##### Configuring vim for this!! 
+##### Configuring vim for this!!
 You could use the graphical text editor for this if you prefer. Setting up common options makes our life easier in the editor and it will improve our everyday productivity and the consistency we need.
