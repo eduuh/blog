@@ -1,7 +1,7 @@
 ---
 title: "Jsupandgoing"
 date: 2020-02-08T08:13:40+03:00
-draft: false
+draft: true
 linktitle: "Javascript dipe dive"
 title: "Javascript deep Dive , Understanding the basic concepts"
 categories: ["programming","Js"]
@@ -17,9 +17,9 @@ authorDesc: Selftaught Web and Mobile Developer # author description
 ---
 ## Javascript deep dive tutorial
 
-This note are inspired by `KYLE SIMPSON` javascrip book series. I like how the ideas in the book are shared. 
-I have being doing c# for the backend and to complete my journey for becoming a `full stack developer`. 
-I needed to do alot of javascript, so immediately i started using typescript for my web development and i would say the experience with typescript is supper great. I was reading up on 'react' and realized the documentation is not in `typescript`, and decided to do some research and answer the question 
+This note are inspired by `KYLE SIMPSON` javascrip book series. I like how the ideas in the book are shared.
+I have being doing c# for the backend and to complete my journey for becoming a `full stack developer`.
+I needed to do alot of javascript, so immediately i started using typescript for my web development and i would say the experience with typescript is supper great. I was reading up on 'react' and realized the documentation is not in `typescript`, and decided to do some research and answer the question
 
 `when should i use typescript?` read the [Alex blog](https://www.freecodecamp.org/news/when-should-i-use-typescript-311cb5fe801b) about the topic.
 
@@ -29,7 +29,7 @@ so i decide to at least spend some time learning javascript in a deep way to try
 ### Up and Going
 In this deep dive you will learn about:
 1. Webstandards
-2. Sematic markup 
+2. Sematic markup
 3. Well commented code
 
 The code isn't just your Job anymore, its your craft
@@ -37,7 +37,7 @@ The code isn't just your Job anymore, its your craft
 we will be intrested with javascript `syntax` and `understanding the terminology`. You already know javascript to be the foundation of `interactive expriences on the web`. I have come to understand that javascript is one of the easiest language to get started with, i had let the typescript advertisement get to me. I dont say typescript is not awesome , but it is transpiled to javascript eventually.
 The trouble with `javascript` is that is can be used without understanding how the internal works, the understanding of language is never attained.
 
-#### We get Answers of How and why 
+#### We get Answers of How and why
 The language behave the way it does but before that let me promote the language first
 
 * Javascript is awesome.
@@ -46,7 +46,7 @@ The language behave the way it does but before that let me promote the language 
 When we developers encounters confusion we usually tend to blame the language instead of their lack of understanding.
 
 #### when i say javascript what to i mean?
-Yes! a programming language with a specific `syntax` used to write the `source code`. 
+Yes! a programming language with a specific `syntax` used to write the `source code`.
 
 1. Syntax -> the rule for valid format and combination of instructions.
 2. Source code -> A set of instructions to tell the computer what task to perform.
@@ -89,7 +89,7 @@ statement like `a = b * 3 ` are good for developers to read and write code but n
 either be an `interpreter or a 	compiler` is used to translate the code you write into command that computer can understand..
 
 Translation is done ahead of time is called `compiling code` so whe the program run later what is runnind is actually the compiled source code.
-Javascript is interpreted because your Js code is processed each time it's runs. This is not completely accurate since the JS engine actually compiles 
+Javascript is interpreted because your Js code is processed each time it's runs. This is not completely accurate since the JS engine actually compiles
 programm on the fly and then immediately runs the compied code.
 
 #### Output
@@ -99,8 +99,8 @@ programm on the fly and then immediately runs the compied code.
   alert( a );
 ```
 #### Input
-Receivind information from the users most common is to use html elememt like a text boxes to the user that she can type into and then JS to read those 
-values. 
+Receivind information from the users most common is to use html elememt like a text boxes to the user that she can type into and then JS to read those
+values.
 
 ```JS
 
@@ -150,8 +150,8 @@ A general guideline to writing comments in the code.
 
 // single line comments
 
-/* multi line 
-     comments 
+/* multi line
+     comments
           */
 
 ```
@@ -168,14 +168,14 @@ Holds a specific type of a value. JS uses dynamic typing meaning variables can h
 
 ```
 
-Amount holds a running value that changes ove the course of the program. Primary purpose of the variables is to manage the state of the 
+Amount holds a running value that changes ove the course of the program. Primary purpose of the variables is to manage the state of the
 application. (program state management).
 
 `const`	-> useful just like variables with unchanged values except that constant also prevent accidentally changing value initially set.
 
 #### Block
 
-A group or a series of statement together which we often call a block. {} 
+A group or a series of statement together which we often call a block. {}
 
 ```JS
 {
@@ -195,7 +195,7 @@ if( amount > 10 ){
 ```
 #### Conditionals
 
-```JS 
+```JS
  var bank_balance = 302.12;
  var amount = 99.99;
  if( amount < bank_balance){
@@ -220,7 +220,7 @@ example
  // while loop code
  while( numofCustomer > 0) {
     console.log('how may i help you?');
-    numofCustomer -=1; 
+    numofCustomer -=1;
     }
  // do loop code
  do{
@@ -230,7 +230,7 @@ example
 ```
 If condition is false , a while loop will not run but a do while loop will run just for the first time.
 
-The condition is tested on each iteration and you could use `break` statement to stop a loop. 
+The condition is tested on each iteration and you could use `break` statement to stop a loop.
 
 Example of another loop is the For loop.
 
@@ -274,11 +274,11 @@ There's no way to polyfill new syntax that been added to the language. The new s
 The better option is to use a tool that convert your newer code into older equivalents.A process called "transpiling" a term for transforming + compiling.
 
 Your source code is authored in the new syntax form, but what is deploy to the browser is the transpiled code in old syntax form.
-The transpiler is inserted to your buil process, similar to your code linter or your minifier. Then why would you write new syntax only to have it 
+The transpiler is inserted to your buil process, similar to your code linter or your minifier. Then why would you write new syntax only to have it
 transpiled away to older code- why not just write the older code directly?
 
 > some reasons for this are
-1. The new syntax added to language is designed to make your code more readable and maintainable. You would prefer writing new syntax not only for 
+1. The new syntax added to language is designed to make your code more readable and maintainable. You would prefer writing new syntax not only for
 yourselve but also for your development team.
 2. If you transpile only for older browsers, but serve the new syntax to the newest browsers, you get to take advantage of browser perfomance optimization
 with the new syntax. This also lets browser makes have more real-world code to test their implementations and optimizations on.
@@ -301,7 +301,7 @@ function foo() {
 
 ```
 As you see it checks to see if the arguments[0] value is void 0 (aka undefined) and if so provides the 2 default value; otherwise, it assigns whatever was
-passed. Transpilers should now be thought of as a standar part of the JS developmend ecosystem and process. JS is going to continue to evolve, much more 
+passed. Transpilers should now be thought of as a standar part of the JS developmend ecosystem and process. JS is going to continue to evolve, much more
 quickly than before, so every few months new syntax and new features will be added.
 
 > Examples of transpilers for you to choose from. Here are good ones to try.
@@ -327,7 +327,7 @@ from your browser. In newer browser the layer my be in JS but in older browser t
 
 
 Another example could be the input/output (I/O).
-The `alert()` pops us a message box in the user's browser window. alert() is provided to your JS program by the browser, not by the JS engine itself. 
+The `alert()` pops us a message box in the user's browser window. alert() is provided to your JS program by the browser, not by the JS engine itself.
 The call you make sends the message to the browser internals and it handles drawind and displayind the message box.
 
 The same goes to `console.log()` your browser provides such mechanisms and hooks them up to the developers tools.
@@ -335,10 +335,10 @@ The same goes to `console.log()` your browser provides such mechanisms and hooks
 
 #### Review
 The first step to learning Js flavor of programming is to get a basic understanding ot its core mechanisms like :
-   1. values 
-   2. types 
-   3. function 
-   4. closure 
+   1. values
+   2. types
+   3. function
+   4. closure
    5. this
    6. prototypes.
 
@@ -363,18 +363,18 @@ we are going to go in this order and what we will cover in each step.
    - Deeper understanding of the compiler approach, how to find and deal with variables and functions declarations.
    - Scope management (hoisting)
    - lexical scope and closure as the main important concept of js
-   
+
 2. this and Object prototypes.
    - Understant the this keyword and common mistakes.
    - Prototype behaviour pattern, behaviour delegation
 
 3. type & Grammar
    - Type coersion. implicit coercion and explicit coersion.
-   - What part of coeasion make complete sense if given the time to learn. do you want to keep following what the crowds say or are you willing to 
+   - What part of coeasion make complete sense if given the time to learn. do you want to keep following what the crowds say or are you willing to
    set all the assumptions aside and look at coersion with a fresh perspective.
 
 4. Async & Performance
-   - Asynchrony programming in not only critical to the performance of our applications , it's increasingly becoming the critical factor in writabiliy 
+   - Asynchrony programming in not only critical to the performance of our applications , it's increasingly becoming the critical factor in writabiliy
    and maintainability.
    - callbacks
    - inversion of control.
@@ -397,4 +397,3 @@ we are going to go in this order and what we will cover in each step.
    - Modules
    - proxies
    - weakmaps
-

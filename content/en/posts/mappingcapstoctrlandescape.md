@@ -1,7 +1,20 @@
 ---
 title: "Mappingcapstoctrlandescape"
 date: 2020-03-19T07:41:06-07:00
-draft: true
+draft: false
+
+categories: ["comandline","linux"]
+tags: ["productivity",""]
+weight: 30
+
+image : images/configurations.png
+
+author: eduuh # author name
+authorEmoji: 🤖 # emoji for subtitle, summary meta data
+authorImage: "/images/edd.jpg" # image path in the static folder
+authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
+authorDesc: Selftaught Web and Mobile Developer # author description
+
 ---
 # Smart Caps Lock: Remap to Control AND Escape (Linux, Mac, Windows)
 
@@ -54,8 +67,8 @@ The effect should apply immediately.
 1. Download and install [AutoHotKey](https://autohotkey.com/).
 2. Use the script [CapsLockCtrlEscape.ahk](https://github.com/eduuh/ahk-caps-ctrl-esc).
 
-This was made possible with a third party software called *AutoHotkey* described as `the Altimate automation script for 
-windows systems`. 
+This was made possible with a third party software called *AutoHotkey* described as `the Altimate automation script for
+windows systems`.
 
 I choose to use these program since i plan to do some automations with it in the future.
 
@@ -63,7 +76,3 @@ I admit i did not write the script for this program myself by i sourced out from
 
 This script came with something additional that i loved. I did not lose the **caps lock** fuctionality as in my linux distro. Pressing the `two
 shift keys together` activates thes caps lock.
-
-
-
-

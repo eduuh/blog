@@ -2,7 +2,7 @@
 title: "Jsargorithms"
 description: What makes an algorithm fast? To answer this question, it tend to be grouped in two categories. With respect to input size and also assuming the worst case scenarios of either time complexities or space complexity.
 date: 2020-01-26T20:40:22+03:00
-draft: false
+draft: true
 linktitle: ""
 title: "JavaScript Algorithm and Data Structures"
 categories: ["JavaScript","Development"]
@@ -87,7 +87,7 @@ check out the big o [chart](https://www.bigocheatsheet.com/)
 1. Arrays : linear
 ```Javascript
 const arr = [1,2,3]
-arr.pop() //=> {1,2]} 
+arr.pop() //=> {1,2]}
 arr[1] // dont need to start from index one, it know where the value is
 ```
 2. Object : linear
@@ -102,7 +102,7 @@ What to we do if we have multiple expressions/loops/etc?
 
 
 > #### what about o(logn)?
-A little better that linear. 
+A little better that linear.
 
 ## Complexity of Common Operations
 
@@ -116,5 +116,5 @@ A little better that linear.
 |  O(n^3)      | Tripple nested loops                  |
 
 ### Space Complecity
-The space that it take up in the memory. Are you making a new 
+The space that it take up in the memory. Are you making a new
 data structure how often are you doing that?.
