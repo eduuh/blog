@@ -14,8 +14,11 @@ steps:
   displayName: 'Checkout repository including submodules'
   submodules: true  #
 
-
 - task: HugoTask@1
+  inputs:
+    source: 
+    extendedVersion: true
+- task: HugoTask@2
   displayName: 'Generate Hugo site'
   inputs:
     destination: '$(Build.ArtifactStagingDirectory)'
@@ -25,3 +28,4 @@ steps:
   inputs:
     artifactName: 'hugo-site'
     targetPath: '$(Build.ArtifactStagingDirectory)'
+
