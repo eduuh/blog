@@ -18,7 +18,7 @@ steps:
   inputs:
     source: 
     extendedVersion: true
-- task: HugoTask@2
+- task: HugoTask@1
   displayName: 'Generate Hugo site'
   inputs:
     destination: '$(Build.ArtifactStagingDirectory)'
