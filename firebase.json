@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "hugo-site",
+    "public": "eduuh_blog/hugo-site",
     "ignore": [
       "firebase.json",
       "**/.*",
