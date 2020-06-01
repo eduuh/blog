@@ -8,7 +8,7 @@ hideToc: false
 enableToc: true
 enableTocContent: false
 authorEmoji: 👻
-tags: 
+tags:
 - version control
 - Productivity
 - git
@@ -25,13 +25,13 @@ authorDesc: Selftaught Web and Mobile Developer # author description
 
 ---
 
-#### Advanced Git WorkShop   
+#### Advanced Git WorkShop
 
-Hello am Edd and I will be taking you through this workshop.By the end of this workshop, if you follow along you have a completely different understanding of `Git` and how you work with it. 
+Hello am Edd and I will be taking you through this workshop.By the end of this workshop, if you follow along you have a completely different understanding of `Git` and how you work with it.
 
 ##### How we will go along
-I will start will a `short demo` on the `command line` to introduce the new material. 
-After a bit we will have some exercise for you to practise what we were going through. After you  finish the exercises we are 
+I will start will a `short demo` on the `command line` to introduce the new material.
+After a bit we will have some exercise for you to practise what we were going through. After you  finish the exercises we are
 then going to it together, to make sure you understand.
 
 
@@ -40,11 +40,11 @@ then going to it together, to make sure you understand.
 1. **Command Line** that support unix style commands
 2. **git version > 2.0** (check with git --version)
 3. **[github.com](github.com)** account
-4. **[This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇  
+4. **[This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇
 ```bash
-         git clone git@github.com:eduuh/Advanced-GitWorkshop.git 
+         git clone git@github.com:eduuh/Advanced-GitWorkshop.git
 ```
-  
+
 Are we all good at these requirements. Okay Let get into it.
 
 I know when we learn git we memorize 6 command  the rest of git is usually a `black box` that we don't explore. We reach at a point where we really on the GUI tool available for working with git. I.e `visual studio code`.Today we are going to go a `lot deeper to git` away from this basic commands and explore `git` further.
@@ -52,10 +52,10 @@ I know when we learn git we memorize 6 command  the rest of git is usually a `bl
 My "~~assumption~~" is you are familiar with this commands. ***Don't worry if you are a beginner you will get into pace soon.***
 
 
- Command                | Action                         
+ Command                | Action
 ------------------------|--------------------------------
-        **git clone**   | clone a remote repository : **github**, **gitlab** , **azure repos**        
-        **git push**    | Push local repository to remote service                    
+        **git clone**   | clone a remote repository : **github**, **gitlab** , **azure repos**
+        **git push**    | Push local repository to remote service
         **git fetch**   | Pull changes to a local repository
         **git pull** -f | **git fetch** + **git merge** (used flags right)
         **git init**    | Initialize a repository locally
@@ -116,7 +116,7 @@ At its core, git is like a key value store.
 
 > #### Key
 
-Its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit. 
+Its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit.
 
 This **value should always be the same if the given Input it the same**.
 
@@ -133,7 +133,7 @@ If you  run the command. Here we are **piping** the output of the echo command t
 
 The hash function returns the a **hash** which should be the same for all of us.**your can try this**
 
-```bash 
+```bash
 echo hello | git hash-object --stdin
 # ce013625030ba8dba906f756967f9e9ca394464a
 ```
@@ -146,7 +146,7 @@ lets generate **Sha1** using **openssl**
 ```
 Thes hash are different. This is because git hash function **prepends thes string "blob" followed by the file size and a null to the file's content before hashing.
 
-This is how git calculates the **sha1** for the file (in git term a blob) 
+This is how git calculates the **sha1** for the file (in git term a blob)
 
 Git calculate the files metadata + content , not just the content.
 ```bash
@@ -182,11 +182,11 @@ Remove the `hooks` directory in the repository, so that it does not get into our
 rm -rf .git/hooks  # r => recusive f => folders
 ```
 
-Now you can **tree** into the **.git** folder to pic at all the content. 
+Now you can **tree** into the **.git** folder to pic at all the content.
 
 Note if you have alot of files in your working directory u are going to have a longer structure. ***The output look something like.
 ```bash
-tree .git/ 
+tree .git/
 ```
 ```bash
 .git/
@@ -225,7 +225,7 @@ Our initial `sha1` file was **ce013625030ba8dba906f756967f9e9ca394464a**.
 
 Copy the command as it will work.
 
-* `mkdir` makes a directory. 
+* `mkdir` makes a directory.
 *  `cd` move into the directory
 * `git init` initiaze the repository
 
@@ -257,7 +257,7 @@ drwxr-xr-x 4 edd eduuh 4096 Feb 15 19:45 refs/
 ```bash
 rm -rf `.git/hooks`
 ```
-4. Look at the folder structure in a graphical way using the tree command. 
+4. Look at the folder structure in a graphical way using the tree command.
 
 ```bash
 tree .git/
@@ -288,7 +288,7 @@ find .git/object/ --type f
 ```
 We've created our first object! this is a binary file that holds what we just saved.
 
-##### Note 
+##### Note
 The **object id** is choosen based on the **content** of the object. This is how git stores our object. Let me use the right word here **content-addressable filesystem**.
 
 5. Lets try to save the same file again.
@@ -332,7 +332,7 @@ git cat-file -t 24997081
 
  command           | detail
 -------------------| ----------------------
-**kkdir** <path> | creates a directory 
+**kkdir** <path> | creates a directory
 **git init**  | initialize git in the directory
 **ls -la .git** | lists the content of the **.git** directory
 **find .git/object/ -type -f** | list all files available in a directory
@@ -367,7 +367,7 @@ Has anyone ever tried to add empty directories to git?
 git can't of dont store empty directories.
 
 
-Identical content is only store once. 
+Identical content is only store once.
 
 ## Other Optimization - Packfilse and Deltas
 
@@ -378,14 +378,14 @@ Identical content is only store once.
 and the next.
 5. Packfiles are generated when:
     You have too many objects , during gc, or during a push to remote.
-   
- You kind start to understand what happens during a git push where you see that message. 
+
+ You kind start to understand what happens during a git push where you see that message.
    > `compressing deltas`
 
 ## Commit OBJECT
 A commit is a code snapshot.
 
-A commit points to 
+A commit points to
 1. A tree
 
 and contains metadata:
@@ -419,7 +419,7 @@ The `sha1` of the commit is the hash of all this information.
         2 files changed, 4 insertions(+)
         create mode 100644 learn-copy.txt
         create mode 100644 learn.txt
-        
+
         $ tree .git/objects
         .git/objects/
         ├── 1e
@@ -436,7 +436,7 @@ command. you notice that the commit create a folder structure and has an object 
 
         $  git cat-file -t 3cb087a
          commit
-        
+
         $  git cat-file -p 3cb087a
         tree 1e234f233918794921501400511445247278c890
         author eduuh <edwinkamaumuraya0@outlook.com> 1581803358 +0300
@@ -448,7 +448,7 @@ command. you notice that the commit create a folder structure and has an object 
 ## Take away from this
 > We can't change the Commits!
 
-* if you change any data about the commit, the 
+* if you change any data about the commit, the
 commit will have a new `SHA1` hash.
 
 * even ef the files dont change the date will .
@@ -463,7 +463,7 @@ It also secures agaish corruption. If files on the disk change, the repository w
 > branch
 > HEAD  -> a pointer to the current commit.
 
-#### Why are checkout in git really fast? 
+#### Why are checkout in git really fast?
 This is because, it not pulling in other data. but its just changing the pointers.
 
 
@@ -564,7 +564,7 @@ by default `git stash` stash tracked files that are either in the repository or 
 
 #### Advanced STASHING - Operations
 Let give a scenario. You have added a new file in the repository and you dont want to `git add` it yet, but you need
-to switch to a different branch. Advanced stashing comes in 
+to switch to a different branch. Advanced stashing comes in
 handy. If you switch to a different branch with untracted files
 in your working area you could accidentally commit this file.
 
