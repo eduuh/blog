@@ -1,4 +1,4 @@
-baseURL = "https://eduuh.github.io"
+baseURL = "https://my-blog-8baaa.web.app/"
 title = "Edwin Kamau muraya"
 theme = "zzo"
 defaultContentLanguage = "en"
@@ -6,14 +6,14 @@ defaultContentLanguageInSubdir = true
 hasCJKLanguage = true
 summaryLength = 70
 buildFuture = true
-publishDir = "eduuh.github.io"
+publishDir = "hugo-site"
 copyright = "&copy;{year}, All Rights Reserved"
 timeout = 10000
 enableEmoji = true
 paginate = 13
 rssLimit = 100
 enableGitInfo = false
-googleAnalytics = ""
+googleAnalytics = "UA-167909462-1"
 
 [markup]
 

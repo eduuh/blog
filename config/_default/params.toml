@@ -6,7 +6,8 @@ custom_css = []
 custom_js = []
 useFaviconGenerator = true # https://www.favicon-generator.org/
 meta_image = ""
-themecolor = ""
+themecolor = "yellow"
+viewportSize = "widest"
 themeOptions = ["dark", "light", "hacker", "solarized", "kimbie"]
 notAllowedTypesInHome = [
   "contact",
