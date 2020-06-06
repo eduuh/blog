@@ -1,4 +1,3 @@
-
 ---
 title: "FZF"
 date: 2020-04-19T07:41:06-07:00
@@ -18,7 +17,7 @@ authorDesc: Selftaught Web and Mobile Developer # author description
 ### Installations.
 #### Two step install.
 
-{{< color "#0000ff" >}}
+{{< color "#654321" >}}
 
 *We can use git to install fzf:*
 {{< /color >}}

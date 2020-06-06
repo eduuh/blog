@@ -1,10 +1,10 @@
 ---
-title: "Vscodevim"
+title: "Visual Studio code With Neovim"
 date: 2020-04-03T20:36:34+03:00
-draft: false
+draft: true
 ---
 
-# Introduction
+### Introduction
 
 **Visual Studio code** is superb. If offers unparalleled user experience with great support for many languages and development ecosystems. It comes with great defaults and is super easy to use and to get started with.
 
