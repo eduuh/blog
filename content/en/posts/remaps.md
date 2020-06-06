@@ -4,10 +4,8 @@ date: 2020-03-19T07:41:06-07:00
 draft: false
 description: "
  Remaping caps lock to function as
-           - **super key (Mod4)** when pressed with other keys.
-           - **Escape** -> Short presses.
-[Remaping tab lock] to function as.
-           - **control key** when pressed with other key "
+           - super key (Mod4) when pressed with other keys.
+           - Escape-> Short presses."
 
 categories: ["KeyboardCentric"]
 tags: ["productivity","touchtyping","comandline","colemak","keyboard"]
@@ -28,7 +26,7 @@ My mindset is changing towards what works for me but not the defaults. Over the 
 
 I had written this post before my **Major Os** shift and my requirement have changed considerably. Let me explain more on that. I am in the process of streamlining my workflow to 100% **keyboard centric**. This was greatly influeced by the possiblities in a linux box. Something that windows dont offer. `The power of choice.` Don't get me wrong `I still use windows machine`. But Linux works for be best.
 
-Am currently using a **window manager (i3)** to manage my window setups in my linux computer. Fox conputer configuration and tweaking i have no problem using the command line.A keyboard centric approach calls for some remaps in order to be more efficient. What i wanted to achieve are the following.
+Am currently using a **window manager (i3)** to manage my window setups in my linux computer. For computer configuration and tweaking i have no problem using the command line.`A keyboard centric approach calls for some remaps` in order to be more efficient. What i wanted to achieve are the following.
 
 1. ###### [Remaping caps lock]() to function as
    - **super key (Mod4)** when pressed with other keys.
@@ -38,9 +36,9 @@ Am currently using a **window manager (i3)** to manage my window setups in my li
    - **Tab** -> Short presses.
 3. ###### [Changing the repeat KeyPresses]() to be a little more faster.
 
-#### Explaination
+##### Explaination
 
-#### Why CapsLock Function as *super key(Mod4)*
+##### Why CapsLock Function as *super key(Mod4)*
 
 As i mentioned earlier , am using i3 (improved tiling window manager) to do alot of stuff using keyboard shortcuts. The activation key is usually the (super) key often known as **Windows key**.I will be writing on how i use `I3 window manager` but let me mention a few.
 
@@ -78,26 +76,32 @@ Short presses on the **capsLock** are Escape. This is also my favorite remap i h
 `XCAPE` allows you to use a `modifier key as another key when pressed and released on its own`. Note that is is slightly slower than pressing the original key, because press event does not occur until the key is released. The default behaviour is to generate the Escape key when Left Control is Pressed and released on its own.
 
 Remaps Super_L to produce **Escape** on short keypress.
-
+{{<boxmd>}}
 killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape'
-
+{{</boxmd>}}
 > ###### xset
 
 `xset` user preferences utility for x. I use this tool to reduce the keypress delay on my linux box by 50%.
 
+{{<boxmd>}}
 `xset r rate 300 50`
+{{</boxmd>}}
 
 > ###### xmodmap
 
 Utility for modifying keymaps and pointer button mappings in X.
 
+{{<boxmd>}}
 `xmodmap -e 'keycode 135 = Super_R`
+{{</boxmd>}}
 
 > ###### Changing my keyboard Layout.
 
 I found the default keyboard layout is `qwerty`. My default is `colemak`. The solution that i found to work for me is to use 'setxkbmap' to change the layout to colemak layout.
 
+{{<boxmd>}}
 `setxkbmap us -variant colemak &   # set up the default keyboard layout to colemak`
+{{</boxmd>}}
 
 This is how my remaps script looks like. This script is called on startup to remaps keys and set my default keyboard layout.
 
@@ -105,27 +109,27 @@ This is how my remaps script looks like. This script is called on startup to rem
 
 remaps is  a script that contains a series of **statements which remaps** my keyboard.
 
-```
+{{<box>}}
 #!/bin/sh
 xset r rate 300 50
 setxkbmap -option caps:super
 killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape'
 xmodmap -e 'keycode 135 = Super_R'
 setxkbmap us -variant colemak &   # set up the default keyboard layout to colemak
-```
-
+{{</box>}}
 
 ### Archive Notes.
 I used to use this method but i currently using the above remaps.
 Run the commands below to remap **capslock** to **control** and **escape**.
 
-```bash
+{{<boxmd>}}
 # make CapsLock behave like Ctrl:
 setxkbmap -option ctrl:nocaps
 
 # make short-pressed Ctrl behave like Escape:
 xcape -e 'Control_L=Escape'
-```
+{{</boxmd>}}
+
 The effect should apply immediately.
 
 ### Step 3. Autostart
@@ -136,12 +140,12 @@ Append code from Step 2 to file `~/.xprofile` to run the command when X starts.
 ### Windows
 
 #### Option 1:
-
+{{<boxmd>}}
 1. Download and install [AutoHotKey](https://autohotkey.com/).
 2. Use the script [CapsLockCtrlEscape.ahk](https://github.com/eduuh/ahk-caps-ctrl-esc).
+{{</boxmd>}}
 
-This was made possible with a third party software called *AutoHotkey* described as `the Altimate automation script for
-windows systems`.
+This was made possible with a third party software called *AutoHotkey* described as `the Altimate automation script for windows systems`.
 
 I choose to use these program since i plan to do some automations with it in the future.
 
