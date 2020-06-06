@@ -5,7 +5,7 @@ logo = false # true or false
 
 description = "Edds Journal where i write all my notes in one place!"
 
-custom_css = []
+custom_css = ["css/custom.css","scss/custom.scss"]
 custom_js = []
 
 useFaviconGenerator = true # https://www.favicon-generator.org/
