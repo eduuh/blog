@@ -1,5 +1,5 @@
 ---
-title: "FZF"
+title: "FZF (Fuzzy Finder)"
 date: 2020-04-19T07:41:06-07:00
 draft: false
 description: " Fzf is an interactive fuzzy file search tool on the command-line. It is fast and powerful. In this post , I will introduce its installation and usage."
@@ -15,7 +15,7 @@ authorDesc: Selftaught Web and Mobile Developer # author description
 ---
 
 ### Installations.
-#### Two step install.
+> ###### Two step install.
 
 {{< color "#654321" >}}
 
@@ -33,7 +33,9 @@ The above command will install fzf under `~/.fzf/bin`. If you want to enable fzf
 **Plug '~/.fzf'**
 {{</boxmd>}}
 
+{{<color "#6">}}
 #### One step install
+
 
 We  can install fzf and enable it inside **Neovim** in one step. Use the following configuration for Neovim:
 
@@ -45,7 +47,7 @@ We can install Fzf and enable it inside Neovim in one step. Use the following co
 
 You can change the directory where you want to install fzf.
 
-### How to use
+#### How to use
 
 #### As Nvim plugin
 
@@ -59,34 +61,37 @@ Inside Nvim, we can search and open files quickly using the command provided by 
 For convenience, we can add shortcut mappings for the above commands.
 
 
-nnoremap <silent> <leader>f :FZF<cr>
-nnoremap <silent> <leader>F :FZF ~<cr>
-
+{{<boxmd>}}
+**nnoremap \<silent> \<leader>f :FZF\<cr>**
+**nnoremap \<silent> \<leader>F :FZF ~\<cr>**
+{{</boxmd>}}
 
 You can use **ctrl + N** and **ctrl + P** or the arrow key to navigate through the list of files found by fzf. To open the file in Neovim, Fzf provides several shortcut key.
 
+{{<boxmd>}}
 **Enter key :** open file in current window
 **Ctrl + T:** open file in new tab page
 **Ctrl + X**: open file in new horizontal window
 **Ctrl + V:** open file in new vertical window
+{{</boxmd>}}
 
 To close the file search window, use **Esc** or **Ctrl + c**.
 
-### Use fzf with other command.
+#### Use fzf with other command.
 
 You can also use fzf in conjuction witho other command. Fox exmple, you can use **fzf** and nvim together. Fzf is used to find and the oepn the file in nvim;
 
 {{<boxmd>}}
-**nvim $(fzf)**
+**nvim \$(fzf)**
 {{</boxmd>}}
 
 The command is useful in using in bash prompt. To find files wth fzf and open them with nvim. Placed the line in my aliaserc file.
 
 {{<boxmd>}}
-**alias fs="nvim $(fzf)"**
+**alias fs="nvim \$(fzf)"**
 {{</boxmd>}}
 
-### Use fzf alone.
+#### Use fzf alone.(In the Command Line)
 
 Fzf provides several command-line shortcut after installation.
 
@@ -109,10 +114,10 @@ By default, fzf use **find** to search files. You can use the variable `FZF_DEFA
 When you are using *vim* and *cd* you can activate file and directory fuzzy completion with ** as a trigger (press tab to trigger autocompletion.).
 
 
-{{<highlight Bash>}}
-vim **<TAB>
-cd **<TAB>
-{{</highlight>}}
+{{<boxmd>}}
+vim **\<TAB>**
+cd **\<TAB>**
+{{</boxmd>}}
 
 The auto-completion function only supports a few commands. If you want to add your own command, say **pylint**, it is easy to set up. Following the [guide here](https://github.com/junegunn/fzf/issues/536) you need to add the below command to your .bash_profile.
 
@@ -122,11 +127,11 @@ Do not forget to soure your **.bash_profile**. Then you can trigger auto-complet
 
 fzf can also auto-complete environment variable.
 
-{{<highlight Bash>}}
-export **<TAB>
-unalias **<TAB>
-unset **<TAB>
-{{</highlight>}}
+{{<boxmd>}}
+export **\<TAB>**
+unalias **\<TAB>**
+unset **\<TAB>**
+{{</boxmd>}}
 
 ##### Search hidden file by default.
 
@@ -135,10 +140,3 @@ By default, fzf does not search hidden files. In order to search hidden files by
 {{<boxmd>}}
 **export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'**
 {{</boxmd>}}
-
-
-{{< notice success >}}
-It works perfect!!
-{{< /notice >}}
-
-
