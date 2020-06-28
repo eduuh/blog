@@ -513,4 +513,4 @@ You can automate everything, from the number of windows and panes you want to , 
 
 The two most know tools to create **sessions** from config files are **tmuxinator** and **tmuxp.**
 
-
+To see all my tmux configuration. Checkout my [github tmux configuration](https://github.com/eduuh/dotfiles/blob/master/.config/tmux/tmux.conf). This is always up to date.
