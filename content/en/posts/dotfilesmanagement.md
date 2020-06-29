@@ -11,10 +11,10 @@ weight: 30
 image : images/dotfiles.png
 
 author: eduuh # author name
-authorEmoji: 😎
-authorImage: "/images/edd.jpg" 
-authorImageUrl: "" 
-authorDesc: Selftaught Web and Mobile Developer 
+authorEmoji: 😎 # emoji for subtitle, summary meta data
+authorImage: "/images/whoami/smile.png" # image path in the static folder
+authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
+authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 
 ---
 

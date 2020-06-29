@@ -13,9 +13,9 @@ image : images/configurations.png
 
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
-authorImage: "/images/edd.jpg" # image path in the static folder
+authorImage: "/images/whoami/smile.png" # image path in the static folder
 authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
-authorDesc: Selftaught Web and Mobile Developer # author description
+authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 
 ---
 #### My Remaps (General Remaping).

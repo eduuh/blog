@@ -61,14 +61,14 @@ enableUiAnimation = true
 # header
 homeHeaderType = "text" # text, img, slide
 # body
-enableBreadcrumb = true
+enableBreadcrumb = false
 enablePhotoSwipe = true
 enableSearch = true
 enableSearchHighlight = true
 enableGoToTop = true
-enableWhoami = false
+enableWhoami = true 
 summaryShape = "classic" # card, classic, compact
-searchResultPosition = "main" # side, main
+searchResultPosition = "side" # side, main
 archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
 archivePaginate = 13
 paginateWindow = 1
@@ -80,7 +80,7 @@ pubPaginate = 20
 myname = "Eduuh Muraya"
 email = "edwinkamaumuraya0@outlook.com"
 whoami = "Selftaught FullStack Developer and Bash "
-bioImageUrl = "images/whoami/avator.png"
+bioImageUrl = "images/whoami/smile.png"
 useGravatar = false
 location = "Nyeri , Kenya"
 organization = "Dedan Kimathi University"

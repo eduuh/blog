@@ -514,3 +514,17 @@ You can automate everything, from the number of windows and panes you want to , 
 The two most know tools to create **sessions** from config files are **tmuxinator** and **tmuxp.**
 
 To see all my tmux configuration. Checkout my [github tmux configuration](https://github.com/eduuh/dotfiles/blob/master/.config/tmux/tmux.conf). This is always up to date.
+
+#### I want to work with Tmux in all my sessions
+
+I use  zsh as my default shell. Adding the following in the .zshrc to start tmux at terminal startup.
+
+```bash
+if which tmux 2>&1 >/dev/null; then
+  if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+    tmux attach -t hack || tmux new -s hack; exit
+  fi
+fi
+```
+
+ Always work in a tmux session if tmux is installed

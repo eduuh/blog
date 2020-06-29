@@ -12,7 +12,7 @@ timeout = 10000
 enableEmoji = true
 paginate = 13
 rssLimit = 100
-enableGitInfo = false
+enableGitInfo = true
 googleAnalytics = "UA-167909462-1"
 
 [markup]
