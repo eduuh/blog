@@ -1,7 +1,7 @@
 logoText = "edd's Journal"
 logoType = "short" # long, short
 
-logo = false # true or false
+logo = false# true or ffalse
 
 description = "Edds Journal where i write all my notes in one place!"
 
@@ -28,7 +28,8 @@ notAllowedTypesInHome = [
   "showcase",
   "publication",
   "presentation",
-  "resume"
+  "resume",
+  "about",
 ]
 notAllowedTypesInHomeSidebar = [
   "about",
@@ -79,11 +80,11 @@ pubPaginate = 20
 
 myname = "Eduuh Muraya"
 email = "edwinkamaumuraya0@outlook.com"
-whoami = "Selftaught FullStack Developer and Bash "
+whoami = "Software Developer and Gis n Geomatic student "
 bioImageUrl = "images/whoami/smile.png"
 useGravatar = false
 location = "Nyeri , Kenya"
-organization = "Dedan Kimathi University"
+organization = "Student at Dedan Kimathi University"
 link = "https://eduuh.github.io"
 # sidebar
 
@@ -105,13 +106,29 @@ sidebarPosition = "right"
 
 tocLevels = ["h3", "h4", "h5"]
 enableSidebarPostsByOrder = true
-# footer
 
 showFeedLinks = true
 showSocialLinks = true
-enableLangChange = true
+enableLangChange = false
+
 enableThemeChange = true
 # service
+
+# comment
+enableComment = true
+disqus_shortname = "" 
+
+[utterances]       # https://utteranc.es/
+  owner = "31909722"              # Your GitHub ID
+  repo = "https://github.com/eduuh/mysite"               # The repo to store comments
+
+[gitalk]     # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
+  owner = "eduuh"              # Your GitHub ID
+  repo = "mysite"               # The repo to store comments
+  clientId = "bc04b79b04cde6c07745"           # Your client ID
+  clientSecret = "df03b0070096fb8d0de071828468546b090cd9d3"       # Your client secret
+
+
 
 googleTagManager = "" # GTM-XXXXXX
 baiduAnalytics = ""
@@ -123,39 +140,12 @@ busuanziPagePV = true
 updatePeriod = "weekly" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""
 fullContents = false
+
 # comment
 enableComment = true
 disqus_shortname = ""
 commento = false
 
-[gitalk] # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
-owner = "" # Your GitHub ID
-repo = "" # The repo to store comments
-clientId = "" # Your client ID
-clientSecret = "" # Your client secret
-
-[utterances] # https://utteranc.es/
-owner = "31909722" # Your GitHub ID
-repo = "https://github.com/eduuh/blog" # The repo to store comments
-
-[gitment]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-  owner = "31909722"              # Your GitHub ID
-  repo = "https://github.com/eduuh/blog"               # The repo to store comments
-  clientId = "bc04b79b04cde6c07745"
-  clientSecret = "df03b0070096fb8d0de071828468546b090cd9d3"
-
-# Valine.
-# You can get your appid and appkey from https://leancloud.cn
-# more info please open https://valine.js.org
-[valine]
-enable = false
-appId = '你的appId'
-appKey = '你的appKey'
-notify = false # mail notifier , https://github.com/xCss/Valine/wiki
-verify = false # Verification code
-avatar = 'mm'
-placeholder = ''
-visitor = false
 
 [changyan]
 changyanAppid = "" # Changyan app id             # 畅言
@@ -172,35 +162,13 @@ dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author=
 
 [socialOptions]
 email = "mailto:edwinkamaumuraya0@gmail.com"
-phone = "+254758874026"
-facebook = ""
-instagram = ""
+phone = ""
 twitter = "https://twitter.com/eduuhmuraya"
 github = "https://github.com/eduuh"
 stack-overflow = "https://stackoverflow.com/users/7425067/ed%c3%bbuh-m%c3%bbraya"
 linkedin = "https://www.linkedin.com/in/eduuh/"
-wack-overflow = ""
-google-plus = ""
 youtube = ""
-medium = ""
-tumblr = ""
-pinterest = ""
-stack-exchange = ""
-telegram = ""
-steam = ""
-weibo = ""
-douban = ""
-csdn = ""
-gitlab = ""
-mastodon = ""
-jianshu = ""
-zhihu = ""
-signal = ""
 whatsapp = ""
-matrix = ""
-xmpp = ""
-dev-to = ""
-gitea = ""
 
 [donationOptions]
 enable = false
@@ -227,4 +195,9 @@ link = ""
 enableComment = true
 disqus_shortname = "disqus_2w6YejGiwX"
 
-
+[[footerLinks]]
+  name = "edwin"
+  link = "#"
+[[footerLinks]]
+  name = ""
+  link = ""

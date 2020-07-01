@@ -13,7 +13,7 @@ enableEmoji = true
 paginate = 13
 rssLimit = 100
 enableGitInfo = true
-googleAnalytics = "UA-167909462-1"
+googleAnalytics = "UA-171434852-1"
 
 [markup]
 
@@ -26,8 +26,8 @@ xHTML = true
 
 [markup.highlight]
 codeFences = true
-lineNos = true
-lineNumbersInTable = true
+lineNos = false
+lineNumbersInTable = false
 noClasses = false
 
 [markup.tableOfContents]
