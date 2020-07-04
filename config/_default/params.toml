@@ -1,22 +1,20 @@
 logoText = "edd's Journal"
 logoType = "short" # long, short
 
-logo = false# true or ffalse
+logo = false # true or ffalse
 
 description = "Edds Journal where i write all my notes in one place!"
 
-custom_css = ["css/custom.css","scss/custom.scss"]
-custom_js = []
+viewportSize = "wide"
 
 useFaviconGenerator = true # https://www.favicon-generator.org/
 meta_image = ""
-
+enablePinnedPosts=true
 themecolor = "black"
-
-viewportSize = "widest"
 hideSingleContentsWhenJSDisabled = false
 
-themeOptions = ["dark", "light"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["solarized","kimbie"] # "hacker", "solarized", "kimbie"]
+
 
 notAllowedTypesInHome = [
   "contact",
@@ -58,6 +56,7 @@ notAllowedTypesInHomeFeed = [
   "resume",
   "gallery"
 ]
+
 enableUiAnimation = true
 # header
 homeHeaderType = "text" # text, img, slide
@@ -85,7 +84,7 @@ bioImageUrl = "images/whoami/smile.png"
 useGravatar = false
 location = "Nyeri , Kenya"
 organization = "Student at Dedan Kimathi University"
-link = "https://eduuh.github.io"
+link = "https://eduuh.codes"
 # sidebar
 
 enableBio = true
@@ -107,7 +106,7 @@ sidebarPosition = "right"
 tocLevels = ["h3", "h4", "h5"]
 enableSidebarPostsByOrder = true
 
-showFeedLinks = true
+showFeedLinks = false
 showSocialLinks = true
 enableLangChange = false
 
