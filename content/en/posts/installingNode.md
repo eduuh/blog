@@ -4,9 +4,10 @@ description: "Installing Node.js Tutorial using nvim"
 date: 2020-07-04T10:45:17Z
 draft: true
 hideToc: false
-enableToc: true
+enableToc: false
 author: eduuh
 authorEmoji: 🤖
+authorImage: "/images/whoami/smile.png" # image path in the static folder
 tags:
 - Javascript
 categories:
@@ -26,26 +27,32 @@ In this quick tutorial, we'll take a look at how to install nvm, and the how to 
 
 This guide covers installing nvim on linux. 
 
-###  installing Nvm and then Node.
+###  Installing Nvm and then Node.
 
-here's the abbreviated guide, highlighting the major steps:
+Here's the abbreviated guide, highlighting the major steps:
 
 
 {{<boxmd>}}
 **1. Download the nvim install script via curl:**
-
-      curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+```bash
+ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+```
 __2. Now add these line to your ~/.bashrc , ~/.profile ,~/.zshrc file to have it automatically sourced upon login:__
 
+```bash
       export NVM_DIR="$HOME/.nvm"
       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm.
-__3. Ensure that nvim was installed correctly with `nvm --verison` which should return the verison of nvm installed.
+```
+__3. Ensure that nvim was installed correctly with `nvm --version` which should return the verison of nvm installed.__
+```bash
+nvm --version
+```
 __4. Installing the versin of Node.js you want.__
 
-      - Install the latest version with **nvm install node**
-      - Use the latest version with **nvm use node**
-      - Install the latest LTS version with **nvm install --lts**
-      - Use the latest LTS version with **nvim use --lts**
+- Install the latest version with **nvm install node**
+- Use the latest version with **nvm use node**
+- Install the latest LTS version with **nvm install --lts**
+- Use the latest LTS version with **nvim use --lts**
 {{</boxmd>}}
 
 
@@ -56,25 +63,32 @@ Congratulations! You've now got `nvm - a tool to easily allow you to manage and 
 #### Install the latest Node.js version
 To install the latest available version of Node.js, you can use the following command:
 
-    nvm install node
+```bash
+nvm install node
+```
+
 Next, to use that version of Node.js in any new shell, you can simply run the use command:
 
    
 ### Install the latest Node.js LTS version
 To install the latest available LTS version of Node.js, you can run the following command:
 
-    nvm install --lts
+```bash
+nvm install --lts
+```
 And to use that latatestTS version of Node.js in any new shell, you can simply run the use command:
 
-     nvm use --lts     
+```bash
+nvm use --lts     
+```
 List available verison using __ls-remote__.
 
-    nvim ls-remote
-    nvim ls-remote --lts
-
+```bash
+nvim ls-remote
+nvim ls-remote --lts
+```
 #### Fixing nvm slowing terminal initialisation.
-This solution was taken from here [growingwithweb.com](https://www.growingwiththeweb.com/2018/01/slow-nvm-init.html). Feel free to read the blogpost to understand what is written.
-When i started using **nvim** , since then my terminal has been very slow to start up.  The root cause of the problem is that the initialisation script, the one that gets added to your **~/.bashrc** or **~/.zshrc** on install takes about 500ms to run. The reson for this slowness is because nvim is written completely in bash.
+This solution was taken from here [growingwithweb.com](https://www.growingwiththeweb.com/2018/01/slow-nvm-init.html). Feel free to read the blogpost to understand what is written. When i started using **nvim** , since then my terminal has been very slow to start up.  The root cause of the problem is that the initialisation script, the one that gets added to your **~/.bashrc** or **~/.zshrc** on install takes about 500ms to run. The reson for this slowness is because nvim is written completely in bash.
 
 From the blog above , the following solution was arrived at. 
 

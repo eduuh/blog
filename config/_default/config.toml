@@ -3,7 +3,7 @@ title = "Edwin Kamau muraya"
 theme = "zzo"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
-hasCJKLanguage = true
+
 summaryLength = 70
 buildFuture = true
 publishDir = "hugo-site"
@@ -31,12 +31,11 @@ lineNumbersInTable = false
 noClasses = false
 
 [markup.tableOfContents]
-endLevel = 4
+endLevel = 3
 ordered = false
 startLevel = 2
 
 [outputs]
-page = ["HTML", "SearchIndex"]
 home = ["HTML", "RSS", "SearchIndex"]
 section = ["HTML", "RSS", "SearchIndex"]
 taxonomyTerm = ["HTML", "RSS", "SearchIndex"]
@@ -54,3 +53,4 @@ notAlternative = true
 category = "categories"
 tag = "tags"
 series = "series"
+
