@@ -1,21 +1,22 @@
 ---
 header:
   - type: text
-    height: 200
+    height: 150
     paddingX: 50
     paddingY: 0
     align: center
     title:
-      - Edd's Journal
+      -  Edd's Journal
     subtitle:
       - A Journal Where I keep all My Tech notes in One Place.
-      - Linux , Docker , .Netcore , Javascript , C# , Bash cli
-    titleColor:
+      - Linux , Docker , .Netcore , Javascript n (Frameworks) , C# , Bash cli
+
+    titleColor: brown
     titleShadow: true
     titleFontSize: 44
-    subtitleColor:
+    subtitleColor: 
     subtitleCursive: true
-    subtitleFontSize: 18
+    subtitleFontSize: 23
     spaceBetweenTitleSubtitle: 16
 
   - type: img

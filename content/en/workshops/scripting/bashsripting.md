@@ -1,7 +1,7 @@
 ---
 title: "Bashscripting"
 date: 2020-05-26T16:02:40+03:00
-draft: true
+draft: false
 linktitle: "The Advanced Linux Workshop"
 title: "Bash Scripting"
 description: "Learning bash programing from basic to advanced concepts"
