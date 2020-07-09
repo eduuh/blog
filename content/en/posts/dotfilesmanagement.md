@@ -6,7 +6,7 @@ linktitle: ""
 title: "Dotfiles sync with bare repository"
 categories: ["comandline","linux"]
 tags: ["productivity","cli","git"]
-weight: 30
+weight: 5
 
 image : images/dotfiles.png
 
@@ -34,8 +34,11 @@ I wrote the solution in this post, for easy reference if i need to in the future
 -  **tmux (terminal multiplexer)**
 -  **zathura (pdf reader)**
 -  **nvim (text editor)**
--  **setup.sh**
+-   **dwm (dynamic window manager.)**
+-   **st**
 {{</boxmd>}}
+
+Both **dwm** and **st** are suckless programs.According to suckless philosophy, application are configured from the source code instead of using configuration files (also possible through patchs). I use Lukes build for [dwm](https://github.com/eduuh/dwm) and [st](https://github.com/LukeSmithxyz/st). You will notice that I forked dwm from luke build. I needed to customizing keybings to colemak keyboard layout.
 
 Yes **setup.sh** this is a custom setup script that i maintain to initially setup a new installation with all the setting and softwares i need in my system. Could be used to
 
@@ -60,7 +63,7 @@ A git repository is a repository that is created without a **Working Tree** but 
 
 *A bare repository is typically used as a Remote Repository that is sharing a repository amoung several different people.* You don't do work right inside the remote repository so there's no working Tree.
 
-####  Manage your dotfiles with bare repository (First Time).
+#####  Manage your dotfiles with bare repository (First Time).
 
 #### Requirements.
 
@@ -82,7 +85,7 @@ Now for fun part. We will make an alias for running git commands in our **.dotfi
 This alias references the **git binary** and also indicates the Home folder as your working tree.
 
 {{<boxmd>}}
-**alias dotfiles='/usr/bin/git --git-dir=\$HOME/.dotfiles/ --work-tree=\$HOME'**
+**alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'**
 {{</boxmd>}}
 
 Add this alias to your **.bashrc**. From now any git operation you would like to do in the .dotfiles repository can be done by the dotfiles alias. The cool thing is that you can run dotfiles from anywhere.
@@ -155,23 +158,19 @@ Perform the above steps.
 
 However, some programs create default config files, so this might fail if git finds an existing config file in your **\$HOME**. In that case a simple sol is to clone to a temporayry directory and then delete it once you are done:
 
-{{<boxmd>}}
-**git clone --separate-git-dir=\$HOME/.dotfiles https://github.com/eduuh/dotfiles.git**
-{{</boxmd>}}
-
-So this might fail if git finds an existing config file in your $HOME. In that case, a simple solution is to clone to a temporary directory , and then delete it once you are done:
+Create the alias file.
 
 {{<boxmd>}}
-**$ git clone --separate-git-dir=\$HOME/.dotfiles https://github.com/eduuh/dotfiles.git --recursive --verbose --exclude '.git' tmpdotfiles/ \$HOME/**
-**rm -r tmpdotfiles**
+**alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'**
 {{</boxmd>}}
 
-The last step is to add the **dotfile** alias in your `bashrc` or `zshrc` according to the shell you are using.
+The last step is to override everything in home directory with the new files you want there.
 
 {{<boxmd>}}
-**alias dotfiles='/usr/bin/git --git-dir=\$HOME/.dotfiles/ --work-tree=\$HOME'**
+**dotfiles reset --hard HEAD**
 {{</boxmd>}}
 
+Since you want to use your dotfiles. That means you don't care about the default configuration files presents in your linux box.
 ##### Using the dotfiles alias
 
 For the Dotfiles repository, Your will use **dotfiles instead of git**. Use it as you normally use git commands.

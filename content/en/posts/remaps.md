@@ -7,7 +7,7 @@ description: "Reload the colemak Keyboard layout on my arch distributions and Re
 
 categories: ["KeyboardCentric"]
 tags: ["productivity","touchtyping","comandline","colemak","keyboard"]
-weight: 30
+weight: 4
 
 image : images/configurations.png
 

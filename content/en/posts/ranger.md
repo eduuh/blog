@@ -5,11 +5,11 @@ draft: false
 
 description: "Ranger is a console / terminal visual file manager written in Python and with VI key bindings. Ranger is a file manager with a different graphical interface." 
 
-linktitle: ""
+linktitle: "ranger"
 title: "Ranger - Visual file manager"
 categories: ["comandline","linux"]
 tags: ["productivity","ranger","cli"]
-weight: 3
+weight: 2
 
 
 image : images/ranger.png

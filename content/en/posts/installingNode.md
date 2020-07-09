@@ -1,6 +1,7 @@
 ---
 title: "Installing Node.js Tutorial using nvm and using Npm"
 description: "Installing Node.js Tutorial using nvim and optimizing nvm to reduce slowing terminal initialization."
+linktitle: "Installing Node.js with Nvm"
 date: 2020-07-04T10:45:17Z
 draft: false
 hideToc: false

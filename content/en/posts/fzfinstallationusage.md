@@ -5,7 +5,7 @@ draft: false
 description: " Fzf is an interactive fuzzy file search tool on the command-line. It is fast and powerful. In this post , I will introduce its installation and usage."
 categories: ["Fuzzyfinder"]
 tags: ["productivity","comandline"]
-weight: 30
+weight: 3
 image : images/fzf.png
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
