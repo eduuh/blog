@@ -6,7 +6,7 @@ draft: true
 hideToc: false
 enableToc: true
 author: eduuh
-authorEmoji:😎
+authorEmoji: 😎
 tags:
 - linux
 categories:
@@ -15,6 +15,7 @@ series:
 - workspace
 image: images/feature1/markdown.png
 ---
+
 ### Important Docker Crash Course.
 
 #### Images.

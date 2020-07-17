@@ -1,6 +1,6 @@
 ---
 title: "Refactoring Dotfiles For Colemak"
-description: "Refactoring defautl qwerty configuration to colemak keyboard layout"
+description: "Refactoring default qwerty configuration to colemak keyboard layout for common unix programs."
 date: 2020-07-09T15:46:26Z
 draft: false
 hideToc: false
@@ -24,12 +24,12 @@ authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, 
 authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 ---
 
-### Background
+#### Background
 
-I will write how a made a switch to colemak. However, until recently, I was still trying to mimic the vim keybindings
-from qwerty. This is a post where i dicucss the changes I made to ensure that I never have to strech my fingers in odd ways again. The main idea is expressed well by [vim-colemak](https://github.com/jooize/vim-colemak)
+I will write how a made a switch to colemak. However, until recently, I was still trying to mimic the vim keybindings from qwerty to a colemak equivalent. This is a post where i discuss the changes I made to ensure that I never have to strech my fingers in odd ways again. The main idea is expressed well by [vim-colemak](https://github.com/jooize/vim-colemak).
 
-Most of my configuration is based on [bunnyfly](https://github.com/bunnyfly/dotfiles). A colemak user
+Most of my configuration is based on [bunnyfly](https://github.com/bunnyfly/dotfiles). A colemak user, who have inspired my Journey.
+
 {{<boxmd>}}
 ```layouts
 Colemak layout:                  |                 QWERTY layout:
@@ -40,14 +40,14 @@ Colemak layout:                  |                 QWERTY layout:
 ```
 {{</boxmd>}}
 
-### Vimium
+##### 1. Vimium , A Chrome/Brave extension
 
-I use the excellend vimium to make chrome be a little less annoying. Luckily [the wiki](https://github.com/philc/vimium/wiki/colemak) seem to have a reasonable suggestion for colemak. The basic idea is to migrate the underlying keys directly to ensure very few manual changes are require.
+I use the excellent vimium to make brave be a little less annoying. Luckily [the wiki](https://github.com/philc/vimium/wiki/colemak) seem to have a reasonable suggestion for colemak. The basic idea is to migrate the underlying keys directly to ensure very few manual changes are require.
 
-This configuration is added on vimium options page.
+This **configuration is added on vimium options page on the Custom remapping section.**
 
 {{<boxmd>}}
-mapkey n j
+**mapkey n j
 mapkey N J
 mapkey e k
 mapkey E K
@@ -58,12 +58,12 @@ mapkey K N
 mapkey l i
 mapkey L I
 mapkey j e
-mapkey J E
+mapkey J E**
 {{</boxmd>}}
 
-### Zsh
+##### 2. Zsh
 
-To ensure uniform bindings. 
+To ensure uniform bindings in zsh shell. 
 
 {{<boxmd>}}
   bindkey -M vicmd "h" backward-char
@@ -88,9 +88,9 @@ To ensure uniform bindings.
   bindkey -M viins '^r' history-incremental-pattern-search-backward      
 {{</boxmd>}}
 
-### Zathura
+##### 3. Zathura
 
-There is no better way to read pdf than [zathura]() and it also works for djvu and friends. as a plus point, it normally has very reasonable **vim** bindings , and an excellent configuration system, so we will leverage that. The best part is that we can just add to it using include **Zathuracolemk** or whatever so as to be minimally invasive.
+There is no better way to read pdf than [zathura]() and it also works for djvu and friends, as a plus point, it normally has very reasonable **vim** bindings , and an excellent configuration system, so we will leverage that. The best part is that we can just add to it using include **Zathuracolemk** or whatever so as to be minimally invasive.
 
 {{<boxmd>}}
 map n scroll down
@@ -115,7 +115,7 @@ map [index] I navigate_index expand-all
 
 {{</boxmd>}}
 
-### i3
+##### 4. i3
 
 I have some bindings set ut in terms of focing the window. This does all the work.
 
