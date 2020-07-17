@@ -5,7 +5,7 @@ logo = false # true or ffalse
 
 description = "Edds Journal where i write all my notes in one place!"
 
-viewportSize = "wide"
+viewportSize = "normal"
 
 useFaviconGenerator = true # https://www.favicon-generator.org/
 meta_image = ""
@@ -13,7 +13,7 @@ enablePinnedPosts=true
 themecolor = "black"
 hideSingleContentsWhenJSDisabled = false
 
-themeOptions = ["solarized","kimbie"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["light","dark"] # "hacker", "solarized", "kimbie"]
 
 
 notAllowedTypesInHome = [
