@@ -93,26 +93,20 @@ To ensure uniform bindings in zsh shell.
 There is no better way to read pdf than [zathura]() and it also works for djvu and friends, as a plus point, it normally has very reasonable **vim** bindings , and an excellent configuration system, so we will leverage that. The best part is that we can just add to it using include **Zathuracolemk** or whatever so as to be minimally invasive.
 
 {{<boxmd>}}
-map n scroll down
+**map n scroll down
 map e scroll up
 map h scroll left
 map i scroll right
-
 map N scroll half-down
 map E scroll half-up
-
 map k search forward
 map K search backward
-
-
 map [index] n navigate_index down
 map [index] e navigate_index up
 map [index] h navigate_index collapse
 map [index] i navigate_index expand
-
 map [index] H navigate_index collapse-all
-map [index] I navigate_index expand-all
-
+map [index] I navigate_index expand-all**
 {{</boxmd>}}
 
 ##### 4. i3
@@ -120,13 +114,51 @@ map [index] I navigate_index expand-all
 I have some bindings set ut in terms of focing the window. This does all the work.
 
 {{<boxmd>}}
-bindsym $mod+h			focus left
+**bindsym $mod+h			focus left
 bindsym $mod+n			focus down
 bindsym $mod+e			focus up
-bindsym $mod+i			focus right
+bindsym $mod+i			focus right**
 {{</boxmd>}}
 
-### Conclusions
+##### 5. nvim
+
+I have some the following remaps in my init.vim file.
+
+{{<boxmd>}}
+**"Colemak Remaps {{{
+noremap n j
+noremap i l
+noremap e k
+noremap k n
+noremap K N
+" _r_   inner Text object
+noremap l i
+noremap L I
+" set j (same as h , cursor left) to 'end of word'
+noremap j e
+noremap J E**
+{{</boxmd>}}
+
+##### 6. Tmux (Copy mode)
+This is the keybindings that i use when using copy mode in tmux.
+
+{{<boxmd>}}
+**\# colemak keys
+bind-key -T copy-mode-vi n send -X cursor-down
+bind-key -T copy-mode-vi e send -X cursor-up
+bind-key -T copy-mode-vi i send -X cursor-right
+bind-key -T copy-mode-vi k send -X search-again
+bind-key -T copy-mode-vi K send -X search-reverse
+bind-key -T copy-mode-vi l send -X start-of-line
+bind-key -T copy-mode-vi L send -X end-of-line
+bind-key -T copy-mode-vi j send -X next-word-end
+bind-key -T copy-mode-vi J send -X next-space-end
+bind-key -T copy-mode-vi c-n send -X bottom-line
+bind-key -T copy-mode-vi c-m send -X middle-line
+bind-key -T copy-mode-vi c-e send -X top-line**
+{{</boxmd>}}
+
+#### Conclusions
 
 That seems to be it for now. If I think of more programs I use reqularly which allow vim bindings. Or keybindings in general. i'll probably just update this post. My full dotfiles are [present here](https://github.com/eduuh/dotfiles)
 
