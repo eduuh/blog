@@ -8,13 +8,11 @@ enableToc: false
 author: eduuh
 authorEmoji: 🤖
 tags:
-- linux
+- colemak
+- cli
 categories:
 - Productivity
-- touch typing
-series:
-- colemak
-image: images/keyboard.png
+- linux
 
 weight: 1
 author: eduuh # author name
@@ -31,6 +29,7 @@ I will write how a made a switch to colemak. However, until recently, I was stil
 Most of my configuration is based on [bunnyfly](https://github.com/bunnyfly/dotfiles). A colemak user, who have inspired my Journey.
 
 {{<boxmd>}}
+
 ```layouts
 Colemak layout:                  |                 QWERTY layout:
 `12345 67890-=     Move around:  |  (instead of)   `12345 67890-=
@@ -38,6 +37,7 @@ Colemak layout:                  |                 QWERTY layout:
  arstd HNEIo'         h   i      |     h   l        asdfg HJKL;'
  zxcvb km,./            n        |       j          zxcvb nm,./
 ```
+
 {{</boxmd>}}
 
 ##### 1. Vimium , A Chrome/Brave extension
@@ -63,29 +63,29 @@ mapkey J E**
 
 ##### 2. Zsh
 
-To ensure uniform bindings in zsh shell. 
+To ensure uniform bindings in zsh shell.
 
 {{<boxmd>}}
-  bindkey -M vicmd "h" backward-char
-  bindkey -M vicmd "n" down-line-or-history
-  bindkey -M vicmd "e" up-line-or-history
-  bindkey -M vicmd "i" forward-char
-  bindkey -M vicmd "s" vi-insert
-  bindkey -M vicmd "S" vi-insert-bol
-  bindkey -M vicmd "k" vi-repeat-search
-  bindkey -M vicmd "K" vi-rev-repeat-search
-  bindkey -M vicmd "l" beginning-of-line
-  bindkey -M vicmd "L" end-of-line
-  bindkey -M vicmd "j" vi-forward-word-end
-  bindkey -M vicmd "J" vi-forward-blank-word-end
+bindkey -M vicmd "h" backward-char
+bindkey -M vicmd "n" down-line-or-history
+bindkey -M vicmd "e" up-line-or-history
+bindkey -M vicmd "i" forward-char
+bindkey -M vicmd "s" vi-insert
+bindkey -M vicmd "S" vi-insert-bol
+bindkey -M vicmd "k" vi-repeat-search
+bindkey -M vicmd "K" vi-rev-repeat-search
+bindkey -M vicmd "l" beginning-of-line
+bindkey -M vicmd "L" end-of-line
+bindkey -M vicmd "j" vi-forward-word-end
+bindkey -M vicmd "J" vi-forward-blank-word-end
 
-  bindkey -M vicmd "u" undo
-  bindkey -M vicmd "U" redo
-  bindkey -M vicmd "^?" backward-delete-char
-  bindkey -M vicmd "^[[3~" delete-char
+bindkey -M vicmd "u" undo
+bindkey -M vicmd "U" redo
+bindkey -M vicmd "^?" backward-delete-char
+bindkey -M vicmd "^[[3~" delete-char
 
-  bindkey -M viins '^R' history-incremental-pattern-search-forward
-  bindkey -M viins '^r' history-incremental-pattern-search-backward      
+bindkey -M viins '^R' history-incremental-pattern-search-forward
+bindkey -M viins '^r' history-incremental-pattern-search-backward  
 {{</boxmd>}}
 
 ##### 3. Zathura
@@ -115,9 +115,9 @@ I have some bindings set ut in terms of focing the window. This does all the wor
 
 {{<boxmd>}}
 **bindsym $mod+h			focus left
-bindsym $mod+n			focus down
+bindsym $mod+n focus down
 bindsym $mod+e			focus up
-bindsym $mod+i			focus right**
+bindsym $mod+i focus right**
 {{</boxmd>}}
 
 ##### 5. nvim
@@ -131,7 +131,7 @@ noremap i l
 noremap e k
 noremap k n
 noremap K N
-" _r_   inner Text object
+" _r_ inner Text object
 noremap l i
 noremap L I
 " set j (same as h , cursor left) to 'end of word'
@@ -140,6 +140,7 @@ noremap J E**
 {{</boxmd>}}
 
 ##### 6. Tmux (Copy mode)
+
 This is the keybindings that i use when using copy mode in tmux.
 
 {{<boxmd>}}
@@ -161,4 +162,3 @@ bind-key -T copy-mode-vi c-e send -X top-line**
 #### Conclusions
 
 That seems to be it for now. If I think of more programs I use reqularly which allow vim bindings. Or keybindings in general. i'll probably just update this post. My full dotfiles are [present here](https://github.com/eduuh/dotfiles)
-

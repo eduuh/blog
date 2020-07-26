@@ -2,20 +2,19 @@
 description: Efficient way to manage configuration files in a linux system.
 date: 2020-02-12T11:37:37+03:00
 draft: false
-linktitle: ""
-title: "Dotfiles sync with bare repository"
-categories: ["comandline","linux"]
-tags: ["productivity","cli","git"]
+linktitle: ''
+title: 'Dotfiles sync with bare repository'
+categories: ['Productivity', 'Linux']
+tags: ['Cli', 'Git']
 weight: 5
 
-image : images/dotfiles.png
+image: images/dotfiles.png
 
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
-authorImage: "/images/whoami/smile.png" # image path in the static folder
-authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
+authorImage: '/images/edd.jpg' # image path in the static folder
+authorImageUrl: '' # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
-
 ---
 
 #### A simpler way to manage your dotfiles
@@ -24,34 +23,35 @@ Hey there am edd. I was having trouble with configuration files since I started 
 
 I wrote the solution in this post, for easy reference if i need to in the future.
 
-
 #### What are dotfile
 
 **Dotfile are file in the linux system that starts with a period**. They are mainly used to store configuration files for the User instance for various applications. For me the dotfiles that i would love to manage are as follow.
 
 {{<boxmd>}}
--  **i3 (window manager)**
--  **tmux (terminal multiplexer)**
--  **zathura (pdf reader)**
--  **nvim (text editor)**
--   **dwm (dynamic window manager.)**
--   **st**
-{{</boxmd>}}
+
+- **i3 (window manager)**
+- **tmux (terminal multiplexer)**
+- **zathura (pdf reader)**
+- **nvim (text editor)**
+- **dwm (dynamic window manager.)**
+- **st**
+  {{</boxmd>}}
 
 Both **dwm** and **st** are suckless programs.According to suckless philosophy, application are configured from the source code instead of using configuration files (also possible through patchs). I use Lukes build for [dwm](https://github.com/eduuh/dwm) and [st](https://github.com/LukeSmithxyz/st). You will notice that I forked dwm from luke build. I needed to customizing keybings to colemak keyboard layout.
 
 Yes **setup.sh** this is a custom setup script that i maintain to initially setup a new installation with all the setting and softwares i need in my system. Could be used to
 
 {{<boxmd>}}
-* **setup the configuration files managed by the git repository.**
-* **Setup my keyboard mapping to the way a need them to be .**
-{{</boxmd>}}
 
-The keyboard mapping i love most, and spend alot of time setting it up is **Remapping caps lock to act as a control key when pressed together  with other character, and behave as Escape when pressed alone.**
+- **setup the configuration files managed by the git repository.**
+- **Setup my keyboard mapping to the way a need them to be .**
+  {{</boxmd>}}
+
+The keyboard mapping i love most, and spend alot of time setting it up is **Remapping caps lock to act as a control key when pressed together with other character, and behave as Escape when pressed alone.**
 
 I would love to automate the process , so that i don't even think about it. Like most folks(know this from my research), I use git to manage my **dotfiles**. This lets me have a versioned backup for my configurations, and if something breaks (and it often does) I can revert to a working configuration fairly easily. I came across a post of how to manage the dotfiles without the need for any **symlinking**.
 
-The key idea is really simple: make **\$HOME the git work-tree.**  The normal way of doing this would be to do a **git init in you \$HOME**, but that would totally mess up git commands if you have other repositories in your \$HOME (also, you probably don't want your entire \$HOME in a git repository.
+The key idea is really simple: make **\$HOME the git work-tree.** The normal way of doing this would be to do a **git init in you \$HOME**, but that would totally mess up git commands if you have other repositories in your \$HOME (also, you probably don't want your entire \$HOME in a git repository.
 
 We will **create a dummy folder and initialize a bare repository**.Essentially a git repo with no working directory in there. **All git commands will be run with our dummy as the git directory, but \$HOME as the work directory.**
 
@@ -61,9 +61,9 @@ A git repository is a repository that is created without a **Working Tree** but 
 
 **Why this setup?**
 
-*A bare repository is typically used as a Remote Repository that is sharing a repository amoung several different people.* You don't do work right inside the remote repository so there's no working Tree.
+_A bare repository is typically used as a Remote Repository that is sharing a repository amoung several different people._ You don't do work right inside the remote repository so there's no working Tree.
 
-#####  Manage your dotfiles with bare repository (First Time).
+##### Manage your dotfiles with bare repository (First Time).
 
 #### Requirements.
 
@@ -78,7 +78,6 @@ Setting this method up the first time is really easy. First, let's create our ba
 **mkdir $HOME/.dotfiles
 git init --bare $HOME/.dotfiles**
 {{</boxmd>}}
-
 
 Now for fun part. We will make an alias for running git commands in our **.dotfiles** repository. I'm calling my alias `dotfiles:` .Make sure you reference the right `dotfiles` folder which are anywhere within your \$HOME folder.
 
@@ -100,7 +99,7 @@ Lets add a remote and also set status now to show untracked files since there wi
 
 #### Adding the conf to Source control.
 
-Note: Avoid using  **dotfiles add .** since you don't want to and your home folder to your dotfile repository.
+Note: Avoid using **dotfiles add .** since you don't want to and your home folder to your dotfile repository.
 
 example:
 
@@ -111,8 +110,8 @@ example:
 
 Note that we create an **alias for the current session.** In order to make the alias to be available we need to add the line to the configuration file of the terminal that you use. For me I added the line in my .zshrc.
 
-
 #### Setting Up a New Machine With existing Configuration.
+
 #### Method 1
 
 Assumtion is that you are using the above described method to store your **dotfiles**.Make a backup folder first and backup the default configuration available for your application. But in most cases you man not have them.
@@ -120,8 +119,8 @@ Assumtion is that you are using the above described method to store your **dotfi
 Setting this method up the first time is really easy. First, let's create our bare repository. I chose to name my placeholder **.dotfiles**. Ofcourse you can use any name.
 
 {{<boxmd>}}
-**mkdir $HOME/.dotfiles**
-**git init --bare $HOME/.dotfiles**
+**mkdir \$HOME/.dotfiles**
+**git init --bare \$HOME/.dotfiles**
 {{</boxmd>}}
 
 Set up the alias for the current session using the command.
@@ -141,7 +140,7 @@ Pull in the changes form your remote repository.
 
 {{<boxmd>}}
 **dotfiles pull origin master**
-**dotfiles reset --hard HEAD   # ovewrites the Home Directory**
+**dotfiles reset --hard HEAD # ovewrites the Home Directory**
 {{</boxmd>}}
 
 #### Method 2
@@ -171,6 +170,7 @@ The last step is to override everything in home directory with the new files you
 {{</boxmd>}}
 
 Since you want to use your dotfiles. That means you don't care about the default configuration files presents in your linux box.
+
 ##### Using the dotfiles alias
 
 For the Dotfiles repository, Your will use **dotfiles instead of git**. Use it as you normally use git commands.
@@ -180,8 +180,8 @@ A **commit** command.
 {{<boxmd>}}
 **dotfiles commit -m "zshrc => zsh oh my god configuration files "**
 [master 64a553b] zshrc => zsh oh my god configuration files
- 1 file changed, 91 insertions(+)
- create mode 100644 .zshrc
+1 file changed, 91 insertions(+)
+create mode 100644 .zshrc
 {{</boxmd>}}
 
 A **push** action.
@@ -195,7 +195,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 1.45 KiB | 1.45 MiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/eduuh/dotfiles.git
-   7d507e7..64a553b  master -> master
+7d507e7..64a553b master -> master
 {{</boxmd>}}
 
 The **repository will be downloaded** but there might exist some configuration files in your home directory to make sure you are using the right configuration file use git checkout to actually copy the copy in your repository to the working directory.

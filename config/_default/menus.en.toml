@@ -10,10 +10,10 @@ name = "workshops"
 url = "workshops"
 weight = 2
 
-[[main]]
-parent = "workshop"
-name = "Presentation"
-url = "presentation"
+#[[main]]
+#parent = "workshop"
+#name = "Presentation"
+#url = "presentation"
 
 
 [[main]]
@@ -28,11 +28,11 @@ name = "Archive"
 url = "archive"
 weight = 4
 
-[[main]]
-identifier = "about"
-name = "About"
-url = "about"
-weight = 5
+#[[main]]
+#identifier = "about"
+#name = "About"
+#url = "about"
+#weight = 5
 
 [[main]]
 identifier = "gallery"

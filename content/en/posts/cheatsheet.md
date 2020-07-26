@@ -1,22 +1,19 @@
 ---
-title: "Cheatsheet + Daily Stand Up"
-description: "The place i must look back to practise what skill i Learned daily"
+title: 'Cheatsheet + Daily Stand Up'
+description: 'The place i must look back to practise what skill i Learned daily'
 date: 2020-06-28T16:03:42Z
-draft: false
+draft: true
 hideToc: false
 enableToc: true
 author: eduuh
-authorEmoji: 😎 
+authorEmoji: 😎
 tags:
-- linux
+  - linux
 categories:
-- Productivity
+  - Productivity
 series:
-- workspace
+  - workspace
 image: images/cheatsheet.png
 ---
 
- ### Tmux Cheat Sheet & Quick Reference
-
-
-
+### Tmux Cheat Sheet & Quick Reference

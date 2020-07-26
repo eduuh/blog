@@ -1,25 +1,27 @@
 ---
-title: "FZF (Fuzzy Finder)"
+title: 'FZF (Fuzzy Finder)'
 date: 2020-04-19T07:41:06-07:00
 draft: false
-description: " Fzf is an interactive fuzzy file search tool on the command-line. It is fast and powerful. In this post , I will introduce its installation and usage."
-categories: ["Fuzzyfinder"]
-tags: ["productivity","comandline"]
+description: ' Fzf is an interactive fuzzy file search tool on the command-line. It is fast and powerful. In this post , I will introduce its installation and usage.'
+categories: ['Productivity', 'Nvimplugin']
+tags: ['Fuzzyfinder', 'Cli']
+series: ['Nvim']
 weight: 3
-image : images/fzf.png
+image: images/fzf.png
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
-authorImage: "/images/whoami/smile.png" # image path in the static folder
-authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
+authorImage: '/images/edd.jpg' # image path in the static folder
+authorImageUrl: '' # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 ---
 
 ### Installations.
+
 > ###### Two step install.
 
 {{< color "#654321" >}}
 
-*We can use git to install fzf:*
+_We can use git to install fzf:_
 {{< /color >}}
 
 {{<boxmd>}}
@@ -34,10 +36,10 @@ The above command will install fzf under `~/.fzf/bin`. If you want to enable fzf
 {{</boxmd>}}
 
 {{<color "#6">}}
+
 #### One step install
 
-
-We  can install fzf and enable it inside **Neovim** in one step. Use the following configuration for Neovim:
+We can install fzf and enable it inside **Neovim** in one step. Use the following configuration for Neovim:
 
 We can install Fzf and enable it inside Neovim in one step. Use the following configurations for neovim:
 
@@ -59,7 +61,6 @@ Inside Nvim, we can search and open files quickly using the command provided by 
 {{</boxmd>}}
 
 For convenience, we can add shortcut mappings for the above commands.
-
 
 {{<boxmd>}}
 **nnoremap \<silent> \<leader>f :FZF\<cr>**
@@ -96,10 +97,11 @@ The command is useful in using in bash prompt. To find files wth fzf and open th
 Fzf provides several command-line shortcut after installation.
 
 {{<boxmd>}}
-* **Ctrl + T**: paste the path of file or directory found on the cli.
-* **Ctrl + R**: find history command and paste command on the cli.
-* **Alt + C:** cd to specific directory
-{{</boxmd>}}
+
+- **Ctrl + T**: paste the path of file or directory found on the cli.
+- **Ctrl + R**: find history command and paste command on the cli.
+- **Alt + C:** cd to specific directory
+  {{</boxmd>}}
 
 Note that **ctrl + T** n **Alt + c** will only find file or folder under current directory. If you can not find a file, please make sure that it exists under current directory.
 
@@ -111,8 +113,7 @@ By default, fzf use **find** to search files. You can use the variable `FZF_DEFA
 
 #### Autocompletion on command Line
 
-When you are using *vim* and *cd* you can activate file and directory fuzzy completion with ** as a trigger (press tab to trigger autocompletion.).
-
+When you are using _vim_ and _cd_ you can activate file and directory fuzzy completion with \*\* as a trigger (press tab to trigger autocompletion.).
 
 {{<boxmd>}}
 vim **\<TAB>**
