@@ -34,19 +34,19 @@ weight = 4
 #url = "about"
 #weight = 5
 
-[[main]]
-identifier = "gallery"
-name = "Gallery"
-url = "gallery"
-weight = 5
+#[[main]]
+#identifier = "gallery"
+#name = "Gallery"
+#url = "gallery"
+#weight = 5
 
-[[main]]
-parent = "gallery"
-name = "Hackassembly"
-url = "gallery/hackassembly"
+#[[main]]
+#parent = "gallery"
+#name = "Hackassembly"
+#url = "gallery/hackassembly"
 
-[[main]]
-parent = "gallery"
-name = "Random"
-url = "gallery/random"
+#[[main]]
+#parent = "gallery"
+#name = "Random"
+#url = "gallery/random"
 
