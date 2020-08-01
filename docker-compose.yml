@@ -2,7 +2,7 @@ version: "3"
 
 services:
   hugo:
-    container_name: hugo
+    container_name: hugo 
     image: peaceiris/hugo:v0.71.0-mod
     # image: peaceiris/hugo:v0.x.x-mod  # Hugo Modules
     ports:

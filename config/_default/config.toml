@@ -31,9 +31,9 @@ lineNumbersInTable = false
 noClasses = false
 
 [markup.tableOfContents]
-endLevel = 3
+endLevel = 6
 ordered = false
-startLevel = 2
+startLevel = 5
 
 [outputs]
 home = ["HTML", "RSS", "SearchIndex"]

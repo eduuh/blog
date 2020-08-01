@@ -15,86 +15,107 @@ series:
   - nvim
 ---
 
-## Neovim / Vim 8
+<div align="center">
+  <strong><h4 > Neovim / Vim 8</h2>
+</strong>
+</div>
 
-Vim is ubiquitous. it runs on most computers, and many systems have vim installed by default. knowing vim is skill set you can take with you wherever you go, and for many people, thats vim's killer feature.
+- **Vim is ubiquitous.** it runs on most computers, and many systems have vim installed by default.
 
-as an **open source project** vim is good health. bug fixes and new features are being developend continuously.
+- **Knowing vim is skill set you can take with you wherever you go**.
 
-### switch to neovim
+These are vim's killer feature and as an [open source project]() vim is good health.
 
-neovim is a fork of vim. its main goal to make the editor more hackable has been achieved by modernizing the codebase.introducing a new plugin archicture and sharing resposibilitiy for the codebase with the community.
+- Bug fixes and new features are being Developed continuously.
 
-the neovim community has done a great deal of work to refactor vim's codebae, making it simpler and more maintainable. it works deligently to merge patches from upstream vim, so that bug fixes and features developed for vim 8 eventually make their way into neovim.
+#### Switch to neovim
 
-### Use both
+- **Neovim is a fork of vim.**
+- Its main goal to make the editor more hackable has been achieved by modernizing the codebase.
+- Introducing a new plugin archicture and sharing resposibilitiy for the codebase with the community.
 
-you can use **vim and neovim** side by side, so you don't have to use either one exclusively. vim and neovim each have their place, and both projects will thrive for many years to come.
+- `The neovim community has done a great deal of work to refactor vim's codebase`, making it simpler and more maintainable.
+- It works deligently to merge patches from upstream vim, so that bug fixes and features developed for vim 8 eventually make their way into neovim.
 
-### Installing plugins
+#### OR Use both
 
-plugins add new functionality to vim. you'll use plugins througout this book, so you need to e able to install them. vim's build-in support for installing plugins has been poor. vim's package feature made it easy to manage plugins. i use **vim plug**.
+You can use **vim and neovim** side by side, so you don't have to use either one exclusively. Vim and Neovim each have their place, and both projects will thrive for many years to come.
 
-### Plugins makes it easy to organize and share scripts.
+#### Installing plugins
 
-if you write a script that could be useflu to other vim users you might like to turn it into plugin. that simply means creating a directory with the name you want to give your plugin.
+- **Plugins add new functionality to vim.**
+- You will always use plugins, its important to learn how to use install them.
+- Vim's build-in support for installing plugins has been poor. vim's package feature made it easy to manage plugins. i use **vim plug**.
 
-### Opening files
+* Plugins makes it easy to organize and share scripts.
+  If you write a script that could be usefull to other vim users you might like to turn it into plugin.
 
-opening files is one of the most common tasks you perform when coding . vim's built-in functionality gives you basic commands for opening any readable character of a filepath. **tab-completion** can save you from typing evey character of the filepath.
+#### Opening files
 
-## vim registers: the basics and beyond.
+- Opening files is one of the most common tasks you perform when coding .
+- Vim's built-in functionality gives you basic commands for opening any readable character of a filepath.
+- **tab-completion** can save you from typing evey character of the filepath.
 
-vim's register are that king of stuff that you don't think you need until you learn about them. after that, they become essential in your workfolw, and it's hard to let them behind. saying that, it's still incredible how many people use vim for years without knowing how to make proper use of them. bear with me and you won't be one of them.
+<div align="center">
+  <strong><h4 >vim registers: the basics and beyond</h2>
+</strong>
+</div>
 
-### if you have no idea what i'm talking about.
+vim's register are that king of stuff that you don't think you need until you learn about them. after that, they become essential in your workfolw, and it's hard to let them behind. saying that, it's still incredible how many people use vim for years without knowing how to make proper use of them.
 
-you can think of registers as a bunch of spaces in memory that vim uses to store some text. each of these spaces have an `identifier`, so it can be accessed later.
-it's no different than when you copy some text to your clipboard except that you usually have just one clipboard to copy to , while in `vim/ neovim` allows you to have multiple places to store different texts.
+##### If you have no idea what i'm talking about.
 
-### The basic usage.
+- You can think of registers as a bunch of spaces in memory that vim uses to store some text. each of these spaces have an `identifier`, so it can be accessed later.
+- It's no different than when you copy some text to your clipboard except that you usually have just one clipboard to copy to , while in `vim/ neovim` allows you to have multiple places to store different texts.
 
-every register is accessed using a double quote before its name. for example, we can access the content that is in the register r with `r.`.
+##### The basic usage.
 
-you could add the selected text to the register r by doing "ry. by doing y you are copying (yanking) the selected text, and then adding it to the register "r. to past the content of this register, the logic is the same: "rp." you are pasting the data that is in this register.
+- **Every register is accessed using a double quote before its name.** For example, we can access the content that is in the register r with `"r.`
 
-you can also access the registers in insert/command mode with `ctrl-r + register name` like in `ctrl-r r`. it wil just paste the text in your current buffer.
+- You could **add the selected text to the register r by doing "ry**.
+- By doing **y you are copying (yanking) the selected text,** and then adding it to the register "r.
+- To **paste the content of this register, the logic is the same: "rp.** You are pasting the data that is in this register.
+- You can also access the registers in insert/command mode with `ctrl-r + register name` like in `ctrl-r r`. it will just paste the text in your current buffer.
 
-you can use the :reg command to see all ther registers and their content, or filter just the ones that you are interested with :reg a b c.
+You can use the **:reg** command to see all ther registers and their content, or filter just the ones that you are interested with :reg a b c.
 
-### The unnamed register
+##### The unnamed register
 
-`vim` has a unnamed (or default) register that can be accessed with "". Any text that you delete (with d, c, s or x) or yank (with y) will be placed thare, and that's what vim uses to paste, when no explicit register is given. A simple p is the same thing as doing ""p.
+`vim` has a unnamed (or default) register that can be accessed with "". Any text that you delete **(with d, c, s or x) or yank (with y)** will be placed there, and that's what vim uses to paste, when no explicit register is given. A simple p is the same thing as doing ""p.
 
-### Never lose a yanked text again
+#### Never lose a yanked text again
 
-It already happend to all of us. We yank some text, than delet some other, and whel we try to paste the yanked text , it's not there anymore, `vim` replaced it with the text that you deleted, then you need to go there and yank that text again.
+It already happend to all of us. We yank some text, than delets some other, and while we try to paste the yanked text , it's not there anymore, `Vim` replaced it with the text that you deleted, then you need to go there and yank that text again.
 
-Well, as I said , vim will always replace the unnamed register, but of course we didn't lose the yanked text, vim would not have survived that long if it was that dumb, right?
+Well, as I said , vim will always replace the unnamed register, but of course we didn't lose the yanked text, vim would not have survived that long if it was that dumb!
 
-Vim automaticall populates what is `numbered registers` for us. As expected, these are register from "0 to 9."
+Vim automatically populates what is `numbered registers` for us. As expected, these are register from "0 to 9"
 
 `"0` will always have the content of the latest yank,and the other will have last 9 deleted text, being "1 the newest, and "9 the oldest. So if you yanked some text, you can always refer to it using "0p.
 
-### The read only registers.
+##### The read only registers.
 
-There are 4 read only registers: ". , "% , ": and "#.
+There are 4 read only registers: **". , "% , ": and "#.**
 
-The last inserted text is stored on ". , and it's quite handy if you need to write the same text twice, in different places, not needing to yank and paste.
+- The last inserted text is stored on ". , and it's quite handy if you need to write the same text twice, in different places, not needing to yank and paste.
 
-"% has the current file path, starting from the directory where vim was first opened. What I usually use it for is to copy the current file to the clipboard, so I can use it externally (running a script in another terminal for instance). You could execute : let @+=@% to do that. Let is uesd to write to a register and "+ is the clipboard register, so we are copying the current file path to the clipboard.
+- "% has the current file path, starting from the directory where vim was first opened. Whatit could be used for is to copy the current file to the clipboard, so you can externally (run a script in another terminal for instance). You could execute : let @+=@% to do that.
+- Let is used to write to a register and "+ is the clipboard register, so we are copying the current file path to the clipboard.
 
-": is the most recently executed commmand. If you save the current buffer with :w "w" will be in the register. A good way to use it with @:, to execute this command in one line :s/foo/bar, you can just go another line and execute @: to run this substitution again.
+- ": is the most recently executed commmand. If you save the current buffer with :w "w" will be in the register. A good way to use it with @:, to execute this command in one line :s/foo/bar, you can just go another line and execute @: to run this substitution again.
 
-"# is the name of the alternate file, tht you can think of it as the last edited file (it's a bit more complex than that, go to :h alternate-file if you want to understand it better. It's what vim uses to switch between files when you use `ctrl-^`, and you could do the same thing with :e `ctrl-r`. I rarely use this, but hopefully you are more creative that I am.
+- "# is the name of the alternate file, tht you can think of it as the last edited file (it's a bit more complex than that, go to :h alternate-file if you want to understand it better. It's what vim uses to switch between files when you use `ctrl-^`, and you could do the same thing with :e `ctrl-r`. I rarely use this, but hopefully you are more creative that I am.
 
-### The expression and the Search registers.
+##### The expression and the Search registers.
 
 The expression register ("=) is used to deal with results of expression. This is easier to understand with an example. If , in insert mode, you type ctrl-r =, you will see a '=' sign in the command line. Then if type 2+2 <enter> 4 will be printed. This can be used to execute all sort of expressions, even calling external commands. To give another example, if you type ctrl-r = and then, in the command line , system('ls') <enter> , the output of ls comand will be pasted in your buffer.
 
 The search register , as you may have imagined , is where the latest text that you searched with /, ?, \* or # is. If fo example you just searched /edwin and now you want to replace it with something else, there is no way you are going to type /edwin again, just do `:%s/<ctrl-r/>/mustache/g` and you are good to go.
 
-### Macros
+<div align="center">
+  <strong><h4> Macros </h2>
+</strong>
+</div>
 
 You may already be familiar with vim's macros. It's a way to record a set of action tht can be executed multiple times (:h recording) if you need more information. What you probabli didn't know is that vim uses a register to store these actions, so if you use qw to record a macro, the register "w will have all the things that you id, it's all just plain text.
 
@@ -103,13 +124,17 @@ The cool thing about this is that, as it is just a normal register, you can mani
 For example , if you forgot to add a semicolon in the end of that w macro, just do something like :let @W='i;'.
 
 Notice that W is Upcased? that's just how we append a value to a register, Using its upcased name, so here we just appending the command i; to the register, to enter insert mode (i) add a semicolon.
-if you need to edit something in the middle of the register just do :let @w='<ctrl-r w>, change what you want and close the quote in the end. Done, no more recording a macro 10 times before you get it right.
+
+If you need to edit something in the middle of the register just do :let @w='<ctrl-r w>, change what you want and close the quote in the end. Done, no more recording a macro 10 times before you get it right.
 
 Another cool thing about this is that, as it's just plain text in a register, you can easily move macros around, applying it in other vim instance, or sharing it with someone else. Think about it,if you have that register in your clipboard, you can just execute it with @+("+ is the clipboard register.)
 
-### Wrapping up
+<div align="center">
+  <strong><h4 >Wrapping Up</h2>
+</strong>
+</div>
 
-Understading how register works is quite simple, and although you are not goind to ues them every 5 minutes, it certainly will avoid some annoyances, like losing a yanked text, or having to record a macro again.
+Understading how register works is quite simple, and although you are not going to use them every 5 minutes, It certainly will avoid some annoyances, like losing a yanked text, or having to record a macro again.
 
 -     0: Moves to the first character of a line
 - ^: Moves to the first non-blank character of a line
