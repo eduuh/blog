@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>index on eduuh</title>
+    <link>https://eduuh.codes/tags/index/</link>
+    <description>Recent content in index on eduuh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</managingEditor>
+    <webMaster>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</webMaster>
+    <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
+    
+        <atom:link href="https://eduuh.codes/tags/index/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>Posts</title>
+        <link>https://eduuh.codes/posts/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</author>
+        <atom:modified>Wed, 19 Feb 2020 18:19:31 +0300</atom:modified>
+        <guid>https://eduuh.codes/posts/</guid>
+        <description></description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>index</category>
+            
+          
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Posts</title>
+        <link>https://eduuh.codes/workshops/express/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</author>
+        
+        <guid>https://eduuh.codes/workshops/express/</guid>
+        <description></description>
+        
+        <dc:creator>Hugo Authors</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>index</category>
+            
+          
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

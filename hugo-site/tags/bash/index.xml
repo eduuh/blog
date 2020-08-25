@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>bash on eduuh</title>
+    <link>https://eduuh.codes/tags/bash/</link>
+    <description>Recent content in bash on eduuh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</managingEditor>
+    <webMaster>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</webMaster>
+    <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Tue, 26 May 2020 16:02:40 +0300</lastBuildDate>
+    
+        <atom:link href="https://eduuh.codes/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>Bash Scripting</title>
+        <link>https://eduuh.codes/workshops/scripting/bashsripting/</link>
+        <pubDate>Tue, 26 May 2020 16:02:40 +0300</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</author>
+        <atom:modified>Sun, 26 Jul 2020 17:39:56 +0000</atom:modified>
+        <guid>https://eduuh.codes/workshops/scripting/bashsripting/</guid>
+        <description>Basic Scripting Now that we&amp;rsquo;ve covered the basics of linux system and the command line.IF not check it out.
+It&amp;rsquo;s time to start coding.
+Using Multiple commands. The key to shell scripts is the ability to enter multiple commands and process the results from each command even possibly passing the result of one command to another.
+If you want to run two commands together,you can enter them on the same prompt line, separated with a semicolon.</description>
+        
+        <dc:creator>eduuh</dc:creator>
+        <media:content url="https://eduuh.codesimages/gnu-bash.png" medium="image"><media:title type="html">featured image</media:title></media:content>
+        
+        
+        
+          
+            
+              <category>Cli</category>
+            
+          
+            
+              <category>bash</category>
+            
+          
+        
+        
+          
+            
+              <category>productivity</category>
+            
+          
+            
+              <category>linux</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>
