@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>github on eduuh</title>
+    <link>https://eduuh.codes/tags/github/</link>
+    <description>Recent content in github on eduuh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</managingEditor>
+    <webMaster>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</webMaster>
+    <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 30 Mar 2020 19:45:20 +0900</lastBuildDate>
+    
+        <atom:link href="https://eduuh.codes/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>First</title>
+        <link>https://eduuh.codes/presentation/gitworkshop/</link>
+        <pubDate>Mon, 30 Mar 2020 19:45:20 +0900</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</author>
+        <atom:modified>Sat, 01 Aug 2020 17:36:33 +0000</atom:modified>
+        <guid>https://eduuh.codes/presentation/gitworkshop/</guid>
+        <description></description>
+        
+        <dc:creator>Edûûh Muraya</dc:creator>
+        <media:content url="https://eduuh.codesimages/git/giticon.png" medium="image"><media:title type="html">featured image</media:title></media:content>
+        
+        
+        
+          
+            
+              <category>source</category>
+            
+          
+            
+              <category>git</category>
+            
+          
+            
+              <category>github</category>
+            
+          
+        
+        
+          
+            
+          
+        
+        
+          
+            
+          
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

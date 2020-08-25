@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Fuzzyfinder on eduuh</title>
+    <link>https://eduuh.codes/tags/fuzzyfinder/</link>
+    <description>Recent content in Fuzzyfinder on eduuh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</managingEditor>
+    <webMaster>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</webMaster>
+    <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 19 Apr 2020 07:41:06 -0700</lastBuildDate>
+    
+        <atom:link href="https://eduuh.codes/tags/fuzzyfinder/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>FZF (Fuzzy Finder)</title>
+        <link>https://eduuh.codes/posts/fzfinstallationusage/</link>
+        <pubDate>Sun, 19 Apr 2020 07:41:06 -0700</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</author>
+        <atom:modified>Sun, 26 Jul 2020 17:39:56 +0000</atom:modified>
+        <guid>https://eduuh.codes/posts/fzfinstallationusage/</guid>
+        <description>Installations.  Two step install.  We can use git to install fzf: git clone &amp;ndash;depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install The above command will install fzf under ~/.fzf/bin. If you want to enable fzf inside Neovim, add the following setting to Neovim configuration (suppose your plugins manager is vim-plug ).
+Plug &amp;lsquo;~/.fzf&amp;rsquo; One step install We can install fzf and enable it inside Neovim in one step. Use the following configuration for Neovim:</description>
+        
+        <dc:creator>eduuh</dc:creator>
+        <media:content url="https://eduuh.codesimages/fzf.png" medium="image"><media:title type="html">featured image</media:title></media:content>
+        
+        
+        
+          
+            
+              <category>Fuzzyfinder</category>
+            
+          
+            
+              <category>Cli</category>
+            
+          
+        
+        
+          
+            
+              <category>Productivity</category>
+            
+          
+            
+              <category>Nvimplugin</category>
+            
+          
+        
+        
+          
+            
+              <category>Nvim</category>
+            
+          
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

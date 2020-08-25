@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Tmux on eduuh</title>
+    <link>https://eduuh.codes/tags/tmux/</link>
+    <description>Recent content in Tmux on eduuh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</managingEditor>
+    <webMaster>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</webMaster>
+    <copyright>&amp;copy;{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Fri, 26 Jun 2020 20:51:14 +0000</lastBuildDate>
+    
+        <atom:link href="https://eduuh.codes/tags/tmux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>Tmux Workshop</title>
+        <link>https://eduuh.codes/workshops/tmux/tmux/</link>
+        <pubDate>Fri, 26 Jun 2020 20:51:14 +0000</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edûûh Muraya)</author>
+        <atom:modified>Sun, 26 Jul 2020 17:39:56 +0000</atom:modified>
+        <guid>https://eduuh.codes/workshops/tmux/tmux/</guid>
+        <description>Intro. It&amp;rsquo;s tmux a so-called terminal multiplexer. Simply speaking , tmux acts as a window manager within your terminal and allows you to create multiple windows and panes within a single terminal window.
+Your mouse is slowing you down.
+As we build softwares, we work with multiple programs throughout the course of our day. A web developer, for example, mght have a database console , a web server and a text editor running at the same time.</description>
+        
+        <dc:creator>eduuh</dc:creator>
+        <media:content url="https://eduuh.codes/images/tmux/tmuxlogo.png" medium="image"><media:title type="html">featured image</media:title></media:content>
+        
+        
+        
+          
+            
+              <category>Tmux</category>
+            
+          
+            
+              <category>Cli</category>
+            
+          
+        
+        
+          
+            
+              <category>Productivity</category>
+            
+          
+        
+        
+          
+            
+              <category>Dwmworkflow</category>
+            
+          
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>
