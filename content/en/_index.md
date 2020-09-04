@@ -44,7 +44,7 @@ header:
     height: 235
     options:
       startSlide: 0
-      auto: 5000
+      auto: 10000
       draggable: true
       autoRestart: true
       continuous: true
@@ -58,6 +58,10 @@ header:
         imageSize: cover
         imageRepeat: no-repeat
         imagePosition: center
+        title:
+          -
+        subtitle:
+          -
         titleFontSize: 44
         subtitleFontSize: 16
         spaceBetweenTitleSubtitle: 20
