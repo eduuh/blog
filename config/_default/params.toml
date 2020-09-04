@@ -14,7 +14,7 @@ enablePinnedPosts=true
 themecolor = "black"
 hideSingleContentsWhenJSDisabled = false
 
-themeOptions = ["light","dark"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["light","solarized"] # "hacker", "solarized", "kimbie"]
 
 
 notAllowedTypesInHome = [
