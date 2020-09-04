@@ -10,10 +10,11 @@ viewportSize = "normal"
 useFaviconGenerator = true # https://www.favicon-generator.org/
 meta_image = ""
 enablePinnedPosts=true
+
 themecolor = "black"
 hideSingleContentsWhenJSDisabled = false
 
-themeOptions = ["light","dark"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["light","solarized"] # "hacker", "solarized", "kimbie"]
 
 
 notAllowedTypesInHome = [
@@ -59,7 +60,7 @@ notAllowedTypesInHomeFeed = [
 
 enableUiAnimation = true
 # header
-homeHeaderType = "text" # text, img, slide
+homeHeaderType = "slide" # text, img, slide
 # body
 enableBreadcrumb = false
 enablePhotoSwipe = true
@@ -68,7 +69,7 @@ enableSearchHighlight = true
 enableGoToTop = true
 enableWhoami = true 
 summaryShape = "classic" # card, classic, compact
-searchResultPosition = "side" # side, main
+searchResultPosition = "main" # side, main
 archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
 archivePaginate = 13
 paginateWindow = 1
@@ -77,14 +78,14 @@ talksGroupByDate = "2006"
 pubPaginate = 20
 # whoami
 
-myname = "Edûûh Muraya"
+myname = "@eduuh"
 email = "edwinkamaumuraya0@outlook.com"
 whoami = "Software Developer and Gis n Geomatic student "
-bioImageUrl = "/images/edd.jpg" 
+bioImageUrl = "/images/edd2.jpg" 
 useGravatar = false
 location = "Nyeri , Kenya"
 organization = "Student at Dedan Kimathi University"
-link = "https://eduuh.codes"
+link = "https://github.com/eduuh"
 # sidebar
 
 enableBio = true
