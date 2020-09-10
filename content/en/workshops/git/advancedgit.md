@@ -11,10 +11,9 @@ authorEmoji: 👻
 tags:
 - Git 
 categories: 
-- Productivity
+- cli
 series:
-- Deevelopment
-
+- DevOps
 image: images/git/giticon.png
 
 author: eduuh # author name
@@ -23,35 +22,42 @@ authorImage: "/images/edd.jpg" # image path in the static folder
 authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: Selftaught Web and Mobile Developer # author description
 
-
+pinned: true
 ---
 
-#### Advanced Git WorkShop
+Hello am **eduuh**, I am a newly onboarded **Microsoft Student Ambassador** as of this edit dated **Sep 10, 2020**. Today I want to teach you how I use git in my project development. I will also feature **problems i face** during my repository management and how I go around this problems.
 
-Hello am Edd and I will be taking you through this workshop.By the end of this workshop, if you follow along you have a completely different understanding of `Git` and how you work with it.
+First of all I want to **thank you** for chosing to read this and I hope by the end of this venture you will have learned alot to get started to using git. cheers🍷 Lets get into It.
 
-##### How we will go along
+### Learning Objectives.
 
-I will start will a `short demo` on the `command line` to introduce the new material.
-After a bit we will have some exercise for you to practise what we were going through. After you finish the exercises we are
-then going to it together, to make sure you understand.
+Make sure by the end of the workshop you understand atleast on of 👇
+{{<boxmd>}}
+
+1. **How to Use git and GitHub.**
+2. **What happens under the hood** of the git commands.
+3. Learn about **hub cli tool(work with github from cli)**
+4. **'Common Problem Faced'** and how to go around Them.
+   - Not acually problems. **This are the learning points.**
+
+{{</boxmd>}}
+
+### How we will go along
+
+I will use a **project like approach to tackle this git concepts.** I Also want you to follow along on your local machine if you can.
 
 ### Requirements
 
 1. **Command Line** that support unix style commands
 2. **git version > 2.0** (check with git --version)
-3. **[github.com](github.com)** account
-4. **[This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇
+3. Create a **[github.com](github.com)** account
+4. **[Clone This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇
 
-```bash
-         git clone git@github.com:eduuh/Advanced-GitWorkshop.git
-```
+{{<boxmd>}}
+**git clone git@github.com:eduuh/Advanced-GitWorkshop.git**
+{{</boxmd>}}
 
-Are we all good at these requirements. Okay Let get into it.
-
-I know when we learn git we memorize 6 command the rest of git is usually a `black box` that we don't explore. We reach at a point where we really on the GUI tool available for working with git. I.e `visual studio code`.Today we are going to go a `lot deeper to git` away from this basic commands and explore `git` further.
-
-My "~~assumption~~" is you are familiar with this commands. **_Don't worry if you are a beginner you will get into pace soon._**
+**Lets make sure we have the requirements before hand** 👆
 
 | Command                  | Action                                                               |
 | ------------------------ | -------------------------------------------------------------------- |
@@ -62,22 +68,41 @@ My "~~assumption~~" is you are familiar with this commands. **_Don't worry if yo
 | **git init**             | Initialize a repository locally                                      |
 | **git add & git commit** | Add changes to a local repository.                                   |
 
-_If you are not famialiar with the above commands. Please bare with me, this are usually common concept that we can't do without them. When we come across them i will explain to you what they do._
+I know when we learn git we **memorize 6 command(above) the rest of git is usually a `black box` that we don't explore**. We reach at a point where **we really on the GUI tool available for working with git**. I.e `visual studio code`. I have Nothing against gui tools, but i believe they are an obstacle to learning.This will lead you to copy pasting command from **stackoverflow** that you dont know what they do.
 
-I felt this way untill i decided its time to **level up a little bit** and come out of my confort zone. Using `GUI` tools. In my case **visual studio code**.
+I will prefer to using **command Line** in this workshop.
 
-Do you feel this way?
-![gitfeeling](/images/gitfeeling.png)
+I will take you **lot deeper to using git**. Ask yourself this question.?
+**Can I change my friends commits and add code they did not add?** You will see how git maintains integrity of your **commits**
 
-Its a sad place to be. **_Are you exited to not do this anymore!?_**
+### Installation, Basic concepts.
 
-I will try to get you out of this showing you how to **use git the right way.**
+#### Lets Start Installation.
 
-Before you delete you could decide to look up some manual page for git online and this is what you might get.
+##### Linux
 
-WAT?
-
-![git manual](/images/gitmanual.png)
+- Installing Git
+  - Installing basic Git tools on Linux via package managers.
+    1. **RPM-based distritubion, such as Rhel or CentOS**
+       - **sudo dnf install git-all**
+    2. **Debian-based Distribution, such as Ubuntu**
+       - **sudo apt install git-all**
+    3. **Arch Linux, Manjaro**
+       - **sudo pacman -S git**
+  - Windows Installation.
+    - [visit git scm site and download the executable](https://git-scm.com/)
+      - After you have the exe. Install you normally do with other software.
+- Installing **Hub**
+  - Installing basic Git tools on Linux via **package managers**
+    1. **RPM-based distritubion, such as Rhel or CentOS**
+       - **sudo dnf install hub**
+    2. **Debian-based Distribution, such as Ubuntu**
+       - **sudo apt install hub**
+    3. **Arch Linux, Manjaro**
+       - **sudo pacman -S hub**
+  - Windows Installation.
+    - using [chocolately](https://chocolatey.org/install)
+      - **choco install hub**
 
 The **SYNOPSIS** ~~WTH~~ does it mean??
 
@@ -96,38 +121,38 @@ Lets focus more on doing and understanding the theory. This is what i mean. Inst
 
 Git is a tool to helps you,but not work against you.
 
-#### Git concepts
+### Git concepts
 
-> #### Untracked Files
->
-> New files that git have not requested to track previously.
+#### Untracked Files
 
-> #### Working Area
->
-> Worked that is tracked by git that has been modified but have not yet been commited.
+New files that git have not requested to track previously.
 
-> #### Staging Area
->
-> Modified files that have been marked to go the next commit.
+### Working Area
+
+Worked that is tracked by git that has been modified but have not yet been commited.
+
+### Staging Area
+
+Modified files that have been marked to go the next commit.
 
 This are terms that will appear mostly in this workshop.
 
-## How is information stored.
+### How is information stored.
 
-At its core, git is like a key value store.
+At its core, **git is like a key value store.**
 
-1. **Value** = Data (our files)
-2. **Key** => Sha1 Key
+- **Value** = Data (our files)
+- **Key** => Sha1 Key
 
-> #### Key
+#### Key
 
 Its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit.
 
 This **value should always be the same if the given Input it the same**.
 
-> #### Value
->
-> Git store the **compressed** data in a blob , along with the metadata in a header. Holds the **identifier of the**, **size of the content** and the **content** itself.
+#### Value
+
+Git store the **compressed** data in a blob , along with the metadata in a header. Holds the **identifier of the**, **size of the content** and the **content** itself.
 
 **Note:** The content is compressed and when you cat into it you will get a whole lot of nothings.
 
