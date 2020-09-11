@@ -4,17 +4,16 @@ title: "Advanced Git WorkShop"
 date: 2020-02-19T12:00:06+09:00
 description: "Guide to git expert"
 draft: false
-hideToc: false
+hideToc: true
 enableToc: true
 enableTocContent: false
 authorEmoji: 👻
 tags:
 - Git 
 categories: 
-- Productivity
+- cli
 series:
-- Deevelopment
-
+- DevOps
 image: images/git/giticon.png
 
 author: eduuh # author name
@@ -23,35 +22,42 @@ authorImage: "/images/edd.jpg" # image path in the static folder
 authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: Selftaught Web and Mobile Developer # author description
 
-
+pinned: true
 ---
 
-#### Advanced Git WorkShop
+Hello am **eduuh**, I am a newly onboarded **Microsoft Student Ambassador** as of this edit dated **Sep 10, 2020**. I want to teach you how I use git in my project development. I will also feature **problems i face** during my repository management and how I go around this problems.
 
-Hello am Edd and I will be taking you through this workshop.By the end of this workshop, if you follow along you have a completely different understanding of `Git` and how you work with it.
+First of all I want to **thank you** for chosing to read this and I hope by the end of this venture you will have learned alot to get started to using git. cheers🍷 Lets get into It.
 
-##### How we will go along
+#### Learning Objectives.
 
-I will start will a `short demo` on the `command line` to introduce the new material.
-After a bit we will have some exercise for you to practise what we were going through. After you finish the exercises we are
-then going to it together, to make sure you understand.
+Make sure by the end of the workshop you understand atleast on of 👇
+{{<boxmd>}}
 
-### Requirements
+1. **How to Use git and GitHub.**
+2. **What happens under the hood** of the git commands.
+3. Learn about **hub cli tool(work with github from cli)**
+4. **'Common Problem Faced'** and how to go around Them.
+   - Not acually problems. **This are the learning points.**
+
+{{</boxmd>}}
+
+#### How we will go along
+
+I will use a **project like approach to tackle this git concepts.** I Also want you to follow along on your local machine if you can.
+
+#### Requirements
 
 1. **Command Line** that support unix style commands
 2. **git version > 2.0** (check with git --version)
-3. **[github.com](github.com)** account
-4. **[This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇
+3. Create a **[github.com](github.com)** account
+4. **[Clone This Repository](https://github.com/eduuh/Advanced-GitWorkshop)** 👇
 
-```bash
-         git clone git@github.com:eduuh/Advanced-GitWorkshop.git
-```
+{{<boxmd>}}
+**git clone git@github.com:eduuh/Advanced-GitWorkshop.git**
+{{</boxmd>}}
 
-Are we all good at these requirements. Okay Let get into it.
-
-I know when we learn git we memorize 6 command the rest of git is usually a `black box` that we don't explore. We reach at a point where we really on the GUI tool available for working with git. I.e `visual studio code`.Today we are going to go a `lot deeper to git` away from this basic commands and explore `git` further.
-
-My "~~assumption~~" is you are familiar with this commands. **_Don't worry if you are a beginner you will get into pace soon._**
+**Lets make sure we have the requirements before hand** 👆
 
 | Command                  | Action                                                               |
 | ------------------------ | -------------------------------------------------------------------- |
@@ -62,110 +68,133 @@ My "~~assumption~~" is you are familiar with this commands. **_Don't worry if yo
 | **git init**             | Initialize a repository locally                                      |
 | **git add & git commit** | Add changes to a local repository.                                   |
 
-_If you are not famialiar with the above commands. Please bare with me, this are usually common concept that we can't do without them. When we come across them i will explain to you what they do._
+I know when we learn git we **memorize 6 command(above) the rest of git is usually a `black box` that we don't explore**. We reach at a point where **we really on the GUI tool available for working with git**. I.e `visual studio code`. I have Nothing against gui tools, but i believe they are an obstacle to learning.This will lead you to copy pasting command from **stackoverflow** that you dont know what they do.
 
-I felt this way untill i decided its time to **level up a little bit** and come out of my confort zone. Using `GUI` tools. In my case **visual studio code**.
+I will prefer to using **command Line** in this workshop.
 
-Do you feel this way?
-![gitfeeling](/images/gitfeeling.png)
+I will take you **lot deeper to using git**. Ask yourself this question.?
+**Can I change my friends commits and add code they did not add?** You will see how git maintains integrity of your **commits**
 
-Its a sad place to be. **_Are you exited to not do this anymore!?_**
+#### Installation, Basic concepts.
 
-I will try to get you out of this showing you how to **use git the right way.**
+#### Lets Start Installation.
 
-Before you delete you could decide to look up some manual page for git online and this is what you might get.
+##### Linux
 
-WAT?
+- Installing Git
+  - Installing basic Git tools on Linux via package managers.
+    1. **RPM-based distritubion, such as Rhel or CentOS**
+       - **sudo dnf install git-all**
+    2. **Debian-based Distribution, such as Ubuntu**
+       - **sudo apt install git-all**
+    3. **Arch Linux, Manjaro**
+       - **sudo pacman -S git**
+  - Windows Installation.
+    - [visit git scm site and download the executable](https://git-scm.com/)
+      - After you have the exe. Install you normally do with other software.
+- Installing **Hub**
+  - Installing basic Git tools on Linux via **package managers**
+    1. **RPM-based distritubion, such as Rhel or CentOS**
+       - **sudo dnf install hub**
+    2. **Debian-based Distribution, such as Ubuntu**
+       - **sudo apt install hub**
+    3. **Arch Linux, Manjaro**
+       - **sudo pacman -S hub**
+  - Windows Installation.
+    - using [chocolately](https://chocolatey.org/install)
+      - **choco install hub**
 
-![git manual](/images/gitmanual.png)
+**People use git for different use cases.** You should try to use the idea from this workshop and incoporate them to your workflows. I will show you some workflow i follow.
 
-The **SYNOPSIS** ~~WTH~~ does it mean??
+I have divided this **workshop into sections** , and after each sections. Am going to give an exercise which you will attempt. And then we are going to them together.
 
-> git refers to its self as **A stupid content tracker** funny
-> But this depends on how your use case and mood.
+Lets focus more on doing and understanding the theory. This is what I mean. Instead of writing down the notes focus on trying out the **commands**. You have all these notes with you.
 
-> #### Notes
+##### What is git
 
-People use git for different use cases. You should try to use the idea from this workshop and incoporate them to your workflows.
-
-> ####
->
-> I have divided this workshop into sections , and after each sections. Am going to give an exercise which you will attempt. And then we are going to them together.
-
-Lets focus more on doing and understanding the theory. This is what i mean. Instead of writing down the notes focus on trying out the **commands**. You have all these notes with you.
-
-Git is a tool to helps you,but not work against you.
+- Git is a tool to **helps you,but not work against you.**
 
 #### Git concepts
 
-> #### Untracked Files
->
-> New files that git have not requested to track previously.
+##### How is information stored In a git repository.
 
-> #### Working Area
->
-> Worked that is tracked by git that has been modified but have not yet been commited.
+At its core, **git is like a key value store.**
+{{<boxmd>}}
 
-> #### Staging Area
->
-> Modified files that have been marked to go the next commit.
+1. **Value** = Data (our files).
 
-This are terms that will appear mostly in this workshop.
+- Git store the **compressed** data in a blob , along with the metadata in a header.
+  - Holds the **identifier of the Content**, **Size of the content** and the **content** itself.
 
-## How is information stored.
-
-At its core, git is like a key value store.
-
-1. **Value** = Data (our files)
 2. **Key** => Sha1 Key
 
-> #### Key
+- its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit.
 
-Its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit.
+{{</boxmd>}}
 
-This **value should always be the same if the given Input it the same**.
+> This **Sha1 produced should always be the same if the given Input it the same**.
 
-> #### Value
->
-> Git store the **compressed** data in a blob , along with the metadata in a header. Holds the **identifier of the**, **size of the content** and the **content** itself.
+> The content is compressed and when you cat into it you will get a whole lot of nothings.
 
-**Note:** The content is compressed and when you cat into it you will get a whole lot of nothings.
+##### Under the Hood - Lets create a git hash object.
 
-#### Under the Hood - Lets create a git hash object.
-
-Git will take **our content** and use it to generate the `hash` key. For now we could supply some content to git using **echo command**.
-
-If you run the command. Here we are **piping** the output of the echo command to the git hash function requesting to use the **stdin**
-
-The hash function returns the a **hash** which should be the same for all of us.**your can try this**
+- Git will take **our content**(code) and use it to generate the `hash` key.
+  - For now we could supply some content to git using **echo command**.
 
 ```bash
-echo hello | git hash-object --stdin
-# ce013625030ba8dba906f756967f9e9ca394464a
+echo 'Welcome to Git workshop' | git hash-object --stdin
 ```
 
-We already know some tools that are used to generate **sha1** keys. For my system I believe its **openssl**
+output 👇 (confirm we have the same hash key.
+
+{{<boxmd>}}
+**fd6356603e20c4a895157154fa33392d9381eed8**
+{{</boxmd>}}
+
+> Here we are **piping** the output of the echo command to the git hash function requesting to use the **stdin**
+
+The hash function returns the a **hash** which should be the same for all of us.**your can try this** I Know you know of some tools that are used to generate **sha1** keys.
+
+For my system I believe its **openssl**
 
 lets generate **Sha1** using **openssl**
 
 ```bash
- echo hello | openssl sha1
+ echo 'Welcome to Git workshop' | openssl sha1
 # (stdin)= f572d396fae9206628714fb2ce00f72e94f2258f
 ```
 
-Thes hash are different. This is because git hash function \*\*prepends thes string "blob" followed by the file size and a null to the file's content before hashing.
+**The hash are different.** This is because git hash function \*\*prepends thes string "blob" followed by the file size and a null to the file's content before hashing.
 
 This is how git calculates the **sha1** for the file (in git term a blob)
 
-Git calculate the files metadata + content , not just the content.
+Git calculate the **files Size** + content , not just the content.
 
 ```bash
-# sha1("blob" + filesize + "\0" + data)  # not \0 is a null byte
+echo 'blob 24\0Welcome to Git workshop' | openssl sha1
 ```
 
-When you run the hash function on the same content you will always get the same result.
+output 👇
+{{<boxmd>}}
+**(stdin)= fd6356603e20c4a895157154fa33392d9381eed8**
+{{</boxmd>}}
 
-### Lets initialize a repository
+You don't know where or how _I got value 24_. Refer below.
+
+![git hash object command Line](/images/git/githash.png)
+
+When you run the **hash function on the same content you will always get the same result.**
+
+I hope if you try this yourself. You get the same values i get.
+
+#### The Git Object Store (Lets Continue.)
+
+Let's start by creating an empty directory.
+
+```bash
+mkdir gitobject
+
+```
 
 ```bash
 git init

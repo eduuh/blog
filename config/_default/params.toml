@@ -1,6 +1,7 @@
 logoText = "edd's Journal"
 logoType = "short" # long, short
 
+
 logo = false # true or ffalse
 
 description = "Edds Journal where i write all my notes in one place!"
@@ -10,6 +11,7 @@ viewportSize = "normal"
 useFaviconGenerator = true # https://www.favicon-generator.org/
 meta_image = ""
 enablePinnedPosts=true
+
 themecolor = "black"
 hideSingleContentsWhenJSDisabled = false
 
@@ -59,7 +61,7 @@ notAllowedTypesInHomeFeed = [
 
 enableUiAnimation = true
 # header
-homeHeaderType = "text" # text, img, slide
+homeHeaderType = "slide" # text, img, slide
 # body
 enableBreadcrumb = false
 enablePhotoSwipe = true
@@ -68,7 +70,7 @@ enableSearchHighlight = true
 enableGoToTop = true
 enableWhoami = true 
 summaryShape = "classic" # card, classic, compact
-searchResultPosition = "side" # side, main
+searchResultPosition = "main" # side, main
 archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
 archivePaginate = 13
 paginateWindow = 1
@@ -77,14 +79,14 @@ talksGroupByDate = "2006"
 pubPaginate = 20
 # whoami
 
-myname = "Edûûh Muraya"
+myname = "@eduuh"
 email = "edwinkamaumuraya0@outlook.com"
-whoami = "Software Developer and Gis n Geomatic student "
-bioImageUrl = "/images/edd.jpg" 
+whoami = "Microsoft Student Ambassador (Alpha Milestone). Sofware Engineer and Gegis Student in Making"
+bioImageUrl = "/images/edd2.jpg" 
 useGravatar = false
 location = "Nyeri , Kenya"
 organization = "Student at Dedan Kimathi University"
-link = "https://eduuh.codes"
+link = "https://github.com/eduuh"
 # sidebar
 
 enableBio = true
@@ -103,15 +105,15 @@ enableTocSwitch = true
 itemsPerCategory = 5
 sidebarPosition = "right"
 
-tocLevels = ["h3", "h4", "h5"]
-enableSidebarPostsByOrder = true
+tocLevels = ["h2", "h3", "h4"]
+enableSidebarPostsByOrder = false
 
-showFeedLinks = false
+showFeedLinks = true
 showSocialLinks = true
 enableLangChange = false
 
 enableThemeChange = true
-# service
+
 
 # comment
 enableComment = true
@@ -130,11 +132,6 @@ disqus_shortname = ""
 
 
 googleTagManager = "" # GTM-XXXXXX
-baiduAnalytics = ""
-enableBusuanzi = false
-busuanziSiteUV = true
-busuanziSitePV = true
-busuanziPagePV = true
 # rss
 updatePeriod = "weekly" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""
@@ -180,6 +177,14 @@ patreon = ""
 [[share]]
 name = "twitter"
 username = "eduuhmuraya"
+
+[[share]]
+name = "linkedin"
+username = "eduuh"
+
+[[share]]
+name = "redit"
+username = "eduuhMash"
 
 
 [[footerLinks]]
