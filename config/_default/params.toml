@@ -1,6 +1,7 @@
 logoText = "edd's Journal"
 logoType = "short" # long, short
 
+
 logo = false # true or ffalse
 
 description = "Edds Journal where i write all my notes in one place!"
@@ -14,7 +15,7 @@ enablePinnedPosts=true
 themecolor = "black"
 hideSingleContentsWhenJSDisabled = false
 
-themeOptions = ["light","solarized"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["light","dark"] # "hacker", "solarized", "kimbie"]
 
 
 notAllowedTypesInHome = [
@@ -80,7 +81,7 @@ pubPaginate = 20
 
 myname = "@eduuh"
 email = "edwinkamaumuraya0@outlook.com"
-whoami = "Software Developer and Gis n Geomatic student "
+whoami = "Microsoft Student Ambassador (Alpha Milestone). Sofware Engineer and Gegis Student in Making"
 bioImageUrl = "/images/edd2.jpg" 
 useGravatar = false
 location = "Nyeri , Kenya"
@@ -104,15 +105,15 @@ enableTocSwitch = true
 itemsPerCategory = 5
 sidebarPosition = "right"
 
-tocLevels = ["h3", "h4", "h5"]
-enableSidebarPostsByOrder = true
+tocLevels = ["h2", "h3", "h4"]
+enableSidebarPostsByOrder = false
 
-showFeedLinks = false
+showFeedLinks = true
 showSocialLinks = true
 enableLangChange = false
 
 enableThemeChange = true
-# service
+
 
 # comment
 enableComment = true
@@ -131,11 +132,6 @@ disqus_shortname = ""
 
 
 googleTagManager = "" # GTM-XXXXXX
-baiduAnalytics = ""
-enableBusuanzi = false
-busuanziSiteUV = true
-busuanziSitePV = true
-busuanziPagePV = true
 # rss
 updatePeriod = "weekly" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""
@@ -181,6 +177,14 @@ patreon = ""
 [[share]]
 name = "twitter"
 username = "eduuhmuraya"
+
+[[share]]
+name = "linkedin"
+username = "eduuh"
+
+[[share]]
+name = "redit"
+username = "eduuhMash"
 
 
 [[footerLinks]]

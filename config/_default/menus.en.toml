@@ -10,6 +10,11 @@ name = "workshops"
 url = "workshops"
 weight = 2
 
+[[main]]
+  identifier = "presentation"
+  name = "Pt"
+  url = "presentation"
+  weight = 3
 #[[main]]
 #parent = "workshop"
 #name = "Presentation"
