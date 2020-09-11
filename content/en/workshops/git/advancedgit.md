@@ -4,7 +4,7 @@ title: "Advanced Git WorkShop"
 date: 2020-02-19T12:00:06+09:00
 description: "Guide to git expert"
 draft: false
-hideToc: false
+hideToc: true
 enableToc: true
 enableTocContent: false
 authorEmoji: 👻
@@ -25,11 +25,11 @@ authorDesc: Selftaught Web and Mobile Developer # author description
 pinned: true
 ---
 
-Hello am **eduuh**, I am a newly onboarded **Microsoft Student Ambassador** as of this edit dated **Sep 10, 2020**. Today I want to teach you how I use git in my project development. I will also feature **problems i face** during my repository management and how I go around this problems.
+Hello am **eduuh**, I am a newly onboarded **Microsoft Student Ambassador** as of this edit dated **Sep 10, 2020**. I want to teach you how I use git in my project development. I will also feature **problems i face** during my repository management and how I go around this problems.
 
 First of all I want to **thank you** for chosing to read this and I hope by the end of this venture you will have learned alot to get started to using git. cheers🍷 Lets get into It.
 
-### Learning Objectives.
+#### Learning Objectives.
 
 Make sure by the end of the workshop you understand atleast on of 👇
 {{<boxmd>}}
@@ -42,11 +42,11 @@ Make sure by the end of the workshop you understand atleast on of 👇
 
 {{</boxmd>}}
 
-### How we will go along
+#### How we will go along
 
 I will use a **project like approach to tackle this git concepts.** I Also want you to follow along on your local machine if you can.
 
-### Requirements
+#### Requirements
 
 1. **Command Line** that support unix style commands
 2. **git version > 2.0** (check with git --version)
@@ -75,7 +75,7 @@ I will prefer to using **command Line** in this workshop.
 I will take you **lot deeper to using git**. Ask yourself this question.?
 **Can I change my friends commits and add code they did not add?** You will see how git maintains integrity of your **commits**
 
-### Installation, Basic concepts.
+#### Installation, Basic concepts.
 
 #### Lets Start Installation.
 
@@ -104,93 +104,97 @@ I will take you **lot deeper to using git**. Ask yourself this question.?
     - using [chocolately](https://chocolatey.org/install)
       - **choco install hub**
 
-The **SYNOPSIS** ~~WTH~~ does it mean??
+**People use git for different use cases.** You should try to use the idea from this workshop and incoporate them to your workflows. I will show you some workflow i follow.
 
-> git refers to its self as **A stupid content tracker** funny
-> But this depends on how your use case and mood.
+I have divided this **workshop into sections** , and after each sections. Am going to give an exercise which you will attempt. And then we are going to them together.
 
-> #### Notes
+Lets focus more on doing and understanding the theory. This is what I mean. Instead of writing down the notes focus on trying out the **commands**. You have all these notes with you.
 
-People use git for different use cases. You should try to use the idea from this workshop and incoporate them to your workflows.
+##### What is git
 
-> ####
->
-> I have divided this workshop into sections , and after each sections. Am going to give an exercise which you will attempt. And then we are going to them together.
+- Git is a tool to **helps you,but not work against you.**
 
-Lets focus more on doing and understanding the theory. This is what i mean. Instead of writing down the notes focus on trying out the **commands**. You have all these notes with you.
+#### Git concepts
 
-Git is a tool to helps you,but not work against you.
-
-### Git concepts
-
-#### Untracked Files
-
-New files that git have not requested to track previously.
-
-### Working Area
-
-Worked that is tracked by git that has been modified but have not yet been commited.
-
-### Staging Area
-
-Modified files that have been marked to go the next commit.
-
-This are terms that will appear mostly in this workshop.
-
-### How is information stored.
+##### How is information stored In a git repository.
 
 At its core, **git is like a key value store.**
+{{<boxmd>}}
 
-- **Value** = Data (our files)
-- **Key** => Sha1 Key
+1. **Value** = Data (our files).
 
-#### Key
+- Git store the **compressed** data in a blob , along with the metadata in a header.
+  - Holds the **identifier of the Content**, **Size of the content** and the **content** itself.
 
-Its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit.
+2. **Key** => Sha1 Key
 
-This **value should always be the same if the given Input it the same**.
+- its a **crytographic hash function**. Given a piece of data , it produces a **40 - digit hexadecimal numbers.** You will see this in a bit.
 
-#### Value
+{{</boxmd>}}
 
-Git store the **compressed** data in a blob , along with the metadata in a header. Holds the **identifier of the**, **size of the content** and the **content** itself.
+> This **Sha1 produced should always be the same if the given Input it the same**.
 
-**Note:** The content is compressed and when you cat into it you will get a whole lot of nothings.
+> The content is compressed and when you cat into it you will get a whole lot of nothings.
 
-#### Under the Hood - Lets create a git hash object.
+##### Under the Hood - Lets create a git hash object.
 
-Git will take **our content** and use it to generate the `hash` key. For now we could supply some content to git using **echo command**.
-
-If you run the command. Here we are **piping** the output of the echo command to the git hash function requesting to use the **stdin**
-
-The hash function returns the a **hash** which should be the same for all of us.**your can try this**
+- Git will take **our content**(code) and use it to generate the `hash` key.
+  - For now we could supply some content to git using **echo command**.
 
 ```bash
-echo hello | git hash-object --stdin
-# ce013625030ba8dba906f756967f9e9ca394464a
+echo 'Welcome to Git workshop' | git hash-object --stdin
 ```
 
-We already know some tools that are used to generate **sha1** keys. For my system I believe its **openssl**
+output 👇 (confirm we have the same hash key.
+
+{{<boxmd>}}
+**fd6356603e20c4a895157154fa33392d9381eed8**
+{{</boxmd>}}
+
+> Here we are **piping** the output of the echo command to the git hash function requesting to use the **stdin**
+
+The hash function returns the a **hash** which should be the same for all of us.**your can try this** I Know you know of some tools that are used to generate **sha1** keys.
+
+For my system I believe its **openssl**
 
 lets generate **Sha1** using **openssl**
 
 ```bash
- echo hello | openssl sha1
+ echo 'Welcome to Git workshop' | openssl sha1
 # (stdin)= f572d396fae9206628714fb2ce00f72e94f2258f
 ```
 
-Thes hash are different. This is because git hash function \*\*prepends thes string "blob" followed by the file size and a null to the file's content before hashing.
+**The hash are different.** This is because git hash function \*\*prepends thes string "blob" followed by the file size and a null to the file's content before hashing.
 
 This is how git calculates the **sha1** for the file (in git term a blob)
 
-Git calculate the files metadata + content , not just the content.
+Git calculate the **files Size** + content , not just the content.
 
 ```bash
-# sha1("blob" + filesize + "\0" + data)  # not \0 is a null byte
+echo 'blob 24\0Welcome to Git workshop' | openssl sha1
 ```
 
-When you run the hash function on the same content you will always get the same result.
+output 👇
+{{<boxmd>}}
+**(stdin)= fd6356603e20c4a895157154fa33392d9381eed8**
+{{</boxmd>}}
 
-### Lets initialize a repository
+You don't know where or how _I got value 24_. Refer below.
+
+![git hash object command Line](/images/git/githash.png)
+
+When you run the **hash function on the same content you will always get the same result.**
+
+I hope if you try this yourself. You get the same values i get.
+
+#### The Git Object Store (Lets Continue.)
+
+Let's start by creating an empty directory.
+
+```bash
+mkdir gitobject
+
+```
 
 ```bash
 git init
