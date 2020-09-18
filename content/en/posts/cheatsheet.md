@@ -11,8 +11,7 @@ tags:
   - linux
 categories:
   - Productivity
-series:
-  - workspace
+
 image: images/cheatsheet.png
 ---
 

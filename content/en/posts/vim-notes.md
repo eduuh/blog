@@ -8,11 +8,11 @@ enableToc: false
 author: eduuh
 authorEmoji: 🤖
 tags:
-  - linux
+  - Linux
 categories:
   - Productivity
 series:
-  - nvim
+  - Nvim
 ---
 
 <div align="center">

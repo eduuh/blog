@@ -9,11 +9,11 @@ author: eduuh
 authorEmoji: 🤖
 authorImage: '/images/edd.jpg'
 tags:
-  - linux
+  - Linux
 categories:
   - Productivity
 series:
-  - nvim
+  - Nvim
 ---
 
 <div align="center">

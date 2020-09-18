@@ -5,7 +5,7 @@ linktitle: 'Express'
 title: 'Express'
 description: 'Express is a minimal and flexible Node.js web application Framework that provides a robust set of features for web and mobile application.'
 categories: ['Express']
-tags: ['Api', 'Node.js', 'Javascript']
+tags: ['Api', 'Javascript']
 
 image: images/bash/bash.png
 author: eduuh #author name

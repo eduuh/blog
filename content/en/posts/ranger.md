@@ -7,9 +7,11 @@ description: "Ranger is a console / terminal visual file manager written in Pyth
 
 linktitle: "ranger"
 title: "Ranger - Visual file manager"
-categories: ["productivity","linux"]
-tags: ["ranger","cli"]
-series: ["DwmWorkflow"]
+
+categories: ["linux"]
+
+tags: ["ranger","cli", 'Productivity']
+series: ["Dwm"]
 weight: 2
 
 

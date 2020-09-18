@@ -13,7 +13,7 @@ authorImage: '/images/edd.jpg' # image path in the static folder
 
 tags: ['Tmux', 'Cli']
 categories: ['Productivity']
-series: ['Dwmworkflow']
+series: ['Dwm']
 
 image: /images/tmux/tmuxlogo.png
 ---

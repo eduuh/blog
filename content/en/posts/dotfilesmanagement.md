@@ -4,8 +4,10 @@ date: 2020-02-12T11:37:37+03:00
 draft: false
 linktitle: ''
 title: 'Dotfiles sync with bare repository'
-categories: ['Productivity', 'Linux']
-tags: ['Cli', 'Git']
+
+categories: ['Git']
+tags: ['Cli']
+
 weight: 5
 
 image: images/dotfiles.png

@@ -9,10 +9,11 @@ enableToc: true
 enableTocContent: false
 authorEmoji: 👻
 tags:
-- Git 
+- Cli 
 categories: 
-- cli
+- Git
 series:
+- git
 - DevOps
 image: images/git/giticon.png
 
@@ -75,9 +76,11 @@ I will prefer to using **command Line** in this workshop.
 I will take you **lot deeper to using git**. Ask yourself this question.?
 **Can I change my friends commits and add code they did not add?** You will see how git maintains integrity of your **commits**
 
-#### Installation, Basic concepts.
+### Installation, Basic concepts.
 
 #### Lets Start Installation.
+
+<hr>
 
 ##### Linux
 
@@ -89,20 +92,25 @@ I will take you **lot deeper to using git**. Ask yourself this question.?
        - **sudo apt install git-all**
     3. **Arch Linux, Manjaro**
        - **sudo pacman -S git**
-  - Windows Installation.
-    - [visit git scm site and download the executable](https://git-scm.com/)
-      - After you have the exe. Install you normally do with other software.
 - Installing **Hub**
+
   - Installing basic Git tools on Linux via **package managers**
+
     1. **RPM-based distritubion, such as Rhel or CentOS**
        - **sudo dnf install hub**
     2. **Debian-based Distribution, such as Ubuntu**
        - **sudo apt install hub**
     3. **Arch Linux, Manjaro**
        - **sudo pacman -S hub**
-  - Windows Installation.
-    - using [chocolately](https://chocolatey.org/install)
-      - **choco install hub**
+
+##### Windows.
+
+- Installing **git.**
+  - [visit git scm site and download the executable](https://git-scm.com/)
+    - After you have the exe. Install you normally do with other software.
+- Installing hub.
+  - using [chocolately](https://chocolatey.org/install)
+    - **choco install hub**
 
 **People use git for different use cases.** You should try to use the idea from this workshop and incoporate them to your workflows. I will show you some workflow i follow.
 
@@ -110,13 +118,17 @@ I have divided this **workshop into sections** , and after each sections. Am goi
 
 Lets focus more on doing and understanding the theory. This is what I mean. Instead of writing down the notes focus on trying out the **commands**. You have all these notes with you.
 
-##### What is git
+### What is git
+
+<hr>
 
 - Git is a tool to **helps you,but not work against you.**
 
 #### Git concepts
 
 ##### How is information stored In a git repository.
+
+<hr>
 
 At its core, **git is like a key value store.**
 {{<boxmd>}}
@@ -139,67 +151,73 @@ At its core, **git is like a key value store.**
 ##### Under the Hood - Lets create a git hash object.
 
 - Git will take **our content**(code) and use it to generate the `hash` key.
+
   - For now we could supply some content to git using **echo command**.
 
-```bash
-echo 'Welcome to Git workshop' | git hash-object --stdin
-```
-
-output 👇 (confirm we have the same hash key.
-
 {{<boxmd>}}
-**fd6356603e20c4a895157154fa33392d9381eed8**
+➜ **echo \'Welcome to Git workshop\' | git hash-object \-\-stdin**
 {{</boxmd>}}
+
+![hash sha1 image](/images/git/hash.png)
 
 > Here we are **piping** the output of the echo command to the git hash function requesting to use the **stdin**
 
-The hash function returns the a **hash** which should be the same for all of us.**your can try this** I Know you know of some tools that are used to generate **sha1** keys.
+- **The hash function returns the a hash which should be the same for all of us.**
 
-For my system I believe its **openssl**
+##### Lets try hashing our content with hashing tools.
 
-lets generate **Sha1** using **openssl**
+I Know you know of some tools that are used to generate **sha1** keys.
 
-```bash
- echo 'Welcome to Git workshop' | openssl sha1
-# (stdin)= f572d396fae9206628714fb2ce00f72e94f2258f
-```
+- For my system(Arch) The hashing tool I believe its **openssl**
 
-**The hash are different.** This is because git hash function \*\*prepends thes string "blob" followed by the file size and a null to the file's content before hashing.
+  - lets generate **Sha1** using **openssl**
 
-This is how git calculates the **sha1** for the file (in git term a blob)
-
-Git calculate the **files Size** + content , not just the content.
-
-```bash
-echo 'blob 24\0Welcome to Git workshop' | openssl sha1
-```
-
-output 👇
 {{<boxmd>}}
-**(stdin)= fd6356603e20c4a895157154fa33392d9381eed8**
+**echo \'Welcome to Git workshop\' | openssl sha1**
 {{</boxmd>}}
 
-You don't know where or how _I got value 24_. Refer below.
+![hash with openssl](/images/git/hashwithopenssh.png)
+
+**Why are hash different.**
+
+- This is because git hash function \
+  - git prepends the string `"blob"` followed by the `file size` and a `null delimiter` to the file's content before hashing.
+    - **'blob <filesize>\0Content'**
+
+This is how git calculates the **sha1** for the file (in git term **a blob**)
+
+> Git calculate the **files Size** + **content** , not just the content.
+
+{{<boxmd>}}
+**echo 'blob 24\0Welcome to Git workshop' | openssl sha1**
+{{</boxmd>}}
+
+![blob image](/images/git/blob.png)
+
+You don't know where or how **I got value 24**. Refer below.
 
 ![git hash object command Line](/images/git/githash.png)
 
-When you run the **hash function on the same content you will always get the same result.**
+> When you run the **hash function on the same content you will always get the same result.**
 
-I hope if you try this yourself. You get the same values i get.
+<div align='center'>
+<strong><h5>I hope you try this yourself. You get the same sha1 i get.</h5></strong>
+</div>
 
-#### The Git Object Store (Lets Continue.)
+#### The Git Object Store (Lets Continue.) Lets Practice more.
 
-Let's start by creating an empty directory.
+1. Let's start by creating an empty directory.
 
-```bash
-mkdir gitobject
+{{<boxmd>}}
+**mkdir gitobject**
+{{</boxmd>}}
 
-```
+2. Initialize the Git repository.
 
-```bash
-git init
-# Initialized empty Git repository in $HOME/username/dir/.git/
-```
+{{<boxmd>}}
+**cd gitobject**
+**git init**
+{{</boxmd>}}
 
 The initialized repository is store at `.git` directory.
 
@@ -666,3 +684,7 @@ tip : doest remove if there are a merge conflict
     git stash clear
 
 ### Exercise
+
+```
+
+```

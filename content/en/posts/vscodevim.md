@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio code With Neovim"
+title: 'Visual Studio code With Neovim'
 date: 2020-04-03T20:36:34+03:00
 draft: true
 ---

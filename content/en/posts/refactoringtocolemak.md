@@ -7,12 +7,14 @@ hideToc: false
 enableToc: false
 author: eduuh
 authorEmoji: 🤖
+
 tags:
-- colemak
-- cli
-categories:
+- Cli
 - Productivity
-- linux
+categories:
+- Linux
+series:
+- Colemak
 
 weight: 1
 author: eduuh # author name
