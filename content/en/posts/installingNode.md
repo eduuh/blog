@@ -19,8 +19,6 @@ categories:
   - Node.js
 series:
   - Development
-
-pinned: true
 ---
 
 As with any **Programming language, platform, or tool**, **the first step to using it is getting it installed.** Many of them typically comes with a speedy way to upgrade when a new version is available.

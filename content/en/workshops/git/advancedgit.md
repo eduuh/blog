@@ -16,7 +16,7 @@ series:
 - git
 - DevOps
 image: images/git/giticon.png
-
+pinned: true
 author: eduuh # author name
 authorEmoji: 🤖 # emoji for subtitle, summary meta data
 authorImage: "/images/edd.jpg" # image path in the static folder
