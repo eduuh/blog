@@ -1,10 +1,11 @@
 ---
-title: "Personal site"
+title: 'Personal site'
 date: 2020-01-19T21:13:42+09:00
-description: Make a documentation with hugo zdoc theme!
+description: My Pesonal Blog Site, where I put all my notes
 weight: 2
-repo: ""
-link: "https://blog-8baaa.web.app"
+repo: ''
+link: 'https://eduuh.codes'
+repo: "https://github.com/eduuh/blog"
 pinned: true
 thumb:
 ---

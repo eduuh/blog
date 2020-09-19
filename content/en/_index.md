@@ -6,17 +6,18 @@ header:
     paddingY: 0
     align: center
     title:
-      - eduuh's Journal
+      - Welcome To my Notes
     subtitle:
       - A Journal Where I keep all My Tech notes in One Place.
       - Linux , Docker , .Netcore , Javascript n (Frameworks) , C# , Bash cli
 
-    titleColor: brown
-    titleShadow: true
-    titleFontSize: 44
+    titleColor: '#EA6B66'
+    titleShadow: false
+    titleFontSize: 35
     subtitleColor:
     subtitleCursive: true
     subtitleFontSize: 23
+    height: 200
     spaceBetweenTitleSubtitle: 16
 
   - type: img

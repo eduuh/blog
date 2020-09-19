@@ -10,12 +10,6 @@ tags: ['mongo']
 series: ['mongo']
 
 weight: 1
-
-author: eduuh # author name
-authorEmoji: 😎 # emoji for subtitle, summary meta data
-authorImage: '/images/edd.jpg' # image path in the static folder
-authorImageUrl: '' # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
-authorDesc:
 ---
 
 ### MongoDb Ecosystem
@@ -30,5 +24,5 @@ You can use **mongoDb** when building any kind of applications.
 
 ![applications](/images/mongo/application.png)
 
-Of course you can work with **mongoDb** from any **programming language** but throug a driver
+Of course you can work with **mongoDb** from any **programming language** but with the help of a driver. Mongodb provides drivers for most languages.
 

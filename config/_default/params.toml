@@ -12,7 +12,6 @@ useFaviconGenerator = true # https://www.favicon-generator.org/
 meta_image = ""
 enablePinnedPosts=true
 
-themecolor = "black"
 hideSingleContentsWhenJSDisabled = false
 
 themeOptions = ["light","dark"] # "hacker", "solarized", "kimbie"]
@@ -61,14 +60,14 @@ notAllowedTypesInHomeFeed = [
 
 enableUiAnimation = true
 # header
-homeHeaderType = "slide" # text, img, slide
+homeHeaderType = "text" # text, img, slide
 # body
 enableBreadcrumb = false
 enablePhotoSwipe = true
 enableSearch = true
 enableSearchHighlight = true
 enableGoToTop = true
-enableWhoami = true 
+enableWhoami = false 
 summaryShape = "classic" # card, classic, compact
 searchResultPosition = "main" # side, main
 archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
