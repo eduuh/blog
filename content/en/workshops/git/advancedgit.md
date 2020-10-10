@@ -26,10 +26,6 @@ authorDesc: Selftaught Web and Mobile Developer # author description
 pinned: true
 ---
 
-Hello am **eduuh**, I am a newly onboarded **Microsoft Student Ambassador** as of this edit dated **Sep 10, 2020**. I want to teach you how I use git in my project development. I will also feature **problems i face** during my repository management and how I go around this problems.
-
-First of all I want to **thank you** for chosing to read this and I hope by the end of this venture you will have learned alot to get started to using git. cheers🍷 Lets get into It.
-
 #### Learning Objectives.
 
 Make sure by the end of the workshop you understand atleast on of 👇
@@ -221,7 +217,8 @@ You don't know where or how **I got value 24**. Refer below.
 
 The initialized repository is store at `.git` directory.
 
-Whey you **delete** this folder in a repository you actually blow up the repository, but you retains the files that were availble in the working area.
+- When you **delete** this folder in a repository you actually blow up the repository, but you retains the files that were available in the working area.
+  - What happens is that you ___lose your git history__
 
 > #### question: where are blob stored?
 
@@ -289,11 +286,11 @@ Our initial `sha1` file was **ce013625030ba8dba906f756967f9e9ca394464a**.
 1. Create an empty directory and initialize a new repository
 
 Copy the command as it will work.
-
+{{<boxmd>}}
 - `mkdir` makes a directory.
 - `cd` move into the directory
 - `git init` initiaze the repository
-
+{{</boxmd>}}
 ```bash
   mkdir test ; cd test ; git init
 ```
@@ -355,7 +352,7 @@ This time the **git hash function** command takes a path to a file unlike intial
 lets us the find command to look for all files. Since we now know the blob are store in the **object** we could narrow our search in **directory**.
 
 ```bash
-find .git/object/ --type f
+find .git/object/ -type f
 # .git/objects/24/997081c3c51eeac9df4309dbcc9452112a8f1f
 ```
 
@@ -407,55 +404,39 @@ git cat-file -t 24997081
 
 | command                        | detail                                                          |
 | ------------------------------ | --------------------------------------------------------------- |
-| **kkdir** <path>               | creates a directory                                             |
+| **mkdir** <path>               | creates a directory                                             |
 | **git init**                   | initialize git in the directory                                 |
 | **ls -la .git**                | lists the content of the **.git** directory                     |
 | **find .git/object/ -type -f** | list all files available in a directory                         |
 | **git hash-object -w <path>**  | Saves the files to a git object store.                          |
 | \*\*git cat-file -p <objectid> | pretty print the content of the object in the git object store. |
 
-This takes you to [exercise one](exercises/1exerciseone.md)
 
 #### We need other stuff, right?
 
 Our blob is missing information.
 
-1. filenames.
-2. directory structure.
+{{<boxmd>}}
+1. Filenames.
+2. Directory Structure.
+{{</boxmd>}}
 
 wheres is this information stored in git?
 
 > ## Tree
->
-> Git stores filename , directory structure here.
-> a **tree** contains pointers (using sha1).
-> to blobs.
-> to other trees.
 
-and `metadata`
+Git stores __filename , directory structure__ in a tree.
+A **tree** contains pointers (__using sha1__). to blobs to other trees and `metadata`
 
 - **type** of pointer
 - **filename** of directory name
 - **mode** (excutable file, symbolic link,..)
 
-Has anyone ever tried to add empty directories to git?
-git can't of dont store empty directories.
+- Has anyone ever tried to add empty directories to git?
+- git can't of dont store empty directories.
 
 Identical content is only store once.
 
-## Other Optimization - Packfilse and Deltas
-
-1. Git object are compressed
-2. As files change, their content remains mostly similar.
-3. Git optimize for this by compressing these files together, into a Packfiles.
-4. The packfile stores the object and `deltas` , of the differences between one version of the file
-   and the next.
-5. Packfiles are generated when:
-   You have too many objects , during gc, or during a push to remote.
-
-You kind start to understand what happens during a git push where you see that message.
-
-> `compressing deltas`
 
 ## Commit OBJECT
 
@@ -463,14 +444,15 @@ A commit is a code snapshot.
 
 A commit points to
 
-1. A tree
+1. __A tree__ and contains metadata:
 
-and contains metadata:
+{{<boxmd>}}
+1. Author and committer
+2. Date
+3. Message
+4. Parent commit (one or more)
+{{<boxmd>}}
 
-> author and committer
-> date
-> message
-> parend commit (one or more)
 
 The `sha1` of the commit is the hash of all this information.
 
@@ -524,28 +506,28 @@ command. you notice that the commit create a folder structure and has an object 
 
 ## Take away from this
 
-> We can't change the Commits!
+- We can't change the Commits!
 
-- if you change any data about the commit, the
-  commit will have a new `SHA1` hash.
+- If you change any data about the commit, the commit will have a new `SHA1` hash . Since the Date changes.
 
-- even ef the files dont change the date will .
+- Even if the files don't change the date will .
+  - This should give you a high sense  of security.
 
-#### This give use the sense of high security in
+- When you use Git you will always know that you commit history will always maintain its integrity. No one in your team can mess with your commit message without becoming obvious.
 
-git and you will always know that you commit history will always maintaint its integrity. No one in your team can mess with your commit message without becoming obvious.
+- It also secures agaish corruption. If files on the disk change, the repository will notify that the content do not match.
 
-It also secures agaish corruption. If files on the disk change, the repository will notify that the content do not match.
+### REFERENCES - POINTERS TO COMMITS
 
-#### REFERENCES - POINTERS TO COMMITS
-
-> tags
-> branch
-> HEAD -> a pointer to the current commit.
+{{<boxmd>}}
+1. tags
+2. branch
+3. HEAD -> a pointer to the current commit.
+{{<boxmd>}}
 
 #### Why are checkout in git really fast?
 
-This is because, it not pulling in other data. but its just changing the pointers.
+- This is because, it not pulling in other data. but its just changing the pointers.
 
 ### Three areas where code lives
 
@@ -553,7 +535,7 @@ This is because, it not pulling in other data. but its just changing the pointer
 2. Staging area
 3. Repository
 
-##### Working area
+#### Working area
 
 The files in your working area that are also not in the staging area are not handled by git.
 
@@ -578,7 +560,7 @@ the repository is stored in the `.git` folder.
 
 Add a file to the next commit.
 
-    git add <filename>
+   git add <filename>
 
 delete a file in the next commit
 
@@ -592,12 +574,11 @@ rename a file in the next commit:
 
 1. One of my favorite tools
 
-allows you to stage commits in hunks
-Interactively
+allows you to stage commits in hunks Interactively
 
 It's especially useful if you've done too much work for one commit.
 
-### Unstage files fron the staging area
+### Unstage files from the staging area
 
 Not removing the files
 
@@ -685,6 +666,16 @@ tip : doest remove if there are a merge conflict
 
 ### Exercise
 
-```
+## Other Optimization - Packfilse and Deltas
 
-```
+1. Git object are compressed
+2. As files change, their content remains mostly similar.
+3. Git optimize for this by compressing these files together, into a Packfiles.
+4. The packfile stores the object and `deltas` , of the differences between one version of the file
+   and the next.
+5. Packfiles are generated when:
+   You have too many objects , during gc, or during a push to remote.
+
+You kind start to understand what happens during a git push where you see that message.
+
+> `compressing deltas`
