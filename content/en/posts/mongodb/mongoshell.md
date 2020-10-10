@@ -1,12 +1,14 @@
 ---
 title: 'MongoDB Crud Operation with the Shell'
-description: 'Modifiy the input'
+description: 'Understanding Creating, reading, updading and Deleting documents from mongodb shell'
 date: 2020-09-20T12:50:52Z
-draft: true
+draft: false
 hideToc: false
 enableToc: false
 author: eduuh
 authorEmoji: 🤖
+
+image: images/mongo/mongologo.png
 tags:
   - mongo
 categories:
@@ -61,21 +63,22 @@ Incase you connect successfully you get a prompt as show below. You could list t
 ![Mongoshowdbs](/images/mongo/showdbs.png)
 
 ### CRUD Operation and MongoDB
-Let me say that it depends on the use case of mongoDB. You could be using mongoDB for your __applications__ or __Analytics/BiTools (DataScience)__ or you are __Database Administrator__. All these roles have different CRUD requirements. lets see this visually.
+
+Let me say that it depends on the use case of mongoDB. You could be using mongoDB for your **applications** or **Analytics/BiTools (DataScience)** or you are **Database Administrator**. All these roles have different CRUD requirements. lets see this visually.
 
 ![Crud requirements](/images/mongo/roles.png)
-In here we are taking the role of an Administrator. As show we have the ability to __create ,read , update and delete__.
+In here we are taking the role of an Administrator. As show we have the ability to **create ,read , update and delete**.
 You can start using a database that does not exist and MongoServer will automatically create the db for you. The database will be create when you add at least one Document. Above ☝ We have a **bootcamps Document** and we want to be able to:
 
 {{<boxmd>}}
 
-1. __Create a bootcamp.__
-2. __Create many bootcamps.__
-3. __Update the created bootcamp__
-4. __Update Many bootcamps__
-4. __Delete bootcamp__
-5. __Delete manybootcamps.__
-6. __Find a particular bootcamp.__
+1. **Create a bootcamp.**
+2. **Create many bootcamps.**
+3. **Update the created bootcamp**
+4. **Update Many bootcamps**
+5. **Delete bootcamp**
+6. **Delete manybootcamps.**
+7. **Find a particular bootcamp.**
    {{</boxmd>}}
 
 The shell uses **javascript** but before we start creating stuff. Lets first review available methods to complete all the tasks above. Within the shell **db** referst to your current database. Type db to display the current database.
@@ -83,16 +86,10 @@ The shell uses **javascript** but before we start creating stuff. Lets first rev
 {{<boxmd>}}
 **db**
 {{</boxmd>}}
-The operation should return __test__, which is the default database.
+The operation should return **test**, which is the default database.
 
 {{<boxmd>}}
 **use bootcamp**
 {{</boxmd>}}
 
-You do not need to create the database before you switch. __MongoDB__ creates the database
-
-
-
-
-
-   
+You do not need to create the database before you switch. **MongoDB** creates the database

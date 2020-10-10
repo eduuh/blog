@@ -4,14 +4,15 @@ date: 2020-08-07T07:41:06-07:00
 draft: false
 description: 'Nodejs container. Deploy an Azure container registry. Building a container image using Azure container Registry'
 
-categories: ['Azure']
-tag:
+categories:
+  - cloud
+tags:
   - Cli
-series: ['azure']
+  - docker
+series:
+  - azure
 
-weight: 4
-author: eduuh # author name
-authorImage: /images/edd2.jpg
+image: images/azure/containeregistry.png
 authorEmoji: ☁
 pinned: true
 ---
@@ -195,9 +196,4 @@ Output of this command 👇. I removed Sensitive information.
 
 ```bash
 az acr build --registry eddnodecontainers --image expressAtoZ:v1 .
-
-```
-
-```
-
 ```

@@ -8,6 +8,8 @@ enableToc: false
 author: eduuh
 authorEmoji: 🤖
 
+image: images/colemak/Colemak.png
+
 tags:
 - Cli
 - Productivity

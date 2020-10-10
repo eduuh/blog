@@ -9,10 +9,11 @@ author: eduuh
 authorEmoji: 🤖
 
 tags:
-- Cli
+- cli
 categories:
-- Linux
+- productivity
 
+image: images/pass/password.png
 weight: 1
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
@@ -109,17 +110,20 @@ If you want to see the password simply tell pass which one you want and enter yo
 
 You will need to **input the pass phrase** for you private key in order to see your password. (ensure to use gpg key with a passphrase.)
 
-[dwm@edwin ~]\$ pass test
+```bash
+\$ pass test
 2>{qj,SnrJ
+```
 
-if you would like it copied to your clipboard automatically you can use the -c flag .
+if you would like it copied to your clipboard automatically you can use the -c flag. The password is copied to your clipboard for only 45 seconds. After that its cleared.
 
-    [dwm@edwin ~]$ pass -c test
-    Copied test to clipboard. Will clear in 45 seconds.
+```bash
+pass -c test
+```
 
 All pass is doing her is storing the generated file in an encrypted plain text file in a folder located at `#HOME/.password-store` and in case you were wondering, yes since it's just an encryted plain text file you can store whatever you want in there! Such as notes etc. I am planing to keep encypted IP addresses of servers and what ports they are using.
 
-Since we no longer need our test . Lets get rid of it:
+Since we no longer need our test . **Lets get rid of it**:
 
     [dwm@edwin ~]$  pass rm test
     Are you sure you would like to delete test? [y/N] y
@@ -132,6 +136,64 @@ There you go ! That's all you need to know to effectively use `pass` for basice 
 
 If you want to sync to another device you need to copy the `$HOME/.password-store` and `$HOME/.gnupg` to the target machine, however there is a much better method that allows you to sync continuously without using dropbox or a flash drive but requires a little more setup work up front which I will go over below.
 
-### Step 3 . Git
+### Step 3 . Using git for your Password Store.
 
-First things first, you'll need a server that has a publically accessilble ip address and that you have ssh
+Pass can use git to **synchronize passwords securely**. If you want to use your password store as the git repository. As you nomarly use git to it all the same.
+
+##### 1. Lets first enable git signing.
+
+```bash
+$ pass git config --bool --add pass.signcommits true
+```
+
+##### 2. Initialize password store.
+
+You could use the same email you use with **github** or other **remote service** you are using. I store my passowords in **azure devops** private repository. But for this i will demonstrate using github account.
+
+```bash
+$ pass init edwinsemail@outlook.com
+
+```
+
+list what is your pass Store.
+
+```bash
+$ pass
+
+```
+
+##### 3. Initialize your PassStore git repository.
+
+```bash
+pass git init
+
+```
+
+##### 4. Connect to a remote repository.
+
+```bash
+$ pass git remote add origin https://github.com/eduuh/password.git
+```
+
+##### 5. Push your password to the Remote repository.
+
+The first push to github. Use the command to push all your passwords to github.
+
+```bash
+pass git push -u --all
+
+```
+
+I think this is a safe way to sync your passwords. The password is not pushed to github. What is pushed is your encrypted password. Your password are safe if you don't disclose your private key which is used to decrypt your passwords.
+
+![githubimages](/images/pass/github.png)
+
+{{<boxmd>}}
+
+##### Future updates
+
+1. **Write about storing private keys to Azurekeyvault. Automated way**
+2. **Setting up a computer with from a passstore repository with private gpg key**
+3. **How is use pass with DWM**
+
+{{</boxmd>}}

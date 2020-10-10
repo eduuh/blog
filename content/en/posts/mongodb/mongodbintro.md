@@ -1,10 +1,11 @@
 ---
 description: 'Running how to work with mongodb'
 date: 2020-09-19T11:37:37
-draft: true
+draft: false
 linktitle: 'Getting Started with MongoDb'
 title: 'Mongo Db'
 
+image: images/mongo/mongologo.png
 categories: ['mongo']
 tags: ['mongo']
 series: ['mongo']
@@ -37,4 +38,3 @@ MongoDB server gives you the ability to create multiple databases. A mongoDB dat
 ![Document](/images/mongo/documents.png)
 
 Next Post we will practise Basic crud(Creating, reading, updating , deleting) operation using the above ☝ Document.
-
