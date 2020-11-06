@@ -22,6 +22,14 @@ image: /images/tmux/tmuxlogo.png
 
 It's **tmux** a so-called terminal multiplexer. Simply speaking , tmux acts as a **window manager** within your terminal and allows you to create multiple windows and panes within a single terminal window.
 
+The great thing about tmux is it allows you to have multiple panes open at the same time, each with their own shell running, but using the same single ssh connection. Not only that , you can also have multiple "windows" open at the same time.
+
+A huge benefit of using tmux on a remote server is that if your internet connection should die for any reason, that tmux session keeps on the session live on the server. This means your long-running job that you just kicked off and forgot. All you need to do is **tmux attach** once your internet is back and you've ssh'd into the server again, you'll have all the same panes and windows there waiting for you.
+
+### Why Use tmux Locally?
+
+To instantly get my command line "workspace" set up as soon as I fire up my terminal emulator.
+
 ![](/images/tmux/tmux.png)
 **Your mouse is slowing you down.**
 
@@ -560,3 +568,4 @@ fi
 ```
 
 Always work in a tmux session if tmux is installed
+

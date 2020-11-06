@@ -1,7 +1,7 @@
 ---
 title: "Bashscripting"
 date: 2020-04-11T16:02:40+03:00
-draft: true
+draft: false
 linktitle: "The Basic Linux Workshop"
 title: "Learn Basic CLI Concepts"
 description: "Bash CLI from Zero to Hero!. The basic of linux system and the command line."
@@ -1902,9 +1902,9 @@ You could use finger command to see all the information about all the users in t
     [edd@edwin ~]$ grep test /etc/passwd
     test:x:1001:1001:Muraya Kamau Edwin,Personal, 0758874026,0758874026:/home/test:/bin/zsh
 
-3. The *chage* command helps you manage the passwor aging process for user accounts. You need to set several parameters to individual values.
+3. The _chage_ command helps you manage the passwor aging process for user accounts. You need to set several parameters to individual values.
 
-The *chage* data value can be expressed using one of two methods:
+The _chage_ data value can be expressed using one of two methods:
 
 - A date in YYYY-MM-DD format
 - A numerical value representing the number of days since january 1,1970
@@ -1923,8 +1923,7 @@ Each group has a unique GID, which like UIDS, is a unique numeriacal value on th
 
 #### The /etc/group file
 
-Just like user accounts, group information is stored in a file on the system. The */etc/group* files contains information about each group used on the system.  These are examples from a typical */etc/group* file on a linux system.
-
+Just like user accounts, group information is stored in a file on the system. The _/etc/group_ files contains information about each group used on the system. These are examples from a typical _/etc/group_ file on a linux system.
 
     [edd@edwin ~]$ cat /etc/group
     root:x:0:root
@@ -1959,7 +1958,7 @@ The record have the following informations.
 
 The group password allows a non-group member to temporarily become a member of the group by using the password. This feature is not used all that commonly but it does exist.
 
-You should never add users to groups by editing the **/etc/group** file. Instead, use the *usermod* command to add a ures account to a group. Before you can add users to different groups, you must create the groups.
+You should never add users to groups by editing the **/etc/group** file. Instead, use the _usermod_ command to add a ures account to a group. Before you can add users to different groups, you must create the groups.
 
 ### Creating new groups.
 
@@ -1982,9 +1981,9 @@ When you create a new group, no users are assigned to it by default. The groupad
     sudo usermod -G shared edd
     [edd@edwin ~]$ sudo usermod -G shared test
 
-The shared group now has two members, *test* and *rich*. The -G parameter in usermode appends the new group to the list of groups for the user account.
+The shared group now has two members, _test_ and _rich_. The -G parameter in usermode appends the new group to the list of groups for the user account.
 
->###### If you change the user groups for an account that is currently logged into the system, the user must log out and them log back in for the group changes to take effect.
+> ###### If you change the user groups for an account that is currently logged into the system, the user must log out and them log back in for the group changes to take effect.
 
 ### Modifiying groups
 
@@ -2001,7 +2000,7 @@ After changing the name of a group, the **GID** and group members remain the sam
 
 ### Decoding File Permissions.
 
-Now that you know about users and groups, it's time to decode the cryptic file permissions you've seen when using the *ls* command.
+Now that you know about users and groups, it's time to decode the cryptic file permissions you've seen when using the _ls_ command.
 
 #### Using File permision symbols
 
@@ -2015,12 +2014,12 @@ The ls command allows you to see the file permissions for files, directoriefs an
 
 The first field in the output listing is a code that decribes the permissions for the files and directories. The first character in the field defines the type of the object.
 
--  - for files
--  d for directories
--  l for links
--  c for characters devices
--  b for block devices
--  n for network devices
+- - for files
+- d for directories
+- l for links
+- c for characters devices
+- b for block devices
+- n for network devices
 
 After that, you see three sets of three characters. Each set of three character defines an access permission triplets:
 
@@ -2035,7 +2034,6 @@ If a permission is denied, a dash appears in the location. The three sets relate
 - Everyone else on the system.
 
 The easiest way to discuss this is to take an example and decode the file permissions one by one:
-
 
     drwxr-xr-x 10 edd  wheel 4.0K May 21 15:19 .cache
 
@@ -2081,7 +2079,7 @@ You could use one number to define the permission set of a user. but since we ne
 2. group
 3. others
 
-The octal value 664 could represent read and write permissions for the **(user and  group)** but read-only permission for **everyone** else.
+The octal value 664 could represent read and write permissions for the **(user and group)** but read-only permission for **everyone** else.
 
 The umask value is just that, a mask. It masks out the permissions you don't want to give to the security level. Now we have to dive into some octal arithmetics to figure out the rest of the story
 
@@ -2159,18 +2157,17 @@ If you really want to get tricky, you can just change the default group for a fi
 
 The **chgrp** command provides an easy way to change just the default group for a file or directory.
 
-The user account must own the file, and be a member of the new group as well to e able to change the group. Now any member in the shared group can write to the file. This is one way to share files on a linux system.However, sharing files among a group of people on the system can get tricky. 
+The user account must own the file, and be a member of the new group as well to e able to change the group. Now any member in the shared group can write to the file. This is one way to share files on a linux system.However, sharing files among a group of people on the system can get tricky.
 
 ### Sharing Files
 
 Creating group is the way to share access to files on the linux system. For a complete file-sharing environment. When you create a new file, linux assigns the file permissions of the new wile uging your default uid and GID.
- 
+
 There are three additional bits of information that linux store for each file and directory.
 
 - **The set user id(suid)**: When a file is executed by a user, the program runs under the permissions of the file owner.
-- **The set group id(SGID)**: for a file, the program runs under the permission of file group. 
+- **The set group id(SGID)**: for a file, the program runs under the permission of file group.
 - **The sticky bit:** The file remains (sticks) in memory after the process ends.
-
 
 ## Managing Filesystems
 
@@ -2188,14 +2185,14 @@ Linux support several of filesystems to manage files and folders. Each filesyste
 
 The original filesystem introduced with the Linux operating system is called the **extended filesystem** or just ext for short.
 
-It provides a basic unix like filesystem for Linux, using virtual directories to handle physical devices and storing data in fixed length blocks on the physial devices. 
+It provides a basic unix like filesystem for Linux, using virtual directories to handle physical devices and storing data in fixed length blocks on the physial devices.
 
 The ext filesystem uses a system called **inode** to track information about the file store in the virtual directory. The inode system creates a seperate table on each physical devices calle the **inode table** to store information. Each stored file in the virtual directory has an entry in the inode table. The **extended** part of the name comes from the additional data taht it tracks on each file, which consist of these items.
 
 - The filename
 - The file size
 - The owner of the file
-- The group the file belongs to 
+- The group the file belongs to
 - Access permissions for the file.
 - Pointers to each disk block that contains data from the file
 
@@ -2233,11 +2230,3 @@ To start the **fdisk** command, you need to specify the device name of the stora
 Although this list may look big, you need just a few basic commands in day-to day work.
 
 For starters, you can display the details of a storage device using the p command.
-
-
-
-
-
-
-
-
