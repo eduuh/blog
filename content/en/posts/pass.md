@@ -2,7 +2,7 @@
 title: "Password Management on Linux"
 description: "Using Pass"
 date: 2020-07-09T15:46:26Z
-draft: true
+draft: false
 hideToc: false
 enableToc: false
 author: eduuh
