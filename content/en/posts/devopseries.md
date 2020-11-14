@@ -1,3 +1,17 @@
+---
+title: 'Deveops Series'
+draft: true
+description: 'Nodejs container. Deploy an Azure container registry. Building a container image using Azure container Registry'
+
+categories:
+  - azure
+series:
+  - devops
+
+image: images/azure/containeregistry.png
+authorEmoji: ☁
+---
+
 ## Devops Series
 
 I will teach git the way I would want to be taught. **I use alot of diagrams , images and I employ repetition**. I will introduce a command and build on it. When we are doing repettion of a command , I don't necessary use the same procedure as before, this helps you understading more.

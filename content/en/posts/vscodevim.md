@@ -1,7 +1,14 @@
 ---
 title: 'Visual Studio code With Neovim'
 date: 2020-04-03T20:36:34+03:00
-draft: true
+draft: false
+hideToc: false
+enableToc: true
+author: eduuh
+authorEmoji: 😎
+tags:
+  - notes
+image: images/cheatsheet.png
 ---
 
 ### Introduction

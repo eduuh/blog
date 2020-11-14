@@ -5,9 +5,10 @@ date: 2020-01-26T20:40:22+03:00
 draft: true
 linktitle: ""
 title: "JavaScript Algorithm and Data Structures"
-tags: ["Js","DataStructures"]
+
 series: 
- - JavaScript
+ - javascript
+
 weight: 30
 
 author: eduuh # author name

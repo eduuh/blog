@@ -6,8 +6,7 @@ linktitle: 'Getting Started with MongoDb'
 title: 'Mongo Db'
 
 image: images/mongo/mongologo.png
-categories: ['mongo']
-tags: ['mongo']
+
 series: ['mongo']
 
 weight: 1

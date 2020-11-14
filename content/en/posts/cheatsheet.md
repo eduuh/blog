@@ -8,9 +8,9 @@ enableToc: true
 author: eduuh
 authorEmoji: 😎
 tags:
-  - linux
+  - cli
 categories:
-  - Productivity
+  - config
 
 image: images/cheatsheet.png
 ---

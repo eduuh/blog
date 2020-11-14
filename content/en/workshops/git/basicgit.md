@@ -8,13 +8,13 @@ hideToc: true
 enableToc: true
 enableTocContent: false
 authorEmoji: 👻
+
 tags:
-- Cli 
-categories: 
-- Git
+- cli 
 series:
 - git
-- DevOps
+- devops
+
 image: images/git/giticon.png
 pinned: true
 author: eduuh # author name
@@ -190,4 +190,3 @@ This information is added to the **~/.gitconfig** file. You can confirm with
 ```
 
 ```
-

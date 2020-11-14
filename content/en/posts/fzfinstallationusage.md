@@ -4,8 +4,8 @@ date: 2020-04-19T07:41:06-07:00
 draft: false
 description: ' Fzf is an interactive fuzzy file search tool on the command-line. It is fast and powerful. In this post , I will introduce its installation and usage.'
 
-categories: ['FuzzyFinder']
-tags: ['Nvim', 'Cli']
+categories: ['config']
+tags: ['nvim', 'cli']
 
 weight: 3
 image: images/fzf.png

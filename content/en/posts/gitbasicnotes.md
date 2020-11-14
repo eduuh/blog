@@ -9,11 +9,10 @@ author: eduuh
 authorEmoji: 🤖
 authorImage: '/images/edd.jpg'
 tags:
-  - Linux
-categories:
-  - Productivity
+  - cli
+  - notes
 series:
-  - Nvim
+  - git
 ---
 
 ### Git Basic to Advanced

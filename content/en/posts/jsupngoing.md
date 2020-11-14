@@ -5,8 +5,7 @@ draft: true
 linktitle: "Javascript dipe dive"
 title: "Javascript deep Dive , Understanding the basic concepts"
 
-series: ["JavaScript"]
-weight: 30
+series: ["javascript"]
 
 author: eduuh # author name
 authorEmoji: 🤖 # emoji for subtitle, summary meta data

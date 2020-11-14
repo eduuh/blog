@@ -1,18 +1,16 @@
 ---
-title: 'Cheatsheet + Daily Stand Up'
-description: 'The place i must look back to practise what skill i Learned daily'
+title: 'How To Learn and Code, n Some workflows'
+description: 'Some workflows, I choose to follow in Learning and working on my Next project.'
 date: 2020-06-28T16:03:42Z
-draft: true
+draft: false
 hideToc: false
 enableToc: true
 author: eduuh
 authorEmoji: 😎
+
 tags:
-  - linux
-categories:
-  - Productivity
-series:
-  - workspace
+  - notes
+
 image: images/cheatsheet.png
 ---
 

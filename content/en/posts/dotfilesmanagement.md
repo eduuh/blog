@@ -2,22 +2,21 @@
 description: Efficient way to manage configuration files in a linux system.
 date: 2020-02-12T11:37:37+03:00
 draft: false
-linktitle: ''
+linktitle: 'Efficient way to manage configuration files in a linux system.'
 title: 'Dotfiles sync with bare repository'
 
-categories: ['Git']
-tags: ['Cli']
-
-weight: 5
+tags: ['cli']
+series: ['git']
 
 image: images/dotfiles.png
 
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
 authorImage: '/images/edd.jpg' # image path in the static folder
-authorImageUrl: '' # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 ---
+
+weight: 5
 
 #### A simpler way to manage your dotfiles
 

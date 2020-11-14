@@ -8,11 +8,9 @@ enableToc: true
 author: eduuh
 authorEmoji: 😎
 tags:
-  - linux
+  - cli
 categories:
-  - Productivity
-series:
-  - workspace
+  - config
 ---
 
 Writing and programming are two different fundamentally different activities.
@@ -53,5 +51,3 @@ call plug#begin() Plug
 'junegunn/goyo.vim'
 call plug#end()
 {{</boxmd>}}
-
-

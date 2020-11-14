@@ -11,9 +11,7 @@ author: eduuh
 authorEmoji: 😎
 authorImage: '/images/edd.jpg' # image path in the static folder
 
-tags: ['Tmux', 'Cli']
-categories: ['Productivity']
-series: ['Dwm']
+tags: ['cli']
 
 image: /images/tmux/tmuxlogo.png
 ---
@@ -568,4 +566,3 @@ fi
 ```
 
 Always work in a tmux session if tmux is installed
-

@@ -10,12 +10,9 @@ author: eduuh
 authorEmoji: 🤖
 authorImage: 'images/whoami/smile.png' # image path in the static folder
 tags:
-  - nvm
   - cli
 category:
-  - development
-series:
-  - Node.js
+  - config
 ---
 
 As with any **Programming language, platform, or tool**, **the first step to using it is getting it installed.** Many of them typically comes with a speedy way to upgrade when a new version is available.

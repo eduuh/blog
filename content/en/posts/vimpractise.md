@@ -9,11 +9,9 @@ author: eduuh
 authorEmoji: 🤖
 authorImage: '/images/edd.jpg'
 tags:
-  - Linux
+  - cli
 categories:
-  - Productivity
-series:
-  - Nvim
+  - config
 ---
 
 <div align="center">
@@ -76,4 +74,3 @@ Vim is powerful text editor! I love vim ... and if you don't already, you soon w
 10. [Visual Mode.]()
 11. [Buffers.]()
 12. [Vim Settings and the Vimrc files.]()
-

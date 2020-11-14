@@ -9,12 +9,11 @@ enableToc: true
 enableTocContent: false
 authorEmoji: 👻
 tags:
-- Cli 
-categories: 
-- Git
+- cli 
 series:
 - git
-- DevOps
+- devops
+
 image: images/git/giticon.png
 pinned: true
 author: eduuh # author name
@@ -218,7 +217,7 @@ You don't know where or how **I got value 24**. Refer below.
 The initialized repository is store at `.git` directory.
 
 - When you **delete** this folder in a repository you actually blow up the repository, but you retains the files that were available in the working area.
-  - What happens is that you ___lose your git history__
+  - What happens is that you **\_lose your git history**
 
 > #### question: where are blob stored?
 
@@ -287,10 +286,12 @@ Our initial `sha1` file was **ce013625030ba8dba906f756967f9e9ca394464a**.
 
 Copy the command as it will work.
 {{<boxmd>}}
+
 - `mkdir` makes a directory.
 - `cd` move into the directory
 - `git init` initiaze the repository
-{{</boxmd>}}
+  {{</boxmd>}}
+
 ```bash
   mkdir test ; cd test ; git init
 ```
@@ -411,22 +412,22 @@ git cat-file -t 24997081
 | **git hash-object -w <path>**  | Saves the files to a git object store.                          |
 | \*\*git cat-file -p <objectid> | pretty print the content of the object in the git object store. |
 
-
 #### We need other stuff, right?
 
 Our blob is missing information.
 
 {{<boxmd>}}
+
 1. Filenames.
 2. Directory Structure.
-{{</boxmd>}}
+   {{</boxmd>}}
 
 wheres is this information stored in git?
 
 > ## Tree
 
-Git stores __filename , directory structure__ in a tree.
-A **tree** contains pointers (__using sha1__). to blobs to other trees and `metadata`
+Git stores **filename , directory structure** in a tree.
+A **tree** contains pointers (**using sha1**). to blobs to other trees and `metadata`
 
 - **type** of pointer
 - **filename** of directory name
@@ -437,22 +438,21 @@ A **tree** contains pointers (__using sha1__). to blobs to other trees and `meta
 
 Identical content is only store once.
 
-
 ## Commit OBJECT
 
 A commit is a code snapshot.
 
 A commit points to
 
-1. __A tree__ and contains metadata:
+1. **A tree** and contains metadata:
 
 {{<boxmd>}}
+
 1. Author and committer
 2. Date
 3. Message
 4. Parent commit (one or more)
-{{<boxmd>}}
-
+   {{<boxmd>}}
 
 The `sha1` of the commit is the hash of all this information.
 
@@ -511,7 +511,8 @@ command. you notice that the commit create a folder structure and has an object 
 - If you change any data about the commit, the commit will have a new `SHA1` hash . Since the Date changes.
 
 - Even if the files don't change the date will .
-  - This should give you a high sense  of security.
+
+  - This should give you a high sense of security.
 
 - When you use Git you will always know that you commit history will always maintain its integrity. No one in your team can mess with your commit message without becoming obvious.
 
@@ -520,10 +521,11 @@ command. you notice that the commit create a folder structure and has an object 
 ### REFERENCES - POINTERS TO COMMITS
 
 {{<boxmd>}}
+
 1. tags
 2. branch
 3. HEAD -> a pointer to the current commit.
-{{<boxmd>}}
+   {{<boxmd>}}
 
 #### Why are checkout in git really fast?
 
@@ -560,7 +562,7 @@ the repository is stored in the `.git` folder.
 
 Add a file to the next commit.
 
-   git add <filename>
+git add <filename>
 
 delete a file in the next commit
 

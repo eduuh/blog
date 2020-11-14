@@ -11,14 +11,10 @@ authorEmoji: 🤖
 image: images/colemak/Colemak.png
 
 tags:
-- Cli
-- Productivity
+- cli
 categories:
-- Linux
-series:
-- Colemak
+- config
 
-weight: 1
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
 authorImage: "/images/whoami/smile.png" # image path in the static folder

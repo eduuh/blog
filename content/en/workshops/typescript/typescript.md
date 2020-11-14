@@ -9,8 +9,8 @@ description: "Typescript"
 hideToc: true
 enableToc: true
 
-categories: ["productivity", "linux"]
-tags: ["Cli", "bash"]
+tags: 
+  - typescript
 
 image : images/gnu-bash.png
 author: eduuh # author name

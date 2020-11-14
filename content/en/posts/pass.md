@@ -11,7 +11,7 @@ authorEmoji: 🤖
 tags:
 - cli
 categories:
-- productivity
+- config
 
 image: images/pass/password.png
 weight: 1

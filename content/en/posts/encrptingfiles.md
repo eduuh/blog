@@ -11,11 +11,7 @@ authorEmoji: 😎
 weight: 1
 
 tags:
-- linux
-categories:
-- Productivity
-series:
-- workspace
+- cli
 
 image: images/encrypt/encrypt.png
 

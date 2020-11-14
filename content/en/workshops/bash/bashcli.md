@@ -1,16 +1,17 @@
 ---
-title: "Bashscripting"
+title: "Basic Linux Concepts"
 date: 2020-04-11T16:02:40+03:00
 draft: false
 linktitle: "The Basic Linux Workshop"
 title: "Learn Basic CLI Concepts"
 description: "Bash CLI from Zero to Hero!. The basic of linux system and the command line."
-categories: ["comandline","linux"]
-tags: ["productivity","bash"]
+
+tags: ['cli']
+series: ['bash']
 
 image : images/bash/bash.png
 author: eduuh # author name
-authorEmoji:  🤖# emoji for subtitle, summary meta data
+authorEmoji:  🤖
 authorImage: "/images/edd.jpg" # image path in the static folder
 authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: Selftaught Web and Mobile Developer # author description

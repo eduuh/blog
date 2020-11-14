@@ -8,18 +8,13 @@ description: "Ranger is a console / terminal visual file manager written in Pyth
 linktitle: "ranger"
 title: "Ranger - Visual file manager"
 
-categories: ["linux"]
-
-tags: ["ranger","cli", 'Productivity']
-series: ["Dwm"]
-weight: 2
-
+categories: ["config"]
+tags: ["cli"]
 
 image : images/ranger.png
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
 authorImage: "/images/edd.jpg" # image path in the static folder
-authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 ---
 

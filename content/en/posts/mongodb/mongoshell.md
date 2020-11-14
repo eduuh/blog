@@ -9,10 +9,7 @@ author: eduuh
 authorEmoji: 🤖
 
 image: images/mongo/mongologo.png
-tags:
-  - mongo
-categories:
-  - mongo
+
 series:
   - mongo
 ---

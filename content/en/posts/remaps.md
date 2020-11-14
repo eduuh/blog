@@ -4,8 +4,8 @@ date: 2020-03-19T07:41:06-07:00
 draft: false
 description: 'Reload the colemak Keyboard layout on my arch distributions and Remaping caps lock to function primary as Escape on short presses and Control when pressed with other keys'
 categories: ['Productivity']
-tags: ['Cli', 'Colemak', 'Touchtyping']
-series: ['Dwm']
+tags: ['cli']
+categories: ['config']
 
 weight: 4
 image: images/configurations.png

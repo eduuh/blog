@@ -4,8 +4,8 @@ date: 2020-04-19T07:41:06-07:00
 draft: true
 description: 'How I Use tmux for Local Development'
 
-categories: ['productivity']
-tags: ['Nvim', 'Cli']
+categories: ['config']
+tags: ['cli']
 
 weight: 3
 image: images/fzf.png
@@ -163,4 +163,3 @@ It even (optinally) restores **vim and neovim sessions**
 ```
 
 ```
-

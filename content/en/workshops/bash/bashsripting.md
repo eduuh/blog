@@ -9,8 +9,10 @@ description: "Learning bash programing from basic to advanced concepts"
 hideToc: true
 enableToc: true
 
-categories: ["productivity", "linux"]
-tags: ["Cli", "bash"]
+categories:
+  - cli
+series: ['bash']
+
 
 image : images/gnu-bash.png
 author: eduuh # author name

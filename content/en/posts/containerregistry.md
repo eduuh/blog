@@ -5,16 +5,14 @@ draft: false
 description: 'Nodejs container. Deploy an Azure container registry. Building a container image using Azure container Registry'
 
 categories:
-  - cloud
-tags:
-  - Cli
-  - docker
-series:
   - azure
+tags:
+  - cli
+series:
+  - docker
 
 image: images/azure/containeregistry.png
 authorEmoji: ☁
-pinned: true
 ---
 
 You would consider Azure Container Registry. When you want to **manage a Private Docker Registry**

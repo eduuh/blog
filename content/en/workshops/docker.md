@@ -8,11 +8,11 @@ enableToc: true
 author: eduuh
 authorEmoji: 😎
 tags:
-  - linux
+  - cli
 categories:
-  - Productivity
-
-image: images/feature1/markdown.png
+  - config
+series:
+  - docker
 ---
 
 ### Important Docker Crash Course.
