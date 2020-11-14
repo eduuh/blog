@@ -3,26 +3,20 @@ author: "Edwin Muraya"
 title: "Advanced Git WorkShop"
 date: 2020-02-19T12:00:06+09:00
 description: "Guide to git expert"
-draft: false
+draft: true
 hideToc: true
 enableToc: true
 enableTocContent: false
-authorEmoji: 👻
 tags:
 - cli 
 series:
 - git
 - devops
-
 image: images/git/giticon.png
-pinned: true
-author: eduuh # author name
-authorEmoji: 🤖 # emoji for subtitle, summary meta data
-authorImage: "/images/edd.jpg" # image path in the static folder
-authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
-authorDesc: Selftaught Web and Mobile Developer # author description
+author: eduuh 
+authorEmoji: 🤖 
+authorImage: "/images/edd.jpg" 
 
-pinned: true
 ---
 
 #### Learning Objectives.
