@@ -1,0 +1,19 @@
+name: Deploy site to Firebase
+
+on: [push]
+
+jobs: 
+  run-github-action:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout Repository.
+        uses: actions/checkout@v1
+        with: 
+          submodules: true
+      - uses: ryank90/action-hugo-firebase-deploy@master
+        with:
+         firebase-token: ${{ secrets.firebase_token }}
+         hugo-params: -D 
+
+
+  
