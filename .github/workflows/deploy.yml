@@ -10,7 +10,10 @@ jobs:
         uses: actions/checkout@v1
         with: 
           submodules: true
-      - uses: ryank90/action-hugo-firebase-deploy@master
+      - name: firebase deploy
+
+        uses: ryank90/action-hugo-firebase-deploy@master
+        run: cd hugo_site
         with:
          firebase-token: ${{ secrets.firebase_token }}
          hugo-params: -D 
