@@ -13,7 +13,7 @@ meta_image = ""
 enablePinnedPosts=true
 
 hideSingleContentsWhenJSDisabled = false
-hideHomeHeaderWhenMobile = false
+hideHomeHeaderWhenMobile = true
 showMobileMenuTerms = ["tags", "categories", "series"]
 
 
