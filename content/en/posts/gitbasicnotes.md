@@ -17,9 +17,6 @@ series:
 
 ### Git Basic to Advanced
 
-Version control is a system that records changes to a file or set of file over time so that you can recall specific version later.
-Git was initially designed and developed by Linus Torvalds for linux Kernel development. Git is a free software distributed under the **GNU General License Version2.**
-
 The reality you can do this with nearly any type of file on a computer.
 
 1. Opensource books are version controlled.
@@ -114,6 +111,127 @@ The basic Git workflow goes something like this:
 3. You do a a commit, which takes the files as they are in the staging area and store that snapshot permanently to your git directory.
 
 If a particula version of a file in a **git directory** is considered **committed** it means that the file has been modified and was added to the staging area.
+
+- # What is Git?
+
+- Git was initially designed and developed by **Linus Torvalds** for linux kernel development.
+- Git is a free software distributed under **GNU General License Version2**.
+
+Git manages the Version of **Files**. Nearly **any type of files** on a computer.
+
+- Some **Opensources books** are version controlled.
+- You could use git for **markdown notes**.
+- For Graphic or Web designers. you could want to **keep every version of an image or layout**.
+  We will install all the above tools when we get to using them .
+
+Using Git is Wise as a Developer since.
+
+1. It allow you to **revert** selected files back to a previous state.
+2. Revert the entire project back to previous state.
+3. Compare changes over time.
+4. See who last modified something that might be cousing problems.
+5. To view who instroduced an issue and when, and more.
+
+### Lets Get started.
+
+![git for collaboration](/images/git/gitbasic/colaboration.jpg)
+
+Git is a **prerequisite** for collaborating on **website** or applications. Git is a kind of model for present-day collaboration that is **collaboration among distributed teams, working asynchronously, on a shared body of work.** So while you don't have to love Git, you do have to **know it**.
+
+The first step to loving git is Learning how **Git thinks** doing a comparison to our understanding.
+
+### Thinking in Versions.
+
+There are at least two ares of **our written culture** where making incremental changes, and tracking those changes across multiple versions, is not Just helpful but crucial.
+
+- **law**
+- **software source code**.
+
+The basic priciple of a version control system is **instead of keeping only the latest copy of something, you hold on to each successive revision of your work, so that you can refer or revet back to an older version of you need to.**
+
+#### Semi-manual Version Control.
+
+In order to save changes to your repository, there needs to be one version of the project that you can safely make changes to in Version control systems.
+
+You may have projects where we kept copies, My friends who do online writing , they save new versions by using an **Save As** **command** command to give each copy its own name. The go ahead and mark the new filename with current date **geodesy_2020-04-15.pdf**. This is entirely a valid form of version control.
+
+You could see this version control system used for physical books releases.
+
+Using **version control system vcs** means that if you screw things up or lose files, you can easily recover with little overhead.
+
+#### Git as Version Control.
+
+In our **semi-manual** process, we "committed" a new version by making a copy of our working copy, naming it with next sequenctial version number. **Committing changes in Git is , very similar**. For each commit, Git records the **precise state of our files** as they are right now in the repository for later access and retrieval.
+
+Unlike in our manual process, whe had the annoying (and potentially risky) responsibility of making sure new versions were copied into place correctly incresing your efforts.
+
+Git copies new versions incrementally, making references to existing copies of files that haven't changed to conserve disk space.
+
+Git allow you to assign your own names or numbers to versions if you need to, but it also gites you a reliable , unique identifier for every single commit. You dont have to but you could just rely of git to do its thing.
+
+Git offers powerful tools for safely merging changes between different versions of a project not just between different collaborators, but also between multiple variations of the project on one person's computer.
+
+#### Git Perspective.
+
+Using **git** forces you to question you own assumption about how changes works. It demands you to undestand **state**. Rather than having three different files we have three different states of the same file. Git stores all the old versions of the file in each of its **previous states**.
+
+The best thing about git is that its a **matter-of-fact** program around. It never does more that you tell it to do. It can also get you out of a bad states it cannot resolve.
+
+##### Basics.
+
+If you're just starting to Learn Git, I recommend to Sticking to the command line. **Git's command-line interfaces is its mother tongue**. Typing commands and seeing the response Git gives back is a great way to learn about how Git actually works.
+
+The command line is also consistent across the various platforsm Git runs on. If you know how to interact with Git via command, you'll be able to use **Git no matter what kind of computer you're on**. There are graphical Git apps out there which some are very good. You don't have to choose one over the other. You can in fact use the Terminal and a Git app side by side, making commits and pushing changes in the app, where it may be easier.
+
+##### Lets install / Verify Our installs
+
+{{< tabs Arch Ubuntu windows>}}
+
+{{<tab>}}
+
+**Arch and Manjaro we use pacman package manager.**
+
+When Installing Git . Ensure you install the **latest version of git** by first updating your distribution to ensure their are using the latest sources.
+
+{{< alert theme="danger">}}
+**sudo pacman -S git**
+{{< /alert >}}
+
+![arch installation image](/images/git/gitbasic/pacman.png)
+
+{{<boxmd>}}
+let's check if git is working correctly
+\$ **git version**
+{{</boxmd>}}
+
+{{</tab>}}
+{{<tab>}}
+
+**Debian-based Distribution, such as Ubuntu**
+{{< alert theme="danger">}}
+**sudo apt install git**
+{{< /alert >}}
+
+![Debian based distribution](/images/git/gitbasic/ubuntu.png)
+{{</tab>}}
+
+{{<tab>}}
+
+- Installing **git.**
+  - [visit git scm site and download the executable](https://git-scm.com/) - After you have the exe. Install you normally do with other software.
+- If you're confortable with either of Window's two standard command-line environments **Command Prompt or PowerShell**, the git installer will give you the option of configuring Git to work with those.
+- **By default** the git installer provides its own terminal applications, call **Git Bash** which emulates a **unix-based system such as Os X or Linux** with supports for not just Git but other commands utilities.
+
+- Although **Windows and Linux/OS x** bot support the same encodings for plain text files (ASCII and Unicode), They are different line endings, that is , different characters for denoting line breaks. **Git for windows help use out here by doing conversions automatically**
+- One more small difference: while windows path use **back-slashes** and drive letters, as in **C:\Users\edwin\myproject** unix paths use forward slashe. An equivalet could be **/Users/edwin/myproject** (with no leading drive letter, since unix systems dont use them)
+
+  {{</tab>}}
+
+{{< /tabs >}}
+
+<hr>
+
+From these step lets continue stepwise.
 
 ### The command Line.
 

@@ -3,10 +3,10 @@ author: "Edwin Muraya"
 title: "Basic Git WorkShop"
 date: 2020-11-08T12:00:02+38:00
 description: "Learn how to use git to be great."
-draft: true
+draft: false
 hideToc: true
 enableToc: false
-enableTocContent: true
+enableTocContent: false
 authorEmoji: 👻
 
 tags:
@@ -28,7 +28,7 @@ pinned: true
 
 Welcome, lets get into the task ahead.
 
-## Learning Objectives
+### Learning Objectives
 
 {{<boxmd>}}
 
@@ -38,144 +38,74 @@ Welcome, lets get into the task ahead.
 4. **Tip and Tricks when Using Git**
 5. **Learn How to use Git To Understanding Opensource Project**
 6. **Practical Uses of Git as a daily driver apart from projects**
+7. **Automation with github worflow**
+8. **Creating a portfolio static site and deploying it azure with github pages.**
    {{</boxmd>}}
 
-### Requirements
+#### Requirements
 
 1. **Command Line** that support unix style commands.
-2. **node > 8.0.** We will be using some npm cli tools\_
-3. Some **npm packages** Install them once with the command 👇
+2. **Choose editor**.
+3. **node > 8.0.** We will be using some npm cli tools\_
+4. Some **npm packages** Install them once with the command 👇
    **npm install --global generate generate-gitignore generate-license**
-4. **git version > 2.0** (check with git --version)
-5. Create a **[github.com](https://www.github.com)** account
-6. Create a **[Azure Devops](https://www.dev.azure.com)** account
-7. (**github/hub**)[https://github.com/github/hub]
+5. **git version > 2.0** (check with git --version)
+6. Create a **[github.com](https://www.github.com)** account
+7. Create a **[Azure Devops](https://www.dev.azure.com)** account
+8. [github/hub](https://github.com/github/hub)
 
-### Lets Get started.
+##### Step one: Installations.
 
-<hr>
+#### This is your checklist:
 
-#### What is Git?
+- [] Access to terminal.
+- [] Install Git.
+- [] Sign up for a **github account**.
+- [] Choose editor.
 
-**Version control** is a system that records changes to a files or set of files over times so that you can recall specific version later.
+##### Step 1: Work Environments: Access To Terminal.
 
-- Git was initially designed and developed by **Linus Torvalds** for linux kernel development.
-- Git is a free software distributed under **GNU General License Version2**.
+- **Mac**: use **Terminal**
+- **Windows**:
+  - Option 1: [Power shell](https://www.digitalcitizen.life/simple-questions-what-powershell-what-can-you-do-it)
+  - Option 2: **Git bash**.
+  - Option 3: **Use WSL (Ubuntu) (must be installed prior to workshop) (for advanced users)**
+- **Linux**.
 
-Git manages the Version of **Files**. Nearly **any type of files** on a computer.
+##### Step 2: Installation of Git.
 
-- Some **Opensources books** are version controlled.
-- You could use git for **markdown notes**.
-- For Graphic or Web designers. you could want to **keep every version of an image or layout**.
-  We will install all the above tools when we get to using them .
+- **Mac**: [Git for mac download](https://git-scm.com/download/mac)
+- **Windows**:
+  - [Git for Windows (Git Bash)](https://gitforwindows.org/)
+- **Linux**:
+  [Install Git on Linux](https://www.atlassian.com/git/tutorials/install-git#linux)
 
-Using Git is Wise as a Developer since.
+Confirm Git is installed by typing `git --version` on your terminal
 
-1. It allow you to **revert** selected files back to a previous state.
-2. Revert the entire project back to previous state.
-3. Compare changes over time.
-4. See who last modified something that might be cousing problems.
-5. To view who instroduced an issue and when, and more.
+##### Step 3: Sign up for a GitHub Account
 
-Using **version control system vcs** means that if you screw things up or lose files, you can easily recover with little overhead.
+- [github.com](https://github.com/)
+- Save your **user ID and password** somewhere you can easily find it
 
-##### Lets install / Verify Our installs
+##### Step 4: Choose a Graphical Editor
 
-{{< tabs Arch Ubuntu windows>}}
+- Try Visual Studio Code
+  - [Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
+- OR one of these other editors
+  - [Sublime Text 3](https://www.sublimetext.com/)
+  - [Atom](https://atom.io/)
+  - [Notepad++](https://notepad-plus-plus.org/) (for Windows)
+- R users: can use RStudio's editor
 
-{{<tab>}}
+##### What is Git. ?
 
-**Arch and Manjaro we use pacman package manager.**
-
-When Installing Git . Ensure you install the **latest version of git** by first updating your distribution to ensure their are using the latest sources.
-
-{{< alert theme="danger">}}
-**sudo pacman -S git**
-{{< /alert >}}
-
-![arch installation image](/images/git/gitbasic/pacman.png)
-
-{{<boxmd>}}
-let's check if git is working correctly
-\$ **git version**
-{{</boxmd>}}
-
-{{</tab>}}
-{{<tab>}}
-
-**Debian-based Distribution, such as Ubuntu**
-{{< alert theme="danger">}}
-**sudo apt install git**
-{{< /alert >}}
-
-![Debian based distribution](/images/git/gitbasic/ubuntu.png)
-{{</tab>}}
-
-{{<tab>}}
-
-- Installing **git.**
-  - [visit git scm site and download the executable](https://git-scm.com/) - After you have the exe. Install you normally do with other software.
-    {{</tab>}}
-
-{{< /tabs >}}
+Git is a distributed **version control** system.
 
 <hr>
 
-From these step lets continue stepwise.
+##### Command Line Basics.
 
-##### 0. To use git we'll be using the Terminal.
-
-If you don't have much experience with the terminal and basic commands. I will try my best to explain alot of the stuff as we go along. Some of the reason i choose to use command Line. In command line, you can't get away without learning, but using a gui you can work with tools even without understanding to how they work.
-
-1. With command line you can easily build repeatable data processes.
-2. Command line skills make you more flexible.
-3. It's Less resource intesive.
-4. Unix shell skills Transfer well to other shells.
-5. If you type faster, you are more productive.
-
-##### 1. **First-Time Git Setup.**
-
-Git comes with a tool called **git config** that lets you get and set configuration variables that controls all aspects of how Git looks and operates. These varible can be stored in three different places.
-
-1. **/etc/gitconfig** file.
-   System wide configurations. Configures git for all users on the system. To set configuration at this level with the **git config** tool you pass in option **\-\-system**
-
-   - Because this is a system configuration file, you will need **adminstrative or superuser privileges** to change it.
-
-2. **~/.gitconfig** or **~/.config/git/config** file.
-   Git configuration specific personally to you, the user. You can make Git read and write to this file specifically by passing the **\-\-global** option.
-
-3. **config**
-   File specific to the git directory (that is **.git/config**) or whatever repository you're currently using. You can force Git to read and write to this file with the **\-\-local** option.
-
-Each level overrides values in the Previous level, so values in **.git/config** trump those in **/etc/gitconfig**.
-
-To show all your setting and where they are coming from use.
-
-{{<boxmd>}}
-**\$ git config \-\-list \-\-show-origin**
-{{</boxmd>}}
-
-##### Lets set Your Identity.
-
-The first thing you should do when you install Git is to set your **user name and email address**. This is important information since **git commit** uses this information. Make sure you replace the values with you informations preferably the same information as **github**.
-
-{{<boxmd>}}
-**git config --global user.name "eduuh"**
-**git config --global user.email "edwin@github.com"**
-{{</boxmd>}}
-
-Many of the **GUI** tools will help you do this when you first run them. My attempt 👇
-
-![Authoship attempt](/images/git/gitbasic/author.png)
-
-This information is added to the **~/.gitconfig** file. You can confirm with
-
-{{<boxmd>}}
-**cat ~/.gitconfig**
-{{</boxmd>}}
-
-##### 2. Standard ways to get help.
+##### Standard ways to get help.
 
 There are a few ways to **learn about a command** in **linux**. Whether you are and **inexperienced terminal user or experienced**, you won't always know the right thing to type into the Linux Terminal. There are quite a few tools build into the terminal to help you along.
 
@@ -215,7 +145,58 @@ Some more examples for the **shorthand help** command.
 **git init -h**
 {{</boxmd>}}
 
-##### 3. Lets Create a Directory and Navigate into It.
+##### 1. **First-Time Git Setup.**
+
+Git comes with a tool called **git config** that lets you get and set configuration variables that controls all aspects of how Git looks and operates. These varible can be stored in three different places.
+
+1. **/etc/gitconfig** file.
+   System wide configurations. Configures git for all users on the system. To set configuration at this level with the **git config** tool you pass in option **\-\-system**
+
+   - Because this is a system configuration file, you will need **adminstrative or superuser privileges** to change it.
+
+2. **~/.gitconfig** or **~/.config/git/config** file.
+   Git configuration specific personally to you, the user. You can make Git read and write to this file specifically by passing the **\-\-global** option.
+
+3. **config**
+   File specific to the git directory (that is **.git/config**) or whatever repository you're currently using. You can force Git to read and write to this file with the **\-\-local** option.
+
+Each level overrides values in the Previous level, so values in **.git/config** trump those in **/etc/gitconfig**.
+
+To show all your setting and where they are coming from use.
+
+{{<boxmd>}}
+**\$ git config \-\-list \-\-show-origin**
+{{</boxmd>}}
+
+##### Lets set Your Identity (on local computer).
+
+The first thing you should do when you install Git is to set your **user name and email address**. This is important information since **git commit** uses this information. Make sure you replace the values with you informations preferably the same information as **github**.
+
+{{<boxmd>}}
+**git config --global user.name "eduuh"**
+**git config --global user.email "edwin@github.com"**
+{{</boxmd>}}
+
+Many of the **GUI** tools will help you do this when you first run them. My attempt 👇
+
+![Authoship attempt](/images/git/gitbasic/author.png)
+
+This information is added to the **~/.gitconfig** file. To verify these additions, type:
+
+<kbd> git config --list </kbd>
+
+{{<boxmd>}}
+
+**cat ~/.gitconfig**
+{{</boxmd>}}
+
+As a helpful step, you may want to set Git to use your favourite editor. I believe in windows you will have to enter the fullpath, of the software if you did set it during installation.
+
+```bash
+git config --global core.editor code
+```
+
+##### Lets Create a Directory and Navigate into It
 
 To begin, open up a terminal and move where you want to place the project on your local machine using the **cd (change directory)** command.
 
@@ -235,7 +216,7 @@ To begin, open up a terminal and move where you want to place the project on you
 
 ![createdire](/images/git/gitbasic/createdir.png)
 
-##### 4. Lets initialize our git Repository.
+##### Lets initialize our git Repository
 
 To initialize is to create a **git repository** using the **init** command. When creating a new project on your local machine using git, you'll first create a new **repository** (or often 'repo', for short)
 
@@ -245,7 +226,19 @@ To initialize is to create a **git repository** using the **init** command. When
 
 ![git init](/images/git/gitbasic/gitinit.png)
 
-##### 5. Let add a few files.
+For the curius, you should also see the **.git** subdirectory. This is where all your repository's data and history is kept.
+
+```bash
+ls -a .git
+```
+
+you will see  👇.
+
+```bash
+branches  config  description  HEAD  hooks  info  objects  refs
+```
+
+##### Let add a few files
 
 If your project is **open source** it usually a good idea to add a **License file**. I will use an **npm tool** to generate the license to our repository.
 
@@ -262,7 +255,6 @@ gen license:mit
 # enter your author name
 ls
 ```
-
 ![generate mit](/images/git/gitbasic/genmit.png)
 
 👆 **ls** command is used to list out files in a directory.
@@ -294,7 +286,7 @@ We could request git to track our file using the **git add** command. After the 
 
 👆 git knows that **LICENSE** is a **new file**.
 
-##### 7. Lets save a snapshot of a file to our git repository.
+###### 7. Lets save a snapshot of a file to our git repository.
 
 {{<boxmd>}}
 **git commit -m "Added MIT license to our repository"**
@@ -303,13 +295,13 @@ We could request git to track our file using the **git add** command. After the 
 create mode 100644 LICENSE
 {{</boxmd>}}
 
-##### 8. Lets Make a change to the file.
+###### 8. Lets Make a change to the file
 
 The change could be changing the **authors name**. Open the file with your editor and manually edit the authors name. After you do that run **git status**.
 
 ![git status](/images/git/gitbasic/status.png)
 
-👆 git knows that **LICENSE** is a **Modified**.
+👆 git knows that **LICENSE** is a **Modified**
 
 **Note** the modifications are not automatically save by git. You will still need to explicity save them.
 
@@ -326,6 +318,8 @@ I have show you how to, now lets jump to the **why** we are doing this.
 
 ![git areas](/images/git/gitbasic/gitareas.png)
 
+Lets talk about the areas of git
+
 ##### The working Tree
 
 The working Tree is the are where you are currently working. It is where your files live. This are is also know as the **untracked area of git.** If you make changes here you and dont explicity save them to git, you will lose the changes made to your files.
@@ -338,9 +332,13 @@ The **Stagin Area** is when git start tracking and saving changes that occurs if
 
 How do you add files to your stagin Area? Running the command **git add <filename>**. If you want to add the whole tree run the command **git add .**
 
-#### The Local Repository.
+##### The Local Repository
 
-The Local Repositroy is everything in your .git directory. Mainly what you will see in you local Repository are all your checkopoints or commits. It is area that saves everthing **so don't delete it**
+The Local Repositroy is everything in your .git directory. Mainly what you will see in you local Repository are all your checkopoints or commits. It is area that saves everthing **so don't delete it**.
+
+###### The mail analogy
+
+In Git, you first add content to the **staging area** by using **git add**. This is like putting the stuff you want to send into a box. You finalize the process and record it into the **git index** by using **git commit**. This is like sealing the box - It's now ready to send.
 
 This are all the steps we did.
 
@@ -358,7 +356,7 @@ This are all the steps we did.
 10. **git commit -m "Added a heading line to README file"**
     {{</boxmd>}}
 
-##### file movement diagram. Understanding git Snapshot concept.
+##### File movement diagram. Understanding git Snapshot concept
 
 I want to show you how you could lose your changes without event knowing about it.
 
@@ -486,6 +484,8 @@ rm  *
 ls -la # -a used to list out hidden files.
 ```
 
+
+
 ##### 9. Lets do a review of what we just did.
 
 ##### 10. lets remove file from the repository.
@@ -496,6 +496,25 @@ when you remove files from the repository. git provides commands to remove files
 Note: **git rm** does not remove file from the **index** until you commit your changes.
 
 ##### 11. git log --list commits
+
+We should now have some commits in the repositories. To see all the commits so far we use **git log**.
+
+```bash
+git log
+```
+
+The log should show all commits listed from most recent first to least recent. You would see various information like.
+
+  1. The name of the author.
+  2. The date it was commited.
+  3. A commit *SHA* number.
+  4. The message for the commit.
+
+You should also see you most recent commit., however git log does not show the files involved in each commit. To view more information about a commit, use git show.
+
+```bash
+git show
+```
 
 Logs options
 
@@ -551,16 +570,66 @@ git config alias.tr = "command"
 
 #### Undoing Things. (I undo stuff all the time, so do you)
 
+In this section, we are going to add more changes, and try to recover from mistakes.
+
 A scenario is that you commit files. Later you realize you did not commit all the files in that commit and you don't want to create a commit for a single file. Don't worry you can change this. Git will not edit the commit, it will create a new commit with your file in there. To create a new commit with all your files using **git commit --amend**
 
-{{<boxmd>}}
+```bash
 touch app.js
 console.log('Hello world')
 git add app.js
 git commit --amend
-{{</boxmd>}}
+```
 
-###### Working with remotes.
+Lets make some more changes to the **app.js**.
+
+```bash
+touch consol.log("more changes") >> app.js
+```
+
+What did we change? A very useful command is **git diff**. This is very useful to see exactly what changes you have done.
+
+```bash
+git diff
+```
+
+You should see something like the following:
+
+##### Stagin area again
+
+Now let's add our modified file, **app.js** to the staging area. Do you remember how ?
+
+Next , check the **status** of **app.js**. Is it in the staging area now?
+
+##### Undoing
+
+You notice I mespelled the name **console** in the our last change. Now my code is broken and it cannot run anymore. One advantage of a staging are is to enable us to back out before we commit - whic is a bit harder to back out of is you commit. Remembering the mail analogy. It's easier to take mail out of the cardboard before you seal it that after.
+
+Here's how to back out of the stagin area:
+
+```bash
+git reset HEAD app.js
+```
+
+Compare the **git status** now to the git status from the previous section. How does it differ?
+
+Your stagin are should now be empty. What happened to our change? It's still there. We are now back to the state just before we added this file to staging area . Going back to the mail analogy, we just took our letter out of the box.
+
+##### Undoing 2
+
+Sometimes we did not like what we have done and we wish to go back to the last recorded state. In this case, we wish to go back to the state just before we added the latest change.
+
+To accomplish this we use git checkout, like so: 
+
+```bash
+git checkout app.js
+```
+
+You have now un-done your changes. You file is now empty.
+
+Lets first talk about remotes. The we will talk about branching.
+
+###### Working with remotes
 
 To be able to collaborate on a git project you will need to manage a **remove repository**.Remote repository are version of your project that are hosted on the **internet** or **network somewhere**.
 
@@ -683,6 +752,8 @@ git remote remove devops
 
 #### Review of the Process.
 
+{{<boxmd>}}
+
 - Create a **local repository**
 - Added files and commited them to the git repo.
 - Create a new project
@@ -692,12 +763,229 @@ git remote remove devops
 - Set remote
 - Create an online branch from **cli**
 - Push the repository to github.
+  {{</boxmd>}}
 
-These are 9 steps to upload some files to a server. This is not ideal. You need to be a little bit efficient. This is where [hub](https://github.com/github/hub) comes in.
+  These are 9 steps to upload some files to a server. This is not ideal. You need to be a little bit efficient. This is where [hub](https://github.com/github/hub) comes in.
 
 Hub is a **command-line tool** that makes git easier to use with **github**. It wrap **git** in order to extend it with extra features and commands that make working with github easier. Hub has **man page**.
 
-###### Installing hub.
+#### Branching
+
+Most large code bases have at least *two branches** - a **live branch** and a **development** branch. The live branch is code which is Ok to be deployed on to a website, or downloaded by customers. The development branch allow developerst to work on features which might not be bug free. Only once everyone is happy with the development branch would it be merged with the live branch.
+
+Creating a branch in Git is easy. The **git branch** command, when used by itself, will list the branches you currently have.
+
+```bash
+git branch
+```
+
+The * should indicate the current branch you are on, which is **master**. If you wish to start another branch, use **git checkout -b (new-branch-name)**
+
+```bash
+git checkout -d @development
+```
+
+Try git branch again to check which branch you are currently one:
+
+```bash
+git branch
+```
+
+The new branch is now created. Now lets' work in that branch. To swicth  back to the new master.
+
+```bash
+git checkout @master
+git checkout @development
+```
+
+Let's perform some commits now.
+
+```bash
+echo console.log("Am in a new brach"); > test.js
+git add app.js
+git commit -m "Added new js line"
+```
+
+Now, let's compare them to the master branch. Use **git diff**.
+
+```bash
+git diff master
+```
+
+Basically what the above output says is that **test.js** is present on the **@development** brach but is absent on the **@master** branch.
+
+#### Now you see me, now you don't
+
+Git is good enough to handle your files when you switch betwwen branches. Switch back to the **master** branch. Try switching back to the master branch.
+
+Now, where's our **test.js** file?
+
+```bash
+ls
+```
+
+As you can see the new file you created is the other branch has disappeared. No worries though, it is safely tucked away, and will re-appear when you switch back to that branch.
+
+Now , switch back to the **@development** branch and check that the **app.js** is now present.
+
+#### Merging
+
+We now try out merging. Eventually you will want to merge two branches together after the conclusion of work. **git merge** allow you to do that.
+
+Git merging works by first switching the branch you want to into , and then running the command to merge the othre branch in.
+
+We now want to merge our **@development** branch into master first, switch to the master branch.
+
+```bash
+git checkout master
+```
+
+Next, we merge the **development** branch into master.
+
+```bash
+git merge development
+```
+
+Do you see the following output?
+
+// TODO add output
+
+You have to be in the branch you want merge into and then you always specify the branch you want to merge.
+
+At this point , you can also try out **gitk** to visualize the change and how the two branches have merged.
+
+#### Merge Conflicts
+
+Git is pretty good at merging automagically, even when the same file is edited.Ther are however some  situations where the same line of code is edited there is no way a computer can figure out how to merge.
+
+This will trigger a conflict which you will have to fix. We now practise fixing merge conflicts. Recall that conflicts are caused by merges which affect the same block of code.
+
+Heres' is  a branch I prepared earlier. The branch is called **conflict**. 
+
+// TODO Simulating a conflict.
+
+### Fixing a conflict
+
+You should see a **conflict** with the **app.js** file This measn that the same line of text was edited and commited on both the master and **@development**. The output below telss you the current situation.
+
+// TODO Merge conflict
+
+If you open the **app.js** file , you will see something similar as below.
+
+// TODO file with merges conflict markers.
+
+Git users pretty much standard conflict resoluiton markers. The top part of the block which is is everything between **<<<<<< HEAD and ==========** is what was in your current branch.
+
+The bottom half is the version that is present from the **@development** branch. To resolve the conflict , you either choose one side or merge them as you see fit.
+
+For example, I might decide to choose the version from the **@development**
+
+Now try to **fix the merge conflict**. Pick the text that you think is better.
+Once I have done that, I can the marke the conflicts as fixed by using *git add and git commit**
+
+Don't leave the **conflict markers** in your code.
+
+```bash
+git add app.js
+git commit -m "fixed conflict"
+```
+
+#### Setting up SSH keys
+
+#### Step 1b: Go to `.ssh` directory
+
+```bash
+cd .ssh
+```
+
+> my example
+
+**Note:** If you do not have the `.ssh` directory, you can create it
+
+- if you are in your home directory:
+
+```bash
+mkdir .ssh
+```
+
+- if you are not in your home directory:
+
+```bash
+mkdir ~/.ssh
+```
+
+#### Step 1c: Generate `id_rsa` keypair files if needed
+
+- **Note:** these `id_rsa` files contain a special password for your computer to be connect to network services (Ex: GitHub, AWS).
+- Check to see if these files exist by typing <kbd> ls -alt</kbd>
+- If you do not have these two files (`id_rsa` and `id_rsa.pub`), create them by typing:
+
+```bash
+ssh-keygen
+```
+
+- Hit **enter** **3 times**
+
+> my example
+
+```bash
+% pwd
+/Users/reshamashaikh/.ssh
+% ls
+% ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/reshamashaikh/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /Users/reshamashaikh/.ssh/id_rsa.
+Your public key has been saved in /Users/reshamashaikh/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:jmDJes1qOzDi8KynXLGQ098JMSRnbIyt0w7vSgEsr2E reshamashaikh@RESHAMAs-MacBook-Pro.local
+The key's randomart image is:
++---[RSA 2048]----+
+|   .=+           |
+|.  .==           |
+|.o  +o           |
+|..+= oo          |
+|.E.+X.  S        |
+|+o=o=*oo.        |
+|++.*o.+o.        |
+|..*.oo           |
+|o= o+o           |
++----[SHA256]-----+
+% ls
+total 16
+-rw-------  1   1675 Dec 17 12:20 id_rsa
+-rw-r--r--  1    422 Dec 17 12:20 id_rsa.pub
+%
+```
+
+#### Step 1d: Copy `ssh` key to clipboard using `pbcopy` command
+
+<kbd> pbcopy < ~/.ssh/id_rsa.pub </kbd>
+
+Verify the key has been copied to the clipboard by printing the contents at your terminal:  
+<kbd> pbpaste </kbd>
+
+#### Windows Users
+
+Step 1: [How to Create SSH Keys with PuTTY on Windows](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-putty/)
+
+---
+
+### STEP 2 (for both Mac and Windows users): Add `ssh` key to GitHub
+
+- go to your [GitHub account](https://github.com/) (create one if you don't have one, and save your user name and password somewhere easily accessible for you.)
+- click on your avatar/profile picture (upper right of screen)
+- go to `Settings`
+- on left of screen, select `SSH and GPG keys`
+- Select <kbd> New SSH key </kbd>
+- for "Title": entitle it "GitHub key"
+- for "Key": paste key from clipboard here
+- click <kbd> Add SSH key </kbd>
+- save, exit, confirm GitHub password as requested
+
+##### > Installing hub.
 
 Install it from your package manager.
 
