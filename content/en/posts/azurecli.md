@@ -19,6 +19,9 @@ authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, 
 authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 ---
 
+The azure command-line interface (**cli**) is Microsoft **cross platform command-line** experience for **managing azure resources**.
+
+
 Make sure you login to your **azure account**. In case you are using **Azure CLI** on your local computer.
 
 {{<boxmd>}}
