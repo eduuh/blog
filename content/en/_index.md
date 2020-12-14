@@ -1,6 +1,6 @@
 ---
 header:
-  - type: text
+  - type: text2
     height: 150
     paddingX: 50
     paddingY: 0
@@ -85,4 +85,10 @@ header:
     align: center
     fontSize: 44
     fontColor: yellow
+
+  - type: text
+    height: 50
+    paddingX: 50
+    paddingY: 0
+    align: center
 ---

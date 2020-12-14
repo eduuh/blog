@@ -75,28 +75,28 @@ _A bare repository is typically used as a Remote Repository that is sharing a re
 
 Setting this method up the first time is really easy. First, let's create our bare repository. I chose to name my placeholder **.dotfiles**. Ofcourse you can use any name.
 
-{{<boxmd>}}
-**mkdir $HOME/.dotfiles
-git init --bare $HOME/.dotfiles**
-{{</boxmd>}}
+```bash
+mkdir $HOME/.dotfiles
+git init --bare $HOME/.dotfiles
+```
 
-Now for fun part. We will make an alias for running git commands in our **.dotfiles** repository. I'm calling my alias `dotfiles:` .Make sure you reference the right `dotfiles` folder which are anywhere within your \$HOME folder.
+Now for fun part. We will make an alias for running git commands in our **.dotfiles** repository. I'm calling my alias `dotfiles:` .Make sure you reference the right `dotfiles` folder which are anywhere within your **\$HOME folder**.
 
 This alias references the **git binary** and also indicates the Home folder as your working tree.
 
-{{<boxmd>}}
-**alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'**
-{{</boxmd>}}
+```bash
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+```
 
 Add this alias to your **.bashrc**. From now any git operation you would like to do in the .dotfiles repository can be done by the dotfiles alias. The cool thing is that you can run dotfiles from anywhere.
 
 Source the url of the remote dotfiles folder and use it to configure the origin.
 Lets add a remote and also set status now to show untracked files since there will be a long list of Untracked files. You will only track a few of the files.
 
-{{<boxmd>}}
-**dotfiles config --local status.showUntrackedFiles no**
-**dotfiles remote add origin https://github.com/eduuh/dotfiles.git**
-{{</boxmd>}}
+```bash
+dotfiles config --local status.showUntrackedFiles no
+dotfiles remote add origin https://github.com/eduuh/dotfiles.git
+```
 
 #### Adding the conf to Source control.
 
@@ -104,12 +104,10 @@ Note: Avoid using **dotfiles add .** since you don't want to and your home folde
 
 example:
 
-{{<boxmd>}}
-**dotfiles add .bashrc**
-**dotfiles commit -m "added bash configuration file to source control"**
-{{</boxmd>}}
-
-Note that we create an **alias for the current session.** In order to make the alias to be available we need to add the line to the configuration file of the terminal that you use. For me I added the line in my .zshrc.
+```bash
+dotfiles add .bashrc
+dotfiles commit -m "added bash configuration file to source control"
+```
 
 #### Setting Up a New Machine With existing Configuration.
 
@@ -119,30 +117,30 @@ Assumtion is that you are using the above described method to store your **dotfi
 
 Setting this method up the first time is really easy. First, let's create our bare repository. I chose to name my placeholder **.dotfiles**. Ofcourse you can use any name.
 
-{{<boxmd>}}
-**mkdir \$HOME/.dotfiles**
-**git init --bare \$HOME/.dotfiles**
-{{</boxmd>}}
+```bash
+mkdir \$HOME/.dotfiles
+git init --bare \$HOME/.dotfiles
+```
 
 Set up the alias for the current session using the command.
 
-{{<boxmd>}}
-**alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'**
-{{</boxmd>}}
+```bash
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+```
 
 Set up the remote github repository.
 
-{{<boxmd>}}
-**dotfiles config --local status.showUntrackedFiles no**
-**dotfiles remote add origin https://github.com/eduuh/dotfiles.git**
-{{</boxmd>}}
+```bash
+dotfiles config --local status.showUntrackedFiles no
+dotfiles remote add origin https://github.com/eduuh/dotfiles.git
+```
 
 Pull in the changes form your remote repository.
 
-{{<boxmd>}}
-**dotfiles pull origin master**
-**dotfiles reset --hard HEAD # ovewrites the Home Directory**
-{{</boxmd>}}
+```bash
+dotfiles pull origin master
+dotfiles reset --hard HEAD # ovewrites the Home Directory**
+```
 
 #### Method 2
 
@@ -152,23 +150,23 @@ To set up a new machine to use your version controlled config files, all you nee
 
 Perform the above steps.
 
-{{<boxmd>}}
-**git clone --separate-git-dir=\$HOME/.dotfiles https://github.com/eduuh/dotfiles.git**
-{{</boxmd>}}
+```bash
+git clone --separate-git-dir=\$HOME/.dotfiles https://github.com/eduuh/dotfiles.git
+```
 
 However, some programs create default config files, so this might fail if git finds an existing config file in your **\$HOME**. In that case a simple sol is to clone to a temporayry directory and then delete it once you are done:
 
 Create the alias file.
 
-{{<boxmd>}}
-**alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'**
-{{</boxmd>}}
+```bash
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+```
 
 The last step is to override everything in home directory with the new files you want there.
 
-{{<boxmd>}}
-**dotfiles reset --hard HEAD**
-{{</boxmd>}}
+```bash
+dotfiles reset --hard HEAD
+```
 
 Since you want to use your dotfiles. That means you don't care about the default configuration files presents in your linux box.
 
@@ -178,17 +176,18 @@ For the Dotfiles repository, Your will use **dotfiles instead of git**. Use it a
 Example of some Commands:
 
 A **commit** command.
-{{<boxmd>}}
-**dotfiles commit -m "zshrc => zsh oh my god configuration files "**
+
+```bash
+dotfiles commit -m "zshrc => zsh oh my god configuration files "
 [master 64a553b] zshrc => zsh oh my god configuration files
 1 file changed, 91 insertions(+)
 create mode 100644 .zshrc
-{{</boxmd>}}
+```
 
 A **push** action.
 
-{{<boxmd>}}
-**dotfiles push**
+```bash
+dotfiles push
 Enumerating objects: 4, done.
 Counting objects: 100% (4/4), done.
 Delta compression using up to 4 threads
@@ -197,24 +196,39 @@ Writing objects: 100% (3/3), 1.45 KiB | 1.45 MiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/eduuh/dotfiles.git
 7d507e7..64a553b master -> master
-{{</boxmd>}}
+```
 
 The **repository will be downloaded** but there might exist some configuration files in your home directory to make sure you are using the right configuration file use git checkout to actually copy the copy in your repository to the working directory.
 
-{{<boxmd>}}
-**dotfiles checkout \$HOME/.bashrc**
-{{</boxmd>}}
+```bash
+dotfiles checkout $HOME/.bashrc
+```
 
 Or easy is to **checkout to the latest commit**. Remember Head points to the latest commit use that.
 
-{{<boxmd>}}
-**dotfiles reset --hard HEAD**
+```bash
+dotfiles reset --hard HEAD
 HEAD is now at 64a553b zshrc => zsh oh my god configuration files
 **64a553b** at this time this is my latest commit.
-{{</boxmd>}}
+```
 
 Do not worry **git reset --hard** copied files available in your `repository` to both the **staging area** and the **working area** . It should not mess with your untracted files which i believe they are many, since this is a repository monitoring the \$HOME directory.
 
 **There you go. No symlink mess.**
 
 My dotfiles are [here](https://github.com/eduuh/dotfiles) for reference.
+
+````
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+````

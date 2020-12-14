@@ -1,7 +1,7 @@
 ---
 title: 'Installing Dotnet SDk'
-date: 2020-04-19T07:41:06-07:00
-draft: true
+date: 2020-12-19T12:41:06-07:00
+draft: false
 description: 'How I Use tmux for Local Development'
 
 categories: ['server']
@@ -15,14 +15,14 @@ authorImageUrl: '' # your image url. We use `authorImageUrl` first. If not set, 
 authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author description
 ---
 
-Installing dotnet core in ubuntu using snap.
+Installing dotnet core in ubuntu sever using snap.
 
 ```bash
 apt-get update
 apt-get install snapd
 ```
 
-Search for available Dotnet packages.
+Search for available Dotnet packages. The search will list out the latest dotnet **sdks and runtimes**.
 
 ```bash
 snap find dotnet
@@ -72,6 +72,14 @@ Heare is the command output.
 
 Congratulations! You have now installed dotnet installation on your **ubuntu linux**.
 
+### Installing the LTS
+
+To install the current Lts version **3.1.10** using snap you will need to install snap using the command.
+
+```bash
+sudo snap install dotnet-sdk --channel=3.1/stable --classic
+```
+
 ### Testing the dotnet Installation.
 
 Create a Dotnet project.
@@ -100,4 +108,4 @@ Build your project
 dotnet bin/Debug/netcoreapp3.1/test.dll
 ```
 
-The dotnet installation is successfully installed.
+The dotnet installation is successfully installed .

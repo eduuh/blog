@@ -10,6 +10,7 @@ authorEmoji: 🤖
 tags:
   - c#
 ---
+Software developers keep learning throughout their careers. The more I learn, the more I discover how much I don't know.
 
 Check the installed sdk using.
 
