@@ -7,7 +7,6 @@ description: ' Fzf is an interactive fuzzy file search tool on the command-line.
 categories: ['config']
 tags: ['nvim', 'cli']
 
-weight: 3
 image: images/fzf.png
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data

@@ -11,6 +11,12 @@ url = "workshops"
 weight = 2
 
 #[[main]]
+#identifier = "About"
+#name = "About"
+#url = "workshops"
+#weight = 3
+
+#[[main]]
   #identifier = "presentation"
   #name = "Pt"
   #url = "presentation"

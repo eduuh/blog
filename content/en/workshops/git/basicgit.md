@@ -16,14 +16,11 @@ series:
 - devops
 
 image: images/git/giticon.png
-pinned: true
 author: eduuh # author name
 authorEmoji: 🤖 # emoji for subtitle, summary meta data
 authorImage: "/images/edd.jpg" # image path in the static folder
 authorImageUrl: "" # your image url. We use `authorImageUrl` first. If not set, we use `authorImage`.
 authorDesc: Selftaught Web and Mobile Developer # author description
-
-pinned: true
 ---
 
 Welcome, lets get into the task ahead.
@@ -232,7 +229,7 @@ For the curius, you should also see the **.git** subdirectory. This is where all
 ls -a .git
 ```
 
-you will see  👇.
+you will see 👇.
 
 ```bash
 branches  config  description  HEAD  hooks  info  objects  refs
@@ -255,6 +252,7 @@ gen license:mit
 # enter your author name
 ls
 ```
+
 ![generate mit](/images/git/gitbasic/genmit.png)
 
 👆 **ls** command is used to list out files in a directory.
@@ -484,8 +482,6 @@ rm  *
 ls -la # -a used to list out hidden files.
 ```
 
-
-
 ##### 9. Lets do a review of what we just did.
 
 ##### 10. lets remove file from the repository.
@@ -505,10 +501,10 @@ git log
 
 The log should show all commits listed from most recent first to least recent. You would see various information like.
 
-  1. The name of the author.
-  2. The date it was commited.
-  3. A commit *SHA* number.
-  4. The message for the commit.
+1. The name of the author.
+2. The date it was commited.
+3. A commit _SHA_ number.
+4. The message for the commit.
 
 You should also see you most recent commit., however git log does not show the files involved in each commit. To view more information about a commit, use git show.
 
@@ -619,7 +615,7 @@ Your stagin are should now be empty. What happened to our change? It's still the
 
 Sometimes we did not like what we have done and we wish to go back to the last recorded state. In this case, we wish to go back to the state just before we added the latest change.
 
-To accomplish this we use git checkout, like so: 
+To accomplish this we use git checkout, like so:
 
 ```bash
 git checkout app.js
@@ -771,7 +767,7 @@ Hub is a **command-line tool** that makes git easier to use with **github**. It 
 
 #### Branching
 
-Most large code bases have at least *two branches** - a **live branch** and a **development** branch. The live branch is code which is Ok to be deployed on to a website, or downloaded by customers. The development branch allow developerst to work on features which might not be bug free. Only once everyone is happy with the development branch would it be merged with the live branch.
+Most large code bases have at least \*two branches** - a **live branch** and a **development\*\* branch. The live branch is code which is Ok to be deployed on to a website, or downloaded by customers. The development branch allow developerst to work on features which might not be bug free. Only once everyone is happy with the development branch would it be merged with the live branch.
 
 Creating a branch in Git is easy. The **git branch** command, when used by itself, will list the branches you currently have.
 
@@ -779,7 +775,7 @@ Creating a branch in Git is easy. The **git branch** command, when used by itsel
 git branch
 ```
 
-The * should indicate the current branch you are on, which is **master**. If you wish to start another branch, use **git checkout -b (new-branch-name)**
+The \* should indicate the current branch you are on, which is **master**. If you wish to start another branch, use **git checkout -b (new-branch-name)**
 
 ```bash
 git checkout -d @development
@@ -791,7 +787,7 @@ Try git branch again to check which branch you are currently one:
 git branch
 ```
 
-The new branch is now created. Now lets' work in that branch. To swicth  back to the new master.
+The new branch is now created. Now lets' work in that branch. To swicth back to the new master.
 
 ```bash
 git checkout @master
@@ -856,11 +852,11 @@ At this point , you can also try out **gitk** to visualize the change and how th
 
 #### Merge Conflicts
 
-Git is pretty good at merging automagically, even when the same file is edited.Ther are however some  situations where the same line of code is edited there is no way a computer can figure out how to merge.
+Git is pretty good at merging automagically, even when the same file is edited.Ther are however some situations where the same line of code is edited there is no way a computer can figure out how to merge.
 
 This will trigger a conflict which you will have to fix. We now practise fixing merge conflicts. Recall that conflicts are caused by merges which affect the same block of code.
 
-Heres' is  a branch I prepared earlier. The branch is called **conflict**. 
+Heres' is a branch I prepared earlier. The branch is called **conflict**.
 
 // TODO Simulating a conflict.
 
@@ -881,7 +877,7 @@ The bottom half is the version that is present from the **@development** branch.
 For example, I might decide to choose the version from the **@development**
 
 Now try to **fix the merge conflict**. Pick the text that you think is better.
-Once I have done that, I can the marke the conflicts as fixed by using *git add and git commit**
+Once I have done that, I can the marke the conflicts as fixed by using \*git add and git commit\*\*
 
 Don't leave the **conflict markers** in your code.
 

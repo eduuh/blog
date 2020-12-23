@@ -1,13 +1,12 @@
 ---
-title: 'Installing Dotnet SDk'
+title: 'Installing Dotnet SDK on Ubuntu Server'
 date: 2020-12-19T12:41:06-07:00
 draft: false
-description: 'How I Use tmux for Local Development'
+description: 'Installing dotnet sdk on ubuntu server using snap. The official way did not work for for the server. Here is way I got it working.'
 
 categories: ['server']
 tags: ['cli']
 
-weight: 3
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
 authorImage: '/images/edd.jpg' # image path in the static folder
@@ -57,6 +56,7 @@ snap list
 Here is the command output.
 
 ```bash
+
 ```
 
 verfy the Dotnet installation.
@@ -68,6 +68,7 @@ dotnet --info
 Heare is the command output.
 
 ```bash
+
 ```
 
 Congratulations! You have now installed dotnet installation on your **ubuntu linux**.
@@ -109,3 +110,20 @@ dotnet bin/Debug/netcoreapp3.1/test.dll
 ```
 
 The dotnet installation is successfully installed .
+
+### Working with My Server Remotely From Visual Studio Code.
+
+Once I installed **dotnet** successfully in my **ubuntu** server. I needed to connect remotely from my **vscode** in order to make quick changes on the server. But ominisharp does not seem to find **any sdk** installed. The solution was to create a sybolic link as shown below.
+
+Run The command below to find out where you dotnet installation is located. Since we used snap to install, its located in the /snap folder.
+
+```bash
+which dotnet
+/snap/bin/dotnet
+```
+
+Add the line to your **bashrc** or **zshrc** file.
+
+```bash
+export PATH=$PATH:/snap/bin/dotnet
+```

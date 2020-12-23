@@ -217,18 +217,3 @@ Do not worry **git reset --hard** copied files available in your `repository` to
 **There you go. No symlink mess.**
 
 My dotfiles are [here](https://github.com/eduuh/dotfiles) for reference.
-
-````
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-````

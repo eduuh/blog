@@ -9,7 +9,6 @@ title: "JavaScript Algorithm and Data Structures"
 series: 
  - javascript
 
-weight: 30
 
 author: eduuh # author name
 authorEmoji: 🤖 # emoji for subtitle, summary meta data

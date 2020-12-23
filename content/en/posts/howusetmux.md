@@ -7,7 +7,6 @@ description: 'How I Use tmux for Local Development'
 categories: ['config']
 tags: ['cli']
 
-weight: 3
 image: images/fzf.png
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data

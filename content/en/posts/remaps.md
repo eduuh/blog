@@ -7,7 +7,6 @@ categories: ['Productivity']
 tags: ['cli']
 categories: ['config']
 
-weight: 4
 image: images/configurations.png
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data

@@ -8,7 +8,6 @@ hideToc: true
 enableToc: true
 author: eduuh
 authorEmoji: 😎
-weight: 1
 
 tags:
 - cli

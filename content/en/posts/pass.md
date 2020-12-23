@@ -14,7 +14,6 @@ categories:
 - config
 
 image: images/pass/password.png
-weight: 1
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
 authorImage: "/images/whoami/smile.png" # image path in the static folder

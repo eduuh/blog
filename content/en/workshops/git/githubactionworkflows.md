@@ -1,7 +1,7 @@
 ---
 description: Github Action Automation.
 date: 2020-11-13T11:37:37+03:00
-draft: true
+draft: false
 linktitle: ''
 title: 'Github Actions and Workflows Guide'
 
@@ -11,7 +11,6 @@ series:
   - git
   - devops
 
-weight: 10
 author: eduuh # author name
 authorEmoji: 😎 # emoji for subtitle, summary meta data
 authorImage: '/images/edd.jpg' # image path in the static folder
@@ -20,6 +19,8 @@ authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author 
 ---
 
 ### Some Terms you Need to Understand.
+
+{{<boxmd>}}
 
 1. **Events.** Trigger the workflow.
 2. **Workflows.** A workflow is a group of jobs. Workflow runs in a reqular or
@@ -31,21 +32,24 @@ authorDesc: CommandLine enthusiastic , Javascript and dotnet developer # author 
 7. **Runners**
    - **Github-hosted Runners**
    - **self-hosted Runners**
+     {{</boxmd>}}
 
-A tool that lets you automate your software development workflows.
+Github Action is a tool that lets you automate your software development workflows.
 
 - You can write individual tasks called **actions** and **combine** them to
   create a custom workflows.
 
 **Workflow** are custom automated process that you can set up in your repository to **build , test , package, release, or deploy** any code project on Github.
 
-**Events that can happend on a Github repository**
+{{<boxmd>}}
+**Events that can happen on a Github repository**
 
-1. Push.
-2. Pull Requests (opened , merged)
-3. Issue {created , closed}
-4. Sheduled events.
-5. External Events.
+1. _Push_.
+2. _Pull Requests (opened , merged)_
+3. _Issue {created , closed_
+4. _Sheduled events._
+5. _External Events._
+   {{</boxmd>}}
 
 The **events** are used to trigger a **workflow**. The workflow runs on the **github server** in terms of **jobs**. The **github server** can be either a **linux, windows, MacOS** with tools installed or **Docker Container**.
 
@@ -55,21 +59,21 @@ You could write a **workflow** that builds **android** and **ios**. Both of this
 
 Draw the image her
 
-### A Runner
+#### A Runner
 
 - Any machine with the **github Actions runner** application installed.
 - A **Runner** is responsible for running you jobs whenver an events happens and
   display back the results.
 - A runner can be **hosted on github** or **you could host your own**.
 
-### Github-hosted Runners.
+#### Github-hosted Runners.
 
 - Linux, Windows or MacOs Virtual environments with commonly-used pre-installed
   software on a **gibhub server**.
 - Mainted **by github**.
 - You cannot customize the **configurations** of this machines.
 
-### Self-hosted Runners.
+#### Self-hosted Runners.
 
 - A machine you manage and maintain with runner application installed.
 - You have more control of **hardware**, **operating system, and software
@@ -86,14 +90,12 @@ The **github-hosted runners** comes with some pre installed runners tools which 
 - Languagese like **python, ruby, nodeJS**
 - **Android SDK and XCode**.
 
-**Github actions** are usually written in **yaml format**. Yaml format is a data serilization data format.
+**Github actions** are usually written in **yaml format**. Yaml format is a data serilization data format. **Yaml** stores values in key value pairs.
 
-**Yaml** stores values in key value pairs.
-
-- Always indent with 2 or 4 spaces. **not tab**.
+- Always indent with **2 or 4 spaces**. **not tab**.
   - I prefer using 4 since it becomes more readable.
 
-### Lets Create a github Workflow.
+#### Lets Create a github Workflow.
 
 Lets create our first **workflow** for our code.
 

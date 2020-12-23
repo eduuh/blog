@@ -8,8 +8,6 @@ title: 'Mongo Db'
 image: images/mongo/mongologo.png
 
 series: ['mongo']
-
-weight: 1
 ---
 
 Mongodb is a Database. The name mongodb comes from the word **humongous**. The company behind mongo is also called **mongodb**.
