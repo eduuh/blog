@@ -17,7 +17,7 @@ hideHomeHeaderWhenMobile = true
 showMobileMenuTerms = ["tags", "categories", "series"]
 
 
-themeOptions = ["solarized","kimbie"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["light","dark"] # "hacker", "solarized", "kimbie"]
 
 
 notAllowedTypesInHome = [
@@ -81,9 +81,9 @@ talksGroupByDate = "2006"
 pubPaginate = 20
 # whoami
 
-myname = "@eduuh"
+myname = "Edwin Muraya"
 email = "edwinkamaumuraya0@outlook.com"
-whoami = "Microsoft Student Ambassador (Alpha Milestone). Sofware Engineer and Gegis Student in Making"
+whoami = "Microsoft Student Ambassador/ Postman Student Expert..Net core and FullStack Javascript developer"
 bioImageUrl = "/images/edd2.jpg" 
 useGravatar = false
 location = "Nyeri , Kenya"

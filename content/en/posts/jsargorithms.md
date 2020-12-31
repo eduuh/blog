@@ -2,7 +2,7 @@
 title: "Jsargorithms"
 description: What makes an algorithm fast? To answer this question, it tend to be grouped in two categories. With respect to input size and also assuming the worst case scenarios of either time complexities or space complexity.
 date: 2020-01-26T20:40:22+03:00
-draft: true
+draft: false
 linktitle: ""
 title: "JavaScript Algorithm and Data Structures"
 
@@ -96,21 +96,26 @@ check out the big o [chart](https://www.bigocheatsheet.com/)
 
 ### Time complexities
 
-1. Arrays : linear
+1. Arrays : Contant.
+
+pop is **contant** times.
 
 ```Javascript
 const arr = [1,2,3]
-arr.pop() //=> {1,2]}
+arr.pop() //=> {1,2}
 arr[1] // dont need to start from index one, it know where the value is
 ```
 
-2. Object : linear
+2. Object : Contant time algorithm
 
 ```Javascript
 const obj = {a: 1};
 obj.a // -> 1
-
 ```
+
+3. For loop: Linear.
+4. Shift and Unshift are not contants since the but they are linear.
+5. Sort.
 
 ## Calculating Time
 

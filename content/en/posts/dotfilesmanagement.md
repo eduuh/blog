@@ -1,6 +1,6 @@
 ---
 description: Efficient way to manage configuration files in a linux system.
-date: 2020-02-12T11:37:37+03:00
+date: 2020-12-12:37:37+03:00
 draft: false
 linktitle: 'Efficient way to manage configuration files in a linux system.'
 title: 'Dotfiles sync with bare repository'

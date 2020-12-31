@@ -1,8 +1,7 @@
 ---
 title: 'Quickly Navigating to Specific Parent Directory Using bd'
 description: 'Quckly navigating directory to specific Parent Directory using bd command in Linux'
-date: 2020-12-18T11:08:37+03:00
-draft: false
+draft: true
 hideToc: false
 enableToc: true
 author: eduuh
