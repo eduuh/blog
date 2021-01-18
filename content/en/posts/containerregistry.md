@@ -91,7 +91,7 @@ Refer on **[Azure container Registry Pricing.](https://azure.microsoft.com/en-us
 
 - There you will see different **sku** including **Basic, Standard, Premium**
   - What to consider when making your choice.
-    **Storage size, Geolocation Replicate, Cost** of the
+    **Storage size, Geolocation Replicate, Cost** of the registry
 
 {{</boxmd>}}
 
@@ -195,3 +195,9 @@ Output of this command 👇. I removed Sensitive information.
 ```bash
 az acr build --registry eddnodecontainers --image expressAtoZ:v1 .
 ```
+
+
+
+
+
+

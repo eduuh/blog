@@ -1,0 +1,39 @@
+
+
+
+### How to load or unload a linux Kernel Module.
+ You could be doing this To either fix problems with peripherals by finding and loading kernel modules.
+ 
+ Linux manages hardware peripherals using kernel modules. 
+
+
+ A running linxu kernel is one of those things you don't want to upset. Aftera all, the kernel is the software that drives everything your computer does. Condering how many details have to be simultaneously managed on a live system, It's better to leave the kernel to do its job with a few distractions as possible. But if it's impossible to make even small changes to the computer environment without rebooting the whole syste, then plugging in a nwe webcam, printer could be a pain distrucption to your workflow. Having to reboot each time you add a device to get the system to recognize it is hardly efficient.
+
+
+ To create an effective balance between the opposing virtuals of stability and usability, linux isolates the kernel, but lets you add specific functionality on the fly through loadable kernel module(LKMs)
+
+ finding the kernel modules.
+
+  located in the following directories.
+
+   /lib/modules/5.4.84-1-lts/
+
+Good new there is a nice command to see the current kernel version your are plugged into.
+
+   uname -r
+
+to load a module manuallyr you will use the **modprobe <module>** command.
+
+Thats it No reboots . No fuss.
+
+  lsmod | grep video
+ 
+ List out the loaded module if its working.
+
+
+To unload a module.
+  rmmod uvcvideo
+  modprobe uvcvidion
+
+Again. No reboots . No stubborn blod stains.
+  

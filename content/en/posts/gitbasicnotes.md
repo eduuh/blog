@@ -427,3 +427,14 @@ When you first clone a repository, all your files will be tracked and umodified 
 ### Checking the Status of your files.
 
 The main tool you use to determine which files are in which state in the **git status** command. If you run this command directly after a clone , you should see something like this.
+
+### Push to master by mistake
+
+You need to make suer that no other users of this repository are fetching the incorrect changes or trying to build on top of the commits that you want removed becaues you are about to 
+rewind history.
+
+Then you need to "force" push the old references.
+
+```bash
+git push -f origin <commit-id_>:brance_name
+```
