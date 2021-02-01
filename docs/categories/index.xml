@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Categories on eduuh</title>
+    <link>https://eduuh.codes/categories/</link>
+    <description>Recent content in Categories on eduuh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>edwinkamaumuraya0@outlook.com (Edwin Muraya)</managingEditor>
+    <webMaster>edwinkamaumuraya0@outlook.com (Edwin Muraya)</webMaster>
+    <copyright>©{year}, All Rights Reserved</copyright>
+    <lastBuildDate>Mon, 28 Dec 2020 10:48:17 +0000</lastBuildDate>
+    
+        <atom:link href="https://eduuh.codes/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+
+      
+      <item>
+        <title>config</title>
+        <link>https://eduuh.codes/categories/config/</link>
+        <pubDate>Mon, 28 Dec 2020 10:48:17 +0000</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edwin Muraya)</author>
+        
+        <guid>https://eduuh.codes/categories/config/</guid>
+        <description></description>
+        
+        <dc:creator>Edwin Muraya</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>nvim</title>
+        <link>https://eduuh.codes/categories/nvim/</link>
+        <pubDate>Sat, 26 Dec 2020 12:41:06 -0700</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edwin Muraya)</author>
+        
+        <guid>https://eduuh.codes/categories/nvim/</guid>
+        <description></description>
+        
+        <dc:creator>Edwin Muraya</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>server</title>
+        <link>https://eduuh.codes/categories/server/</link>
+        <pubDate>Sat, 19 Dec 2020 12:41:06 -0700</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edwin Muraya)</author>
+        
+        <guid>https://eduuh.codes/categories/server/</guid>
+        <description></description>
+        
+        <dc:creator>Edwin Muraya</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>azure</title>
+        <link>https://eduuh.codes/categories/azure/</link>
+        <pubDate>Fri, 07 Aug 2020 07:41:06 -0700</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edwin Muraya)</author>
+        
+        <guid>https://eduuh.codes/categories/azure/</guid>
+        <description></description>
+        
+        <dc:creator>Edwin Muraya</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>cli</title>
+        <link>https://eduuh.codes/categories/cli/</link>
+        <pubDate>Tue, 26 May 2020 16:02:40 +0300</pubDate>
+        <author>edwinkamaumuraya0@outlook.com (Edwin Muraya)</author>
+        
+        <guid>https://eduuh.codes/categories/cli/</guid>
+        <description></description>
+        
+        <dc:creator>Edwin Muraya</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 ---
-title: 'Tmux Workshop'
+title: "Tmux Workshop"
 
-description: 'Tmux is a terminal multiplexer, which means it will allow you to easily swith betwween several programs in one terminal, and it especially handy when dealing with complex project that require multiple terminal'
+description: "Tmux is a terminal multiplexer, which means it will allow you to easily swith betwween several programs in one terminal, and it especially handy when dealing with complex project that require multiple terminal"
 
 date: 2020-06-26T20:51:14Z
 draft: false
@@ -9,9 +9,9 @@ hideToc: true
 enableToc: true
 author: eduuh
 authorEmoji: 😎
-authorImage: '/images/edd.jpg' # image path in the static folder
+authorImage: "/images/edd.jpg" # image path in the static folder
 
-tags: ['cli']
+tags: ["cli"]
 
 image: /images/tmux/tmuxlogo.png
 ---
@@ -48,27 +48,27 @@ Using tmux, you can create an environment like this right in your terminal manag
 
 {{</boxmd>}}
 
-#### Who should Read this post.
+#### Why you should Read this post.
 
-whether you're are a system administrator or a software developer who spends a good part of your time using the **terminal** and **commandline tools** and you aim to help you work faster.
+Whether you're are a system administrator or a software developer who spends a good part of your time using the **terminal** and **command line tools** and you aim to help you work faster.
 
-If you're a **software developer**, you'll see how to use tmux to build a development environment that cam make workng with multiple terminal sessions a breeze. And if you're comfortable using **VIM\* or **emacs\*\*, you'll see how tmux can accelarate your workflow even more
+If you're a **software developer**, you'll see how to use tmux to build a development environment that cam make workng with multiple terminal sessions a breeze. And if you're comfortable using **VIM** or **Emacs**, you'll see how tmux can accelarate your workflow even more
 
-If you're a system administrator or a developer who spends some time working with remote servers, you'll be interested in how you can levarage tmux to create a persitent dashboard for managing or monitoring servers.
+If you're a system administrator or a developer who spends some time working with remote servers, you'll be interested in how you can levarage tmux to create a persitent dashboards and sessions for managing or monitoring servers.
 
 #### Requirements
 
-Tmux 2.1 and 2.2 introduced several backwords-incompatible changes that this editon addresses this edivtion also introduced some new options.And tmux is now more populat that it was, so there are more tools and tricks you can use to improve your workflow.
+Tmux 2.1 and 2.2 introduced several backwords-incompatible changes than introduced some new options. And tmux is now more popular that it was before bringing a few options to improve your worklow.
 
 - All example require **tmux 2.3 +**
 - Tmux is supported under **Microsoft's Windows subsystem for Linux.**
 - A computer that runs Mac OS X , Windows 10 with Bash support, or a flavor of Unix or Linux.
 - You should also have a good grasp of using command-line tools on a linux or unix system
-- While not required , experience with text editors such as **Vim** and **Emacs** might be helpful
-  - tmux works much the same way, and it has some predefined keyboard shortcuts that you may find familiar of you use one of these text editors.
+- While not required , experience with text editors such as **Vim** and **Emacs** might be helpful.
+  - Tmux works much the same way, and it has some predefined keyboard shortcuts that you may find familiar of you use one of these text editors.
 
 {{<boxmd>}}
-**Unfortunately tmux does not run under the reqular windows command prompt or Powershell, but it will run gread on a virtual machine, VPS, or Shared hosting envionment running Linux or FreeBsd.**
+**Unfortunately tmux does not run under the reqular windows command prompt or Powershell, but it will run great on a WSL , virtual machine, VPS, or Shared hosting envionment running Linux or FreeBsd.**
 {{</boxmd>}}
 
 ### Why Using tmux?
@@ -77,26 +77,23 @@ Tmux 2.1 and 2.2 introduced several backwords-incompatible changes that this edi
 
 As we saw above, you can detach a tmux <span style="color:#FF6188">session</span> from a client (the terminal) and you can attach it back. It means that you can run whatever you want in the background, even if you have no terminal open.
 
-Let's imagine that you need to run a very long script on your remote server. You could:
+Let's imagine that you need to run a very long script on your remote server. Some step you might follow:
 
 {{<boxmd>}}
 
 1. **Connect to your remote server via SSH.**
 2. **Launch tmux on the remote server.**
 3. **Run a Script which takes hours.**
-4. **Close the SSH connection. The script will still run on the remote server, thanks to **tmux!**.**
+4. **Close the SSH connection. The script will still run on the remote server, thanks to **tmux sessions!**.**
 5. **Switch off your own computer and go home.**
+6. **Later ssh back to your remote server and attach to tmux sesion.**
    {{</boxmd>}}
 
 #### 2. More Termimals! Everywhere!
 
-Tmux allows you to create multiple terminal on a single screen. This is the functionality I use most.
+Tmux allows you to create multiple terminal on a single screen. This is the functionality I use most.You might think: "Well, great, many terminal emulator can do the same, like terminator." That's true, but tmux is more powerful and consume less resources. You can configure it easily and precisely, according to your specific needs.
 
-You might think: "well, great, many terminal emulator can do the same, like terminator."
-
-That's true, but tmux is more powerful and consume less resources. You can configure it easily and precisely, according to your specific needs.
-
-It works very well with vim too, which makes it mandatory if you want to create a **mouseless** development environment.
+It works very well with vim too, which makes it mandatory if you want to create a **Keyboard Centric** development environment.
 
 #### 3. Protection Against Terminal Crashes.
 
@@ -108,7 +105,7 @@ It's possible to save tmux **sessions** in a file and reopen them later, even af
 
 #### 5. Remote Pair Programming.
 
-A tmux session can be attached to many clients (terminals), even via SSH. Which means that you can do pair programming with another developer using **tmux** and **vim** by sharing the same **session!**.
+A tmux session can be attached to many clients (terminals), even via SSH. Which means that you can do pair programming with another developer using **Tmux** and **command line base text editor** by sharing the same **session!**.
 
 ### How to use tmux?
 
