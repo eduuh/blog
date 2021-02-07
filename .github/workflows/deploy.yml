@@ -1,22 +1,23 @@
-name: Deploy site to Firebase
+name: Publish Site
 
-on: [push]
-
-jobs: 
-  run-github-action:
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-deploy:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout Repository.
-        uses: actions/checkout@v1
-        with: 
-          submodules: true
-      - name: firebase deploy
 
-        uses: ryank90/action-hugo-firebase-deploy@master
-        run: cd hugo_site
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
         with:
-         firebase-token: ${{ secrets.firebase_token }}
-         hugo-params: -D 
-
+          submodules: true
+      - name: Publish Site
+        uses: chabad360/hugo-gh-pages@master
+        with:
+          githubToken: ${{ secrets.PERSONAL_TOKEN }}
+          hugoVersion: extended_0.58.3
+          siteDir: docs
 
   
