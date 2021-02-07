@@ -17,7 +17,7 @@ hideHomeHeaderWhenMobile = true
 showMobileMenuTerms = ["tags", "categories", "series"]
 
 
-themeOptions = ["light","dark"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["light"] # "hacker", "solarized", "kimbie"]
 
 
 notAllowedTypesInHome = [
@@ -114,7 +114,7 @@ showFeedLinks = true
 showSocialLinks = true
 enableLangChange = false
 
-enableThemeChange = true
+enableThemeChange = false
 
 
 # comment
@@ -133,7 +133,7 @@ disqus_shortname = ""
 
 
 
-googleTagManager = "" # GTM-XXXXXX
+googleTagManager = "GTM-W9MZQCH" # GTM-XXXXXX
 # rss
 updatePeriod = "weekly" # Possible values: 'hourly', 'daily', 'weekly', 'monthly', or 'yearly'.
 updateFrequency = ""

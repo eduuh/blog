@@ -71,9 +71,9 @@ Tmux 2.1 and 2.2 introduced several backwords-incompatible changes than introduc
 **Unfortunately tmux does not run under the reqular windows command prompt or Powershell, but it will run great on a WSL , virtual machine, VPS, or Shared hosting envionment running Linux or FreeBsd.**
 {{</boxmd>}}
 
-### Why Using tmux?
+<h4 align="center"> Why Use tmux?</h4>
 
-#### 1. Background Operations
+> #### Background Operations on Servers
 
 As we saw above, you can detach a tmux <span style="color:#FF6188">session</span> from a client (the terminal) and you can attach it back. It means that you can run whatever you want in the background, even if you have no terminal open.
 
@@ -89,27 +89,27 @@ Let's imagine that you need to run a very long script on your remote server. Som
 6. **Later ssh back to your remote server and attach to tmux sesion.**
    {{</boxmd>}}
 
-#### 2. More Termimals! Everywhere!
+> #### More Termimals! Everywhere!
 
 Tmux allows you to create multiple terminal on a single screen. This is the functionality I use most.You might think: "Well, great, many terminal emulator can do the same, like terminator." That's true, but tmux is more powerful and consume less resources. You can configure it easily and precisely, according to your specific needs.
 
 It works very well with vim too, which makes it mandatory if you want to create a **Keyboard Centric** development environment.
 
-#### 3. Protection Against Terminal Crashes.
+> #### Protection Against Terminal Crashes.
 
 Since your tmux session is independent of your terminal, you don't need to worry anymore if you close it or even if it crashes. You can always reattach your session afterword, in a new and shiny terminal!.
 
-#### 4. Saving tmux sessions
+> #### Saving tmux sessions
 
 It's possible to save tmux **sessions** in a file and reopen them later, even after switching off your computer.
 
-#### 5. Remote Pair Programming.
+> #### Remote Pair Programming.
 
 A tmux session can be attached to many clients (terminals), even via SSH. Which means that you can do pair programming with another developer using **Tmux** and **command line base text editor** by sharing the same **session!**.
 
-### How to use tmux?
+<h4 align="center">Let Understand Tmux</h4>
 
-#### General Organization.
+#### General Organization
 
 Let's see in more details how to use tmux. This part should answer many potential questions you might have, at that point.
 
@@ -119,69 +119,74 @@ Here's an example what kind of hierarchy you can with tmux:
 
 When you launch tmux, it will create a **tmux-server**, a **session**, a **window** and a **pane**.
 
-### Tmux Concepts
+### Tmux Theoritical Background
 
 #### Tmux server
 
-The tmux server manage every single tmux **sessions**. If you kill it, you kill every **session** as well. You can try it by yourself with the command **tmux kill-server**.
+The tmux server manage every single tmux **session**. If you kill it, you kill every **session** as well. You can try it by yourself with the command **tmux kill-server**.
 
-#### Sessions
+#### Session
 
 We spoke about **sessions** before. You can detach them from a client (and let them run in the background) and attach them back.
 
-#### windows
+#### Window
 
 In tmux, a **window** represent an entire screen. You can have multiple **windows** open in one **session**. You can access each **window** via a tab in the tmux status bar, at the bottom.
 
-#### Panes
+#### Pane
 
 You can split your **windows** in **panes** to have multiple terminals on one screen. Thes panes are independent by default , but you can syncronze them too.
 
-#### Conventions
+> #### Conventions
 
-tmux is a tool that is driven by the keyboard. You'll encounder many keyboard shortcuts throughut the book. Since tmux support both lowercase and uppercase keyboard shortcuts, it may sometime be unclear which key is being referenced
+Tmux is a tool that is driven by the keyboard. You'll encounter many keyboard shortcuts throughut this post. Since **tmux support both lowercase and uppercase keyboard shortcuts**, it may can become be unclear which key is being referenced.
 
-tmux is case Sensitive.
+Remember that tmux is **case Sensitive.**
 
 {{<boxmd>}}
 
-1. **Ctrl-b** means that "press the ctrl and b keys simultaneously."
-2. **Ctrl-b d** means "press the Ctrl and b keys simulteneously, then release and the press d"
+1. **Ctrl-b** means that **press the ctrl and b keys simultaneously.**
+2. **Ctrl-b d** means **press the Ctrl and b keys simulteneously, then release and the press d**
 3. **\$ tmux new-session** .The dollar sigh represent the prompt from the bash shell sessions. You won't need to type it when you type the command. It just denotes that this is a command you should type.
    {{</boxmd>}}
 
 **Configuring tmux**, you can configur tmux with a configuration file called **tmux.conf**. filenames starting with a period don't show up in directory listing on most system or text editors by default.
 
-I will be explaning sections of my **tmux.conf** file and then i will attach the link to the **github dotfiles** page.
+I will be explaning sections of my **tmux.conf** file and then I will attach the link to the **github dotfiles** page.
 
-### Learning the Basics
+<h4 align="center">Learning the Basics</h4>
+<hr>
 
-#### Getting started.
+> #### Getting started.
 
-This is a hand-on guide will get you up and running with tmux pretty quickly. It will only cover the basic feature which should be more than enough to get started and be productive with tmux. simply open your terminal and follow the instructions.
+This is a hand-on guide will get you up and running with tmux pretty quickly. It will only cover the basic and some advanced feature which should be more than enough to get started and be productive with tmux, simply open your terminal and follow the along.
 
 tmux , by default doesn't have the most friendly commands. Many of the most important and useful features are assigned to hard to reach keystrokes or consist of long, verbose command strings.
 
-#### Introducing the .tmux.conf file.
+> #### Introducing the .tmux.conf file.
 
-By default , tmux looks for configuration settings in two places. It first looks in **/etc/tmux.conf** for system-wide configuration. It then looks for a file called **.tmux.conf** in the current user's home directory.if thes files don't exist , tmux simply uses its default settings.
+By default , tmux looks for configuration settings in two places. It first looks in **/etc/tmux.conf** for system-wide configuration. It then looks for a file called **.tmux.conf or ~/.config/tmux/tmux.conf** .If the files don't exist , tmux simply uses its default settings.
 
-Execute the following command in your shell:
+The first option is having the configuration in your home directory, and to create
+the file you can run the command.
 
 {{<boxmd>}}
 **touch ~/.tmux.conf**
 {{</boxmd>}}
 
-###### Note:=> .tmux.conf file is a hidden file and doesn't show up in file explorers or directory listing by default.
+{{<boxmd>}}
+**Note:** .tmux.conf file is a hidden file and doesn't show up in file explorers or directory listing by default.
+
+{{</boxmd>}}
 
 In this file we can do everthing from:
 
 1. **Defining new key shortcuts**
 2. **Setting up a default environment with multiple windows, panes and running programs.**
 
-#### Installation
+> #### Installation
 
-Fortunately!, installing tmux is pretty straightforward on most distribution. If you use a Unix/Linux based system, you can find it via your usual packaeg manager.
+Fortunately!, Installing tmux is pretty straightforward on most distribution. If you use a Unix/Linux based system, you can find it via your usual packaeg manager.
 
 {{<boxmd>}}
 
@@ -191,7 +196,7 @@ Fortunately!, installing tmux is pretty straightforward on most distribution. If
 - Mac OS: <span style="color:#FF6188;font-weight: bold">brew install tmux.</span>
   {{</boxmd>}}
 
-#### Starting Your First Session.
+> ##### Starting Your First Session.
 
 For your first session simply start tmux with a new session.
 
@@ -199,14 +204,14 @@ For your first session simply start tmux with a new session.
 **tmux**
 {{</boxmd>}}
 
-#### The command Prefix.
+> ##### The command Prefix.
 
 Since our command-line programs run inside tmux, we need a way to tell tmux that the command we're typing is for tmux and not for the underlying application. The **Ctrl-b** is combination for that. This combination is called _command prefix._
 
 For my current setup it was hard to type **CtrL-b** so i remap the prefix to **Ctrl-space** using the command below.
 
 {{<boxmd>}}
-**set -g prefix C-n**
+**set -g prefix C-space**
 {{</boxmd>}}
 
 **You will need to press the prefix first each time you want to do something with tmux**. Since the prefix involves the **Ctrl** key we need to ensure this key is easily accessible.
@@ -214,28 +219,28 @@ For my current setup it was hard to type **CtrL-b** so i remap the prefix to **C
 {{<boxmd>}}
 
 > ##### Remapping the caps lock key.
->
-> On many keyboards, the **Caps lock** key sits right next to the a key on the home row of the keyboard. By remapping this key to **Ctrl**, you can make triggering commands more comforbable.
+
+On many keyboards, the **Caps lock** key sits right next to the a key on the home row of the keyboard. By remapping this key to **Ctrl**, you can make triggering commands more comforbable.
 
 <div align="center"><h6><a href="/posts/remaps">Checkout my CapsLock remaps here</a></h6></div>
 {{</boxmd>}}
 
-#### Tmux Visual appearance
+> #### Tmux Visual appearance
 
-This will create a new tmux session with a nice all-green status bar at the bottom. tmux provides quite a few ways to customize your environment's appearance. In this section, we'll walk throught configuraing some to these options , as we customize the status line and other componets.
+This will create a new tmux session with a nice all-green status bar at the bottom. Tmux provides quite a few ways to customize your environment's appearance. In this section, we'll walk throught configuraing some to these options , as we customize the status line and other components.
 
 ##### Configuring color
 
-To get the best visual experience out of tmux , make sure that both your terminal and tmux are configured for 256 colors. You can perform a quick check using the **tput** command.
+To get the best visual experience out of tmux , make sure that both your terminal and tmux are configured for **256 colors.** You can perform a quick check using the **tput** command.
 
 ```bash
 $ tput colors
 256
 ```
 
-if you don't see 256 as a result, you'll need to do a little configuration. You may need to configure your terminal to use xterm's 256 mode.
+If you don't see 256 as a result, you'll need to do a little configuration. You may need to configure your terminal to use xterm's 256 mode.
 
-Ensure that your terminal emulator supports displaying UTF-8 characters so that visual elements such as the pane divider appear as dashed lines.
+Ensure that your terminal emulator supports displaying UTF-8 characters so that visual elements such as the pane divider do not appear as dashed lines.
 
 To make tmux display things in 256 colors, add this line to our **.tmux.conf** file:
 
@@ -269,30 +274,30 @@ My current status bar looks like the following.
 
 ![](/images/tmux/tmuxbar.png)
 
-#### Keeping Status Line Info Up to Date
+> #### Keeping Status Line Info Up to Date
 
 We can specify exactly how quickly tmux refreshes its status line with . By default tmux refresh interval in every 15 seconds.
 
 ```bash
 # update the status line every sixty seconds
-set -g status-interval 6
+set -g status-interval 15
 ```
 
-#### Managing tmux sessions.
+> #### Managing tmux sessions
 
 Here are the most useful tmux commands to manage your **sessions**.
 
 {{<boxmd>}}
 
-- tmux list-sessions - List tmux sessions.
-- tmux new-session -s hello - Create a new sessions named "hello"
-- tmux kill-session -t hello - Kill the **session** named "hello"
-- tmux kill-server - Kill the tmux server and, as a result, every **session**.
+- **tmux list-sessions** - List tmux sessions.
+- **tmux new-session -s dev** - Create a new sessions named "hello"
+- **tmux kill-session -t dev** - Kill the **session** named "hello"
+- **tmux kill-server** - Kill the tmux server and, as a result, every **session**.
   {{</boxmd>}}
 
-If you use a tool to automate the creation of your **sessions** like **tmuxp**, you will barely need to use these commands. More on that later!.
+If you use a tool to automate the creation of your **sessions** like **tmuxp**, you will barely need to use these commands.
 
-#### Reloading tmux config Files
+> #### Reloading tmux config Files
 
 Each time you change your config file, you need to reload it in tmux to apply the changes.
 
@@ -314,7 +319,7 @@ From now on, each time you want to see the effect of your configuration changes,
 
 #### Mouse Mode.
 
-What? A mouse in a **mouseless** environment?
+What? A mouse in a **keyboard centric** environment?
 
 Well, using the mouse is sometimes practical, escpecially since you might use it in other software, like your browser.
 
@@ -337,7 +342,7 @@ set -g mouse on
 
 You can do everything with your keyboard too, and I encourage you to do so.
 
-#### Splitting Panes
+> #### Splitting Panes
 
 One of the most common operation you'll do in tmux is splitting a **window** into multiples **panes**. Lets add some useful keystrokes in our config:
 
@@ -353,7 +358,7 @@ The flag **-c** execute a shell command, and #{pane_current_path} simply bring y
 
 ![](/images/tmux/tmuxpane.png)
 
-#### Navigating Panes
+> #### Navigating Panes
 
 To navigate from **panes** to **pane**, you can use prefix -> arrow key by default. However, this action is so common i like to use the following.
 
@@ -368,11 +373,7 @@ The flag **-n** means that thes bindings don't use the prefix key.
 
 Why using ctrl+hnei? it's alwayse better to keep your fingers on the **home row keys.** Using the arrow keys force you to move your hands. If you stop doing it, you'll understand how comfortable it is.
 
-#### More History! MORE!
-
-One of the functionality I love in tmux is being able to have thousands of lines from the terminal outputs. You need to add the following to your config file:
-
-#### Windows.
+#### Window Management
 
 We know how to split the current **pane**, but we don't know yet how to create new windows and how to navigate between them.
 
@@ -402,11 +403,11 @@ set -g base-index 1
 set-window-option -g pane-base-index 1
 ```
 
-You might thike it's annoyong do do **prefix key -> <number>** since you'll navigate between **windows** often. I like to use **alt+k** to go to the next window, and **alt+j** to go to the previous one, without using the prefix key:
+You might think it's annoyong do do **prefix key -> <number>** since you'll navigate between **windows** often. I like to use **prefix c-h** to go to the next window, and **prefix c-j** to go to the previous one, without using the prefix key.
 
 ### Copy Mode
 
-Let's speak briefly about tmux modes. There are two of them:
+Let's speak briefly about tmux modes. There are two of them. We actually use the default mode of tmux. You can think of it as the equivalent of the Insert mode in Vim. It allows you to type whatever you want in the different **panes**.
 
 {{<boxmd>}}
 
@@ -414,17 +415,15 @@ Let's speak briefly about tmux modes. There are two of them:
 2. **The copy mode**
    {{</boxmd>}}
 
-We actually use the default mode of tmux. You can think of it as the equivalent of the Insert mode in Vim. It allows you to type whatever you want in the different **panes**.
-
 When you are in copy mode, you have the possibility to navigate in your terminal, using Emacs or VI key bindings. Since I'm in love with Vi/Vim, let's add in the config.
+
+Now, let try the copy Mode! Hit **prefix key -> space.** You can come back to the default mode by hitting q.
 
 ```bash
 set -g mode-keys vi
 ```
 
-Now, let try the copy Mode! Hit **prefix key -> space.** You can come back to the default mode by hitting q.
-
-You can see that you're in copy mode thanks to the two number on the top right corner of your **panes**. They represent the total number of lne which are below the visible output (on the left) and the one which are above (on the right).
+You can see that you're in copy mode thanks to the two number on the top right corner of your **panes**. They represent the total number of line which are below the visible output (on the left) and the one which are above (on the right).
 
 From there, you can use the vanilla vim keystrokes to navigate your current terminal output. Again, I wrote about the basic Vim keystrokes in this article.
 
@@ -439,19 +438,19 @@ You can use, for example:
 
 Exactly like in Vim !.
 
-Unsuprisingly , you will use copy mode mainly to copy content. I you tried to copy terminal outputs already from tmux with your mouse, you might be confused: it doesn't reall work.
+<!--Unsuprisingly , you will use copy mode mainly to copy content. I you tried to copy terminal outputs already from tmux with your mouse, you might be confused: it doesn't reall work.-->
 
 Indeed, tmux by default doesn't copy anything in your sytem clipboard, but it one of its paste buffer. However, for convinience, I prefer using the sytem clipboard each time I copy something.
 
-Let's configur that now:
+Let's configure that now:
 
 ```bash
 # KEY BINDINGS -VI COPY MODE
-# More vim-like
-unbind -T copy-mode-vi Enter; #Default for copy-selection
 
+bind-key Space copy-mode
 bind -T copy-mode-vi Space send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xsel --clipboard"
+bind-key -T copy-mode-vi c-v send -X rectangle-toggle
 # colemak keys
 ```
 
@@ -474,7 +473,7 @@ Now copy pasting in tmux will normally work like a charm. You can as well copy u
 
 There are some more configuration you need in order for tmux to work seemingly with vim . If you don't use vim, you can pass this section.
 
-First, if you use Neovim in tmux. you might experience a cursor proble: It doesn't change from rectangle to pipe when you go from Normal Mode to Insert Mode.
+First, if you use Neovim in tmux. you might experience a cursor problem. It doesn't change from rectangle to pipe when you go from Normal Mode to Insert Mode.
 
 Adding this line in your configuration might help:
 
@@ -482,9 +481,17 @@ Adding this line in your configuration might help:
 set -g -a terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
 ```
 
-Another improvement you might want: navigating between tmux **panes** and vim **window** using the same keystrokes, ctrl+hnei.
+Another improvement you might want: navigating between tmux **panes** and vim **window** using the same keystrokes, **ctrl+hnei.**
 
 This config will do exactly that:
+
+```bash
+bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-n run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-e run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-i run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
+bind -n C-\\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
+```
 
 That's all!
 
@@ -492,11 +499,11 @@ Now you have a personalized tmux configuration you can modify to fit your precis
 
 You might think that it will take you forever to remember these keystrokes, but I believe they are overall pretty logical. Moreover, if you have written your own cheatsheet, I bet you know most of them already.
 
-### Enhancing tmux with plugings
+##### Enhancing tmux with plugins
 
 Event if we have now a very powerful tool, we can improve tmux evem more by addng some useful plugins.
 
-### tmux plugin manager
+###### Tmux Plugin Manager
 
 To manage our tmux plugins, we need the **tmux plugin manager**
 
@@ -509,28 +516,39 @@ To install it, follow these steps:
 3. Add this at the end of tmux’s configuration: run -b '~/.tmux/plugins/tpm/tpm
    {{</boxmd>}}
 
-You can add any plugins you want in your config and install them with \*prefix -> I, after reloading the config.
+You can add any plugins you want in your config and install them with **prefix I**, after reloading the config.
 
-#### A Better search with copycat.
+I way to automate the installation of tmux plugin manager if it does not exist in your installation
+would be.
 
-As we saw, tmux copy mode allow you to search in the output of the current pane. Howeevr, if you want advanced search capabilities , you can try **tmux copycat**.
+```bash
+# Install the plugins for tmux right at first start
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+## Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+```
 
-What are the cool benefilts , you might ask?
+<!--#### A Better search with copycat.-->
 
-{{<boxmd>}}
+<!--As we saw, tmux copy mode allow you to search in the output of the current pane. Howeevr, if you want advanced search capabilities , you can try **tmux copycat**.-->
 
-1. You don't neet to be in copy mode to search something.
-2. You can search using regex or plain strings.
-3. You have access to keystrokes to select filepathis, git status output, urls, and IP addresses to copy them easily.
-4. Your search is automatically selected. YOu can copy it using yank (the y key we configured earlier) directly.
+<!--What are the cool benefilts , you might ask?-->
 
-{{</boxmd>}}
+<!--{{<boxmd>}}-->
 
-Like in Vim, you an use n and N to jump to the next or previous result, repectively.
+<!--1. You don't neet to be in copy mode to search something.-->
+<!--2. You can search using regex or plain strings.-->
+<!--3. You have access to keystrokes to select filepathis, git status output, urls, and IP addresses to copy them easily.-->
+<!--4. Your search is automatically selected. YOu can copy it using yank (the y key we configured earlier) directly.-->
 
-#### Fuzzy Search with fzf And Extrakto.
+<!--{{</boxmd>}}-->
 
-You'll need **fzf** to use this plugn. If you don't haev it already, I advice you to install it: it's a powerful tool which will enhance your terminal experiencee even more!.
+<!--Like in Vim, you an use n and N to jump to the next or previous result, repectively.-->
+
+##### Fuzzy Search with fzf And Extrakto.
+
+You'll need **fzf** to use this plugn. If you don't have it already, I advice you to install it. it's a powerful tool which will enhance your terminal experiencee even more!.
 
 In order to install extrackto, add the following to your config file:
 
@@ -540,7 +558,7 @@ set -g @plugin 'laktak/extrakto'
 
 Then, reload it and hit **prefix key -> I** to install the new plugin.
 
-#### Automating the creating of tmux sessions.
+##### Automating the creating of tmux sessions.
 
 The power of tmux doen't stop here. There are many tools out there which allow you to automate tmux **sessions** creation via YAML (or JSON) config files.
 
@@ -550,9 +568,9 @@ The two most know tools to create **sessions** from config files are **tmuxinato
 
 To see all my tmux configuration. Checkout my [github tmux configuration](https://github.com/eduuh/dotfiles/blob/master/.config/tmux/tmux.conf). This is always up to date.
 
-#### I want to work with Tmux in all my sessions
+##### I want to work with Tmux in all my sessions
 
-I use zsh as my default shell. Adding the following in the .zshrc to start tmux at terminal startup.
+I use zsh as my default shell. Adding the following in the **.zshrc** to start tmux at terminal startup.
 
 ```bash
 if which tmux 2>&1 >/dev/null; then
@@ -562,4 +580,51 @@ if which tmux 2>&1 >/dev/null; then
 fi
 ```
 
-Always work in a tmux session if tmux is installed
+Always work in a tmux session if tmux is installed.
+
+##### Start tmux Automatically on Boot
+
+The script only works with **systemd**. Add this line to **tmux.conf**. This is nice because it avaid
+tmux from being annoying when start in the terminal and it start restoring session. It can do that
+in the background.
+
+```bash
+set -g @continuum-boot 'on'
+```
+
+Reload the tmux configuration.
+
+You'l will find a new service file under **~/.config/systemd/user/tmux.service**
+
+```bash
+[Unit]
+Description=tmux default session (detached)
+Documentation=man:tmux(1)
+
+[Service]
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/tmux new-session -d
+
+ExecStop=/home/eduuh/.tmux/plugins/tmux-resurrect/scripts/save.sh
+ExecStop=/usr/bin/tmux kill-server
+KillMode=none
+
+RestartSec=2
+
+[Install]
+WantedBy=default.target
+```
+
+Copy the file to **etc/systemd/system**. You"ll need **sudo** for that.
+
+```bash
+sudo cp ~/.config/systemd/user/tmux.service /etc/systemd/system/
+```
+
+Enable the service:
+
+```bash
+√ sudo systemctl enable tmux --now
+#Created symlink /etc/systemd/system/default.target.wants/tmux.service → /etc/systemd/system/tmux.service.
+```
