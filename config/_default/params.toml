@@ -84,7 +84,8 @@ pubPaginate = 20
 myname = "Edwin Muraya"
 email = "edwinkamaumuraya0@outlook.com"
 whoami = "Microsoft Student Ambassador/ Postman Student Expert..Net core and FullStack Javascript developer"
-bioImageUrl = "/images/edd2.jpg" 
+bioImageUrl = "images/edd2.jpg" 
+
 useGravatar = false
 location = "Nyeri , Kenya"
 organization = "Student at Dedan Kimathi University"
