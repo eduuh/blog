@@ -18,6 +18,6 @@ jobs:
         with:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
           hugoVersion: extended_0.58.3
-          siteDir: docs
+          siteDir: ./docs
 
   
