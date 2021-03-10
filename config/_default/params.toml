@@ -17,7 +17,7 @@ hideHomeHeaderWhenMobile = true
 showMobileMenuTerms = ["tags", "categories", "series"]
 
 
-themeOptions = ["light"] # "hacker", "solarized", "kimbie"]
+themeOptions = ["light","kimbie"] # "hacker", "solarized", "kimbie"]
 
 
 notAllowedTypesInHome = [
@@ -115,7 +115,7 @@ showFeedLinks = true
 showSocialLinks = true
 enableLangChange = false
 
-enableThemeChange = false
+enableThemeChange = true
 
 
 # comment

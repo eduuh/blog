@@ -1,17 +1,16 @@
 ---
 header:
-  - type: text2
+  - type: text
     height: 150
     paddingX: 50
     paddingY: 0
     align: center
     title:
-      - Welcome To my Notes
+      - Welcome To my Notes and Fun
     subtitle:
       - A Journal Where I keep all My Tech notes in One Place.
       - Linux , Docker , .Netcore , Javascript n (Frameworks) , C# , Bash cli
 
-    titleColor: '#EA6B66'
     titleShadow: false
     titleFontSize: 35
     subtitleColor:

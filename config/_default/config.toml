@@ -12,7 +12,7 @@ buildFuture = true # if true, we can use future date for talks page
 copyright = "©{year}, All Rights Reserved" # copyright symbol: $copy; current year: {year}
 timeout = 10000
 enableEmoji = true
-paginate = 7 # Number of items per page in paginated lists.
+paginate = 40 # Number of items per page in paginated lists.
 rssLimit = 100
 
 enableGitInfo = true # When true, the modified date will appear on a summary and single page. Since GitHub info needs to be fetched, this feature will slow down to build depending on a page number you have
@@ -29,10 +29,6 @@ googleAnalytics = "UA-171434852-1"
     lineNos = false
     lineNumbersInTable = true
     noClasses = false
-  [markup.tableOfContents]
-    endLevel = 3
-    ordered = false
-    startLevel = 2
 
 [outputs]
   home = ["HTML", "RSS", "SearchIndex"]
