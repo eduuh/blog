@@ -2,7 +2,7 @@
 title: "Linkend Lists"
 description: "Linked Lists"
 date: 2020-07-28T19:56:17Z
-draft: true
+draft: false
 hideToc: false
 enableToc: false
 author: eduuh
