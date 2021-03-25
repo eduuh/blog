@@ -1,18 +1,16 @@
 ---
 title: "please input the title"
 description: "Modifiy the input"
-date: {{ .Date }}
+date: { { .Date } }
 draft: true
 hideToc: false
 enableToc: true
 author: eduuh
 authorEmoji: 🤖
 tags:
-- linux
+  - linux
 categories:
-- Productivity
+  - Productivity
 series:
-- workspace
-image: images/feature1/markdown.png
+  - workspace
 ---
-
